@@ -1,20 +1,73 @@
-
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Video, VideoOff, Share } from 'lucide-react';
+import { Video, VideoOff, Share, Play, Trash2, Plus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+
+interface VideoItem {
+  id: string;
+  title: string;
+  url: string;
+  thumbnail: string;
+  duration: string;
+  createdAt: string;
+}
 
 const VideoWorkspace = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
   const [steps, setSteps] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState('');
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const { toast } = useToast();
+
+  // Sample video library data - this would come from your actual library
+  const [videoLibrary] = useState<VideoItem[]>([
+    {
+      id: '1',
+      title: 'Product Demo Tutorial',
+      url: 'https://example.com/video1',
+      thumbnail: '/placeholder.svg',
+      duration: '5:32',
+      createdAt: '2024-01-15'
+    },
+    {
+      id: '2',
+      title: 'User Onboarding Flow',
+      url: 'https://example.com/video2',
+      thumbnail: '/placeholder.svg',
+      duration: '3:45',
+      createdAt: '2024-01-14'
+    },
+    {
+      id: '3',
+      title: 'Feature Walkthrough',
+      url: 'https://example.com/video3',
+      thumbnail: '/placeholder.svg',
+      duration: '7:20',
+      createdAt: '2024-01-13'
+    },
+    {
+      id: '4',
+      title: 'Bug Report Steps',
+      url: 'https://example.com/video4',
+      thumbnail: '/placeholder.svg',
+      duration: '2:15',
+      createdAt: '2024-01-12'
+    },
+    {
+      id: '5',
+      title: 'Team Meeting Recording',
+      url: 'https://example.com/video5',
+      thumbnail: '/placeholder.svg',
+      duration: '45:30',
+      createdAt: '2024-01-11'
+    }
+  ]);
 
   const startRecording = async () => {
     try {
@@ -56,8 +109,9 @@ const VideoWorkspace = () => {
   };
 
   const shareVideo = () => {
-    if (videoUrl) {
-      navigator.clipboard.writeText(videoUrl);
+    const urlToShare = selectedVideo?.url || videoUrl;
+    if (urlToShare) {
+      navigator.clipboard.writeText(urlToShare);
       toast({
         title: "Video Link Copied",
         description: "Video URL has been copied to clipboard",
@@ -76,6 +130,18 @@ const VideoWorkspace = () => {
     setSteps(steps.filter((_, i) => i !== index));
   };
 
+  const selectVideo = (video: VideoItem) => {
+    setSelectedVideo(video);
+    setVideoUrl(video.url);
+  };
+
+  const removeFromLibrary = (videoId: string) => {
+    toast({
+      title: "Video Removed",
+      description: "Video has been removed from your library",
+    });
+  };
+
   return (
     <div className="flex-1 p-6 space-y-6">
       <div className="flex items-center justify-between">
@@ -88,20 +154,101 @@ const VideoWorkspace = () => {
             {isRecording ? <VideoOff className="w-4 h-4 mr-2" /> : <Video className="w-4 h-4 mr-2" />}
             {isRecording ? 'Stop Recording' : 'Start Recording'}
           </Button>
-          <Button onClick={shareVideo} variant="outline" disabled={!videoUrl}>
+          <Button onClick={shareVideo} variant="outline" disabled={!videoUrl && !selectedVideo}>
             <Share className="w-4 h-4 mr-2" />
             Share Video
           </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="video" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="video">Video Sharing</TabsTrigger>
+      <Tabs defaultValue="library" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="library">Video Library</TabsTrigger>
+          <TabsTrigger value="record">Record New</TabsTrigger>
           <TabsTrigger value="steps">Steps Capture</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="video" className="space-y-4">
+        <TabsContent value="library" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                Video Library
+                <span className="text-sm font-normal text-muted-foreground">
+                  {videoLibrary.length} videos
+                </span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {videoLibrary.map((video) => (
+                  <Card 
+                    key={video.id} 
+                    className={`cursor-pointer transition-all hover:shadow-md ${
+                      selectedVideo?.id === video.id ? 'ring-2 ring-primary' : ''
+                    }`}
+                    onClick={() => selectVideo(video)}
+                  >
+                    <CardContent className="p-4">
+                      <div className="relative mb-3">
+                        <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                          <Play className="w-8 h-8 text-muted-foreground" />
+                        </div>
+                        <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
+                          {video.duration}
+                        </div>
+                      </div>
+                      <h3 className="font-medium text-sm mb-2 line-clamp-2">{video.title}</h3>
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
+                        <span>{video.createdAt}</span>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeFromLibrary(video.id);
+                          }}
+                          className="h-6 w-6 p-0 text-muted-foreground hover:text-destructive"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+                
+                <Card className="cursor-pointer border-dashed border-2 hover:border-primary transition-colors">
+                  <CardContent className="p-4 flex flex-col items-center justify-center h-full min-h-[200px]">
+                    <Plus className="w-8 h-8 text-muted-foreground mb-2" />
+                    <p className="text-sm text-muted-foreground text-center">
+                      Add new video from library
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {selectedVideo && (
+                <div className="mt-6 p-4 bg-muted rounded-lg">
+                  <h3 className="font-medium mb-2">Selected Video: {selectedVideo.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Duration: {selectedVideo.duration} • Created: {selectedVideo.createdAt}
+                  </p>
+                  <div className="flex gap-2">
+                    <Button size="sm">
+                      <Play className="w-4 h-4 mr-2" />
+                      Play Video
+                    </Button>
+                    <Button size="sm" variant="outline" onClick={shareVideo}>
+                      <Share className="w-4 h-4 mr-2" />
+                      Share
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="record" className="space-y-4">
           <Card>
             <CardHeader>
               <CardTitle>Video Recording & Sharing</CardTitle>
