@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Video, VideoOff, Share, Play, Trash2, Plus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import VideoPlayer from './VideoPlayer';
 
 interface VideoItem {
   id: string;
@@ -169,6 +170,21 @@ const VideoWorkspace = () => {
         </TabsList>
 
         <TabsContent value="library" className="space-y-4">
+          {/* Video Player Section */}
+          {selectedVideo && (
+            <VideoPlayer
+              videoUrl={selectedVideo.url}
+              title={selectedVideo.title}
+              onError={() => {
+                toast({
+                  title: "Video Error",
+                  description: "Could not load the selected video",
+                  variant: "destructive",
+                });
+              }}
+            />
+          )}
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
@@ -233,10 +249,6 @@ const VideoWorkspace = () => {
                     Duration: {selectedVideo.duration} • Created: {selectedVideo.createdAt}
                   </p>
                   <div className="flex gap-2">
-                    <Button size="sm">
-                      <Play className="w-4 h-4 mr-2" />
-                      Play Video
-                    </Button>
                     <Button size="sm" variant="outline" onClick={shareVideo}>
                       <Share className="w-4 h-4 mr-2" />
                       Share
