@@ -79,7 +79,7 @@ const CalendarDashboard = () => {
   const pastMeetings = meetings.filter(m => m.status === 'completed');
 
   return (
-    <div className="flex-1 p-6 space-y-6 bg-gray-50 min-h-screen">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-full">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold mb-6">Calendar</h1>
         
