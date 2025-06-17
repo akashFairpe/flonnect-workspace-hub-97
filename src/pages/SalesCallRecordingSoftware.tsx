@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Play, Download, Users, Phone, Target, TrendingUp, MessageSquare, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const SalesCallRecordingSoftware = () => {
@@ -9,71 +8,71 @@ const SalesCallRecordingSoftware = () => {
 
   const useCases = [
     {
-      title: "Recording Sales Calls for Training & Skill Improvement",
-      description: "Sales teams can record client calls and demos for review and skill development. Helps in analyzing successful pitches and identifying areas for improvement. Useful for new hire training, allowing sales reps to learn from experienced team members. Enables managers to provide constructive feedback based on real conversations.",
-      example: "A sales manager records a high-performing sales call and shares it with the team to showcase effective objection-handling techniques and closing strategies.",
+      title: "Recording Client Calls for Training & Coaching",
+      description: "Sales teams can record client calls to analyze performance and improve techniques. Helps sales managers provide targeted coaching and identify areas for improvement. Can be used for onboarding new sales reps and creating best practice libraries.",
+      example: "A sales manager records a successful product demo call to train new team members on effective presentation techniques.",
+      icon: Phone,
+      gradient: "from-blue-600 to-purple-600",
+      image: "photo-1556761175-4b46a572b786"
+    },
+    {
+      title: "Capturing Product Demos & Presentations",
+      description: "Sales professionals can record product demonstrations and sales presentations for prospects who couldn't attend live sessions. Helps maintain consistent messaging and allows prospects to review details at their convenience.",
+      example: "A sales rep records a software demo for a potential client's technical team to review before making a decision.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-green-600 to-blue-600",
+      image: "photo-1551836022-d5d88e9218df"
     },
     {
-      title: "Capturing Client Requirements & Reducing Miscommunication",
-      description: "Ensures accurate documentation of client needs and expectations. Helps avoid misunderstandings by allowing reps to review conversations later. Supports customized proposals by revisiting client-specific requirements. Reduces reliance on manual note-taking during calls.",
-      example: "A sales executive records a discovery call with a potential client and revisits the conversation later to ensure all pain points are addressed in the proposal.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      title: "Documenting Sales Processes & Pipeline Management",
+      description: "Teams can record sales process walkthroughs and pipeline reviews to maintain consistency across the sales organization. Helps in standardizing approaches and ensuring all team members follow best practices.",
+      example: "A sales director records a pipeline review session, showing how to qualify leads and move them through the sales funnel.",
+      icon: Target,
+      gradient: "from-purple-600 to-pink-600",
+      image: "photo-1507003211169-0a1dd7228f2d"
     },
     {
-      title: "Compliance & Legal Documentation for Sales Agreements",
-      description: "Records verbal agreements and discussions to protect both parties. Helps in adhering to industry regulations and compliance policies. Useful for businesses operating in highly regulated industries like finance and healthcare. Can be used as proof of commitment in case of disputes.",
-      example: "A financial services firm records calls with clients to ensure compliance with regulatory guidelines before finalizing an investment deal.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Enhancing CRM & Sales Strategy with Real Conversations",
-      description: "Recorded calls can be stored in a CRM system for reference. Helps in analyzing common objections and client concerns. Aids in refining sales scripts based on real-world interactions. Provides AI-driven insights to improve conversion rates.",
-      example: "A SaaS company records all customer interactions and integrates them into their CRM, helping the team analyze buying patterns and objections.",
+      title: "Creating Customer Success Stories & Case Studies",
+      description: "Sales teams can record customer testimonials and success stories to use in future sales presentations. Helps build credibility and provides social proof for prospective clients.",
+      example: "A sales team records a client sharing their positive experience with the product for use in future presentations.",
       icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
+      gradient: "from-orange-600 to-red-600",
+      image: "photo-1600880292089-90a7e086ee0c"
     },
     {
-      title: "Recording Sales Calls on Mobile for On-the-Go Reps",
-      description: "Mobile-friendly recording software helps field sales representatives document meetings and client interactions. Useful for traveling sales teams who need to record conversations from anywhere. Supports instant sharing of important call details with the sales team. Helps in quick follow-ups with potential leads based on recorded discussions.",
-      example: "A real estate agent records a client call on their mobile phone while traveling and later reviews the conversation to customize the property pitch.",
+      title: "Recording Sales Meetings & Strategy Sessions",
+      description: "Sales leadership can record team meetings, strategy sessions, and training workshops for team members who couldn't attend. Ensures all sales staff stay aligned with company goals and strategies.",
+      example: "A sales VP records a quarterly strategy meeting outlining new pricing and competitive positioning for the team.",
       icon: TrendingUp,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-teal-600 to-green-600",
+      image: "photo-1552664730-d307ca884978"
     }
   ];
 
   const faqs = [
     {
-      question: "Is call recording legal for sales purposes?",
-      answer: "Call recording legality varies by location and situation. Our software includes consent notifications and compliance features to help you follow local laws. We recommend consulting with your legal team about recording requirements in your area."
+      question: "Is it legal to record sales calls?",
+      answer: "Recording laws vary by location. Our software includes consent management features and compliance tools to help you follow local regulations. Always obtain proper consent before recording."
     },
     {
-      question: "Can recordings be automatically transcribed?",
-      answer: "Yes! Our AI-powered transcription creates accurate text from your sales calls, making it easy to search for key information, create summaries, and analyze conversation patterns."
+      question: "How does call recording integrate with our CRM?",
+      answer: "We integrate seamlessly with popular CRM systems like Salesforce, HubSpot, and Pipedrive. Recordings are automatically linked to contact records and deal stages."
     },
     {
-      question: "How do recordings integrate with our CRM?",
-      answer: "We offer integrations with major CRM platforms like Salesforce, HubSpot, and Pipedrive. Recordings can be automatically linked to contact records and deal stages for complete context."
+      question: "Can we analyze recorded calls for insights?",
+      answer: "Yes! Our AI-powered analytics can identify key moments, track talk time ratios, detect sentiment, and provide coaching recommendations based on successful call patterns."
     },
     {
-      question: "Can we analyze sales performance from recordings?",
-      answer: "Absolutely! Our analytics track talk time, key phrases, objections, and conversion patterns. This data helps identify top performers and areas for team improvement."
+      question: "What's the audio quality like for phone calls?",
+      answer: "We provide crystal-clear audio recording for both VoIP and traditional phone systems. Our noise reduction technology ensures professional-quality recordings every time."
     },
     {
-      question: "What about recording quality during poor connections?",
-      answer: "Our software adapts to network conditions and includes noise reduction features. We also provide local recording options to ensure quality even during unstable connections."
+      question: "How do we share recordings with team members?",
+      answer: "Recordings can be shared via secure links, embedded in presentations, or accessed through team dashboards. You can also create highlight reels for training purposes."
     },
     {
-      question: "How quickly can recordings be shared with the team?",
-      answer: "Recordings are available immediately after the call ends. You can share instantly via secure links, add to team folders, or automatically distribute based on deal criteria."
+      question: "What security measures protect our sales recordings?",
+      answer: "All recordings are encrypted in transit and at rest, with role-based access controls and audit trails. We comply with SOC 2, GDPR, and other security standards."
     }
   ];
 
@@ -82,7 +81,7 @@ const SalesCallRecordingSoftware = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
       {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
@@ -90,7 +89,7 @@ const SalesCallRecordingSoftware = () => {
             Sales Call Recording Software
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Boost your sales performance with professional call recording software. Capture client conversations, train your team, and close more deals with compliance-ready recording solutions.
+            Boost sales performance with professional call recording solutions. Capture client conversations, analyze performance, and create winning sales strategies that drive revenue growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -108,10 +107,10 @@ const SalesCallRecordingSoftware = () => {
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Powerful Sales Recording Use Cases
+              5 Key Sales Recording Use Cases
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From training to compliance, discover how sales teams are leveraging call recording to drive better results
+              See how top-performing sales teams leverage call recording to close more deals and improve performance
             </p>
           </div>
 

@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Headphones, Plus, Minus } from 'lucide-react';
+import { Play, Download, Headphones, Shield, BarChart, Clock, MessageSquare, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const CallCenterRecordingSoftware = () => {
@@ -9,71 +8,71 @@ const CallCenterRecordingSoftware = () => {
 
   const useCases = [
     {
-      title: "Recording Customer Service Calls for Quality Assurance & Compliance",
-      description: "Call centers can record inbound and outbound calls to ensure high-quality service. Helps businesses comply with industry regulations (e.g., GDPR, HIPAA, PCI DSS). Supervisors can monitor calls for compliance, ensuring agents follow scripts and policies. Enables legal protection in case of disputes with customers.",
-      example: "A telecom call center records customer complaints to analyze agent responses and ensure they adhere to compliance policies while resolving issues.",
-      icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
-    },
-    {
-      title: "Monitoring Agent Performance & Training New Employees",
-      description: "Call centers can use recordings for coaching and training new agents. Managers can review past interactions to identify areas of improvement. Helps agents improve communication skills and handle difficult customers better. Enables real-time feedback by sharing examples of good and bad calls.",
-      example: "A banking call center uses recorded customer service calls to train new hires on how to handle fraud-related inquiries professionally and efficiently.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
-    },
-    {
-      title: "Recording Customer Interactions for Dispute Resolution",
-      description: "Businesses can record calls to resolve customer disputes and complaints effectively. Prevents miscommunication by keeping records of all verbal agreements. Helps in legal cases where proof of conversation is required. Ensures customers get what was promised, avoiding potential lawsuits.",
-      example: "A credit card company records customer authorization calls to verify consent before approving a loan increase, protecting both parties.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Capturing Screen Activity Along with Audio for Enhanced Monitoring",
-      description: "Call centers can record both calls and screen activity to track how agents handle CRM software. Useful for technical support centers, where agents guide customers through troubleshooting steps. Helps in identifying workflow inefficiencies and improving software usability. Provides a full picture of agent productivity beyond just call recordings.",
-      example: "A tech support call center records agent screen activity while they assist customers in resetting their accounts, ensuring correct navigation and procedure following.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Storing & Accessing Recordings on Cloud for Remote Teams",
-      description: "Cloud-based call recording enables remote call center agents to record and access interactions from anywhere. Reduces hardware dependency by eliminating the need for physical storage devices. Allows team leaders to review recordings anytime, improving operational efficiency. Ensures data backup and security by keeping all recordings in a centralized system.",
-      example: "A multinational e-commerce support team records customer complaint calls on the cloud, allowing managers in different locations to review and provide feedback.",
+      title: "Recording Customer Service Calls for Quality Assurance",
+      description: "Call centers can record customer interactions to monitor service quality and ensure compliance with company standards. Helps identify training opportunities and maintain consistent customer experiences across all agents.",
+      example: "A customer service manager reviews recorded calls to evaluate agent performance and provide targeted coaching on handling difficult situations.",
       icon: Headphones,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-blue-600 to-cyan-600",
+      image: "photo-1553877522-43269d4ea984"
+    },
+    {
+      title: "Compliance Recording for Regulated Industries",
+      description: "Financial services, healthcare, and other regulated industries can record calls to meet compliance requirements. Ensures all customer interactions follow legal guidelines and industry regulations.",
+      example: "A bank call center records all customer service calls to comply with financial regulations and maintain audit trails.",
+      icon: Shield,
+      gradient: "from-green-600 to-teal-600",
+      image: "photo-1450101499163-c8848c66ca85"
+    },
+    {
+      title: "Performance Analytics & Agent Coaching",
+      description: "Supervisors can analyze recorded calls to identify patterns, measure KPIs, and provide data-driven coaching. Helps improve first-call resolution rates and customer satisfaction scores.",
+      example: "A call center supervisor uses call analytics to identify agents who excel at upselling and shares their techniques with the team.",
+      icon: BarChart,
+      gradient: "from-purple-600 to-indigo-600",
+      image: "photo-1551836022-d5d88e9218df"
+    },
+    {
+      title: "Training New Agents with Real Call Examples",
+      description: "Call centers can use recorded calls as training materials for new agents. Provides real-world examples of best practices and common scenarios they'll encounter.",
+      example: "A training manager creates a library of exemplary customer service calls for new agent onboarding programs.",
+      icon: Clock,
+      gradient: "from-orange-600 to-yellow-600",
+      image: "photo-1507003211169-0a1dd7228f2d"
+    },
+    {
+      title: "Dispute Resolution & Customer Feedback",
+      description: "Recorded calls can be used to resolve customer disputes and gather feedback for service improvements. Provides objective evidence of what was discussed during customer interactions.",
+      example: "A customer service manager reviews a recorded call to resolve a billing dispute and understand the customer's concerns.",
+      icon: MessageSquare,
+      gradient: "from-red-600 to-pink-600",
+      image: "photo-1600880292203-757bb62b4baf"
     }
   ];
 
   const faqs = [
     {
-      question: "How do we ensure compliance with call recording regulations?",
-      answer: "Our software includes automatic consent notifications, regulatory compliance features for GDPR, HIPAA, and PCI DSS, plus detailed audit trails. We provide compliance documentation and work with your legal team to ensure proper implementation."
+      question: "How do we ensure compliance with call recording laws?",
+      answer: "Our software includes built-in compliance features like consent notifications, automatic disclaimers, and region-specific recording policies to help you stay compliant with local laws."
     },
     {
-      question: "Can we monitor live calls in real-time?",
-      answer: "Yes! Supervisors can listen to live calls, whisper to agents, or take over calls when needed. This helps with immediate coaching and ensures quality service during critical customer interactions."
+      question: "Can we integrate with our existing call center software?",
+      answer: "Yes! We integrate with major call center platforms including Genesys, Avaya, Cisco, and Five9. Our API also supports custom integrations with proprietary systems."
     },
     {
-      question: "What analytics are available for call center performance?",
-      answer: "We provide comprehensive analytics including call volume, agent performance, customer satisfaction scores, resolution times, and compliance metrics. Custom dashboards help managers track KPIs and identify improvement opportunities."
+      question: "What analytics can we get from recorded calls?",
+      answer: "Our AI analytics provide sentiment analysis, keyword detection, talk time ratios, silence analysis, and custom scoring metrics to help improve agent performance and customer satisfaction."
     },
     {
-      question: "How does the software integrate with our existing call center systems?",
-      answer: "We integrate with major call center platforms including Avaya, Cisco, Genesys, and cloud-based solutions like Five9. Our API allows custom integrations with your existing CRM and ticketing systems."
+      question: "How long are call recordings stored?",
+      answer: "Storage duration is customizable based on your compliance needs. We offer flexible retention policies from 30 days to permanent storage with automated archiving options."
     },
     {
-      question: "What happens if there's a system outage?",
-      answer: "Our software includes redundancy and failover protection. Recordings are stored locally as backup, and we provide 99.9% uptime guarantee with automatic system recovery to ensure continuous operation."
+      question: "Can supervisors listen to calls in real-time?",
+      answer: "Yes, our platform supports real-time monitoring, whisper coaching, and live call barging. Supervisors can provide immediate assistance when needed."
     },
     {
-      question: "How do we handle high call volumes during peak times?",
-      answer: "Our enterprise infrastructure scales automatically to handle peak loads. We support unlimited concurrent recordings and provide load balancing to ensure consistent performance during busy periods."
+      question: "What security measures protect our call recordings?",
+      answer: "We use enterprise-grade encryption, secure cloud storage, role-based access controls, and maintain SOC 2 compliance to protect sensitive customer conversations."
     }
   ];
 
@@ -82,15 +81,14 @@ const CallCenterRecordingSoftware = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-50">
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Call Center Recording Software
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Enterprise-grade call recording solutions for call centers. Ensure compliance, improve agent training, and enhance customer service with professional recording technology.
+            Enhance customer service quality with professional call recording solutions. Monitor performance, ensure compliance, and improve agent training for exceptional customer experiences.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -104,14 +102,13 @@ const CallCenterRecordingSoftware = () => {
           </div>
         </div>
 
-        {/* Use Cases Section */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Essential Call Center Recording Solutions
+              5 Essential Call Center Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From quality assurance to compliance, discover how call centers are optimizing operations with professional recording software
+              Discover how leading call centers use recording technology to improve service quality and operational efficiency
             </p>
           </div>
 
@@ -156,7 +153,6 @@ const CallCenterRecordingSoftware = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -197,7 +193,6 @@ const CallCenterRecordingSoftware = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
             Optimize Your Call Center Operations

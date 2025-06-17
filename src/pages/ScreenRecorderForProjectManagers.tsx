@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Briefcase, Plus, Minus } from 'lucide-react';
+import { Play, Download, Users, CheckSquare, Calendar, TrendingUp, MessageSquare, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const ScreenRecorderForProjectManagers = () => {
@@ -9,71 +8,71 @@ const ScreenRecorderForProjectManagers = () => {
 
   const useCases = [
     {
-      title: "Recording Virtual Meetings & Team Discussions",
-      description: "Project managers can record online meetings on Zoom, Microsoft Teams, and Google Meet. Ensures that important discussions, decisions, and action points are documented. Helps remote team members review meetings asynchronously if they miss a session. Reduces the need for excessive note-taking, improving focus during discussions.",
-      example: "A project manager records a weekly sprint planning meeting on Zoom and shares it with the development team to ensure alignment on priorities and deadlines.",
+      title: "Recording Project Status Meetings & Sprint Reviews",
+      description: "Project managers can record team meetings, sprint reviews, and stakeholder updates for documentation and team alignment. Helps remote team members stay informed and provides reference materials for project decisions.",
+      example: "A project manager records a sprint retrospective meeting, allowing team members to review feedback and action items later.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-blue-600 to-indigo-600",
+      image: "photo-1552664730-d307ca884978"
     },
     {
-      title: "Creating Task & Process Documentation Videos",
-      description: "Instead of writing long guides, managers can record video walkthroughs for tasks and workflows. Helps onboard new team members faster with step-by-step process explanations. Can be used for demonstrating tools like Jira, Trello, Asana, or ClickUp. Saves time by reducing the need for repetitive one-on-one training.",
-      example: "A project manager records a step-by-step guide on how to create and track tasks in Jira and shares it with new team members during onboarding.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      title: "Creating Project Documentation & Process Guides",
+      description: "PMs can record step-by-step process guides and project workflows for team onboarding and knowledge transfer. Helps standardize project management practices across the organization.",
+      example: "A senior PM records a tutorial on using the company's project management tool for new team members.",
+      icon: CheckSquare,
+      gradient: "from-green-600 to-emerald-600",
+      image: "photo-1454165804606-c3d57bc86b40"
     },
     {
-      title: "Providing Clear Feedback on Project Deliverables",
-      description: "Instead of lengthy emails, managers can record video feedback on documents, designs, or reports. Helps teams understand feedback contextually, reducing misinterpretations. Useful for reviewing design mockups, reports, and code reviews. Speeds up the feedback loop by allowing visual and verbal explanations.",
-      example: "A project manager records a screen video reviewing a UI design prototype, highlighting areas that need improvement with annotations and verbal explanations.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
+      title: "Documenting Client Presentations & Requirement Gathering",
+      description: "Project managers can record client meetings and requirement gathering sessions to ensure accurate project scope documentation. Helps prevent scope creep and maintains clear communication with stakeholders.",
+      example: "A PM records a client requirements meeting to share with the development team and ensure everyone understands the project goals.",
+      icon: Calendar,
+      gradient: "from-purple-600 to-pink-600",
+      image: "photo-1507003211169-0a1dd7228f2d"
     },
     {
-      title: "Tracking & Documenting Project Progress",
-      description: "Managers can record progress updates for stakeholders and executives. Useful for creating video-based status reports instead of lengthy written updates. Can be used to capture project milestones and demonstrate achievements. Helps in maintaining a record of project developments over time.",
-      example: "A project manager records a monthly project update video summarizing key milestones, roadblocks, and next steps for the leadership team and stakeholders.",
+      title: "Recording Training Sessions & Best Practice Sharing",
+      description: "Experienced project managers can record training sessions on project management methodologies, tools, and best practices. Helps build organizational knowledge and improve project success rates.",
+      example: "A PMO lead records a session on Agile project management best practices for the entire project management team.",
+      icon: TrendingUp,
+      gradient: "from-orange-600 to-red-600",
+      image: "photo-1600880292089-90a7e086ee0c"
+    },
+    {
+      title: "Creating Post-Project Reviews & Lessons Learned",
+      description: "PMs can record project retrospectives and lessons learned sessions to capture valuable insights for future projects. Helps organizations improve their project management maturity and avoid repeating mistakes.",
+      example: "A project manager records a post-mortem analysis of a completed project, highlighting what worked well and areas for improvement.",
       icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Training & Knowledge Sharing for Teams",
-      description: "Managers can record training sessions to onboard new employees. Useful for knowledge transfer when a team member transitions out. Can create repository videos for common project management tasks. Saves time by ensuring important knowledge is preserved and easily accessible.",
-      example: "A project manager records a detailed walkthrough on risk management strategies and adds it to the team's internal knowledge base for future reference.",
-      icon: Briefcase,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-teal-600 to-cyan-600",
+      image: "photo-1553877522-43269d4ea984"
     }
   ];
 
   const faqs = [
     {
-      question: "How can screen recording improve project documentation?",
-      answer: "Screen recording creates visual documentation that's easier to understand than written instructions. You can capture processes, demonstrate tools, and provide context that text alone cannot convey, making project knowledge more accessible to team members."
+      question: "How can screen recording improve project communication?",
+      answer: "Screen recording allows PMs to create visual explanations of complex processes, record important meetings for absent team members, and maintain clear documentation of project decisions and changes."
     },
     {
-      question: "Can I integrate recordings with project management tools?",
-      answer: "Yes! We integrate with popular PM tools like Jira, Asana, Trello, and Monday.com. You can attach recordings directly to tasks, user stories, or project updates for better context and communication."
+      question: "Can we integrate with project management tools like Jira or Asana?",
+      answer: "Yes! Our platform integrates with popular PM tools including Jira, Asana, Trello, and Monday.com. You can link recordings directly to tasks, sprints, and project timelines."
     },
     {
-      question: "How do I ensure team members watch important recordings?",
-      answer: "Our platform provides viewing analytics and engagement tracking. You can see who has watched recordings and send automatic reminders. Integration with communication tools like Slack also helps distribute important content."
+      question: "How do we manage access to sensitive project recordings?",
+      answer: "We provide role-based access controls, allowing you to restrict recordings to specific team members or stakeholders. You can also set expiration dates and download permissions."
     },
     {
-      question: "What's the best way to organize project recordings?",
-      answer: "Create organized folders by project, sprint, or team. Use descriptive naming conventions and tags. Our search functionality helps team members quickly find relevant recordings when they need specific information."
+      question: "Can recordings be used for client reporting and updates?",
+      answer: "Absolutely! You can create professional client reports using recorded project updates, demo sessions, and milestone reviews. Our editing tools help you create polished presentations."
     },
     {
-      question: "Can recordings help with remote team management?",
-      answer: "Absolutely! Recordings bridge time zone gaps, ensure consistent communication, and help remote team members stay connected to project discussions. They're especially valuable for asynchronous work environments."
+      question: "How does this help with remote project management?",
+      answer: "Screen recording is essential for remote teams, allowing PMs to record important meetings, create asynchronous updates, and maintain project continuity across different time zones."
     },
     {
-      question: "How do I handle sensitive project information in recordings?",
-      answer: "We provide enterprise-grade security with encryption, access controls, and retention policies. You can set permissions by team member, project, or content type to ensure sensitive information stays protected."
+      question: "What analytics can help improve project management?",
+      answer: "Our analytics track meeting frequency, team engagement metrics, and communication patterns to help PMs identify potential issues and optimize team collaboration."
     }
   ];
 
@@ -82,15 +81,14 @@ const ScreenRecorderForProjectManagers = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-50">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Screen Recorder for Project Managers
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Streamline project management with professional recording tools. Document meetings, create process guides, and enhance team collaboration with powerful screen recording capabilities.
+            Streamline project communication and documentation with professional recording solutions. Capture meetings, create training materials, and improve team collaboration across all your projects.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -104,14 +102,13 @@ const ScreenRecorderForProjectManagers = () => {
           </div>
         </div>
 
-        {/* Use Cases Section */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Essential Project Management Recording Uses
+              5 Essential Project Management Recording Use Cases
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From meeting documentation to training, discover how project managers are optimizing workflows with screen recording
+              See how successful project managers use screen recording to improve team alignment and project outcomes
             </p>
           </div>
 
@@ -156,7 +153,6 @@ const ScreenRecorderForProjectManagers = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -197,7 +193,6 @@ const ScreenRecorderForProjectManagers = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
             Enhance Your Project Management
