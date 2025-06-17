@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Play, Download, Calendar, MessageSquare, FileText, BarChart3, Users, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const VirtualAssistants = () => {
@@ -9,71 +9,71 @@ const VirtualAssistants = () => {
 
   const useCases = [
     {
-      title: "Recording Workflows & Standard Operating Procedures (SOPs) for Clients",
-      description: "Virtual assistants (VAs) can record step-by-step guides on how to manage tasks efficiently. Helps clients understand processes like inbox management, CRM updates, scheduling, and automation. Saves time by allowing clients to revisit recorded SOPs instead of repeatedly asking for guidance. Useful for training new team members when scaling a business.",
-      example: "A VA records a workflow tutorial on 'How to Schedule and Automate Social Media Posts Using Buffer' and shares it with a client's marketing team.",
+      title: "Recording Client Onboarding & Process Documentation",
+      description: "Virtual assistants can record step-by-step onboarding processes for new clients. Helps standardize service delivery and reduces time spent explaining procedures repeatedly. Can include walkthroughs of tools, communication protocols, and project management systems. Useful for scaling VA services and maintaining consistency across multiple clients.",
+      example: "A VA records a comprehensive onboarding video showing how they manage social media accounts, including content scheduling and reporting procedures.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
+      gradient: "from-blue-500 to-indigo-600",
       image: "photo-1581091226825-a6a2a5aee158"
     },
     {
-      title: "Creating Training Videos for Clients' Employees & Teams",
-      description: "VAs can record internal training videos to help businesses onboard employees. Useful for CRM software tutorials, data entry processes, and internal workflow management. Saves business owners time by allowing them to train employees without repeating instructions. Can be used for customer support documentation as well.",
-      example: "A VA records a step-by-step guide on 'How to Use ClickUp for Task Management' for a company's new hires.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      title: "Creating Task Tutorials & Standard Operating Procedures",
+      description: "VAs can record detailed tutorials for common tasks and create SOPs for client reference. Helps clients understand processes and enables easy handovers to other team members. Can include administrative tasks, customer service procedures, and specialized workflows. Perfect for building a library of reusable training materials.",
+      example: "A virtual assistant creates a tutorial on 'How to Manage Your Email Inbox Efficiently', showing filtering, organizing, and response strategies.",
+      icon: FileText,
+      gradient: "from-green-500 to-teal-600",
+      image: "photo-1486312338219-ce68d2c6f44d"
     },
     {
-      title: "Documenting & Explaining Administrative Tasks for Clients",
-      description: "VAs can record how they handle daily administrative tasks like inbox management, calendar organization, and data entry. Helps clients understand how work is being managed and allows for easy delegation. Useful for clients who want transparency in their VA's workflow. Great for explaining billing, expense tracking, and reporting tasks.",
-      example: "A VA records a monthly video update explaining how they've managed emails, invoices, and scheduling tasks for a business owner.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Recording Website & Social Media Management Tutorials",
-      description: "VAs who manage websites or social media can record how they update content, schedule posts, and optimize SEO. Helps clients understand content scheduling, analytics tracking, and engagement tactics. Useful for explaining social media growth strategies, hashtag research, and post engagement. Allows clients to delegate more confidently when they see the process in action.",
-      example: "A VA records a social media management workflow, explaining how they plan, create, and schedule Instagram posts using Canva and Later.",
+      title: "Recording Client Communication & Meeting Summaries",
+      description: "Virtual assistants can record client calls and meetings to create accurate summaries and action items. Helps ensure nothing is missed and provides reference material for future discussions. Can include project updates, strategy sessions, and feedback meetings. Essential for maintaining clear communication and accountability.",
+      example: "A VA records a weekly client check-in meeting and creates a detailed summary with action items and deadlines for the client's review.",
       icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
+      gradient: "from-purple-500 to-pink-600",
+      image: "photo-1551836022-d5d88e9218df"
     },
     {
-      title: "Creating Troubleshooting & Tech Support Guides",
-      description: "VAs can record videos showing how to fix common tech issues in tools like Gmail, WordPress, Zapier, and Slack. Helps clients avoid technical confusion by having a video reference for future issues. Useful for explaining software integrations, automation workflows, and common errors. Saves time by allowing clients to self-solve small tech problems instead of asking the VA repeatedly.",
-      example: "A VA records a troubleshooting guide on 'How to Fix Common Google Drive Sharing Issues' so the client's team can resolve problems independently.",
-      icon: TrendingUp,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      title: "Documenting Research & Data Analysis Processes",
+      description: "VAs can record their research methodologies and data analysis processes for client transparency. Helps clients understand the value being provided and enables quality control. Can include market research, competitor analysis, and lead generation processes. Useful for demonstrating expertise and building trust.",
+      example: "A research-focused VA records their process for conducting market analysis, showing data sources, analysis methods, and report creation.",
+      icon: BarChart3,
+      gradient: "from-orange-500 to-red-600",
+      image: "photo-1460925895917-afdab827c52f"
+    },
+    {
+      title: "Creating Portfolio Content & Service Demonstrations",
+      description: "Virtual assistants can record demonstrations of their services to attract new clients. Helps showcase capabilities and build credibility in the marketplace. Can include before-and-after examples, workflow demonstrations, and results presentations. Perfect for marketing VA services and standing out from competitors.",
+      example: "A social media VA creates a portfolio video showing how they transformed a client's social media presence, including strategy and results.",
+      icon: Calendar,
+      gradient: "from-teal-500 to-cyan-600",
+      image: "photo-1563013544-824ae1b704d3"
     }
   ];
 
   const faqs = [
     {
-      question: "How can screen recording help me provide better VA services?",
-      answer: "Screen recordings allow you to show exactly how you complete tasks, making your value clear to clients. You can create training materials, document processes, and provide visual explanations that are much clearer than written instructions."
+      question: "How can recording help me scale my virtual assistant business?",
+      answer: "Recording processes creates reusable training materials, reduces onboarding time, and helps maintain consistency across clients. This allows you to serve more clients efficiently while maintaining quality standards."
     },
     {
-      question: "What's the best way to create SOPs for my clients?",
-      answer: "Record yourself performing the actual task while explaining each step. Keep videos focused on one process at a time, use clear narration, and include any tips or shortcuts. This creates valuable documentation your clients can reference anytime."
+      question: "What's the best way to record client communications professionally?",
+      answer: "Always get consent before recording, use clear audio equipment, and focus on capturing actionable insights. Our platform includes professional recording features and secure storage for client confidentiality."
     },
     {
-      question: "Can I use recordings to justify my VA rates?",
-      answer: "Absolutely! By showing the complexity and value of your work through detailed recordings, clients better understand why your services are worth the investment. It's much more impactful than just listing tasks in a report."
+      question: "Can I create training materials for other virtual assistants?",
+      answer: "Absolutely! Recording your expertise allows you to create courses, training programs, and consulting materials. Many successful VAs build additional revenue streams through education and training."
     },
     {
-      question: "How do I protect client confidentiality in recordings?",
-      answer: "Use our privacy features to blur sensitive information, avoid recording personal data, and always get client consent before recording anything. You can also create generic tutorials using sample data instead of real client information."
+      question: "How do I maintain client confidentiality in recordings?",
+      answer: "Our platform includes privacy controls, secure storage, and the ability to blur sensitive information. Always follow client confidentiality agreements and get proper permissions before recording."
     },
     {
-      question: "What types of VA tasks work best for video documentation?",
-      answer: "Software tutorials, social media management, email organization, CRM management, and any process-based work benefit greatly from video documentation. Basically, any task that involves multiple steps or tools."
+      question: "What recording setup works best for virtual assistant work?",
+      answer: "A good headset, stable internet connection, and quiet workspace are essential. Our software works with any setup and includes noise reduction features for professional-quality recordings."
     },
     {
-      question: "Can I create a library of training videos for multiple clients?",
-      answer: "Yes! Create generic process videos that can be shared with multiple clients, and customize specific details for each client. This saves time while providing valuable resources to all your clients."
+      question: "Can recordings help me demonstrate ROI to clients?",
+      answer: "Yes! Record before-and-after comparisons, process improvements, and results achievements. Visual demonstrations of your impact help justify your rates and secure long-term client relationships."
     }
   ];
 
@@ -82,36 +82,34 @@ const VirtualAssistants = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-50">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
       <div className="container mx-auto px-6 py-16">
-        <div className="text-center mb-16">
+        <header className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Screen Recorder for Virtual Assistants
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Enhance your VA services with professional documentation and training videos. Show your value, streamline client communication, and create valuable resources that set you apart.
+            Scale your VA business and enhance client relationships. Create professional documentation, training materials, and service demonstrations that showcase your expertise and value.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
               <Play className="w-5 h-5 mr-2" />
-              Start VA Documentation
+              Start VA Recording
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6">
               <Download className="w-5 h-5 mr-2" />
-              See SOP Templates
+              View VA Tools
             </Button>
           </div>
-        </div>
+        </header>
 
-        {/* Use Cases Section */}
-        <div className="max-w-7xl mx-auto mb-16">
+        <section className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Essential VA Documentation Strategies
+              5 Essential Virtual Assistant Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From SOPs to training materials, discover how virtual assistants are elevating their services with professional video content
+              From client onboarding to service demonstrations, discover how virtual assistants are building successful businesses through professional recording
             </p>
           </div>
 
@@ -124,7 +122,7 @@ const VirtualAssistants = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={`Virtual assistant workflow for ${useCase.title.toLowerCase()}`}
+                        alt={`Virtual assistant workspace demonstrating ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,17 +132,17 @@ const VirtualAssistants = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
-                            <h3>{index + 1}. {useCase.title}</h3>
-                          </CardTitle>
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
+                            {index + 1}. {useCase.title}
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
-                        <p className="text-gray-600 italic">
+                      <div className="bg-indigo-50 rounded-lg p-4 border-l-4 border-indigo-300">
+                        <p className="text-sm font-semibold text-indigo-700 mb-2">VA Example:</p>
+                        <p className="text-indigo-600 italic">
                           {useCase.example}
                         </p>
                       </div>
@@ -154,16 +152,15 @@ const VirtualAssistants = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <section className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600">
-              Everything virtual assistants need to know about professional service documentation
+              Everything virtual assistants need to know about professional recording and client service enhancement
             </p>
           </div>
 
@@ -175,9 +172,9 @@ const VirtualAssistants = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
-                      <h3>{faq.question}</h3>
-                    </CardTitle>
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
+                      {faq.question}
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -195,26 +192,25 @@ const VirtualAssistants = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
+        <section className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Elevate Your VA Business
+            Elevate Your VA Services
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join successful virtual assistants who are commanding higher rates and providing exceptional value with professional documentation
+            Join successful virtual assistants who are building thriving businesses through professional documentation and exceptional client service
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
               <Play className="w-5 h-5 mr-2" />
-              Showcase Your VA Expertise
+              Start Your VA Success
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
               View VA Success Stories
             </Button>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

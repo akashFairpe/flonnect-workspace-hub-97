@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Play, Download, Palette, Monitor, Users, Eye, Lightbulb, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const ScreenRecorderForFreelanceDesigners = () => {
@@ -9,71 +9,71 @@ const ScreenRecorderForFreelanceDesigners = () => {
 
   const useCases = [
     {
-      title: "Recording Design Walkthroughs for Clients",
-      description: "Freelance designers can record screen walkthroughs of their design projects to explain concepts, revisions, and final outputs. Helps communicate design decisions clearly without long emails or messages. Useful for UI/UX designers, graphic designers, and branding experts. Can highlight specific design choices with on-screen annotations and voiceovers.",
-      example: "A logo designer records a video explaining different logo variations to a client, describing why each version works for their brand.",
+      title: "Recording Design Process & Speed Design Sessions",
+      description: "Freelance designers can record their creative process from concept to completion. Helps showcase design thinking and methodology to potential clients. Can include sketching, wireframing, prototyping, and final design execution. Perfect for building a design portfolio and demonstrating expertise to attract high-value clients.",
+      example: "A UI/UX designer records the complete process of designing a mobile app interface, from user research to final prototype.",
+      icon: Palette,
+      gradient: "from-purple-500 to-pink-600",
+      image: "photo-1483058712412-4245e9b90334"
+    },
+    {
+      title: "Creating Design Tutorials & Educational Content",
+      description: "Designers can record step-by-step tutorials teaching design skills and software techniques. Helps build authority in the design community and creates additional revenue streams. Can include software tutorials, design theory, and industry best practices. Useful for creating courses, YouTube content, and premium educational materials.",
+      example: "A graphic designer creates a comprehensive tutorial on 'Logo Design Fundamentals', covering concept development and execution in Adobe Illustrator.",
+      icon: Lightbulb,
+      gradient: "from-blue-500 to-cyan-600",
+      image: "photo-1486312338219-ce68d2c6f44d"
+    },
+    {
+      title: "Recording Client Presentations & Design Reviews",
+      description: "Freelancers can record design presentations to clients for better communication and documentation. Helps explain design decisions and gather structured feedback. Can include concept presentations, revision discussions, and final design walkthroughs. Essential for maintaining clear communication and project documentation.",
+      example: "A web designer records a client presentation explaining the rationale behind a website redesign, including user experience improvements.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-green-500 to-teal-600",
+      image: "photo-1551836022-d5d88e9218df"
     },
     {
-      title: "Creating Tutorials & Design Process Videos",
-      description: "Designers can record step-by-step tutorials to showcase how they create designs. Ideal for teaching design skills on YouTube, Skillshare, or Udemy. Helps attract potential clients or students by demonstrating expertise. Can be used to promote design software, templates, or resources through affiliate links.",
-      example: "A freelance UI/UX designer records a video on 'How to Design a Landing Page in Figma,' using their own design templates as a lead magnet.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      title: "Documenting Design Feedback & Revision Processes",
+      description: "Designers can record feedback sessions and revision processes to streamline client communication. Helps reduce miscommunication and ensures design changes are clearly understood. Can include screen annotations, voice explanations, and before-after comparisons. Perfect for managing complex projects with multiple stakeholders.",
+      example: "A brand designer records a feedback session, highlighting specific design elements and explaining how client suggestions will be implemented.",
+      icon: Eye,
+      gradient: "from-orange-500 to-red-600",
+      image: "photo-1460925895917-afdab827c52f"
     },
     {
-      title: "Showcasing Portfolio Work for Potential Clients",
-      description: "Freelancers can record case study videos explaining their past projects. Great for building a personal brand and showcasing skills. Helps designers stand out on freelance platforms like Upwork and Fiverr. Can be repurposed into Instagram Reels, LinkedIn videos, or Behance presentations.",
-      example: "A branding specialist records a before-and-after transformation video of a company's rebranding process, explaining the strategy behind their work.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Providing Design Feedback & Team Collaboration",
-      description: "Designers can record feedback videos instead of writing long emails. Useful for collaborating with developers, clients, or other designers. Helps speed up revision cycles by visually explaining changes. Works well for design critiques, brainstorming sessions, and UI/UX audits.",
-      example: "A graphic designer records a feedback video for a junior designer, pointing out areas for improvement in a social media post design.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Creating Content for Social Media & Marketing",
-      description: "Designers can record design speed art videos to engage their audience. Helps grow a following on Instagram, TikTok, YouTube, and LinkedIn. Can showcase behind-the-scenes work, timelapses, and workflow hacks. Useful for promoting design services, courses, or downloadable resources.",
-      example: "A freelance illustrator records a speed drawing timelapse and posts it on Instagram with a call-to-action for commissions.",
-      icon: TrendingUp,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      title: "Creating Portfolio Presentations & Case Studies",
+      description: "Freelance designers can record compelling portfolio presentations and case studies. Helps tell the story behind each project and demonstrate problem-solving skills. Can include project challenges, design solutions, and measurable results. Essential for winning new clients and commanding higher rates.",
+      example: "A product designer creates a case study video showing how their e-commerce redesign increased conversion rates by 40%.",
+      icon: Monitor,
+      gradient: "from-indigo-500 to-purple-600",
+      image: "photo-1563013544-824ae1b704d3"
     }
   ];
 
   const faqs = [
     {
-      question: "How can screen recording help me explain design concepts to clients?",
-      answer: "Visual walkthroughs are far more effective than written explanations. You can show your design process, highlight specific elements, and explain your reasoning in real-time. This reduces misunderstandings and helps clients appreciate the thought behind your work."
+      question: "How can recording my design process help attract better clients?",
+      answer: "Recording your process showcases your expertise, design thinking, and professional approach. Clients can see the value they're getting beyond just the final design, helping you command premium rates and attract quality projects."
     },
     {
-      question: "What's the best way to record design process videos for portfolio?",
-      answer: "Focus on your problem-solving approach, show before-and-after comparisons, and explain your design decisions. Include both the creative process and final results. Keep videos between 2-5 minutes for optimal engagement."
+      question: "What's the best way to record design software like Adobe Creative Suite?",
+      answer: "Our platform optimizes for creative software with high-quality screen capture, smooth playback, and minimal impact on system performance. You can record in high resolution while maintaining design software responsiveness."
     },
     {
-      question: "Can I use recordings to speed up client feedback cycles?",
-      answer: "Absolutely! Instead of long email chains, record quick feedback videos highlighting specific areas for revision. Clients can see exactly what you're referring to, making communication clearer and faster."
+      question: "Can I monetize design tutorial content effectively?",
+      answer: "Absolutely! Many designers build successful side businesses through online courses, YouTube channels, and premium tutorials. Recording your expertise creates scalable income streams beyond client work."
     },
     {
-      question: "How do I create engaging design tutorials for social media?",
-      answer: "Record speed art videos, time-lapse creation processes, and quick design tips. Use engaging thumbnails, add music, and keep content short for platforms like Instagram and TikTok. Include clear calls-to-action for your services."
+      question: "How do I handle client confidentiality when recording design work?",
+      answer: "Our platform includes privacy features like selective screen capture and content blurring. You can create portfolio pieces while protecting sensitive client information and maintaining professional confidentiality."
     },
     {
-      question: "What design software works best with your recording tool?",
-      answer: "Our software works seamlessly with all major design tools including Figma, Adobe Creative Suite (Photoshop, Illustrator, After Effects), Sketch, Canva, and more. We capture high-quality screen recordings regardless of the design software you use."
+      question: "What recording setup works best for design presentations?",
+      answer: "A combination of screen recording with webcam overlay works well for client presentations. Our platform supports multi-source recording, allowing you to show your screen while maintaining personal connection with clients."
     },
     {
-      question: "Can I monetize my design tutorial recordings?",
-      answer: "Yes! Create courses for platforms like Skillshare or Udemy, build a YouTube channel with ad revenue, offer premium tutorials, or use content to attract high-paying clients. Many designers build substantial income streams from educational content."
+      question: "Can recordings help with design feedback and revisions?",
+      answer: "Yes! Visual feedback through recorded annotations and explanations reduces miscommunication. Clients can see exactly what you mean, leading to clearer project direction and fewer revision cycles."
     }
   ];
 
@@ -83,14 +83,13 @@ const ScreenRecorderForFreelanceDesigners = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
-      {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
-        <div className="text-center mb-16">
+        <header className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Screen Recorder for Freelance Designers
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Showcase your design process, communicate with clients effectively, and build your creative business. Professional screen recording software designed for freelance designers.
+            Showcase your creative process and build your design brand. Create compelling portfolio content, educational tutorials, and professional client presentations that demonstrate your expertise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -99,19 +98,18 @@ const ScreenRecorderForFreelanceDesigners = () => {
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6">
               <Download className="w-5 h-5 mr-2" />
-              See Portfolio Templates
+              View Design Tools
             </Button>
           </div>
-        </div>
+        </header>
 
-        {/* Use Cases Section */}
-        <div className="max-w-7xl mx-auto mb-16">
+        <section className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Essential Tools for Freelance Designers
+              5 Essential Design Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From client presentations to portfolio building, discover how designers are growing their freelance business with video
+              From process documentation to client presentations, discover how freelance designers are building successful careers through professional recording
             </p>
           </div>
 
@@ -124,7 +122,7 @@ const ScreenRecorderForFreelanceDesigners = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={`Freelance design workflow for ${useCase.title.toLowerCase()}`}
+                        alt={`Freelance designer workspace showing ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,17 +132,17 @@ const ScreenRecorderForFreelanceDesigners = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
-                            <h3>{index + 1}. {useCase.title}</h3>
-                          </CardTitle>
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
+                            {index + 1}. {useCase.title}
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
-                        <p className="text-gray-600 italic">
+                      <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-300">
+                        <p className="text-sm font-semibold text-purple-700 mb-2">Design Example:</p>
+                        <p className="text-purple-600 italic">
                           {useCase.example}
                         </p>
                       </div>
@@ -154,16 +152,15 @@ const ScreenRecorderForFreelanceDesigners = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <section className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600">
-              Everything freelance designers need to know about professional screen recording
+              Everything freelance designers need to know about professional recording and portfolio development
             </p>
           </div>
 
@@ -175,9 +172,9 @@ const ScreenRecorderForFreelanceDesigners = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
-                      <h3>{faq.question}</h3>
-                    </CardTitle>
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
+                      {faq.question}
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -195,26 +192,25 @@ const ScreenRecorderForFreelanceDesigners = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
+        <section className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Grow Your Design Business
+            Elevate Your Design Career
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join successful freelance designers who are attracting better clients and commanding higher rates with professional video content
+            Join successful freelance designers who are building impressive portfolios and attracting premium clients through professional content creation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
               <Play className="w-5 h-5 mr-2" />
-              Showcase Your Design Process
+              Start Your Design Success
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
-              View Designer Success Stories
+              View Designer Portfolios
             </Button>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
