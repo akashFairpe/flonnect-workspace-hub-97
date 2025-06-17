@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Play, Download, Target, TrendingUp, Users, BarChart, MessageSquare, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const ScreenRecorderForMarketing = () => {
@@ -9,71 +8,71 @@ const ScreenRecorderForMarketing = () => {
 
   const useCases = [
     {
-      title: "Creating Promotional & Social Media Content",
-      description: "Record high-quality promotional videos for marketing campaigns. Create Instagram Reels, TikTok videos, LinkedIn posts, and YouTube ads using screen recordings. Add annotations, highlights, and effects to make videos engaging and interactive. Capture website walkthroughs to showcase landing pages and digital products.",
-      example: "A social media manager records a screen capture of a new product website, adds voiceover, and posts it as an Instagram Reel to drive engagement.",
+      title: "Creating Product Demo Videos & Sales Materials",
+      description: "Marketing teams can record compelling product demonstrations, feature walkthroughs, and sales presentations that convert prospects into customers. Includes tools for highlighting key features and adding persuasive call-to-actions.",
+      example: "A SaaS marketing team records a product demo showing how their software solves common customer pain points for use in email campaigns.",
+      icon: Target,
+      gradient: "from-blue-600 to-purple-600",
+      image: "photo-1460925895917-afdab827c52f"
+    },
+    {
+      title: "Recording Customer Testimonials & Case Studies",
+      description: "Marketers can record customer success stories, testimonials, and case study presentations to build trust and social proof. Perfect for landing pages, sales decks, and marketing campaigns.",
+      example: "A marketing manager records a customer sharing their success story for use in the company's website testimonials section.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-green-600 to-emerald-600",
+      image: "photo-1600880292089-90a7e086ee0c"
     },
     {
-      title: "Recording Product Demos & Walkthroughs",
-      description: "Create step-by-step product demo videos for potential customers. Useful for SaaS companies to explain software features and UI navigation. Helps sales teams showcase how a product works during client pitches. Supports video tutorials for onboarding new users.",
-      example: "A SaaS marketing team records a walkthrough of their latest software update, highlighting new features and sharing it with customers.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
-    },
-    {
-      title: "Creating Explainer Videos & Customer Education Content",
-      description: "Record animated or interactive explainer videos to simplify complex topics. Helps educate potential buyers on how a product/service works. Can include voiceovers, subtitles, and visual elements to make videos more engaging. Ideal for website landing pages, YouTube channels, and blog content.",
-      example: "A content marketer creates an explainer video on 'How AI-Powered Marketing Works' and uploads it to YouTube to generate inbound leads.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Recording & Analyzing Marketing Campaigns",
-      description: "Record live campaign performance from analytics dashboards (Google Analytics, Facebook Ads, etc.). Document A/B testing results and website heatmaps for team discussions. Record social media trends and competitor analysis for future reference. Helps with team collaboration by sharing insights through recorded videos.",
-      example: "A digital marketing team records their Facebook Ads dashboard, showing ad performance and discussing optimizations in a team meeting.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Collaborating with Teams & Stakeholders",
-      description: "Record marketing strategy discussions for internal documentation. Capture client presentations and marketing proposals for later review. Record brainstorming sessions and team meetings for reference. Helps remote teams stay aligned on projects and campaign updates.",
-      example: "A marketing manager records a strategy session discussing Q2 content planning and shares it with the remote team for alignment.",
+      title: "Creating Educational Content & Thought Leadership",
+      description: "Marketing professionals can record webinars, industry insights, and educational content to establish thought leadership and attract qualified leads through valuable content marketing.",
+      example: "A digital marketing expert records a webinar on 'Latest Social Media Trends' to generate leads and establish industry authority.",
       icon: TrendingUp,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-orange-600 to-red-600",
+      image: "photo-1557804506-669a67965ba0"
+    },
+    {
+      title: "Recording Campaign Analytics & Performance Reviews",
+      description: "Marketing teams can record campaign performance reviews, analytics walkthroughs, and strategy presentations for stakeholders and team alignment. Helps communicate results and plan future campaigns.",
+      example: "A marketing director records a quarterly campaign review showing ROI metrics and performance data for the executive team.",
+      icon: BarChart,
+      gradient: "from-purple-600 to-pink-600",
+      image: "photo-1551836022-d5d88e9218df"
+    },
+    {
+      title: "Creating Internal Training & Process Documentation",
+      description: "Marketing departments can record training videos for new team members, process documentation, and best practice sharing to standardize marketing operations and improve team efficiency.",
+      example: "A senior marketer records a tutorial on using the company's marketing automation platform for new team members.",
+      icon: MessageSquare,
+      gradient: "from-teal-600 to-blue-600",
+      image: "photo-1522202176988-66273c2fd55f"
     }
   ];
 
   const faqs = [
     {
-      question: "How can screen recording improve our marketing ROI?",
-      answer: "Screen recordings create more engaging content that converts better than static images or text. Video content receives 1200% more shares than text and images combined, and product demo videos can increase conversions by up to 80%."
+      question: "How can video content improve our marketing ROI?",
+      answer: "Video content typically sees 80% higher conversion rates than text-based content. Our platform helps you create compelling videos that engage audiences, build trust, and drive more qualified leads through your marketing funnel."
     },
     {
-      question: "What's the best way to create compelling product demos?",
-      answer: "Focus on showing real customer problems and how your product solves them. Keep demos short (2-3 minutes), highlight key benefits, and include clear calls-to-action. Our software includes templates and annotations to make demos more engaging."
+      question: "Can we integrate with our marketing automation tools?",
+      answer: "Yes! We integrate with popular marketing platforms like HubSpot, Marketo, and Salesforce. You can automatically add recorded videos to email campaigns, landing pages, and lead nurturing sequences."
     },
     {
-      question: "Can I track the performance of my marketing videos?",
-      answer: "Yes! We provide detailed analytics on video views, engagement rates, and click-through rates. You can also integrate with Google Analytics and marketing automation platforms to track conversions from video content."
+      question: "What analytics help measure video marketing performance?",
+      answer: "Our platform provides detailed analytics including view rates, engagement metrics, click-through rates, and conversion tracking. You can see which videos drive the most leads and optimize your content strategy."
     },
     {
-      question: "How do I optimize videos for different marketing channels?",
-      answer: "Our software includes channel-specific templates and export settings for YouTube, LinkedIn, Instagram, Facebook, and more. Each platform has different optimal video lengths and formats, which we handle automatically."
+      question: "How do we maintain brand consistency across marketing videos?",
+      answer: "Our brand management tools allow you to create templates with your logo, colors, fonts, and messaging. You can ensure all marketing videos maintain consistent branding and professional appearance."
     },
     {
-      question: "Can I create personalized video content at scale?",
-      answer: "Absolutely! Use our bulk recording features and dynamic text overlays to create personalized videos for different customer segments, industries, or use cases. This is perfect for account-based marketing campaigns."
+      question: "Can we create personalized video content for different segments?",
+      answer: "Absolutely! Our platform supports variable content insertion, allowing you to create personalized videos for different customer segments, industries, or geographic regions while maintaining efficiency."
     },
     {
-      question: "What tools integrate with your marketing recording software?",
-      answer: "We integrate with popular marketing tools including HubSpot, Salesforce, Mailchimp, Hootsuite, and Google Analytics. This allows you to incorporate video content seamlessly into your existing marketing workflows."
+      question: "What support do you provide for marketing team adoption?",
+      answer: "We offer comprehensive onboarding, training sessions, and best practice guides specifically for marketing teams. Our customer success team helps you optimize video content for maximum marketing impact."
     }
   ];
 
@@ -82,15 +81,14 @@ const ScreenRecorderForMarketing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Screen Recorder for Marketing
+            Screen Recorder for Marketing Teams
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Create compelling marketing content that converts. Professional screen recording software for product demos, explainer videos, and social media campaigns.
+            Drive marketing success with powerful video content creation tools. Create compelling product demos, customer testimonials, and educational content that converts prospects and builds brand authority.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -104,14 +102,13 @@ const ScreenRecorderForMarketing = () => {
           </div>
         </div>
 
-        {/* Use Cases Section */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               5 Essential Marketing Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From product demos to campaign analysis, discover how marketers are driving results with professional video content
+              See how successful marketing teams use video content to drive engagement, generate leads, and accelerate growth
             </p>
           </div>
 
@@ -156,7 +153,6 @@ const ScreenRecorderForMarketing = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -197,7 +193,6 @@ const ScreenRecorderForMarketing = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Boost Your Marketing Performance

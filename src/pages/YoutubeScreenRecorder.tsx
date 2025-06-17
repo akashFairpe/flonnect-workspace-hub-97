@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Youtube, Plus, Minus } from 'lucide-react';
+import { Play, Download, Youtube, Video, Edit, TrendingUp, Users, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const YoutubeScreenRecorder = () => {
@@ -9,71 +8,71 @@ const YoutubeScreenRecorder = () => {
 
   const useCases = [
     {
-      title: "Recording High-Quality YouTube Videos (Tutorials, Reviews, & Demos)",
-      description: "YouTubers can record tutorials, product reviews, and software demos with HD recording capabilities. Supports screen + webcam recording, making it perfect for how-to videos, educational content, and unboxing videos. Enables adding annotations, highlights, and AI-powered editing for polished content. Works great for tech tutorials, software walkthroughs, and explainer videos.",
-      example: "A tech YouTuber records a detailed tutorial on video editing software, using screen recording to guide viewers through the features while providing live commentary.",
+      title: "Recording Gaming Content & Live Streams",
+      description: "Content creators can record high-quality gaming sessions, live streams, and gameplay tutorials for YouTube. Supports multiple monitors, webcam overlay, and commentary recording for engaging gaming content.",
+      example: "A gaming YouTuber records a Minecraft tutorial series, showing building techniques with live commentary and webcam overlay.",
+      icon: Video,
+      gradient: "from-red-600 to-pink-600",
+      image: "photo-1542751371-adc38448a05e"
+    },
+    {
+      title: "Creating Educational Content & Tutorials",
+      description: "Educators and experts can record screen-based tutorials, software demonstrations, and educational content for YouTube channels. Perfect for tech tutorials, coding lessons, and how-to guides.",
+      example: "A web developer records a React tutorial series, showing code examples and explaining concepts step by step.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-blue-600 to-indigo-600",
+      image: "photo-1522202176988-66273c2fd55f"
     },
     {
-      title: "Recording YouTube Gaming Videos & Live Gameplay",
-      description: "Gamers can capture gameplay footage in high resolution for YouTube content. Supports recording webcam overlay to show reactions while playing. Great for walkthroughs, game reviews, speedruns, and reaction videos. Can be used to record live-stream gameplay and later upload the highlights.",
-      example: "A gaming YouTuber records a high-definition playthrough of a trending game, adding real-time commentary using webcam overlay to engage their audience.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      title: "Recording Product Reviews & Unboxing Videos",
+      description: "YouTubers can record product demonstrations, software reviews, and unboxing content with professional quality. Includes features for highlighting specific areas and adding annotations.",
+      example: "A tech reviewer records a smartphone unboxing and review, highlighting key features and performance tests.",
+      icon: TrendingUp,
+      gradient: "from-green-600 to-emerald-600",
+      image: "photo-1560472354-b33ff0c44a43"
     },
     {
-      title: "Creating Reaction & Commentary Videos",
-      description: "YouTubers can record their screen while watching videos, shows, or trailers. Enables adding facecam reactions to content using webcam recording. Can be used to create reaction videos, breakdowns, and commentary content. Perfect for reviewing viral videos, explaining memes, or analyzing pop culture trends.",
-      example: "A movie critic YouTuber records a reaction video to a new movie trailer, pausing and commenting on different scenes while screen-sharing the content.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Recording Online Meetings & Interviews for YouTube Content",
-      description: "Podcasters and interviewers can record online interviews with guests on Zoom, Google Meet, or Skype. Supports high-quality video and audio capture, ensuring professional-looking interviews. Great for YouTube talk shows, expert discussions, or industry Q&A sessions. AI-powered transcription helps create subtitles for accessibility and SEO.",
-      example: "A YouTube podcast host records a virtual interview with an industry expert, later adding subtitles and trimming unnecessary parts before publishing.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Recording & Editing YouTube Shorts & Social Media Clips",
-      description: "YouTubers can record short-form content optimized for YouTube Shorts. Ideal for quick tutorials, trending challenges, motivational clips, and bite-sized explanations. Supports AI-powered editing, making it easier to cut, trim, and enhance videos before posting. Can also be repurposed for Instagram Reels, TikTok, and Facebook videos.",
-      example: "A fitness YouTuber records a \"60-second home workout challenge\", adding text overlays and trimming the clip for YouTube Shorts and Instagram Reels.",
+      title: "Creating YouTube Shorts & Viral Content",
+      description: "Content creators can record short-form content optimized for YouTube Shorts, TikTok, and other vertical video platforms. Features quick editing tools and vertical recording options.",
+      example: "A lifestyle YouTuber records quick tips and life hacks in vertical format for YouTube Shorts.",
       icon: Youtube,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-purple-600 to-violet-600",
+      image: "photo-1611162617474-5b21e879e113"
+    },
+    {
+      title: "Recording Webinars & Live Presentations",
+      description: "Professionals can record webinars, presentations, and live talks for later upload to YouTube. Helps build thought leadership and share expertise with a wider audience.",
+      example: "A marketing expert records a webinar on social media strategies and uploads it to their YouTube channel for ongoing value.",
+      icon: Edit,
+      gradient: "from-orange-600 to-yellow-600",
+      image: "photo-1557804506-669a67965ba0"
     }
   ];
 
   const faqs = [
     {
-      question: "What video quality settings work best for YouTube?",
-      answer: "We recommend recording in 1080p or 4K resolution at 30-60fps for optimal YouTube quality. Our software automatically optimizes settings for YouTube's requirements, ensuring your videos look professional without large file sizes."
+      question: "What video quality is best for YouTube uploads?",
+      answer: "We support recording up to 4K resolution at 60fps, which is perfect for YouTube. We also provide optimized export settings for different YouTube content types including gaming, tutorials, and vlogs."
     },
     {
-      question: "Can I add webcam overlay while recording my screen?",
-      answer: "Yes! You can record your screen and webcam simultaneously, with customizable positioning and sizing for your facecam. This is perfect for tutorials, gaming videos, and reaction content where viewers want to see your expressions."
+      question: "Can I add overlays and graphics while recording?",
+      answer: "Yes! Our platform includes webcam overlay, logo placement, and real-time graphics insertion. You can also add lower thirds, subscribe buttons, and other YouTube-specific elements."
     },
     {
-      question: "How do I optimize recordings for YouTube SEO?",
-      answer: "Our AI transcription creates accurate captions that boost SEO. You can also add custom titles, descriptions, and tags. We provide YouTube-specific export settings that maintain quality while meeting platform requirements."
+      question: "How do I optimize file sizes for YouTube uploads?",
+      answer: "Our smart compression maintains high quality while reducing file sizes. We offer YouTube-optimized export presets that balance quality and upload speed for different content types."
     },
     {
-      question: "Can I edit my recordings before uploading to YouTube?",
-      answer: "Absolutely! Our built-in editor lets you trim, add annotations, insert transitions, and enhance audio. You can also add intro/outro segments, background music, and custom branding elements to make your content more engaging."
+      question: "Can I record multiple audio sources simultaneously?",
+      answer: "Absolutely! Record separate tracks for microphone, system audio, and music, giving you full control during editing. This is essential for gaming content and tutorials with background music."
     },
     {
-      question: "Does the software support YouTube Shorts format?",
-      answer: "Yes! We have specific recording modes for vertical content perfect for YouTube Shorts, Instagram Reels, and TikTok. The software automatically formats your content for optimal mobile viewing."
+      question: "What editing features are available for YouTube content?",
+      answer: "Our built-in editor includes trim, cut, transitions, text overlays, and color correction. You can also add intro/outro templates and YouTube-specific elements like end screens."
     },
     {
-      question: "Can I schedule uploads directly to YouTube?",
-      answer: "Yes, our platform integrates with YouTube's API, allowing you to upload and schedule content directly from our interface. You can set titles, descriptions, thumbnails, and publication times all in one place."
+      question: "How do I handle copyright and fair use for recorded content?",
+      answer: "We provide guidelines and tools to help you understand copyright implications. Our platform can detect copyrighted audio and suggest royalty-free alternatives for your YouTube videos."
     }
   ];
 
@@ -83,17 +82,13 @@ const YoutubeScreenRecorder = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-50">
-      {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Youtube className="w-12 h-12 text-red-600" />
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-              YouTube Screen Recorder
-            </h1>
-          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            YouTube Screen Recorder
+          </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Create professional YouTube content with our advanced screen recording software. Perfect for tutorials, gaming videos, reactions, and more. Built for content creators who demand quality.
+            Create professional YouTube content with our specialized screen recording software. Perfect for gaming, tutorials, reviews, and educational content that engages your audience and grows your channel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -107,14 +102,13 @@ const YoutubeScreenRecorder = () => {
           </div>
         </div>
 
-        {/* Use Cases Section */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Powerful Ways to Create YouTube Content
+              5 Essential YouTube Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From gaming to tutorials, discover how YouTubers are creating engaging content with professional screen recording tools
+              Discover how successful YouTubers use screen recording to create engaging content and build their channels
             </p>
           </div>
 
@@ -127,7 +121,7 @@ const YoutubeScreenRecorder = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={useCase.title}
+                        alt={`YouTuber creating content for ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -137,17 +131,17 @@ const YoutubeScreenRecorder = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
                             {index + 1}. {useCase.title}
-                          </CardTitle>
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
-                        <p className="text-gray-600 italic">
+                      <div className="bg-red-50 rounded-lg p-4 border-l-4 border-red-300">
+                        <p className="text-sm font-semibold text-red-700 mb-2">Content Example:</p>
+                        <p className="text-red-600 italic">
                           {useCase.example}
                         </p>
                       </div>
@@ -159,7 +153,6 @@ const YoutubeScreenRecorder = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -200,7 +193,6 @@ const YoutubeScreenRecorder = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Grow Your YouTube Channel?

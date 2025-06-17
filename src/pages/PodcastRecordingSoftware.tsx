@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Mic, Plus, Minus } from 'lucide-react';
+import { Play, Download, Mic, Headphones, Radio, Users, Music, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const PodcastRecordingSoftware = () => {
@@ -9,71 +8,71 @@ const PodcastRecordingSoftware = () => {
 
   const useCases = [
     {
-      title: "Recording High-Quality Audio & Video Podcasts",
-      description: "Flonnect allows podcasters to record professional-quality audio and video for their shows. Supports screen recording and webcam integration, perfect for video podcasts. Ensures clear, noise-free audio capture, essential for high production value. Works for solo, interview-style, or multi-host podcasts.",
-      example: "A content creator records a video podcast on digital marketing, with a split-screen layout featuring guest speakers.",
-      icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
-    },
-    {
-      title: "Remote Podcast Recording & Interviews",
-      description: "Podcasters can record virtual interviews with guests via Zoom, Google Meet, or Teams. Ensures both audio and video are captured smoothly in high resolution. No need for expensive podcasting hardware—just a mic and Flonnect. Ideal for long-distance interviews, expert discussions, and co-hosted podcasts.",
-      example: "A journalist records a remote podcast interview with an industry expert over Google Meet and later edits it for a seamless listening experience.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
-    },
-    {
-      title: "Editing & Enhancing Podcast Audio and Video",
-      description: "Flonnect's AI-powered editing tools help in removing silences, background noise, and unnecessary segments. Users can trim, merge, and adjust audio levels for a polished final product. Can be used to add captions, annotations, or subtitles for video podcasts. Helps podcasters optimize content for YouTube, Spotify, and other platforms.",
-      example: "A podcaster records a 30-minute discussion on personal finance, then trims filler words and adds captions before publishing on YouTube and Spotify.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Creating Short Video Clips & Highlights for Social Media",
-      description: "Podcasters can extract key moments from their episodes and turn them into engaging social media clips. Perfect for Instagram Reels, TikTok, LinkedIn posts, and YouTube Shorts. Helps boost audience engagement by showcasing highlights in a shareable format. Supports adding text overlays, timestamps, and animated elements to enhance content.",
-      example: "A tech podcast extracts a 90-second snippet of an interesting AI discussion and posts it as a LinkedIn video with subtitles.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Multi-Format Content Creation from a Single Recording",
-      description: "Podcasters can repurpose content by creating multiple formats from one recording. Convert long-form podcasts into transcripts, blog posts, and audiograms. Generate video podcasts for YouTube and audio-only versions for Spotify/Apple Podcasts. AI-powered tools help with automatic transcriptions and summaries.",
-      example: "A health and wellness podcaster records a 60-minute discussion on mindfulness, then converts it into a YouTube video podcast, an audio-only version for Spotify, a blog post using the transcript, and short clips for social media.",
+      title: "Recording Solo Podcast Episodes & Monologues",
+      description: "Podcasters can record high-quality solo episodes, storytelling sessions, and educational content with professional audio quality. Features noise reduction, audio enhancement, and automatic level adjustment.",
+      example: "A business podcaster records a weekly solo episode sharing entrepreneurship tips and industry insights.",
       icon: Mic,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-purple-600 to-indigo-600",
+      image: "photo-1478737270239-2f02b77fc618"
+    },
+    {
+      title: "Capturing Interview Podcasts & Guest Conversations",
+      description: "Podcast hosts can record remote interviews and conversations with guests using video calls or audio-only sessions. Supports multiple participants and high-quality audio capture from all sources.",
+      example: "A tech podcast host interviews a startup founder via Zoom, recording both video and separate audio tracks for post-production.",
+      icon: Users,
+      gradient: "from-blue-600 to-cyan-600",
+      image: "photo-1589903308904-1010c2294adc"
+    },
+    {
+      title: "Recording Live Podcast Shows & Audience Q&A",
+      description: "Podcasters can record live streaming sessions, audience interactions, and Q&A segments for later editing and distribution. Captures both the live energy and allows for polished final episodes.",
+      example: "A comedy podcast records their live show with audience laughter and interaction for their weekly episode release.",
+      icon: Radio,
+      gradient: "from-green-600 to-emerald-600",
+      image: "photo-1590602846989-e011ea935fdc"
+    },
+    {
+      title: "Creating Podcast Trailers & Promotional Content",
+      description: "Content creators can record podcast trailers, episode previews, and promotional segments to market their shows. Includes tools for adding intro music, sound effects, and compelling hooks.",
+      example: "A true crime podcaster creates a dramatic trailer for their new season using recorded narration and atmospheric sound effects.",
+      icon: Music,
+      gradient: "from-orange-600 to-red-600",
+      image: "photo-1493225457124-a3eb161ffa5f"
+    },
+    {
+      title: "Recording Educational Podcast Series & Courses",
+      description: "Educators and experts can record structured podcast series, audio courses, and educational content for learning platforms. Perfect for language learning, skill development, and knowledge sharing.",
+      example: "A language teacher creates a podcast series teaching Spanish phrases with pronunciation guides and cultural context.",
+      icon: Headphones,
+      gradient: "from-teal-600 to-green-600",
+      image: "photo-1590736969955-71cc94901144"
     }
   ];
 
   const faqs = [
     {
-      question: "What audio formats does the podcast recording software support?",
-      answer: "Our software supports all major audio formats including MP3, WAV, FLAC, and AAC. You can record in high-quality formats and export in the format that best suits your podcast distribution platform."
+      question: "What audio quality settings are best for podcasts?",
+      answer: "We recommend recording at 44.1kHz/16-bit for most podcasts, with options up to 96kHz/24-bit for premium quality. Our platform automatically optimizes settings based on your podcast type and distribution needs."
     },
     {
-      question: "Can I record multiple audio sources simultaneously?",
-      answer: "Yes! You can record multiple audio inputs at once, including your microphone, guest audio from video calls, system audio, and background music. Each source is recorded on separate tracks for easier editing."
+      question: "Can I record separate tracks for multiple speakers?",
+      answer: "Yes! Our multitrack recording captures each speaker on separate audio tracks, making editing much easier. You can adjust levels, apply effects, and edit each speaker independently."
     },
     {
-      question: "Does it work with popular podcasting platforms?",
-      answer: "Absolutely! Our recordings can be directly uploaded to Spotify, Apple Podcasts, Google Podcasts, and other major platforms. We also provide RSS feed integration for automated publishing."
+      question: "How do I reduce background noise and echo?",
+      answer: "Our AI-powered noise reduction removes background noise, echo, and room reverb in real-time. We also provide acoustic tips and settings optimization for your recording environment."
     },
     {
-      question: "Can I remove background noise automatically?",
-      answer: "Yes, our AI-powered noise reduction automatically removes background noise, echo, and unwanted sounds. You can also manually adjust audio levels and apply filters for professional-quality results."
+      question: "Can I add intro music and sound effects?",
+      answer: "Absolutely! Our platform includes a library of royalty-free music and sound effects. You can also upload your own audio elements and create custom intro/outro segments."
     },
     {
-      question: "Is there a time limit for podcast recordings?",
-      answer: "No time limits! Record episodes as long as you need. Our software handles multi-hour recordings efficiently and provides automatic save features to prevent data loss."
+      question: "What formats are supported for podcast distribution?",
+      answer: "We export in all major podcast formats including MP3, WAV, and M4A. Our distribution tools can automatically upload to podcast platforms like Spotify, Apple Podcasts, and Google Podcasts."
     },
     {
-      question: "Can I create video podcasts as well?",
-      answer: "Definitely! Record both audio and video simultaneously with webcam integration. Perfect for YouTube podcasts, with options for picture-in-picture, split-screen, and custom layouts."
+      question: "How do I handle remote guest recording quality?",
+      answer: "Our platform provides guest recording tools that capture high-quality audio locally on each participant's device, preventing quality loss from internet connection issues."
     }
   ];
 
@@ -83,14 +82,13 @@ const PodcastRecordingSoftware = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
-      {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Podcast Recording Software
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Professional podcast recording software for creators and broadcasters. Record high-quality audio and video podcasts with advanced editing tools and seamless platform integration.
+            Create professional podcast content with studio-quality recording tools. Capture solo episodes, interviews, and live shows with crystal-clear audio that keeps your audience engaged.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -104,14 +102,13 @@ const PodcastRecordingSoftware = () => {
           </div>
         </div>
 
-        {/* Use Cases Section */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               5 Essential Podcast Recording Use Cases
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From remote interviews to multi-format content creation, discover how podcasters are creating professional content
+              See how successful podcasters create engaging content that builds loyal audiences and grows their shows
             </p>
           </div>
 
@@ -156,7 +153,6 @@ const PodcastRecordingSoftware = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -197,7 +193,6 @@ const PodcastRecordingSoftware = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Start Your Podcast Journey

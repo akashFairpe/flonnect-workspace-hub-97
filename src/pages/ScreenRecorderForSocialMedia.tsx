@@ -1,7 +1,6 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Play, Download, Share2, Heart, Camera, TrendingUp, Users, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const ScreenRecorderForSocialMedia = () => {
@@ -9,71 +8,71 @@ const ScreenRecorderForSocialMedia = () => {
 
   const useCases = [
     {
-      title: "Creating Instagram Reels, TikTok Videos & YouTube Shorts",
-      description: "Record engaging short-form videos with high-quality screen and webcam capture. Easily edit and trim videos to fit platform-specific length restrictions. Add voiceovers, captions, and annotations to enhance content. Perfect for tutorials, life hacks, reactions, and challenges.",
-      example: "A beauty influencer records a step-by-step makeup tutorial using Flonnect and edits it into a 60-second Instagram Reel with captions.",
+      title: "Creating Short-Form Content for TikTok & Instagram Reels",
+      description: "Content creators can record vertical videos, quick tutorials, and trending content optimized for short-form platforms. Features vertical recording modes, quick editing tools, and trending templates.",
+      example: "A lifestyle influencer records a 30-second productivity hack tutorial in vertical format for TikTok and Instagram Reels.",
+      icon: Camera,
+      gradient: "from-pink-600 to-purple-600",
+      image: "photo-1611162617474-5b21e879e113"
+    },
+    {
+      title: "Recording Product Demos for Instagram & Facebook",
+      description: "Brands and creators can record product demonstrations, unboxing videos, and feature highlights for social media marketing. Includes tools for adding captions, stickers, and call-to-action overlays.",
+      example: "A beauty brand records a makeup tutorial showcasing their new product line for Instagram Stories and Facebook posts.",
+      icon: Share2,
+      gradient: "from-blue-600 to-indigo-600",
+      image: "photo-1556761175-4b46a572b786"
+    },
+    {
+      title: "Creating Behind-the-Scenes Content & Live Streams",
+      description: "Influencers and businesses can record behind-the-scenes footage, workspace tours, and live streaming content for authentic social media engagement. Perfect for building personal connections with audiences.",
+      example: "A small business owner records their daily routine and workspace setup for authentic LinkedIn and Instagram content.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-green-600 to-teal-600",
+      image: "photo-1590402494766-2c77f8b2ef90"
     },
     {
-      title: "Recording Social Media Marketing Content & Advertisements",
-      description: "Businesses and marketers can create professional video ads showcasing products. Record and explain social media strategies, case studies, and insights. Capture screen walkthroughs of new product features for promotional content. Ideal for Facebook, LinkedIn, Instagram, and TikTok ads.",
-      example: "A digital marketing expert records a LinkedIn video explaining how to run a successful Instagram ad campaign, with screen demonstrations.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
-    },
-    {
-      title: "Creating How-To & Tutorial Videos for Social Media",
-      description: "Record step-by-step tutorials for different platforms (e.g., 'How to grow on TikTok'). Great for tech influencers, business coaches, and online educators. Perfect for explaining app usage, business tools, or creative workflows. Can include screen annotations to guide the audience visually.",
-      example: "A social media consultant records a YouTube tutorial on 'How to schedule Instagram posts for free,' showing the process step by step.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Recording Gaming Content & Reaction Videos",
-      description: "Gamers can record gameplay highlights and commentary. Creators can record reaction videos to viral trends. Easily edit and resize content for different platforms (YouTube, Twitch, TikTok). Add picture-in-picture mode to show facecam reactions while screen recording.",
-      example: "A gaming creator records a gameplay session of a trending mobile game, then edits and posts it as a TikTok challenge video.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Capturing and Editing Viral Content for Engagement",
-      description: "Record social media challenges, trends, and trending topics to repurpose content. Perfect for influencers who need quick video edits and subtitles. Helps brands create behind-the-scenes (BTS) footage and engaging stories. Convert long-form content into bite-sized clips for maximum engagement.",
-      example: "A travel vlogger records a behind-the-scenes tour of a new destination, then repurposes the footage into multiple TikToks and Instagram stories.",
+      title: "Recording Social Media Tutorials & How-To Content",
+      description: "Educators and experts can record step-by-step tutorials, software walkthroughs, and educational content specifically formatted for social media consumption. Features quick cuts and engaging visuals.",
+      example: "A digital marketer records a series of LinkedIn tips in bite-sized videos for their professional social media presence.",
       icon: TrendingUp,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-orange-600 to-yellow-600",
+      image: "photo-1542751371-adc38448a05e"
+    },
+    {
+      title: "Creating Viral Content & Trend Participation",
+      description: "Content creators can record trending challenges, memes, and viral content formats to boost engagement and reach. Includes templates for popular content formats and trending audio integration.",
+      example: "A dance instructor creates content following the latest TikTok dance trends while adding their own professional choreography tips.",
+      icon: Heart,
+      gradient: "from-red-600 to-pink-600",
+      image: "photo-1493225457124-a3eb161ffa5f"
     }
   ];
 
   const faqs = [
     {
-      question: "What video formats work best for different social media platforms?",
-      answer: "We support all major formats and automatically optimize for each platform. Instagram Reels and TikTok work best with 9:16 vertical videos, while YouTube Shorts supports both vertical and square formats. Our software includes preset templates for each platform."
+      question: "What video formats work best for different social platforms?",
+      answer: "We provide optimized export settings for each platform: vertical 9:16 for TikTok/Instagram Reels, square 1:1 for Instagram posts, and horizontal 16:9 for YouTube/Facebook. Our platform automatically formats content for your target platform."
     },
     {
-      question: "Can I add trending music and effects to my videos?",
-      answer: "Yes! Our software includes a library of royalty-free music and sound effects. You can also import your own audio tracks and sync them with your recordings. We provide tools for audio mixing and background music integration."
+      question: "Can I add captions and text overlays for social media?",
+      answer: "Yes! Our platform includes auto-generated captions, text overlay tools, and popular social media fonts. You can also add trending hashtags, mentions, and call-to-action elements."
     },
     {
-      question: "How do I optimize videos for maximum engagement?",
-      answer: "Our software includes engagement optimization features like automatic captions, eye-catching thumbnails, and trending hashtag suggestions. We also provide analytics insights to help you understand what content performs best."
+      question: "How do I create content that follows current trends?",
+      answer: "We provide trending templates, popular audio tracks, and format suggestions based on current social media trends. Our content library is updated regularly with viral formats and challenges."
     },
     {
-      question: "Can I schedule posts directly to social media platforms?",
-      answer: "While our software focuses on recording and editing, we integrate with popular scheduling tools like Buffer, Hootsuite, and Later. You can also export videos in the optimal format for direct uploading to any platform."
+      question: "Can I schedule and auto-post my recorded content?",
+      answer: "Our platform integrates with social media scheduling tools like Hootsuite and Buffer. You can plan your content calendar and automatically distribute recordings across multiple platforms."
     },
     {
-      question: "What's the best way to create viral-worthy content?",
-      answer: "Focus on trending topics, use eye-catching visuals, and keep videos short and engaging. Our software includes trend analysis tools and templates based on viral content patterns to help boost your reach."
+      question: "What tools help with engagement and audience growth?",
+      answer: "We provide analytics on video performance, engagement rates, and optimal posting times. Our platform also suggests content improvements based on successful posts in your niche."
     },
     {
-      question: "Can I collaborate with other creators on content?",
-      answer: "Absolutely! Our cloud-based platform allows real-time collaboration. Multiple creators can work on the same project, share assets, and provide feedback. Perfect for brand partnerships and collaborative content creation."
+      question: "How do I maintain brand consistency across platforms?",
+      answer: "Our brand toolkit allows you to save logos, color schemes, fonts, and intro/outro templates. You can apply consistent branding across all your social media content automatically."
     }
   ];
 
@@ -83,14 +82,13 @@ const ScreenRecorderForSocialMedia = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
-      {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Screen Recorder for Social Media
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Create viral-worthy content for Instagram, TikTok, YouTube, and more. Professional screen recording software designed for social media creators and influencers.
+            Create viral social media content with professional recording tools. Perfect for TikTok, Instagram, Facebook, and LinkedIn content that engages audiences and grows your following.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -104,14 +102,13 @@ const ScreenRecorderForSocialMedia = () => {
           </div>
         </div>
 
-        {/* Use Cases Section */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Powerful Social Media Recording Solutions
+              5 Essential Social Media Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From viral shorts to engaging tutorials, discover how creators are dominating social media with professional recording tools
+              Discover how successful content creators and brands use screen recording to build engaging social media presence
             </p>
           </div>
 
@@ -156,7 +153,6 @@ const ScreenRecorderForSocialMedia = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -197,7 +193,6 @@ const ScreenRecorderForSocialMedia = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Go Viral with Professional Content
