@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import HowToUse from "./pages/HowToUse";
 import ScreenRecorderForTeachers from "./pages/ScreenRecorderForTeachers";
 import ScreenRecorderForStudents from "./pages/ScreenRecorderForStudents";
 import OnlineLectureRecorder from "./pages/OnlineLectureRecorder";
@@ -27,7 +26,6 @@ const App = () => (
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/landing-page" element={<LandingPage />} />
-          <Route path="/how-to-use" element={<HowToUse />} />
           <Route path="/screen-recorder-for-teachers" element={<ScreenRecorderForTeachers />} />
           <Route path="/screen-recorder-for-students" element={<ScreenRecorderForStudents />} />
           <Route path="/online-lecture-recorder" element={<OnlineLectureRecorder />} />
