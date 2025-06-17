@@ -24,6 +24,15 @@ import ConsultantsAndCoaches from "./pages/ConsultantsAndCoaches";
 import VirtualAssistants from "./pages/VirtualAssistants";
 import SoftwareDevelopers from "./pages/SoftwareDevelopers";
 import ProductManagers from "./pages/ProductManagers";
+import UXUIDesigners from "./pages/UXUIDesigners";
+import QATesters from "./pages/QATesters";
+import ITSupportTeams from "./pages/ITSupportTeams";
+import GamersAndStreamers from "./pages/GamersAndStreamers";
+import EsportsCoaches from "./pages/EsportsCoaches";
+import GamingContentCreators from "./pages/GamingContentCreators";
+import PersonalJournalers from "./pages/PersonalJournalers";
+import Researchers from "./pages/Researchers";
+import LegalProfessionals from "./pages/LegalProfessionals";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +64,15 @@ const App = () => (
           <Route path="/virtual-assistants" element={<VirtualAssistants />} />
           <Route path="/software-developers" element={<SoftwareDevelopers />} />
           <Route path="/product-managers" element={<ProductManagers />} />
+          <Route path="/ux-ui-designers" element={<UXUIDesigners />} />
+          <Route path="/qa-testers" element={<QATesters />} />
+          <Route path="/it-support-teams" element={<ITSupportTeams />} />
+          <Route path="/gamers-and-streamers" element={<GamersAndStreamers />} />
+          <Route path="/esports-coaches" element={<EsportsCoaches />} />
+          <Route path="/gaming-content-creators" element={<GamingContentCreators />} />
+          <Route path="/personal-journalers" element={<PersonalJournalers />} />
+          <Route path="/researchers" element={<Researchers />} />
+          <Route path="/legal-professionals" element={<LegalProfessionals />} />
           <Route path="*" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
