@@ -14,7 +14,7 @@ const OnlineLectureRecorder = () => {
       example: "A university professor records a weekly economics lecture on Zoom and uploads it to the class portal for students who missed the session.",
       icon: Users,
       gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      image: "photo-1518770660439-4636190af475"
     },
     {
       title: "Creating High-Quality Online Courses for E-Learning Platforms",
@@ -22,7 +22,7 @@ const OnlineLectureRecorder = () => {
       example: "A coding instructor records Python programming tutorials and uploads them to Udemy as a structured online course.",
       icon: BookOpen,
       gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      image: "photo-1615906655593-ad0386982a0f"
     },
     {
       title: "Developing Training & Certification Programs for Businesses",
@@ -30,7 +30,7 @@ const OnlineLectureRecorder = () => {
       example: "A corporate trainer records a data analytics training program for employees, allowing them to complete it at their own pace.",
       icon: Trophy,
       gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
+      image: "photo-1558618666-fcd25c85cd64"
     },
     {
       title: "Recording & Editing Educational YouTube Content",
@@ -38,7 +38,7 @@ const OnlineLectureRecorder = () => {
       example: "A history educator records \"The Rise and Fall of Ancient Civilizations\", adding highlights and voiceover to create an engaging YouTube video.",
       icon: MessageSquare,
       gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
+      image: "photo-1619642751034-765dfdf7c58e"
     },
     {
       title: "Creating Video Guides & Study Materials for Students",
@@ -46,7 +46,7 @@ const OnlineLectureRecorder = () => {
       example: "A physics professor records a step-by-step solution to a tough mechanics problem and shares it with students before an exam.",
       icon: Youtube,
       gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      image: "photo-1579952363873-27d3bfad9c0d"
     }
   ];
 
@@ -124,7 +124,7 @@ const OnlineLectureRecorder = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={useCase.title}
+                        alt={`Online lecture recording for ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,9 +134,9 @@ const OnlineLectureRecorder = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
                             {index + 1}. {useCase.title}
-                          </CardTitle>
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
@@ -175,9 +175,9 @@ const OnlineLectureRecorder = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
                       {faq.question}
-                    </CardTitle>
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -199,9 +199,9 @@ const OnlineLectureRecorder = () => {
 
         {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Start Recording Professional Lectures
-          </h3>
+          </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Join educators and trainers worldwide who trust our platform for creating high-quality educational content
           </p>

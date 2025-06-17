@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Building, Plus, Minus } from 'lucide-react';
+import { Play, Download, Users, Briefcase, Target, TrendingUp, MessageSquare, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const ScreenRecorderForBusiness = () => {
@@ -9,71 +9,71 @@ const ScreenRecorderForBusiness = () => {
 
   const useCases = [
     {
-      title: "Recording Business Meetings & Client Presentations",
-      description: "Record important business meetings for future reference, ensuring no details are missed. Useful for client calls, internal team discussions, and project updates. Helps in reviewing decisions, action points, and next steps post-meeting. Allows employees who missed the meeting to catch up on key discussions. Ensures compliance and record-keeping for legal and audit purposes.",
-      example: "A project manager records a weekly sprint review meeting on Google Meet, allowing the team to revisit decisions and align on project goals before the next meeting.",
+      title: "Recording Client Meetings & Project Updates",
+      description: "Business teams can record client calls, project discussions, and stakeholder meetings for documentation and follow-up. Helps in maintaining clear communication records and ensuring all team members stay aligned on project objectives. Can be shared with remote team members who couldn't attend live meetings.",
+      example: "A project manager records a client kickoff meeting and shares key decisions with the development team for reference.",
       icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      gradient: "from-blue-500 to-indigo-600",
+      image: "photo-1600880292203-757bb62b4baf"
     },
     {
-      title: "Creating Training Materials & Employee Onboarding",
-      description: "Businesses can create comprehensive training videos for new employees and ongoing professional development. Records step-by-step processes, software tutorials, and company procedures. Reduces training costs by creating reusable content. Ensures consistent messaging across all training sessions.",
-      example: "An HR manager creates a comprehensive onboarding series covering company policies, software tools, and department workflows for new hires.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      title: "Creating Product Demos & Sales Presentations",
+      description: "Sales teams can record compelling product demonstrations and presentations for prospects and clients. Helps in standardizing sales messaging across the team and providing consistent product explanations. Can be customized for different client segments and shared via email or during sales calls.",
+      example: "A sales rep records a software demo highlighting features specific to a healthcare client's needs.",
+      icon: Briefcase,
+      gradient: "from-green-500 to-emerald-600",
+      image: "photo-1551434678-e076c223a692"
     },
     {
-      title: "Documenting Processes & Creating SOPs",
-      description: "Record detailed workflows and standard operating procedures for easy reference. Helps in knowledge transfer when employees transition roles. Creates visual documentation that's easier to follow than written instructions. Enables process optimization by reviewing recorded workflows.",
-      example: "A operations manager records the entire customer onboarding process, creating a visual SOP that new team members can follow step-by-step.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
+      title: "Employee Training & Onboarding Videos",
+      description: "HR and training teams can record comprehensive onboarding sessions and skill development programs. Helps new employees learn company processes, software tools, and best practices efficiently. Reduces repetitive training sessions and ensures consistent knowledge transfer across the organization.",
+      example: "An HR manager records a company culture and values session for new hires joining remotely.",
+      icon: Target,
+      gradient: "from-purple-500 to-violet-600",
+      image: "photo-1542744173-8e7e53415bb0"
     },
     {
-      title: "Recording Sales Calls & Customer Interactions",
-      description: "Capture sales presentations and customer meetings for training and quality assurance. Helps in analyzing successful sales techniques and improving team performance. Useful for onboarding new sales representatives. Provides evidence of commitments made during sales calls.",
-      example: "A sales director records successful client pitches and uses them to train the sales team on effective presentation techniques and objection handling.",
+      title: "Process Documentation & Standard Operating Procedures",
+      description: "Operations teams can record step-by-step process walkthroughs for internal documentation. Helps in creating visual SOPs that are easier to follow than written procedures. Useful for quality control, compliance training, and maintaining operational consistency across different locations.",
+      example: "An operations manager records the monthly reporting process to ensure consistency across regional offices.",
+      icon: TrendingUp,
+      gradient: "from-orange-500 to-red-600",
+      image: "photo-1553877522-43269d4ea984"
+    },
+    {
+      title: "Team Collaboration & Knowledge Sharing",
+      description: "Cross-functional teams can record brainstorming sessions, strategy discussions, and knowledge-sharing meetings. Helps preserve institutional knowledge and makes it accessible to future team members. Can be used for async collaboration when team members are in different time zones.",
+      example: "A marketing team records a campaign strategy session and shares insights with the global marketing team.",
       icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Creating Marketing Content & Product Demos",
-      description: "Record product demonstrations and feature explanations for marketing purposes. Create content for websites, social media, and sales materials. Helps in maintaining consistent product messaging across all channels. Enables creation of professional marketing videos without expensive equipment.",
-      example: "A marketing team records detailed product demos and feature walkthroughs, then edits them into promotional videos for the company website and social media campaigns.",
-      icon: Building,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-teal-500 to-cyan-600",
+      image: "photo-1559136555-9303baea8ebd"
     }
   ];
 
   const faqs = [
     {
-      question: "Is the recording software secure for business use?",
-      answer: "Yes, our software meets enterprise security standards with end-to-end encryption, secure cloud storage, and compliance with GDPR, HIPAA, and other regulations. We provide detailed security documentation for IT review."
+      question: "How secure is our business data when using your recording software?",
+      answer: "We implement enterprise-grade security with end-to-end encryption, secure cloud storage, and compliance with SOC 2, GDPR, and other industry standards. Your business data is protected with the highest level of security."
     },
     {
-      question: "Can we integrate with our existing business tools?",
-      answer: "Absolutely! We integrate with popular platforms like Slack, Microsoft Teams, Google Workspace, Salesforce, and many CRM systems. Custom integrations are also available for enterprise clients."
+      question: "Can multiple team members collaborate on recordings?",
+      answer: "Yes! Our platform supports team collaboration with shared workspaces, commenting features, and role-based access controls. Teams can edit, review, and share recordings seamlessly."
     },
     {
-      question: "What are the storage limits for business accounts?",
-      answer: "Business plans include generous storage limits starting from 100GB, with unlimited storage options available. We also offer on-premise storage solutions for enterprises with specific data residency requirements."
+      question: "What integrations are available for business tools?",
+      answer: "We integrate with popular business tools including Slack, Microsoft Teams, Google Workspace, Salesforce, and many others. This ensures recordings fit naturally into your existing workflow."
     },
     {
-      question: "Can we control who has access to recordings?",
-      answer: "Yes, we provide comprehensive access controls with role-based permissions, team folders, and sharing restrictions. Admins can control who can record, view, edit, and share content within the organization."
+      question: "How do we manage recordings across different departments?",
+      answer: "Our admin dashboard provides centralized management with department-specific folders, usage analytics, and permission settings. Administrators can easily organize and control access to recordings."
     },
     {
-      question: "Do you offer training for our team?",
-      answer: "We provide comprehensive onboarding, training sessions, and ongoing support for business customers. This includes live training sessions, documentation, and dedicated customer success managers for enterprise accounts."
+      question: "Can we add our company branding to recordings?",
+      answer: "Absolutely! You can customize recordings with your company logo, colors, and branding elements. This is perfect for client-facing content and maintaining brand consistency."
     },
     {
-      question: "What analytics are available for business use?",
-      answer: "Business plans include detailed analytics on usage, engagement, storage, and team activity. You can track how recordings are being used, identify training needs, and measure the impact of your content."
+      question: "What support do you provide for enterprise deployments?",
+      answer: "We offer dedicated account management, priority support, custom training sessions, and assistance with large-scale deployments. Our enterprise team ensures smooth implementation and adoption."
     }
   ];
 
@@ -82,7 +82,7 @@ const ScreenRecorderForBusiness = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
@@ -90,7 +90,7 @@ const ScreenRecorderForBusiness = () => {
             Screen Recorder for Business
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Professional screen recording solutions for modern businesses. Record meetings, create training materials, and enhance team collaboration with enterprise-grade recording software.
+            Enhance business communication and productivity with enterprise-grade screen recording solutions. Create professional presentations, document processes, and improve team collaboration.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
@@ -99,7 +99,7 @@ const ScreenRecorderForBusiness = () => {
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6">
               <Download className="w-5 h-5 mr-2" />
-              See Enterprise Features
+              Enterprise Features
             </Button>
           </div>
         </div>
@@ -108,10 +108,10 @@ const ScreenRecorderForBusiness = () => {
         <div className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Essential Business Recording Solutions
+              5 Essential Business Recording Applications
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Streamline your business operations with professional meeting recording and documentation tools
+              Discover how forward-thinking businesses are leveraging screen recording to improve operations and drive growth
             </p>
           </div>
 
@@ -124,7 +124,7 @@ const ScreenRecorderForBusiness = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={useCase.title}
+                        alt={`Business team using screen recording for ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,16 +134,16 @@ const ScreenRecorderForBusiness = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
                             {index + 1}. {useCase.title}
-                          </CardTitle>
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
                         </div>
                       </div>
                       <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
+                        <p className="text-sm font-semibold text-gray-700 mb-2">Business Example:</p>
                         <p className="text-gray-600 italic">
                           {useCase.example}
                         </p>
@@ -163,7 +163,7 @@ const ScreenRecorderForBusiness = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600">
-              Everything businesses need to know about our enterprise recording solution
+              Everything businesses need to know about implementing enterprise screen recording solutions
             </p>
           </div>
 
@@ -175,9 +175,9 @@ const ScreenRecorderForBusiness = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
                       {faq.question}
-                    </CardTitle>
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -199,19 +199,19 @@ const ScreenRecorderForBusiness = () => {
 
         {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Elevate Your Business Communication
-          </h3>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Transform Your Business Communication
+          </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Transform how your team collaborates and documents important business discussions with professional recording tools
+            Join thousands of businesses who have improved their productivity and collaboration with our enterprise recording platform
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
               <Play className="w-5 h-5 mr-2" />
-              Get Enterprise Demo
+              Schedule Enterprise Demo
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
-              View Business Plans
+              View Pricing Plans
             </Button>
           </div>
         </div>

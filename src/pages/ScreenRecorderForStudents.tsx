@@ -14,7 +14,7 @@ const ScreenRecorderForStudents = () => {
       example: "A college student records a 2-hour physics lecture on Zoom and replays it later to take detailed notes before an exam.",
       icon: Users,
       gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      image: "photo-1486312338219-ce68d2c6f44d"
     },
     {
       title: "Taking Notes by Recording & Annotating Study Materials",
@@ -22,7 +22,7 @@ const ScreenRecorderForStudents = () => {
       example: "A law student records a case law summary, highlighting important legal principles on-screen while explaining them in voiceover.",
       icon: BookOpen,
       gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      image: "photo-1485827404703-89b55fcc595e"
     },
     {
       title: "Recording & Submitting Assignments or Projects",
@@ -30,7 +30,7 @@ const ScreenRecorderForStudents = () => {
       example: "A computer science student records a coding project walkthrough, explaining their code logic and functionality before submitting it.",
       icon: Trophy,
       gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
+      image: "photo-1526374965328-7f61d4dc18c5"
     },
     {
       title: "Preparing for Exams & Self-Studying",
@@ -38,7 +38,7 @@ const ScreenRecorderForStudents = () => {
       example: "A medical student records a self-study session, explaining human anatomy diagrams while highlighting key terms on the screen.",
       icon: MessageSquare,
       gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
+      image: "photo-1487058792275-0ad4aaf24ca7"
     },
     {
       title: "Creating & Sharing Educational Content",
@@ -46,7 +46,7 @@ const ScreenRecorderForStudents = () => {
       example: "A college student records a 5-minute tutorial on solving differential equations and shares it in a WhatsApp study group.",
       icon: Youtube,
       gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      image: "photo-1605810230434-7631ac76ec81"
     }
   ];
 
@@ -124,7 +124,7 @@ const ScreenRecorderForStudents = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={useCase.title}
+                        alt={`Student using screen recording for ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,9 +134,9 @@ const ScreenRecorderForStudents = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
                             {index + 1}. {useCase.title}
-                          </CardTitle>
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
@@ -175,9 +175,9 @@ const ScreenRecorderForStudents = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
                       {faq.question}
-                    </CardTitle>
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -199,9 +199,9 @@ const ScreenRecorderForStudents = () => {
 
         {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Boost Your Academic Success
-          </h3>
+          </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Join thousands of students who are achieving better grades and learning more effectively with our screen recording tools
           </p>

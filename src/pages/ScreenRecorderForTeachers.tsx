@@ -14,7 +14,7 @@ const ScreenRecorderForTeachers = () => {
       example: "A history teacher records a Google Meet session and shares it with students to review important dates and events before exams.",
       icon: Users,
       gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      image: "photo-1519389950473-47ba0277781c"
     },
     {
       title: "Creating Pre-Recorded Lessons & Tutorials",
@@ -22,7 +22,7 @@ const ScreenRecorderForTeachers = () => {
       example: "A science teacher records a step-by-step chemistry experiment guide and uploads it to Google Classroom for students to follow along.",
       icon: BookOpen,
       gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      image: "photo-1473091534298-04dcbce3278c"
     },
     {
       title: "Explaining Complex Concepts & Problem-Solving",
@@ -30,7 +30,7 @@ const ScreenRecorderForTeachers = () => {
       example: "A math teacher records a solution walkthrough for a tough algebra problem and shares it in a student group for better understanding.",
       icon: Trophy,
       gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
+      image: "photo-1460925895917-afdab827c52f"
     },
     {
       title: "Providing Personalized Feedback & Student Assessments",
@@ -38,7 +38,7 @@ const ScreenRecorderForTeachers = () => {
       example: "An English teacher records a video critique of a student's essay, explaining grammatical mistakes and suggesting improvements with on-screen annotations.",
       icon: MessageSquare,
       gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
+      image: "photo-1581090464777-f3220bbe1b8b"
     },
     {
       title: "Developing Course Content for YouTube & Online Learning Platforms",
@@ -46,7 +46,7 @@ const ScreenRecorderForTeachers = () => {
       example: "A business studies teacher records a series of lectures on \"Marketing Strategies\" and uploads them to Udemy as a paid course.",
       icon: Youtube,
       gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      image: "photo-1498050108023-c5249f4df085"
     }
   ];
 
@@ -124,7 +124,7 @@ const ScreenRecorderForTeachers = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={useCase.title}
+                        alt={`Teacher using screen recording for ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,9 +134,9 @@ const ScreenRecorderForTeachers = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
                             {index + 1}. {useCase.title}
-                          </CardTitle>
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
@@ -175,9 +175,9 @@ const ScreenRecorderForTeachers = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
                       {faq.question}
-                    </CardTitle>
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -199,9 +199,9 @@ const ScreenRecorderForTeachers = () => {
 
         {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your Teaching?
-          </h3>
+          </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Join thousands of educators who are already creating impactful video content with our screen recording software
           </p>
