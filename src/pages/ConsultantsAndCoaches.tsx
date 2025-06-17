@@ -14,7 +14,7 @@ const ConsultantsAndCoaches = () => {
       example: "A business consultant records a strategy session on 'Scaling Your Business with Systems & Automation', so the client can refer back anytime.",
       icon: Users,
       gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      image: "photo-1600880292203-757bb62b4baf"
     },
     {
       title: "Creating Pre-Recorded Coaching Programs & Courses",
@@ -22,7 +22,7 @@ const ConsultantsAndCoaches = () => {
       example: "A career coach records a 'Job Interview Mastery' course, teaching resume writing, answering common questions, and body language tips.",
       icon: BookOpen,
       gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      image: "photo-1507003211169-0a1dd7228f2d"
     },
     {
       title: "Providing Actionable Feedback on Client Work",
@@ -30,7 +30,7 @@ const ConsultantsAndCoaches = () => {
       example: "A marketing consultant records a website audit video, explaining how a client can improve landing page conversions using better headlines and CTAs.",
       icon: Trophy,
       gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
+      image: "photo-1551836022-d5d88e9218df"
     },
     {
       title: "Hosting Virtual Workshops & Webinars",
@@ -38,7 +38,7 @@ const ConsultantsAndCoaches = () => {
       example: "A life coach records a 'Goal-Setting Masterclass', showing how to define, plan, and achieve personal and professional goals.",
       icon: MessageSquare,
       gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
+      image: "photo-1542744173-8e7e53415bb0"
     },
     {
       title: "Creating Social Media & YouTube Coaching Content",
@@ -46,7 +46,7 @@ const ConsultantsAndCoaches = () => {
       example: "A fitness coach records a '3 Mistakes You're Making in Your Workout Routine' video for YouTube, leading viewers to a paid coaching program.",
       icon: TrendingUp,
       gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      image: "photo-1563013544-824ae1b704d3"
     }
   ];
 
@@ -83,9 +83,8 @@ const ConsultantsAndCoaches = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
-      {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
-        <div className="text-center mb-16">
+        <header className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Screen Recorder for Consultants & Coaches
           </h1>
@@ -102,10 +101,9 @@ const ConsultantsAndCoaches = () => {
               See Coaching Templates
             </Button>
           </div>
-        </div>
+        </header>
 
-        {/* Use Cases Section */}
-        <div className="max-w-7xl mx-auto mb-16">
+        <section className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               5 Powerful Coaching & Consulting Applications
@@ -134,9 +132,9 @@ const ConsultantsAndCoaches = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
-                            <h3>{index + 1}. {useCase.title}</h3>
-                          </CardTitle>
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
+                            {index + 1}. {useCase.title}
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
@@ -154,10 +152,9 @@ const ConsultantsAndCoaches = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <section className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
@@ -175,9 +172,9 @@ const ConsultantsAndCoaches = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
-                      <h3>{faq.question}</h3>
-                    </CardTitle>
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
+                      {faq.question}
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -195,10 +192,9 @@ const ConsultantsAndCoaches = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
+        <section className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Scale Your Coaching Impact
           </h2>
@@ -214,7 +210,7 @@ const ConsultantsAndCoaches = () => {
               View Coaching Success Stories
             </Button>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Play, Download, TrendingUp, DollarSign, Users, BarChart, Target, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const ScreenRecorderForAffiliateMarketing = () => {
@@ -9,71 +9,71 @@ const ScreenRecorderForAffiliateMarketing = () => {
 
   const useCases = [
     {
-      title: "Recording Product Walkthroughs & Reviews",
-      description: "Affiliate marketers can record screen-sharing product demos to showcase how a product works. Great for promoting software, apps, online tools, and tech gadgets. Helps build trust with audiences by giving an in-depth look at the product's features. Can include annotations, voiceovers, and highlights to emphasize key selling points.",
-      example: "An affiliate promoting a web hosting service records a video tutorial showing how to set up a website step by step, adding their affiliate link in the video description.",
-      icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
-    },
-    {
-      title: "Unboxing & Hands-On Product Reviews",
-      description: "Marketers can record unboxing videos to show the packaging, build quality, and first impressions. Helps drive sales by demonstrating why the product is worth buying. Works well for Amazon Associates and e-commerce affiliate programs. Can be combined with facecam + screen recording for a more engaging review.",
-      example: "An affiliate promoting a new smartphone on Amazon records an unboxing and hands-on test, highlighting key specs and their affiliate link.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
-    },
-    {
-      title: "Creating Comparison & 'Best Product' Videos",
-      description: "Affiliates can record comparison videos to showcase multiple products side by side. Helps viewers choose the best option, increasing trust and conversions. Useful for 'Best X for Y' videos, like 'Best Laptops for Video Editing'. Can include on-screen annotations to list pros & cons.",
-      example: "A marketer compares three different VPN services, recording speed tests, pricing breakdowns, and ease of use to help viewers make a decision.",
-      icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Recording Step-by-Step Guides for Affiliate Products",
-      description: "Can create tutorials on how to use a product or service they're promoting. Increases engagement and retention, making people more likely to purchase. Ideal for promoting tools like Shopify, email marketing software, or digital courses. Can be repurposed for YouTube, blogs, and social media ads.",
-      example: "An affiliate marketer promoting an SEO tool records a step-by-step guide on 'How to Find High-Traffic Keywords' using the tool, encouraging sign-ups through their affiliate link.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Recording Social Media & Ads Content for Promotions",
-      description: "Can record short-form videos for Instagram Reels, TikTok, and Facebook Ads. Helps create engaging ad creatives showcasing product benefits. Works well for promoting digital products, courses, and SaaS tools. Can use AI-powered video editing to quickly refine and optimize content.",
-      example: "An affiliate promoting an online fitness course records a quick tutorial on '3 Best Weight Loss Tips', ending with a call-to-action to sign up using their affiliate link.",
+      title: "Recording Product Reviews & Demonstrations for Affiliate Links",
+      description: "Affiliate marketers can record detailed product reviews and demonstrations to showcase the benefits and features of products they're promoting. Helps build trust with audiences by providing honest, in-depth reviews. Can include software tutorials, physical product unboxings, and comparison videos. Useful for driving higher conversion rates and building a loyal following.",
+      example: "An affiliate marketer records a comprehensive review of a project management tool, showing its features and how it solves common problems.",
       icon: TrendingUp,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      gradient: "from-green-500 to-emerald-600",
+      image: "photo-1556742049-0cfed4f6a45d"
+    },
+    {
+      title: "Creating Tutorial Content to Drive Affiliate Sales",
+      description: "Marketers can create educational tutorials that naturally incorporate affiliate products as solutions. Helps provide value to audiences while subtly promoting relevant products. Can include step-by-step guides, problem-solving tutorials, and how-to content. Perfect for building authority and trust before making affiliate recommendations.",
+      example: "A marketing expert creates a tutorial on 'Building an Email List' and recommends specific email marketing tools as affiliate links.",
+      icon: Users,
+      gradient: "from-blue-500 to-cyan-600",
+      image: "photo-1551836022-d5d88e9218df"
+    },
+    {
+      title: "Recording Webinars & Live Sessions for Affiliate Promotion",
+      description: "Affiliate marketers can host and record live webinars to demonstrate products and services to engaged audiences. Helps create urgency and allows for real-time interaction with potential buyers. Can include Q&A sessions, live demonstrations, and special offers. Useful for promoting high-ticket affiliate products.",
+      example: "An affiliate marketer hosts a live webinar on 'Scaling Your Online Business' and promotes relevant business tools and courses.",
+      icon: BarChart,
+      gradient: "from-purple-500 to-indigo-600",
+      image: "photo-1542744173-8e7e53415bb0"
+    },
+    {
+      title: "Creating Case Studies & Success Stories for Social Proof",
+      description: "Marketers can record case studies showing real results achieved using affiliate products. Helps provide social proof and demonstrates the actual value of promoted products. Can include before-and-after comparisons, testimonials, and results breakdowns. Essential for building credibility and trust with audiences.",
+      example: "An affiliate marketer records a case study showing how a specific SEO tool helped increase website traffic by 300% in 3 months.",
+      icon: Target,
+      gradient: "from-orange-500 to-red-600",
+      image: "photo-1460925895917-afdab827c52f"
+    },
+    {
+      title: "Recording Sales Funnels & Email Sequences for High-Converting Campaigns",
+      description: "Affiliate marketers can record the creation of sales funnels and email sequences that promote affiliate products. Helps document proven strategies and workflows for future campaigns. Can include landing page creation, email writing, and conversion optimization. Useful for scaling successful affiliate campaigns.",
+      example: "An affiliate marketer records the complete process of building a high-converting sales funnel for a digital marketing course.",
+      icon: DollarSign,
+      gradient: "from-teal-500 to-green-600",
+      image: "photo-1563013544-824ae1b704d3"
     }
   ];
 
   const faqs = [
     {
-      question: "How can screen recording boost my affiliate commissions?",
-      answer: "Video content converts 10-30x better than text reviews. By showing products in action, you build trust and help viewers make purchasing decisions faster. Screen recordings allow you to demonstrate value clearly, leading to higher click-through rates and conversions."
+      question: "How can I create compelling affiliate product reviews?",
+      answer: "Focus on honest, detailed demonstrations showing real use cases. Our platform helps you create professional reviews with multiple camera angles, screen recordings, and clear narration that builds trust with your audience."
     },
     {
       question: "What's the best way to disclose affiliate relationships in videos?",
-      answer: "Always include clear disclosures both verbally in your video and in the description. Our software includes customizable overlay templates for FTC-compliant affiliate disclosures. Transparency builds trust and is legally required."
+      answer: "Always include clear affiliate disclosures at the beginning of your videos and in descriptions. Our platform includes template overlays and graphics to help you maintain transparency and comply with FTC guidelines."
     },
     {
-      question: "Can I track which videos drive the most affiliate sales?",
-      answer: "Yes! Use UTM parameters in your affiliate links and track video performance through Google Analytics. We also integrate with affiliate networks to help you identify your highest-converting content."
+      question: "Can I track the performance of my affiliate marketing videos?",
+      answer: "Yes! We provide detailed analytics showing engagement rates, click-through rates, and conversion tracking. This helps you optimize your content strategy and focus on the most profitable affiliate partnerships."
     },
     {
-      question: "How do I create authentic product reviews that convert?",
-      answer: "Focus on real problems the product solves, show actual usage, and be honest about pros and cons. Our software includes annotation tools to highlight key features and benefits naturally within your demonstrations."
+      question: "How do I create educational content that naturally incorporates affiliate links?",
+      answer: "Focus on solving real problems and providing genuine value first. Our content planning tools help you structure tutorials and guides that naturally introduce affiliate solutions as helpful recommendations."
     },
     {
-      question: "What types of products work best for video affiliate marketing?",
-      answer: "Software, online courses, physical tech products, and services work exceptionally well. Anything that benefits from demonstration or has visual appeal performs better in video format than static reviews."
+      question: "What formats work best for affiliate marketing content?",
+      answer: "Mix different formats including product demonstrations, comparison videos, tutorials, and case studies. Our platform supports various content types and helps you repurpose content across multiple channels for maximum reach."
     },
     {
-      question: "Can I repurpose one recording for multiple affiliate programs?",
-      answer: "Absolutely! Create one comprehensive review and edit multiple versions with different affiliate links. Our editing tools make it easy to swap out links, logos, and calls-to-action for different programs."
+      question: "How can I scale my affiliate marketing video production?",
+      answer: "Create templates and workflows for consistent content production. Our platform includes batch processing, content templates, and automation features to help you efficiently create and distribute affiliate marketing content."
     }
   ];
 
@@ -83,35 +83,33 @@ const ScreenRecorderForAffiliateMarketing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
-      {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
-        <div className="text-center mb-16">
+        <header className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Screen Recorder for Affiliate Marketing
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Maximize your affiliate commissions with compelling product demonstrations. Create authentic reviews, comparisons, and tutorials that convert viewers into buyers.
+            Boost your affiliate commissions with compelling video content. Create product reviews, tutorials, and demonstrations that drive conversions and build trust with your audience.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
               <Play className="w-5 h-5 mr-2" />
-              Start Affiliate Videos
+              Start Creating Affiliate Content
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6">
               <Download className="w-5 h-5 mr-2" />
-              See Review Templates
+              View Marketing Tools
             </Button>
           </div>
-        </div>
+        </header>
 
-        {/* Use Cases Section */}
-        <div className="max-w-7xl mx-auto mb-16">
+        <section className="max-w-7xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 High-Converting Affiliate Marketing Strategies
+              5 Powerful Affiliate Marketing Video Strategies
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From product demos to comparison videos, discover how top affiliates are maximizing their earnings with video content
+              From product reviews to case studies, discover how successful affiliate marketers are building profitable video content
             </p>
           </div>
 
@@ -124,7 +122,7 @@ const ScreenRecorderForAffiliateMarketing = () => {
                     <div className="lg:w-1/3">
                       <img 
                         src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={`Affiliate marketing content creation for ${useCase.title.toLowerCase()}`}
+                        alt={`Affiliate marketing workspace for ${useCase.title.toLowerCase()}`}
                         className="w-full h-48 object-cover rounded-lg"
                       />
                     </div>
@@ -134,17 +132,17 @@ const ScreenRecorderForAffiliateMarketing = () => {
                           <useCase.icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
-                            <h3>{index + 1}. {useCase.title}</h3>
-                          </CardTitle>
+                          <h3 className="text-xl md:text-2xl text-gray-900 mb-2 font-semibold">
+                            {index + 1}. {useCase.title}
+                          </h3>
                           <CardDescription className="text-base text-gray-600 leading-relaxed">
                             {useCase.description}
                           </CardDescription>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
-                        <p className="text-gray-600 italic">
+                      <div className="bg-green-50 rounded-lg p-4 border-l-4 border-green-300">
+                        <p className="text-sm font-semibold text-green-700 mb-2">Marketing Example:</p>
+                        <p className="text-green-600 italic">
                           {useCase.example}
                         </p>
                       </div>
@@ -154,10 +152,9 @@ const ScreenRecorderForAffiliateMarketing = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <section className="max-w-4xl mx-auto mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
@@ -175,9 +172,9 @@ const ScreenRecorderForAffiliateMarketing = () => {
                   onClick={() => toggleFaq(index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
-                      <h3>{faq.question}</h3>
-                    </CardTitle>
+                    <h3 className="text-lg text-gray-900 text-left font-medium">
+                      {faq.question}
+                    </h3>
                     {openFaq === index ? (
                       <Minus className="w-5 h-5 text-gray-500" />
                     ) : (
@@ -195,26 +192,25 @@ const ScreenRecorderForAffiliateMarketing = () => {
               </Card>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
+        <section className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Start Earning More from Affiliate Marketing
+            Maximize Your Affiliate Earnings
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join successful affiliate marketers who are doubling their commissions with authentic, engaging video reviews
+            Join successful affiliate marketers who are building profitable businesses through compelling video content and strategic promotion
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
               <Play className="w-5 h-5 mr-2" />
-              Boost Affiliate Income Now
+              Start Your Affiliate Success
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
-              View Success Case Studies
+              View Success Stories
             </Button>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
