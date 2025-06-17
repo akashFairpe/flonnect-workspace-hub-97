@@ -33,6 +33,22 @@ import GamingContentCreators from "./pages/GamingContentCreators";
 import PersonalJournalers from "./pages/PersonalJournalers";
 import Researchers from "./pages/Researchers";
 import LegalProfessionals from "./pages/LegalProfessionals";
+import MedicalProfessionals from "./pages/MedicalProfessionals";
+import ReligiousSpiritualLeaders from "./pages/ReligiousSpiritualLeaders";
+import EventOrganizers from "./pages/EventOrganizers";
+import NonprofitsActivists from "./pages/NonprofitsActivists";
+import Musicians from "./pages/Musicians";
+import DancersPerformers from "./pages/DancersPerformers";
+import PhotographersVideographers from "./pages/PhotographersVideographers";
+import GovernmentOfficialsPublicSpeakers from "./pages/GovernmentOfficialsPublicSpeakers";
+import LawEnforcementSecurityTeams from "./pages/LawEnforcementSecurityTeams";
+import Tutors from "./pages/Tutors";
+import EducationAdministrators from "./pages/EducationAdministrators";
+import TherapistsCounselors from "./pages/TherapistsCounselors";
+import FitnessTrainersYogaInstructors from "./pages/FitnessTrainersYogaInstructors";
+import DietitiansNutritionists from "./pages/DietitiansNutritionists";
+import FinancialAdvisors from "./pages/FinancialAdvisors";
+import StockTradersAnalysts from "./pages/StockTradersAnalysts";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +89,22 @@ const App = () => (
           <Route path="/personal-journalers" element={<PersonalJournalers />} />
           <Route path="/researchers" element={<Researchers />} />
           <Route path="/legal-professionals" element={<LegalProfessionals />} />
+          <Route path="/medical-professionals" element={<MedicalProfessionals />} />
+          <Route path="/religious-spiritual-leaders" element={<ReligiousSpiritualLeaders />} />
+          <Route path="/event-organizers" element={<EventOrganizers />} />
+          <Route path="/nonprofits-activists" element={<NonprofitsActivists />} />
+          <Route path="/musicians" element={<Musicians />} />
+          <Route path="/dancers-performers" element={<DancersPerformers />} />
+          <Route path="/photographers-videographers" element={<PhotographersVideographers />} />
+          <Route path="/government-officials-public-speakers" element={<GovernmentOfficialsPublicSpeakers />} />
+          <Route path="/law-enforcement-security-teams" element={<LawEnforcementSecurityTeams />} />
+          <Route path="/tutors" element={<Tutors />} />
+          <Route path="/education-administrators" element={<EducationAdministrators />} />
+          <Route path="/therapists-counselors" element={<TherapistsCounselors />} />
+          <Route path="/fitness-trainers-yoga-instructors" element={<FitnessTrainersYogaInstructors />} />
+          <Route path="/dietitians-nutritionists" element={<DietitiansNutritionists />} />
+          <Route path="/financial-advisors" element={<FinancialAdvisors />} />
+          <Route path="/stock-traders-analysts" element={<StockTradersAnalysts />} />
           <Route path="*" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
