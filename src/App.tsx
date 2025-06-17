@@ -14,6 +14,16 @@ import SalesCallRecordingSoftware from "./pages/SalesCallRecordingSoftware";
 import CallCenterRecordingSoftware from "./pages/CallCenterRecordingSoftware";
 import ScreenRecorderForProjectManagers from "./pages/ScreenRecorderForProjectManagers";
 import YoutubeScreenRecorder from "./pages/YoutubeScreenRecorder";
+import PodcastRecordingSoftware from "./pages/PodcastRecordingSoftware";
+import ScreenRecorderForSocialMedia from "./pages/ScreenRecorderForSocialMedia";
+import ScreenRecorderForMarketing from "./pages/ScreenRecorderForMarketing";
+import ScreenRecorderForAffiliateMarketing from "./pages/ScreenRecorderForAffiliateMarketing";
+import ScreenRecorderForFreelanceDesigners from "./pages/ScreenRecorderForFreelanceDesigners";
+import FreelanceWritersAndCopywriters from "./pages/FreelanceWritersAndCopywriters";
+import ConsultantsAndCoaches from "./pages/ConsultantsAndCoaches";
+import VirtualAssistants from "./pages/VirtualAssistants";
+import SoftwareDevelopers from "./pages/SoftwareDevelopers";
+import ProductManagers from "./pages/ProductManagers";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +45,16 @@ const App = () => (
           <Route path="/call-center-recording-software" element={<CallCenterRecordingSoftware />} />
           <Route path="/screen-recorder-for-project-managers" element={<ScreenRecorderForProjectManagers />} />
           <Route path="/youtube-screen-recorder" element={<YoutubeScreenRecorder />} />
+          <Route path="/podcast-recording-software" element={<PodcastRecordingSoftware />} />
+          <Route path="/screen-recorder-for-social-media" element={<ScreenRecorderForSocialMedia />} />
+          <Route path="/screen-recorder-for-marketing" element={<ScreenRecorderForMarketing />} />
+          <Route path="/screen-recorder-for-affiliate-marketing" element={<ScreenRecorderForAffiliateMarketing />} />
+          <Route path="/screen-recorder-for-freelance-designers" element={<ScreenRecorderForFreelanceDesigners />} />
+          <Route path="/freelance-writers-and-copywriters" element={<FreelanceWritersAndCopywriters />} />
+          <Route path="/consultants-and-coaches" element={<ConsultantsAndCoaches />} />
+          <Route path="/virtual-assistants" element={<VirtualAssistants />} />
+          <Route path="/software-developers" element={<SoftwareDevelopers />} />
+          <Route path="/product-managers" element={<ProductManagers />} />
           <Route path="*" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
