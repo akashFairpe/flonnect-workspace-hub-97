@@ -49,6 +49,17 @@ import FitnessTrainersYogaInstructors from "./pages/FitnessTrainersYogaInstructo
 import DietitiansNutritionists from "./pages/DietitiansNutritionists";
 import FinancialAdvisors from "./pages/FinancialAdvisors";
 import StockTradersAnalysts from "./pages/StockTradersAnalysts";
+import TaxConsultantsAccountants from "./pages/TaxConsultantsAccountants";
+import ScientistsResearchers from "./pages/ScientistsResearchers";
+import EngineersArchitects from "./pages/EngineersArchitects";
+import FactoryManagersWorkers from "./pages/FactoryManagersWorkers";
+import SupplyChainLogisticsTeams from "./pages/SupplyChainLogisticsTeams";
+import RealEstateAgents from "./pages/RealEstateAgents";
+import PropertyManagers from "./pages/PropertyManagers";
+import CarMechanicsRepairShops from "./pages/CarMechanicsRepairShops";
+import TruckDriversDeliveryPersonnel from "./pages/TruckDriversDeliveryPersonnel";
+import CorporateLawyersComplianceOfficers from "./pages/CorporateLawyersComplianceOfficers";
+import MediatorsArbitrators from "./pages/MediatorsArbitrators";
 
 const queryClient = new QueryClient();
 
@@ -105,6 +116,17 @@ const App = () => (
           <Route path="/dietitians-nutritionists" element={<DietitiansNutritionists />} />
           <Route path="/financial-advisors" element={<FinancialAdvisors />} />
           <Route path="/stock-traders-analysts" element={<StockTradersAnalysts />} />
+          <Route path="/tax-consultants-accountants" element={<TaxConsultantsAccountants />} />
+          <Route path="/scientists-researchers" element={<ScientistsResearchers />} />
+          <Route path="/engineers-architects" element={<EngineersArchitects />} />
+          <Route path="/factory-managers-workers" element={<FactoryManagersWorkers />} />
+          <Route path="/supply-chain-logistics-teams" element={<SupplyChainLogisticsTeams />} />
+          <Route path="/real-estate-agents" element={<RealEstateAgents />} />
+          <Route path="/property-managers" element={<PropertyManagers />} />
+          <Route path="/car-mechanics-repair-shops" element={<CarMechanicsRepairShops />} />
+          <Route path="/truck-drivers-delivery-personnel" element={<TruckDriversDeliveryPersonnel />} />
+          <Route path="/corporate-lawyers-compliance-officers" element={<CorporateLawyersComplianceOfficers />} />
+          <Route path="/mediators-arbitrators" element={<MediatorsArbitrators />} />
           <Route path="*" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
