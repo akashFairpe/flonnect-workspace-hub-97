@@ -1,8 +1,8 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Youtube, Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
+import { Header } from '@/components/Header';
 
 const LandingPage = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -82,141 +82,144 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Professional Screen Recorder for Educators
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Create engaging video lessons, provide personalized feedback, and build your online teaching presence with our educator-focused screen recording software.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
-              <Play className="w-5 h-5 mr-2" />
-              Start Recording Now - Free Trial
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-              <Download className="w-5 h-5 mr-2" />
-              Download Free Version
-            </Button>
-          </div>
-        </div>
-
-        {/* Use Cases Section */}
-        <div className="max-w-7xl mx-auto mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              5 Powerful Ways Teachers Use Screen Recording
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover how educators worldwide are transforming their teaching with screen recording technology
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+        {/* Hero Section */}
+        <div className="container mx-auto px-6 py-16">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Professional Screen Recorder for Educators
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Create engaging video lessons, provide personalized feedback, and build your online teaching presence with our educator-focused screen recording software.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                <Play className="w-5 h-5 mr-2" />
+                Start Recording Now - Free Trial
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Download className="w-5 h-5 mr-2" />
+                Download Free Version
+              </Button>
+            </div>
           </div>
 
-          <div className="space-y-8">
-            {useCases.map((useCase, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0">
-                <div className={`h-2 bg-gradient-to-r ${useCase.gradient}`}></div>
-                <CardHeader className="pb-4">
-                  <div className="flex flex-col lg:flex-row items-start gap-6">
-                    <div className="lg:w-1/3">
-                      <img 
-                        src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                        alt={useCase.title}
-                        className="w-full h-48 object-cover rounded-lg"
-                      />
-                    </div>
-                    <div className="lg:w-2/3">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className={`p-3 rounded-lg bg-gradient-to-r ${useCase.gradient} text-white flex-shrink-0`}>
-                          <useCase.icon className="w-6 h-6" />
+          {/* Use Cases Section */}
+          <div className="max-w-7xl mx-auto mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                5 Powerful Ways Teachers Use Screen Recording
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Discover how educators worldwide are transforming their teaching with screen recording technology
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {useCases.map((useCase, index) => (
+                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0">
+                  <div className={`h-2 bg-gradient-to-r ${useCase.gradient}`}></div>
+                  <CardHeader className="pb-4">
+                    <div className="flex flex-col lg:flex-row items-start gap-6">
+                      <div className="lg:w-1/3">
+                        <img 
+                          src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
+                          alt={useCase.title}
+                          className="w-full h-48 object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="lg:w-2/3">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className={`p-3 rounded-lg bg-gradient-to-r ${useCase.gradient} text-white flex-shrink-0`}>
+                            <useCase.icon className="w-6 h-6" />
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
+                              {index + 1}. {useCase.title}
+                            </CardTitle>
+                            <CardDescription className="text-base text-gray-600 leading-relaxed">
+                              {useCase.description}
+                            </CardDescription>
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
-                            {index + 1}. {useCase.title}
-                          </CardTitle>
-                          <CardDescription className="text-base text-gray-600 leading-relaxed">
-                            {useCase.description}
-                          </CardDescription>
+                        <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
+                          <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
+                          <p className="text-gray-600 italic">
+                            {useCase.example}
+                          </p>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
-                        <p className="text-gray-600 italic">
-                          {useCase.example}
-                        </p>
-                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            ))}
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-gray-600">
-              Everything you need to know about our screen recording software for teachers
+          {/* FAQ Section */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-gray-600">
+                Everything you need to know about our screen recording software for teachers
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <Card key={index} className="overflow-hidden">
+                  <CardHeader 
+                    className="cursor-pointer hover:bg-gray-50 transition-colors"
+                    onClick={() => toggleFaq(index)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg text-gray-900 text-left">
+                        {faq.question}
+                      </CardTitle>
+                      {openFaq === index ? (
+                        <Minus className="w-5 h-5 text-gray-500" />
+                      ) : (
+                        <Plus className="w-5 h-5 text-gray-500" />
+                      )}
+                    </div>
+                  </CardHeader>
+                  {openFaq === index && (
+                    <CardContent className="pt-0">
+                      <p className="text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </CardContent>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Transform Your Teaching?
+            </h3>
+            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              Join over 50,000 educators who are already creating amazing content with our screen recorder
             </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <Card key={index} className="overflow-hidden">
-                <CardHeader 
-                  className="cursor-pointer hover:bg-gray-50 transition-colors"
-                  onClick={() => toggleFaq(index)}
-                >
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-gray-900 text-left">
-                      {faq.question}
-                    </CardTitle>
-                    {openFaq === index ? (
-                      <Minus className="w-5 h-5 text-gray-500" />
-                    ) : (
-                      <Plus className="w-5 h-5 text-gray-500" />
-                    )}
-                  </div>
-                </CardHeader>
-                {openFaq === index && (
-                  <CardContent className="pt-0">
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </CardContent>
-                )}
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Transform Your Teaching?
-          </h3>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join over 50,000 educators who are already creating amazing content with our screen recorder
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
-              <Play className="w-5 h-5 mr-2" />
-              Start Free 14-Day Trial
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
-              View Pricing Plans
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+                <Play className="w-5 h-5 mr-2" />
+                Start Free 14-Day Trial
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
+                View Pricing Plans
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
