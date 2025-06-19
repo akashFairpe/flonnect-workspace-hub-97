@@ -2,6 +2,9 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { UseCaseNavigation } from './UseCaseNavigation';
+import { SolutionsNavigation } from './SolutionsNavigation';
+import { ServiceNavigation } from './ServiceNavigation';
+import { FeaturesNavigation } from './FeaturesNavigation';
 import { useNavigate } from 'react-router-dom';
 
 export function Header() {
@@ -18,16 +21,28 @@ export function Header() {
             >
               ScreenRecorder
             </button>
-            <UseCaseNavigation />
+            
+            <div className="hidden md:flex items-center gap-6">
+              <Button variant="ghost" onClick={() => navigate('/')}>
+                Home
+              </Button>
+              <SolutionsNavigation />
+              <ServiceNavigation />
+              <FeaturesNavigation />
+              <UseCaseNavigation />
+              <Button variant="ghost">
+                Blogs
+              </Button>
+              <Button variant="ghost">
+                Pricing
+              </Button>
+              <Button variant="ghost">
+                Community
+              </Button>
+            </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <Button variant="ghost">
-              Features
-            </Button>
-            <Button variant="ghost">
-              Pricing
-            </Button>
             <Button variant="outline">
               Sign In
             </Button>

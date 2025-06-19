@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   GraduationCap, 
   Building2, 
@@ -213,10 +214,22 @@ const useCaseCategories = [
 
 export function UseCaseNavigation() {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const handleCategoryClick = (categoryId: string) => {
     navigate(`/use-cases/${categoryId}`);
   };
+
+  if (isMobile) {
+    return (
+      <div className="relative">
+        <Button variant="ghost" className="text-base font-medium">
+          Use Cases
+        </Button>
+        {/* Mobile dropdown would need a separate implementation */}
+      </div>
+    );
+  }
 
   return (
     <NavigationMenu>
@@ -225,33 +238,33 @@ export function UseCaseNavigation() {
           <NavigationMenuTrigger className="text-base font-medium">
             Use Cases
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="w-[800px] p-6">
-              <div className="grid grid-cols-2 gap-4">
+          <NavigationMenuContent className="w-screen max-w-6xl">
+            <div className="mx-auto max-w-7xl p-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {useCaseCategories.map((category) => (
                   <Card 
                     key={category.id} 
-                    className="cursor-pointer hover:shadow-lg transition-all duration-200 group"
+                    className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105 group border-gray-200 hover:border-primary/20"
                     onClick={() => handleCategoryClick(category.id)}
                   >
-                    <CardHeader className="pb-2">
+                    <CardHeader className="pb-3">
                       <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} text-white`}>
+                        <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} text-white transition-transform group-hover:scale-110`}>
                           <category.icon className="w-5 h-5" />
                         </div>
-                        <div className="flex-1">
-                          <CardTitle className="text-sm font-semibold group-hover:text-primary transition-colors">
+                        <div className="flex-1 min-w-0">
+                          <CardTitle className="text-sm font-semibold group-hover:text-primary transition-colors truncate">
                             {category.title}
                           </CardTitle>
-                          <CardDescription className="text-xs">
-                            {category.description}
-                          </CardDescription>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
+                        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
                       </div>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      <p className="text-xs text-gray-500">
+                      <CardDescription className="text-xs line-clamp-2">
+                        {category.description}
+                      </CardDescription>
+                      <p className="text-xs text-gray-500 mt-2">
                         {category.useCases.length} use cases
                       </p>
                     </CardContent>
