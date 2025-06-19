@@ -20,7 +20,7 @@ import {
   Share2,
   Presentation,
   Instagram,
-  Ad
+  Megaphone
 } from 'lucide-react';
 
 const featuresItems = [
@@ -93,7 +93,7 @@ const featuresItems = [
   {
     title: 'AI Ad Generator',
     description: 'Create ads automatically',
-    icon: Ad,
+    icon: Megaphone,
     href: '/ai-ad-generator'
   },
   {
