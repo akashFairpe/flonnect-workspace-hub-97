@@ -60,6 +60,7 @@ import CarMechanicsRepairShops from "./pages/CarMechanicsRepairShops";
 import TruckDriversDeliveryPersonnel from "./pages/TruckDriversDeliveryPersonnel";
 import CorporateLawyersComplianceOfficers from "./pages/CorporateLawyersComplianceOfficers";
 import MediatorsArbitrators from "./pages/MediatorsArbitrators";
+import AIPage from "./pages/AIPage";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/landing-page" element={<LandingPage />} />
+          <Route path="/ai" element={<AIPage />} />
           <Route path="/use-cases/:categoryId" element={<UseCaseCategory />} />
           <Route path="/screen-recorder-for-teachers" element={<ScreenRecorderForTeachers />} />
           <Route path="/screen-recorder-for-students" element={<ScreenRecorderForStudents />} />
