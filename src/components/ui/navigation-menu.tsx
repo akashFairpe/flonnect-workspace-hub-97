@@ -16,8 +16,8 @@ const NavigationMenu = React.forwardRef<
       "relative z-10 flex max-w-max flex-1 items-center justify-center",
       className
     )}
-    delayDuration={200}
-    skipDelayDuration={300}
+    delayDuration={400}
+    skipDelayDuration={100}
     {...props}
   >
     {children}
@@ -75,8 +75,6 @@ const NavigationMenuContent = React.forwardRef<
       "left-1/2 top-0 -translate-x-1/2 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto",
       className
     )}
-    onPointerEnter={(e) => e.preventDefault()}
-    onPointerLeave={(e) => e.preventDefault()}
     {...props}
   />
 ))
