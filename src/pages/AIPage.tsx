@@ -6,11 +6,29 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { Loader2, Sparkles, Image as ImageIcon, Video, Play, Download, Check, ArrowRight } from 'lucide-react';
+import { Loader2, Sparkles, Image as ImageIcon, Video, Play, Download, Check, ArrowRight, Brain, Cpu, Zap } from 'lucide-react';
 import { toast } from 'sonner';
 import { useSearchParams } from 'react-router-dom';
+
+const aiModels = [
+  { id: 'gpt-4o', name: 'GPT-4o', description: 'Most advanced reasoning', category: 'OpenAI', icon: Brain },
+  { id: 'claude-3.5-sonnet', name: 'Claude 3.5 Sonnet', description: 'Best for coding & analysis', category: 'Anthropic', icon: Brain },
+  { id: 'gemini-pro', name: 'Gemini Pro', description: 'Google\'s multimodal AI', category: 'Google', icon: Brain },
+  { id: 'llama-3', name: 'Llama 3', description: 'Open source powerhouse', category: 'Meta', icon: Brain },
+  { id: 'claude-3-opus', name: 'Claude 3 Opus', description: 'Creative writing expert', category: 'Anthropic', icon: Brain },
+  { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo', description: 'Fast and efficient', category: 'OpenAI', icon: Zap },
+  { id: 'palm-2', name: 'PaLM 2', description: 'Google\'s foundation model', category: 'Google', icon: Brain },
+  { id: 'claude-3-haiku', name: 'Claude 3 Haiku', description: 'Quick responses', category: 'Anthropic', icon: Zap },
+  { id: 'mistral-large', name: 'Mistral Large', description: 'European AI excellence', category: 'Mistral', icon: Brain },
+  { id: 'cohere-command', name: 'Cohere Command', description: 'Business-focused AI', category: 'Cohere', icon: Cpu },
+  { id: 'ai21-jurassic', name: 'AI21 Jurassic', description: 'Advanced language model', category: 'AI21', icon: Brain },
+  { id: 'falcon-180b', name: 'Falcon 180B', description: 'Open source giant', category: 'TII', icon: Brain },
+  { id: 'vicuna-33b', name: 'Vicuna 33B', description: 'Fine-tuned excellence', category: 'LMSYS', icon: Brain },
+  { id: 'alpaca-7b', name: 'Alpaca 7B', description: 'Lightweight and fast', category: 'Stanford', icon: Zap },
+  { id: 'stable-diffusion', name: 'Stable Diffusion', description: 'Image generation', category: 'Stability AI', icon: ImageIcon },
+  { id: 'dalle-3', name: 'DALL-E 3', description: 'Advanced image creation', category: 'OpenAI', icon: ImageIcon }
+];
 
 const placeholderImages = [
   'https://images.unsplash.com/photo-1649972904349-6e44c42644a7',
@@ -25,7 +43,7 @@ const placeholderImages = [
 
 export default function AIPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [activeTab, setActiveTab] = useState(searchParams.get('feature') || 'image-generator');
+  const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [prompt, setPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedImages, setGeneratedImages] = useState<string[]>([]);
@@ -33,18 +51,29 @@ export default function AIPage() {
   const [isGeneratingVideo, setIsGeneratingVideo] = useState(false);
   const [generatedVideo, setGeneratedVideo] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
-  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [showPromptChange, setShowPromptChange] = useState(false);
 
   useEffect(() => {
     const feature = searchParams.get('feature');
-    if (feature && ['image-generator', 'video-generator'].includes(feature)) {
-      setActiveTab(feature);
+    if (feature === 'image-generator') {
+      setSelectedModel('stable-diffusion');
+    } else if (feature === 'video-generator') {
+      setSelectedModel('dalle-3');
     }
   }, [searchParams]);
 
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
-    setSearchParams({ feature: value });
+  const handleModelSelect = (modelId: string) => {
+    setSelectedModel(modelId);
+    setGeneratedImages([]);
+    setSelectedImage(null);
+    setGeneratedVideo(null);
+    setPrompt('');
+    setShowPromptChange(false);
+
+    // Update URL based on model type
+    if (modelId === 'stable-diffusion' || modelId === 'dalle-3') {
+      setSearchParams({ feature: modelId === 'dalle-3' ? 'video-generator' : 'image-generator' });
+    }
   };
 
   const handleImageGeneration = async () => {
@@ -53,16 +82,11 @@ export default function AIPage() {
       return;
     }
 
-    if (!captchaVerified) {
-      toast.error('Please verify the captcha');
-      return;
-    }
-
     setIsGenerating(true);
     setProgress(0);
+    setShowPromptChange(false);
     
     try {
-      // Simulate progress
       const interval = setInterval(() => {
         setProgress(prev => {
           if (prev >= 90) {
@@ -75,11 +99,11 @@ export default function AIPage() {
 
       await new Promise(resolve => setTimeout(resolve, 3000));
       
-      // Generate multiple images
       const shuffled = [...placeholderImages].sort(() => 0.5 - Math.random());
       const selectedImages = shuffled.slice(0, 4);
       setGeneratedImages(selectedImages);
       setProgress(100);
+      setShowPromptChange(true);
       toast.success('Images generated successfully!');
     } catch (error) {
       toast.error('Failed to generate images. Please try again.');
@@ -104,7 +128,6 @@ export default function AIPage() {
     setProgress(0);
     
     try {
-      // Simulate video generation progress
       const interval = setInterval(() => {
         setProgress(prev => {
           if (prev >= 90) {
@@ -117,7 +140,6 @@ export default function AIPage() {
 
       await new Promise(resolve => setTimeout(resolve, 6000));
       
-      // For demo, using a video placeholder
       setGeneratedVideo('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
       setProgress(100);
       toast.success('Video generated successfully!');
@@ -129,20 +151,15 @@ export default function AIPage() {
     }
   };
 
-  const handleCaptchaVerification = () => {
-    const result = window.confirm('Are you human? Click OK to verify.');
-    setCaptchaVerified(result);
-    if (result) {
-      toast.success('Captcha verified successfully!');
-    }
-  };
-
-  const resetVideoGenerator = () => {
+  const handlePromptChange = () => {
     setGeneratedImages([]);
     setSelectedImage(null);
     setGeneratedVideo(null);
-    setPrompt('');
+    setShowPromptChange(false);
   };
+
+  const isImageModel = selectedModel === 'stable-diffusion' || selectedModel === 'dalle-3';
+  const isVideoModel = selectedModel === 'dalle-3';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -160,339 +177,208 @@ export default function AIPage() {
             AI Solutions by <span className="text-purple-600">Flonnect</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Transform your ideas into stunning visuals and videos with our AI-powered tools
+            Choose from our curated collection of AI models to transform your ideas
           </p>
         </div>
 
-        {/* AI Tools Tabs */}
-        <div className="max-w-6xl mx-auto">
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="image-generator" className="flex items-center gap-2">
-                <ImageIcon className="w-4 h-4" />
-                <span className="hidden sm:inline">AI Image Generator</span>
-                <span className="sm:hidden">Images</span>
-              </TabsTrigger>
-              <TabsTrigger value="video-generator" className="flex items-center gap-2">
-                <Video className="w-4 h-4" />
-                <span className="hidden sm:inline">AI Video Generator</span>
-                <span className="sm:hidden">Videos</span>
-              </TabsTrigger>
-            </TabsList>
-
-            {/* Image Generator Tab */}
-            <TabsContent value="image-generator">
-              <Card>
-                <CardHeader className="text-center">
-                  <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 flex items-center justify-center gap-3">
-                    <ImageIcon className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
-                    AI Image Generator
-                  </CardTitle>
-                  <CardDescription className="text-base sm:text-lg">
-                    Create stunning images from your imagination
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-4">
-                    <div>
-                      <label htmlFor="prompt" className="block text-sm font-medium text-gray-700 mb-2">
-                        Enter your prompt
-                      </label>
-                      <Textarea
-                        id="prompt"
-                        placeholder="Describe the image you want to generate... e.g., 'A beautiful sunset over a mountain lake with flying birds'"
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        className="min-h-[80px] sm:min-h-[100px] resize-none"
-                        disabled={isGenerating}
-                      />
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                      <Button 
-                        onClick={handleCaptchaVerification}
-                        variant={captchaVerified ? "default" : "outline"}
-                        disabled={isGenerating}
-                        className={`w-full sm:w-auto ${captchaVerified ? "bg-green-600 hover:bg-green-700" : ""}`}
-                      >
-                        {captchaVerified ? "✓ Verified" : "Verify Captcha"}
-                      </Button>
-                      
-                      <Button 
-                        onClick={handleImageGeneration}
-                        disabled={isGenerating || !captchaVerified}
-                        className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700"
-                      >
-                        {isGenerating ? (
-                          <>
-                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            Generating...
-                          </>
-                        ) : (
-                          <>
-                            <Sparkles className="w-4 h-4 mr-2" />
-                            Generate Images
-                          </>
-                        )}
-                      </Button>
-                    </div>
-
-                    {(isGenerating || progress > 0) && (
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span>Generating images...</span>
-                          <span>{progress}%</span>
+        {/* AI Models Grid */}
+        {!selectedModel && (
+          <div className="max-w-6xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Choose Your AI Model</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {aiModels.map((model) => {
+                const IconComponent = model.icon;
+                return (
+                  <Card 
+                    key={model.id} 
+                    className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
+                    onClick={() => handleModelSelect(model.id)}
+                  >
+                    <CardHeader className="text-center pb-4">
+                      <div className="flex justify-center mb-3">
+                        <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+                          <IconComponent className="w-6 h-6 text-white" />
                         </div>
-                        <Progress value={progress} className="w-full" />
                       </div>
-                    )}
-                  </div>
+                      <CardTitle className="text-lg font-semibold">{model.name}</CardTitle>
+                      <Badge variant="secondary" className="w-fit mx-auto">{model.category}</Badge>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-sm text-gray-600 text-center">{model.description}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
-                  {generatedImages.length > 0 && (
-                    <div className="mt-8">
-                      <h3 className="text-lg font-semibold mb-4">Generated Images:</h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {generatedImages.map((imageUrl, index) => (
-                          <div key={index} className="relative group">
-                            <img 
-                              src={`${imageUrl}?w=300&h=300&fit=crop`}
-                              alt={`Generated ${index + 1}`}
-                              className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105"
-                              onClick={() => handleImageSelect(imageUrl)}
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all rounded-lg flex items-center justify-center">
-                              <Button 
-                                size="sm" 
-                                className="opacity-0 group-hover:opacity-100 transition-opacity"
-                                onClick={() => handleImageSelect(imageUrl)}
-                              >
-                                Select
-                              </Button>
-                            </div>
-                          </div>
-                        ))}
+        {/* Selected Model Interface */}
+        {selectedModel && (
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-4">
+                <h2 className="text-2xl font-bold">
+                  {aiModels.find(m => m.id === selectedModel)?.name}
+                </h2>
+                <Badge>{aiModels.find(m => m.id === selectedModel)?.category}</Badge>
+              </div>
+              <Button variant="outline" onClick={() => setSelectedModel(null)}>
+                Change Model
+              </Button>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {isImageModel ? <ImageIcon className="w-6 h-6" /> : <Brain className="w-6 h-6" />}
+                  {isVideoModel ? 'AI Video Generator' : 'AI Image Generator'}
+                </CardTitle>
+                <CardDescription>
+                  {isVideoModel ? 'Create videos from your text prompts' : 'Generate images from your imagination'}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="prompt" className="block text-sm font-medium text-gray-700 mb-2">
+                      Enter your prompt
+                    </label>
+                    <Textarea
+                      id="prompt"
+                      placeholder="Describe what you want to create..."
+                      value={prompt}
+                      onChange={(e) => setPrompt(e.target.value)}
+                      className="min-h-[100px] resize-none"
+                      disabled={isGenerating || isGeneratingVideo}
+                    />
+                  </div>
+                  
+                  <Button 
+                    onClick={handleImageGeneration}
+                    disabled={isGenerating || isGeneratingVideo}
+                    className="w-full bg-purple-600 hover:bg-purple-700"
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        Generate Images
+                      </>
+                    )}
+                  </Button>
+
+                  {(isGenerating || (progress > 0 && !isGeneratingVideo)) && (
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>Generating images...</span>
+                        <span>{progress}%</span>
                       </div>
+                      <Progress value={progress} className="w-full" />
                     </div>
                   )}
-                </CardContent>
-              </Card>
-            </TabsContent>
+                </div>
 
-            {/* Video Generator Tab */}
-            <TabsContent value="video-generator">
-              <Card>
-                <CardHeader className="text-center">
-                  <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 flex items-center justify-center gap-3">
-                    <Video className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
-                    AI Video Generator
-                  </CardTitle>
-                  <CardDescription className="text-base sm:text-lg">
-                    Convert your ideas into dynamic videos
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  {/* Step 1: Generate Images */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-sm font-medium">
-                      <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs">1</div>
-                      Generate Images from Text
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="video-prompt" className="block text-sm font-medium text-gray-700 mb-2">
-                        Enter your prompt
-                      </label>
-                      <Textarea
-                        id="video-prompt"
-                        placeholder="Describe what you want to see in your video... e.g., 'A serene ocean wave crashing on a rocky shore at sunset'"
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        className="min-h-[80px] sm:min-h-[100px] resize-none"
-                        disabled={isGenerating || isGeneratingVideo}
-                      />
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                      <Button 
-                        onClick={handleCaptchaVerification}
-                        variant={captchaVerified ? "default" : "outline"}
-                        disabled={isGenerating || isGeneratingVideo}
-                        className={`w-full sm:w-auto ${captchaVerified ? "bg-green-600 hover:bg-green-700" : ""}`}
-                      >
-                        {captchaVerified ? "✓ Verified" : "Verify Captcha"}
-                      </Button>
-                      
-                      <Button 
-                        onClick={handleImageGeneration}
-                        disabled={isGenerating || !captchaVerified || isGeneratingVideo}
-                        className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700"
-                      >
-                        {isGenerating ? (
-                          <>
-                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            Generating...
-                          </>
-                        ) : (
-                          <>
-                            <Sparkles className="w-4 h-4 mr-2" />
-                            Generate Images
-                          </>
-                        )}
-                      </Button>
-                    </div>
-
-                    {(isGenerating || (progress > 0 && !isGeneratingVideo)) && (
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span>Generating images...</span>
-                          <span>{progress}%</span>
-                        </div>
-                        <Progress value={progress} className="w-full" />
-                      </div>
-                    )}
+                {/* Show prompt change option after generation */}
+                {showPromptChange && generatedImages.length > 0 && (
+                  <div className="flex justify-center">
+                    <Button variant="outline" onClick={handlePromptChange}>
+                      Change Prompt
+                    </Button>
                   </div>
+                )}
 
-                  {/* Step 2: Select Image */}
-                  {generatedImages.length > 0 && (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-sm font-medium">
-                        <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs">2</div>
-                        Select an Image
-                      </div>
-                      
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {generatedImages.map((imageUrl, index) => (
-                          <div key={index} className="relative group">
-                            <img 
-                              src={`${imageUrl}?w=300&h=300&fit=crop`}
-                              alt={`Generated ${index + 1}`}
-                              className={`w-full h-48 object-cover rounded-lg shadow-md cursor-pointer transition-all ${
-                                selectedImage === imageUrl 
-                                  ? 'ring-4 ring-purple-500 scale-105' 
-                                  : 'hover:scale-105'
-                              }`}
-                              onClick={() => handleImageSelect(imageUrl)}
-                            />
-                            {selectedImage === imageUrl && (
-                              <div className="absolute top-2 right-2 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
-                                <Check className="w-4 h-4 text-white" />
-                              </div>
-                            )}
-                            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all rounded-lg flex items-center justify-center">
-                              <Button 
-                                size="sm" 
-                                className="opacity-0 group-hover:opacity-100 transition-opacity"
-                                onClick={() => handleImageSelect(imageUrl)}
-                              >
-                                {selectedImage === imageUrl ? 'Selected' : 'Select'}
-                              </Button>
+                {/* Generated Images */}
+                {generatedImages.length > 0 && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold">Generated Images:</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {generatedImages.map((imageUrl, index) => (
+                        <div key={index} className="relative group">
+                          <img 
+                            src={`${imageUrl}?w=300&h=300&fit=crop`}
+                            alt={`Generated ${index + 1}`}
+                            className={`w-full h-48 object-cover rounded-lg shadow-md cursor-pointer transition-all ${
+                              selectedImage === imageUrl 
+                                ? 'ring-4 ring-purple-500 scale-105' 
+                                : 'hover:scale-105'
+                            }`}
+                            onClick={() => handleImageSelect(imageUrl)}
+                          />
+                          {selectedImage === imageUrl && (
+                            <div className="absolute top-2 right-2 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
+                              <Check className="w-4 h-4 text-white" />
                             </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Step 3: Generate Video */}
-                  {selectedImage && (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-sm font-medium">
-                        <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs">3</div>
-                        Create Video
-                      </div>
-                      
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <Button 
-                          onClick={handleVideoGeneration}
-                          disabled={isGeneratingVideo}
-                          className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
-                        >
-                          {isGeneratingVideo ? (
-                            <>
-                              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                              Creating Video...
-                            </>
-                          ) : (
-                            <>
-                              <Play className="w-4 h-4 mr-2" />
-                              Create Video
-                            </>
                           )}
-                        </Button>
-                        
-                        <Button 
-                          onClick={resetVideoGenerator}
-                          variant="outline"
-                          disabled={isGeneratingVideo}
-                          className="w-full sm:w-auto"
-                        >
-                          Start Over
-                        </Button>
-                      </div>
-
-                      {(isGeneratingVideo || (progress > 0 && selectedImage)) && (
-                        <div className="space-y-2">
-                          <div className="flex justify-between text-sm">
-                            <span>Creating video...</span>
-                            <span>{progress}%</span>
-                          </div>
-                          <Progress value={progress} className="w-full" />
                         </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Video Generation for Video Models */}
+                {isVideoModel && selectedImage && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold">Create Video</h3>
+                    <Button 
+                      onClick={handleVideoGeneration}
+                      disabled={isGeneratingVideo}
+                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                    >
+                      {isGeneratingVideo ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Creating Video...
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-4 h-4 mr-2" />
+                          Create Video
+                        </>
                       )}
-                    </div>
-                  )}
+                    </Button>
 
-                  {/* Step 4: Video Result */}
-                  {generatedVideo && (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-sm font-medium">
-                        <div className="w-6 h-6 rounded-full bg-green-600 text-white flex items-center justify-center text-xs">✓</div>
-                        Video Generated Successfully!
+                    {(isGeneratingVideo || (progress > 0 && selectedImage)) && (
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>Creating video...</span>
+                          <span>{progress}%</span>
+                        </div>
+                        <Progress value={progress} className="w-full" />
                       </div>
-                      
-                      <div className="w-full max-w-2xl mx-auto">
-                        <video 
-                          controls 
-                          className="w-full h-auto rounded-lg shadow-lg"
-                          poster={selectedImage}
-                        >
-                          <source src={generatedVideo} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                      
-                      <div className="flex justify-center">
-                        <Button className="bg-green-600 hover:bg-green-700">
-                          <Download className="w-4 h-4 mr-2" />
-                          Download Video
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
+                    )}
 
-        {/* CTA Section */}
-        <div className="mt-16 text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl p-8 sm:p-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Create Amazing Content?</h2>
-          <p className="text-lg sm:text-xl mb-8 opacity-90">
-            Join thousands of creators using our AI tools to bring their ideas to life
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-6 sm:px-8 py-3"
-            onClick={() => {
-              const promptElement = document.getElementById('prompt') || document.getElementById('video-prompt');
-              promptElement?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Start Creating Now
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
+                    {generatedVideo && (
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-semibold text-green-600">Video Generated Successfully!</h4>
+                        <div className="w-full max-w-2xl mx-auto">
+                          <video 
+                            controls 
+                            className="w-full h-auto rounded-lg shadow-lg"
+                            poster={selectedImage}
+                          >
+                            <source src={generatedVideo} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                        <div className="flex justify-center">
+                          <Button className="bg-green-600 hover:bg-green-700">
+                            <Download className="w-4 h-4 mr-2" />
+                            Download Video
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </main>
     </div>
   );
