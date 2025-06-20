@@ -11,23 +11,22 @@ import { Loader2, Sparkles, Image as ImageIcon, Video, Play, Download, Check, Ar
 import { toast } from 'sonner';
 import { useSearchParams } from 'react-router-dom';
 
-const aiModels = [
-  { id: 'gpt-4o', name: 'GPT-4o', description: 'Most advanced reasoning', category: 'OpenAI', icon: Brain },
-  { id: 'claude-3.5-sonnet', name: 'Claude 3.5 Sonnet', description: 'Best for coding & analysis', category: 'Anthropic', icon: Brain },
-  { id: 'gemini-pro', name: 'Gemini Pro', description: 'Google\'s multimodal AI', category: 'Google', icon: Brain },
-  { id: 'llama-3', name: 'Llama 3', description: 'Open source powerhouse', category: 'Meta', icon: Brain },
-  { id: 'claude-3-opus', name: 'Claude 3 Opus', description: 'Creative writing expert', category: 'Anthropic', icon: Brain },
-  { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo', description: 'Fast and efficient', category: 'OpenAI', icon: Zap },
-  { id: 'palm-2', name: 'PaLM 2', description: 'Google\'s foundation model', category: 'Google', icon: Brain },
-  { id: 'claude-3-haiku', name: 'Claude 3 Haiku', description: 'Quick responses', category: 'Anthropic', icon: Zap },
-  { id: 'mistral-large', name: 'Mistral Large', description: 'European AI excellence', category: 'Mistral', icon: Brain },
-  { id: 'cohere-command', name: 'Cohere Command', description: 'Business-focused AI', category: 'Cohere', icon: Cpu },
-  { id: 'ai21-jurassic', name: 'AI21 Jurassic', description: 'Advanced language model', category: 'AI21', icon: Brain },
-  { id: 'falcon-180b', name: 'Falcon 180B', description: 'Open source giant', category: 'TII', icon: Brain },
-  { id: 'vicuna-33b', name: 'Vicuna 33B', description: 'Fine-tuned excellence', category: 'LMSYS', icon: Brain },
-  { id: 'alpaca-7b', name: 'Alpaca 7B', description: 'Lightweight and fast', category: 'Stanford', icon: Zap },
-  { id: 'stable-diffusion', name: 'Stable Diffusion', description: 'Image generation', category: 'Stability AI', icon: ImageIcon },
-  { id: 'dalle-3', name: 'DALL-E 3', description: 'Advanced image creation', category: 'OpenAI', icon: ImageIcon }
+const aiTools = [
+  { id: 'ai-video-generator', name: 'AI Video Generator', description: 'Create videos from text prompts', category: 'Video', icon: Video },
+  { id: 'ai-video-editor', name: 'AI Video Editor', description: 'Edit videos with AI assistance', category: 'Video', icon: Video },
+  { id: 'ai-animated-video-maker', name: 'AI Animated Video Maker', description: 'Create animated videos', category: 'Video', icon: Video },
+  { id: 'ai-text-to-video-generator', name: 'AI Text To Video Generator', description: 'Convert text to video', category: 'Video', icon: Video },
+  { id: 'ai-avatar-video-creator', name: 'AI Avatar Video Creator', description: 'Create avatar-based videos', category: 'Video', icon: Video },
+  { id: 'ai-face-swap-video-tool', name: 'AI Face Swap Video Tool', description: 'Swap faces in videos', category: 'Video', icon: Video },
+  { id: 'ai-short-video-creator', name: 'AI Short Video Creator', description: 'Create short-form videos', category: 'Video', icon: Video },
+  { id: 'ai-image-generator', name: 'AI Image Generator', description: 'Generate images from text', category: 'Image', icon: ImageIcon },
+  { id: 'ai-photo-editor', name: 'AI Photo Editor', description: 'Edit photos with AI', category: 'Image', icon: ImageIcon },
+  { id: 'ai-art-generator', name: 'AI Art Generator', description: 'Create artistic images', category: 'Image', icon: ImageIcon },
+  { id: 'ai-background-remover', name: 'AI Background Remover', description: 'Remove backgrounds from images', category: 'Image', icon: ImageIcon },
+  { id: 'ai-ad-generator', name: 'AI Ad Generator', description: 'Create advertisement content', category: 'Marketing', icon: Sparkles },
+  { id: 'ai-social-media-post-creator', name: 'AI Social Media Post Creator', description: 'Create social media content', category: 'Marketing', icon: Sparkles },
+  { id: 'ai-thumbnail-generator', name: 'AI Thumbnail Generator', description: 'Generate video thumbnails', category: 'Marketing', icon: ImageIcon },
+  { id: 'ai-presentation-maker', name: 'AI Presentation Maker', description: 'Create presentations with AI', category: 'Business', icon: Brain }
 ];
 
 const placeholderImages = [
@@ -43,7 +42,7 @@ const placeholderImages = [
 
 export default function AIPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedModel, setSelectedModel] = useState<string | null>(null);
+  const [selectedTool, setSelectedTool] = useState<string | null>(null);
   const [prompt, setPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedImages, setGeneratedImages] = useState<string[]>([]);
@@ -56,23 +55,25 @@ export default function AIPage() {
   useEffect(() => {
     const feature = searchParams.get('feature');
     if (feature === 'image-generator') {
-      setSelectedModel('stable-diffusion');
+      setSelectedTool('ai-image-generator');
     } else if (feature === 'video-generator') {
-      setSelectedModel('dalle-3');
+      setSelectedTool('ai-video-generator');
     }
   }, [searchParams]);
 
-  const handleModelSelect = (modelId: string) => {
-    setSelectedModel(modelId);
+  const handleToolSelect = (toolId: string) => {
+    setSelectedTool(toolId);
     setGeneratedImages([]);
     setSelectedImage(null);
     setGeneratedVideo(null);
     setPrompt('');
     setShowPromptChange(false);
 
-    // Update URL based on model type
-    if (modelId === 'stable-diffusion' || modelId === 'dalle-3') {
-      setSearchParams({ feature: modelId === 'dalle-3' ? 'video-generator' : 'image-generator' });
+    // Update URL based on tool type
+    if (toolId === 'ai-image-generator') {
+      setSearchParams({ feature: 'image-generator' });
+    } else if (toolId === 'ai-video-generator') {
+      setSearchParams({ feature: 'video-generator' });
     }
   };
 
@@ -158,8 +159,8 @@ export default function AIPage() {
     setShowPromptChange(false);
   };
 
-  const isImageModel = selectedModel === 'stable-diffusion' || selectedModel === 'dalle-3';
-  const isVideoModel = selectedModel === 'dalle-3';
+  const isImageTool = selectedTool === 'ai-image-generator' || selectedTool === 'ai-art-generator' || selectedTool === 'ai-photo-editor';
+  const isVideoTool = selectedTool === 'ai-video-generator' || selectedTool === 'ai-text-to-video-generator';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -177,22 +178,22 @@ export default function AIPage() {
             AI Solutions by <span className="text-purple-600">Flonnect</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Choose from our curated collection of AI models to transform your ideas
+            Choose from our curated collection of AI tools to transform your ideas
           </p>
         </div>
 
-        {/* AI Models Grid */}
-        {!selectedModel && (
+        {/* AI Tools Grid */}
+        {!selectedTool && (
           <div className="max-w-6xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Choose Your AI Model</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Choose Your AI Tool</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {aiModels.map((model) => {
-                const IconComponent = model.icon;
+              {aiTools.map((tool) => {
+                const IconComponent = tool.icon;
                 return (
                   <Card 
-                    key={model.id} 
+                    key={tool.id} 
                     className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
-                    onClick={() => handleModelSelect(model.id)}
+                    onClick={() => handleToolSelect(tool.id)}
                   >
                     <CardHeader className="text-center pb-4">
                       <div className="flex justify-center mb-3">
@@ -200,11 +201,11 @@ export default function AIPage() {
                           <IconComponent className="w-6 h-6 text-white" />
                         </div>
                       </div>
-                      <CardTitle className="text-lg font-semibold">{model.name}</CardTitle>
-                      <Badge variant="secondary" className="w-fit mx-auto">{model.category}</Badge>
+                      <CardTitle className="text-lg font-semibold">{tool.name}</CardTitle>
+                      <Badge variant="secondary" className="w-fit mx-auto">{tool.category}</Badge>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      <p className="text-sm text-gray-600 text-center">{model.description}</p>
+                      <p className="text-sm text-gray-600 text-center">{tool.description}</p>
                     </CardContent>
                   </Card>
                 );
@@ -213,29 +214,29 @@ export default function AIPage() {
           </div>
         )}
 
-        {/* Selected Model Interface */}
-        {selectedModel && (
+        {/* Selected Tool Interface */}
+        {selectedTool && (
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-4">
                 <h2 className="text-2xl font-bold">
-                  {aiModels.find(m => m.id === selectedModel)?.name}
+                  {aiTools.find(t => t.id === selectedTool)?.name}
                 </h2>
-                <Badge>{aiModels.find(m => m.id === selectedModel)?.category}</Badge>
+                <Badge>{aiTools.find(t => t.id === selectedTool)?.category}</Badge>
               </div>
-              <Button variant="outline" onClick={() => setSelectedModel(null)}>
-                Change Model
+              <Button variant="outline" onClick={() => setSelectedTool(null)}>
+                Change Tool
               </Button>
             </div>
 
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  {isImageModel ? <ImageIcon className="w-6 h-6" /> : <Brain className="w-6 h-6" />}
-                  {isVideoModel ? 'AI Video Generator' : 'AI Image Generator'}
+                  {isImageTool ? <ImageIcon className="w-6 h-6" /> : <Video className="w-6 h-6" />}
+                  {aiTools.find(t => t.id === selectedTool)?.name}
                 </CardTitle>
                 <CardDescription>
-                  {isVideoModel ? 'Create videos from your text prompts' : 'Generate images from your imagination'}
+                  {aiTools.find(t => t.id === selectedTool)?.description}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -267,7 +268,7 @@ export default function AIPage() {
                     ) : (
                       <>
                         <Sparkles className="w-4 h-4 mr-2" />
-                        Generate Images
+                        Generate
                       </>
                     )}
                   </Button>
@@ -275,7 +276,7 @@ export default function AIPage() {
                   {(isGenerating || (progress > 0 && !isGeneratingVideo)) && (
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span>Generating images...</span>
+                        <span>Generating...</span>
                         <span>{progress}%</span>
                       </div>
                       <Progress value={progress} className="w-full" />
@@ -295,7 +296,7 @@ export default function AIPage() {
                 {/* Generated Images */}
                 {generatedImages.length > 0 && (
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Generated Images:</h3>
+                    <h3 className="text-lg font-semibold">Generated Results:</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                       {generatedImages.map((imageUrl, index) => (
                         <div key={index} className="relative group">
@@ -320,8 +321,8 @@ export default function AIPage() {
                   </div>
                 )}
 
-                {/* Video Generation for Video Models */}
-                {isVideoModel && selectedImage && (
+                {/* Video Generation for Video Tools */}
+                {isVideoTool && selectedImage && (
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Create Video</h3>
                     <Button 
