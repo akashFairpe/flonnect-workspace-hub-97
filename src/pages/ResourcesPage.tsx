@@ -4,7 +4,7 @@ import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Download, Chrome, Monitor, Apple, Windows, Play, FileArchive } from 'lucide-react';
+import { Download, Chrome, Monitor, Apple, Laptop, Play, FileArchive } from 'lucide-react';
 
 const downloadItems = [
   {
@@ -56,7 +56,7 @@ const downloadItems = [
     id: 'windows-app',
     title: 'Windows Application',
     description: 'Powerful Windows desktop application with enterprise-grade features and performance',
-    icon: Windows,
+    icon: Laptop,
     platform: 'Windows',
     version: 'v3.2.1',
     size: '52.3 MB',
