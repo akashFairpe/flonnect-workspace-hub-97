@@ -6,116 +6,77 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Download, Chrome, Monitor, Apple, Laptop, Play, FileArchive } from 'lucide-react';
 
-const screenRecordingExtensions = [
+const screenRecordingOptions = [
   {
-    id: 'chrome-extension',
-    title: 'Chrome Extension',
-    description: 'Record your browser tabs, entire screen, or application windows directly from Chrome',
-    icon: Chrome,
     platform: 'Chrome',
+    icon: Chrome,
     version: 'v2.1.0',
-    size: '2.3 MB',
-    downloadUrl: '#',
-    features: ['Tab Recording', 'Screen Capture', 'Audio Recording', 'Easy Sharing']
+    size: '2.3 MB'
   },
   {
-    id: 'edge-addon',
-    title: 'Microsoft Edge Add-on',
-    description: 'Full-featured screen recorder for Microsoft Edge browser with advanced features',
-    icon: Monitor,
     platform: 'Edge',
+    icon: Monitor,
     version: 'v2.1.0',
-    size: '2.4 MB',
-    downloadUrl: '#',
-    features: ['Screen Recording', 'Webcam Integration', 'Voice Recording', 'Cloud Sync']
+    size: '2.4 MB'
   }
 ];
 
-const stepsRecorderExtensions = [
+const stepsRecorderOptions = [
   {
-    id: 'steps-recorder-chrome',
-    title: 'Steps Recorder - Chrome',
-    description: 'Interactive demo creator for Chrome that captures user actions and creates step-by-step tutorials',
-    icon: Chrome,
     platform: 'Chrome',
+    icon: Chrome,
     version: 'v1.5.2',
-    size: '1.8 MB',
-    downloadUrl: '#',
-    features: ['Action Capture', 'Auto Screenshots', 'Interactive Demos', 'Tutorial Creation']
+    size: '1.8 MB'
   },
   {
-    id: 'steps-recorder-edge',
-    title: 'Steps Recorder - Edge',
-    description: 'Interactive demo creator for Edge that captures user actions and creates step-by-step tutorials',
-    icon: Monitor,
     platform: 'Edge',
+    icon: Monitor,
     version: 'v1.5.2',
-    size: '1.9 MB',
-    downloadUrl: '#',
-    features: ['Action Capture', 'Auto Screenshots', 'Interactive Demos', 'Tutorial Creation']
+    size: '1.9 MB'
   }
 ];
 
-const desktopApplications = [
+const desktopOptions = [
   {
-    id: 'mac-app',
-    title: 'macOS Application',
-    description: 'Native macOS app with full system integration and advanced recording capabilities',
-    icon: Apple,
     platform: 'macOS',
+    icon: Apple,
     version: 'v3.2.1',
     size: '45.7 MB',
-    downloadUrl: '#',
-    features: ['System Audio', 'Retina Support', 'Touch Bar', 'Menu Bar Integration'],
     requirements: 'macOS 10.14 or later'
   },
   {
-    id: 'windows-app',
-    title: 'Windows Application',
-    description: 'Powerful Windows desktop application with enterprise-grade features and performance',
-    icon: Laptop,
     platform: 'Windows',
+    icon: Laptop,
     version: 'v3.2.1',
     size: '52.3 MB',
-    downloadUrl: '#',
-    features: ['DirectX Support', 'Hardware Acceleration', 'Multi-Monitor', 'Scheduled Recording'],
     requirements: 'Windows 10 or later'
   }
 ];
 
-const enterpriseSolutions = [
+const enterpriseOptions = [
   {
-    id: 'enterprise-chrome',
-    title: 'Flonnect Enterprise - Chrome',
-    description: 'Enterprise-grade Chrome extension with advanced security, compliance, and team management features',
+    platform: 'Chrome',
     icon: Chrome,
-    platform: 'Chrome Enterprise',
     version: 'v2.5.0',
-    size: '3.2 MB',
-    downloadUrl: '#',
-    features: ['SSO Integration', 'Admin Dashboard', 'Compliance Reports', 'Team Analytics']
+    size: '3.2 MB'
   },
   {
-    id: 'enterprise-edge',
-    title: 'Flonnect Enterprise - Edge',
-    description: 'Enterprise-grade Edge addon with advanced security, compliance, and team management features',
+    platform: 'Edge',
     icon: Monitor,
-    platform: 'Edge Enterprise',
     version: 'v2.5.0',
-    size: '3.3 MB',
-    downloadUrl: '#',
-    features: ['SSO Integration', 'Admin Dashboard', 'Compliance Reports', 'Team Analytics']
+    size: '3.3 MB'
   },
   {
-    id: 'enterprise-desktop',
-    title: 'Flonnect Enterprise Desktop',
-    description: 'Comprehensive enterprise desktop solution for large organizations with centralized management',
-    icon: FileArchive,
-    platform: 'Windows/macOS',
+    platform: 'macOS',
+    icon: Apple,
     version: 'v4.0.1',
-    size: '125 MB',
-    downloadUrl: '#',
-    features: ['Centralized Management', 'Policy Enforcement', 'Audit Trails', 'Custom Branding']
+    size: '62 MB'
+  },
+  {
+    platform: 'Windows',
+    icon: Laptop,
+    version: 'v4.0.1',
+    size: '68 MB'
   }
 ];
 
@@ -134,76 +95,9 @@ export default function ResourcesPage() {
     }
   }, []);
 
-  const handleDownload = (item: any) => {
-    console.log(`Downloading ${item.title}`);
+  const handleDownload = (platform: string, type: string) => {
+    console.log(`Downloading ${type} for ${platform}`);
   };
-
-  const renderDownloadSection = (title: string, description: string, items: any[]) => (
-    <div className="mb-12">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{title}</h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">{description}</p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {items.map((item) => {
-          const IconComponent = item.icon;
-          return (
-            <Card key={item.id} className="hover:shadow-lg transition-all duration-200 hover:scale-105">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-right">
-                    <Badge variant="secondary" className="text-xs">{item.platform}</Badge>
-                    <div className="text-xs text-gray-500 mt-1">{item.version}</div>
-                  </div>
-                </div>
-                <CardTitle className="text-xl font-semibold mb-2">{item.title}</CardTitle>
-                <CardDescription className="text-sm text-gray-600 mb-4">
-                  {item.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium text-sm mb-2">Key Features:</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {item.features.map((feature: string, index: number) => (
-                        <Badge key={index} variant="outline" className="text-xs">
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {item.requirements && (
-                    <div className="text-xs text-gray-600">
-                      <strong>Requirements:</strong> {item.requirements}
-                    </div>
-                  )}
-                  
-                  <div className="flex justify-between items-center text-sm text-gray-600">
-                    <span>Size: {item.size}</span>
-                    <span>Free Download</span>
-                  </div>
-                  
-                  <Button 
-                    className="w-full bg-purple-600 hover:bg-purple-700"
-                    onClick={() => handleDownload(item)}
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download {item.platform}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
@@ -225,31 +119,187 @@ export default function ResourcesPage() {
           </p>
         </div>
 
-        {/* Downloads Sections */}
-        <div className="max-w-7xl mx-auto">
-          {renderDownloadSection(
-            "Screen Recording Extensions",
-            "Record your browser tabs, entire screen, or application windows with our powerful browser extensions.",
-            screenRecordingExtensions
-          )}
+        {/* Main Download Cards */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            
+            {/* Screen Recording Card */}
+            <Card className="hover:shadow-xl transition-all duration-300">
+              <CardHeader className="text-center pb-4">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
+                    <Play className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-2xl font-bold mb-2">Screen Recording</CardTitle>
+                <CardDescription className="text-gray-600">
+                  Record your browser tabs, entire screen, or application windows with our powerful extensions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {screenRecordingOptions.map((option) => {
+                    const IconComponent = option.icon;
+                    return (
+                      <div key={option.platform} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <IconComponent className="w-6 h-6 text-gray-700" />
+                          <div>
+                            <div className="font-medium">{option.platform} Extension</div>
+                            <div className="text-sm text-gray-500">{option.version} • {option.size}</div>
+                          </div>
+                        </div>
+                        <Button 
+                          size="sm" 
+                          className="bg-blue-600 hover:bg-blue-700"
+                          onClick={() => handleDownload(option.platform, 'Screen Recorder')}
+                        >
+                          <Download className="w-4 h-4 mr-1" />
+                          Download
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
 
-          {renderDownloadSection(
-            "Steps Recorder Extensions", 
-            "Create interactive demos and step-by-step tutorials with our specialized recording extensions.",
-            stepsRecorderExtensions
-          )}
+            {/* Steps Recorder Card */}
+            <Card className="hover:shadow-xl transition-all duration-300">
+              <CardHeader className="text-center pb-4">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-full">
+                    <FileArchive className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-2xl font-bold mb-2">Steps Recorder</CardTitle>
+                <CardDescription className="text-gray-600">
+                  Create interactive demos and step-by-step tutorials with our specialized recording extensions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {stepsRecorderOptions.map((option) => {
+                    const IconComponent = option.icon;
+                    return (
+                      <div key={option.platform} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <IconComponent className="w-6 h-6 text-gray-700" />
+                          <div>
+                            <div className="font-medium">{option.platform} Extension</div>
+                            <div className="text-sm text-gray-500">{option.version} • {option.size}</div>
+                          </div>
+                        </div>
+                        <Button 
+                          size="sm" 
+                          className="bg-green-600 hover:bg-green-700"
+                          onClick={() => handleDownload(option.platform, 'Steps Recorder')}
+                        >
+                          <Download className="w-4 h-4 mr-1" />
+                          Download
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
 
-          {renderDownloadSection(
-            "Desktop Applications",
-            "Full-featured desktop applications with advanced recording capabilities for Windows and macOS.",
-            desktopApplications
-          )}
+            {/* Desktop Applications Card */}
+            <Card className="hover:shadow-xl transition-all duration-300">
+              <CardHeader className="text-center pb-4">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-full">
+                    <Laptop className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-2xl font-bold mb-2">Desktop Applications</CardTitle>
+                <CardDescription className="text-gray-600">
+                  Full-featured desktop applications with advanced recording capabilities for Windows and macOS
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {desktopOptions.map((option) => {
+                    const IconComponent = option.icon;
+                    return (
+                      <div key={option.platform} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-3">
+                            <IconComponent className="w-6 h-6 text-gray-700" />
+                            <div>
+                              <div className="font-medium">{option.platform} App</div>
+                              <div className="text-sm text-gray-500">{option.version} • {option.size}</div>
+                            </div>
+                          </div>
+                          <Button 
+                            size="sm" 
+                            className="bg-orange-600 hover:bg-orange-700"
+                            onClick={() => handleDownload(option.platform, 'Desktop App')}
+                          >
+                            <Download className="w-4 h-4 mr-1" />
+                            Download
+                          </Button>
+                        </div>
+                        {option.requirements && (
+                          <div className="text-xs text-gray-600 ml-9">
+                            <strong>Requirements:</strong> {option.requirements}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
 
-          {renderDownloadSection(
-            "Enterprise Solutions",
-            "Professional-grade solutions for businesses with advanced security, compliance, and team management features.",
-            enterpriseSolutions
-          )}
+            {/* Enterprise Solutions Card */}
+            <Card className="hover:shadow-xl transition-all duration-300 relative">
+              <CardHeader className="text-center pb-4">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full">
+                    <FileArchive className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-2xl font-bold mb-2">Enterprise Solutions</CardTitle>
+                <CardDescription className="text-gray-600">
+                  Professional-grade solutions for businesses with advanced security, compliance, and team management
+                </CardDescription>
+                <div className="absolute top-4 right-4">
+                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 font-semibold">
+                    Coming Soon
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {enterpriseOptions.map((option) => {
+                    const IconComponent = option.icon;
+                    return (
+                      <div key={option.platform} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg opacity-75">
+                        <div className="flex items-center gap-3">
+                          <IconComponent className="w-6 h-6 text-gray-700" />
+                          <div>
+                            <div className="font-medium">{option.platform} Enterprise</div>
+                            <div className="text-sm text-gray-500">{option.version} • {option.size}</div>
+                          </div>
+                        </div>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          disabled
+                          className="cursor-not-allowed"
+                        >
+                          Coming Soon
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+
+          </div>
         </div>
 
         {/* Additional Resources */}
