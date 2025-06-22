@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   NavigationMenu,
@@ -135,35 +134,33 @@ export function FeaturesNavigation() {
           <NavigationMenuTrigger className="text-xs md:text-sm font-medium">
             Features
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="min-w-[800px] w-screen max-w-6xl bg-white border border-gray-200 shadow-lg z-50">
-            <div className="p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {featuresItems.map((item) => (
-                  <Card 
-                    key={item.title}
-                    className="cursor-pointer hover:shadow-md transition-all duration-200 hover:bg-gray-50 border-gray-200 group min-w-0"
-                    onClick={() => handleFeatureClick(item.href)}
-                  >
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-3">
-                        <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white group-hover:scale-110 transition-transform flex-shrink-0">
-                          <item.icon className="w-4 h-4" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors truncate">
-                            {item.title}
-                          </CardTitle>
-                        </div>
+          <NavigationMenuContent className="w-[800px] bg-white border border-gray-200 shadow-lg rounded-md p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {featuresItems.map((item) => (
+                <Card 
+                  key={item.title}
+                  className="cursor-pointer hover:shadow-md transition-all duration-200 hover:bg-gray-50 border-gray-200 group min-w-0"
+                  onClick={() => handleFeatureClick(item.href)}
+                >
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center gap-3">
+                      <div className="p-1.5 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white group-hover:scale-110 transition-transform flex-shrink-0">
+                        <item.icon className="w-4 h-4" />
                       </div>
-                    </CardHeader>
-                    <CardContent className="pt-0 pb-3">
-                      <p className="text-xs text-gray-600 line-clamp-2">
-                        {item.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="text-sm font-medium group-hover:text-primary transition-colors truncate">
+                          {item.title}
+                        </CardTitle>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0 pb-3">
+                    <p className="text-xs text-gray-600 line-clamp-2">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
