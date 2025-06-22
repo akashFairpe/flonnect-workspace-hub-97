@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +10,7 @@ import HowToSharePage from "./pages/HowToSharePage";
 import ScreenRecordingPage from "./pages/ScreenRecordingPage";
 import BugCapturePage from "./pages/BugCapturePage";
 import TeamsMeetingRecordingPage from "./pages/TeamsMeetingRecordingPage";
+import HowToRecordBugsPage from "./pages/HowToRecordBugsPage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +30,7 @@ const App = () => (
           <Route path="/features/screen-recording" element={<ScreenRecordingPage />} />
           <Route path="/features/bug-capture" element={<BugCapturePage />} />
           <Route path="/features/teams-meeting-recording" element={<TeamsMeetingRecordingPage />} />
+          <Route path="/resources/how-to-record-bugs" element={<HowToRecordBugsPage />} />
           <Route path="*" element={<AIPage />} />
         </Routes>
       </BrowserRouter>

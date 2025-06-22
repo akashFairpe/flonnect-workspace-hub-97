@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Sparkles, Image as ImageIcon, Video } from 'lucide-react';
 import { FeaturesNavigation } from './FeaturesNavigation';
+import { ResourcesNavigation } from './ResourcesNavigation';
 
 export function Header() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ export function Header() {
             
             <div className="flex items-center gap-2 sm:gap-4">
               <FeaturesNavigation />
+              <ResourcesNavigation />
               <Button 
                 variant="ghost" 
                 size="sm"
