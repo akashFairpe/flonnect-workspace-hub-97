@@ -8,129 +8,141 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 import { 
   Video, 
-  Edit, 
-  Wand2, 
-  FileText,
-  User,
-  Camera,
-  Image,
-  Palette,
-  Share2,
+  Bug,
+  Users,
   Presentation,
-  Instagram,
-  Megaphone
+  FileText,
+  Wand2,
+  BookOpen,
+  Youtube,
+  Share2,
+  Upload
 } from 'lucide-react';
 
 const featuresItems = [
   {
-    title: 'AI Video Generator',
-    description: 'Generate videos with AI',
+    title: 'Screen Recording',
+    description: 'Record your screen with professional quality',
     icon: Video,
-    href: '/ai-video-generator'
+    href: '/features/screen-recording'
   },
   {
-    title: 'AI Video Editor',
-    description: 'Edit videos using AI',
-    icon: Edit,
-    href: '/ai-video-editor'
+    title: 'Bug Capture',
+    description: 'Capture and report bugs efficiently',
+    icon: Bug,
+    href: '/features/bug-capture'
   },
   {
-    title: 'AI Animated Video Maker',
-    description: 'Create animated videos',
-    icon: Wand2,
-    href: '/ai-animated-video-maker'
+    title: 'Teams Meeting Recording',
+    description: 'Record Microsoft Teams meetings',
+    icon: Users,
+    href: '/features/teams-meeting-recording'
   },
   {
-    title: 'AI Text To Video Generator',
-    description: 'Convert text to video',
-    icon: FileText,
-    href: '/ai-text-to-video'
-  },
-  {
-    title: 'AI Avatar Video Creator',
-    description: 'Create avatar videos',
-    icon: User,
-    href: '/ai-avatar-video-creator'
-  },
-  {
-    title: 'AI Face Swap Video Tool',
-    description: 'Swap faces in videos',
-    icon: Camera,
-    href: '/ai-face-swap-video'
-  },
-  {
-    title: 'AI Short Video Creator',
-    description: 'Create short form videos',
-    icon: Video,
-    href: '/ai-short-video-creator'
-  },
-  {
-    title: 'AI Image Generator',
-    description: 'Generate images with AI',
-    icon: Image,
-    href: '/ai-image-generator'
-  },
-  {
-    title: 'AI Photo Editor',
-    description: 'Edit photos using AI',
-    icon: Palette,
-    href: '/ai-photo-editor'
-  },
-  {
-    title: 'AI Art Generator',
-    description: 'Generate artistic content',
-    icon: Palette,
-    href: '/ai-art-generator'
-  },
-  {
-    title: 'AI Background Remover',
-    description: 'Remove backgrounds automatically',
-    icon: Image,
-    href: '/ai-background-remover'
-  },
-  {
-    title: 'AI Ad Generator',
-    description: 'Create ads automatically',
-    icon: Megaphone,
-    href: '/ai-ad-generator'
-  },
-  {
-    title: 'AI Social Media Post Creator',
-    description: 'Create social media content',
-    icon: Share2,
-    href: '/ai-social-media-post-creator'
-  },
-  {
-    title: 'AI Thumbnail Generator',
-    description: 'Generate video thumbnails',
-    icon: Image,
-    href: '/ai-thumbnail-generator'
-  },
-  {
-    title: 'AI Presentation Maker',
-    description: 'Create presentations with AI',
+    title: 'Video Presentation',
+    description: 'Create engaging video presentations',
     icon: Presentation,
-    href: '/ai-presentation-maker'
+    href: '/features/video-presentation'
+  },
+  {
+    title: 'Transcription',
+    description: 'Convert speech to text automatically',
+    icon: FileText,
+    href: '/features/transcription'
+  },
+  {
+    title: 'AI Video Generation',
+    description: 'Generate videos using artificial intelligence',
+    icon: Wand2,
+    href: '/features/ai-video-generation'
+  },
+  {
+    title: 'Step by Step Guide Creation',
+    description: 'Create interactive tutorials and guides',
+    icon: BookOpen,
+    href: '/features/step-by-step-guide'
+  },
+  {
+    title: 'Google Meet Recording',
+    description: 'Record Google Meet sessions',
+    icon: Video,
+    href: '/features/google-meet-recording'
+  },
+  {
+    title: 'Zoom Meeting Recording',
+    description: 'Record Zoom meetings seamlessly',
+    icon: Video,
+    href: '/features/zoom-meeting-recording'
+  },
+  {
+    title: 'Embedding a Video',
+    description: 'Embed videos in websites and platforms',
+    icon: Share2,
+    href: '/features/embedding-video'
+  },
+  {
+    title: 'Video Sharing',
+    description: 'Share videos across multiple platforms',
+    icon: Share2,
+    href: '/features/video-sharing'
+  },
+  {
+    title: 'Submit Bug to Jira',
+    description: 'Integrate bug reports with Jira',
+    icon: Bug,
+    href: '/features/submit-bug-jira'
+  },
+  {
+    title: 'GitHub PR',
+    description: 'Create GitHub pull requests with videos',
+    icon: FileText,
+    href: '/features/github-pr'
+  },
+  {
+    title: 'Video Engagement Metrics',
+    description: 'Track video performance and analytics',
+    icon: FileText,
+    href: '/features/video-engagement-metrics'
+  },
+  {
+    title: 'React and Comment on Shared Video',
+    description: 'Interactive feedback on shared videos',
+    icon: Share2,
+    href: '/features/react-comment-video'
+  },
+  {
+    title: 'How to Upload Video to YouTube',
+    description: 'Guide for YouTube video uploads',
+    icon: Youtube,
+    href: '/features/upload-video-youtube'
   }
 ];
 
 export function FeaturesNavigation() {
+  const navigate = useNavigate();
+
+  const handleFeatureClick = (href: string) => {
+    navigate(href);
+  };
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-base font-medium">
+          <NavigationMenuTrigger className="text-xs md:text-sm font-medium">
             Features
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="w-screen max-w-4xl">
+          <NavigationMenuContent className="w-screen max-w-5xl">
             <div className="p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {featuresItems.map((item) => (
                   <Card 
                     key={item.title}
                     className="cursor-pointer hover:shadow-md transition-all duration-200 hover:bg-gray-50 border-gray-200 group"
+                    onClick={() => handleFeatureClick(item.href)}
                   >
                     <CardHeader className="pb-2">
                       <div className="flex items-center gap-3">
