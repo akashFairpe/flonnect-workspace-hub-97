@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -22,6 +21,18 @@ import VideoPresentationPage from "./pages/VideoPresentationPage";
 import CameraRecordingPage from "./pages/CameraRecordingPage";
 import AnnotationRecordingPage from "./pages/AnnotationRecordingPage";
 import StepRecorderPage from "./pages/StepRecorderPage";
+import HtmlInteractiveDemoRecordingPage from "./pages/HtmlInteractiveDemoRecordingPage";
+import SystemAudioRecordingPage from "./pages/SystemAudioRecordingPage";
+import MicRecordingPage from "./pages/MicRecordingPage";
+import MovableCameraPage from "./pages/MovableCameraPage";
+import OneClickSharePage from "./pages/OneClickSharePage";
+import VideoCommentsPage from "./pages/VideoCommentsPage";
+import YouTubeUploadPage from "./pages/YouTubeUploadPage";
+import EmailVideoPage from "./pages/EmailVideoPage";
+import ScreenshotBugReportingPage from "./pages/ScreenshotBugReportingPage";
+import VideoBugRecordingPage from "./pages/VideoBugRecordingPage";
+import PushToJiraPage from "./pages/PushToJiraPage";
+import BitbucketGitHubPRPage from "./pages/BitbucketGitHubPRPage";
 
 const queryClient = new QueryClient();
 
@@ -58,9 +69,23 @@ const App = () => (
           {/* Specialized Recording & Enhancement */}
           <Route path="/features/annotation-recording" element={<AnnotationRecordingPage />} />
           <Route path="/features/step-recorder" element={<StepRecorderPage />} />
+          <Route path="/features/html-demo-recording" element={<HtmlInteractiveDemoRecordingPage />} />
+          <Route path="/features/system-audio-recording" element={<SystemAudioRecordingPage />} />
+          <Route path="/features/mic-recording" element={<MicRecordingPage />} />
+          <Route path="/features/movable-camera" element={<MovableCameraPage />} />
+          
+          {/* Sharing & Integration */}
+          <Route path="/features/one-click-share" element={<OneClickSharePage />} />
+          <Route path="/features/video-comments" element={<VideoCommentsPage />} />
+          <Route path="/features/youtube-upload" element={<YouTubeUploadPage />} />
+          <Route path="/features/email-video" element={<EmailVideoPage />} />
           
           {/* Bug Reporting & Development Workflow */}
+          <Route path="/features/screenshot-bug-reporting" element={<ScreenshotBugReportingPage />} />
+          <Route path="/features/video-bug-recording" element={<VideoBugRecordingPage />} />
+          <Route path="/features/push-to-jira" element={<PushToJiraPage />} />
           <Route path="/features/bug-capture" element={<BugCapturePage />} />
+          <Route path="/features/bitbucket-github-pr" element={<BitbucketGitHubPRPage />} />
           
           <Route path="/resources/how-to-record-bugs" element={<HowToRecordBugsPage />} />
           <Route path="*" element={<AIPage />} />

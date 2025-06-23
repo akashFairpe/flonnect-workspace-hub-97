@@ -63,7 +63,8 @@ const featureCategories = [
       { name: 'Screenshot Bug Reporting', path: '/features/screenshot-bug-reporting' },
       { name: 'Video Bug Recording', path: '/features/video-bug-recording' },
       { name: 'Push to Jira', path: '/features/push-to-jira' },
-      { name: 'Bug Capture', path: '/features/bug-capture' }
+      { name: 'Bug Capture', path: '/features/bug-capture' },
+      { name: 'Add Video in Bitbucket/GitHub PR', path: '/features/bitbucket-github-pr' }
     ]
   }
 ];
