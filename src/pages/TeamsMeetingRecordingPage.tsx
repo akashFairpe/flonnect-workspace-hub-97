@@ -47,6 +47,29 @@ const benefits = [
   'Advanced analytics and usage reports'
 ];
 
+const faqs = [
+  {
+    question: 'How does Flonnect integrate with Microsoft Teams for recording?',
+    answer: 'Flonnect seamlessly integrates via our desktop application, allowing you to initiate recordings of any Teams meeting you are part of.'
+  },
+  {
+    question: 'Is it possible to record a private chat call in Microsoft Teams?',
+    answer: 'Flonnect is designed to record scheduled meetings and group calls within Teams. For private chat calls, please refer to our dedicated camera recording feature if you need to capture direct interactions.'
+  },
+  {
+    question: 'What is the maximum duration for a Teams meeting recording?',
+    answer: 'Flonnect supports extended recording durations, limited only by your storage plan. Check your subscription details for specifics.'
+  },
+  {
+    question: 'Can I edit my Teams meeting recordings after they are saved?',
+    answer: 'Yes, Flonnect provides basic editing tools to trim, cut, and enhance your recordings directly within the platform.'
+  },
+  {
+    question: 'Does Flonnect ensure data privacy for Teams recordings?',
+    answer: 'Absolutely. Flonnect adheres to strict data privacy protocols, ensuring your Teams recordings are confidential and compliant with relevant regulations.'
+  }
+];
+
 export default function TeamsMeetingRecordingPage() {
   return (
     <FeaturePageTemplate
@@ -55,6 +78,7 @@ export default function TeamsMeetingRecordingPage() {
       heroIcon={Users}
       features={features}
       benefits={benefits}
+      faqs={faqs}
       ctaText="Start Recording Teams"
       seoKeywords="Teams meeting recording, Microsoft Teams recorder, meeting transcription, video conferencing, remote collaboration, meeting notes, Teams integration"
       metaDescription="Professional Microsoft Teams meeting recording solution with automatic transcription, secure storage, and seamless sharing. Perfect for enterprise compliance and collaboration."

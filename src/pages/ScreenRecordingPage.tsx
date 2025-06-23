@@ -47,6 +47,29 @@ const benefits = [
   'Export to multiple formats (MP4, AVI, MOV, etc.)'
 ];
 
+const faqs = [
+  {
+    question: 'What is the maximum resolution for screen recordings?',
+    answer: 'Flonnect supports full HD (1080p) screen recording, ensuring crisp and clear video quality.'
+  },
+  {
+    question: 'Can I record only a specific part of my screen?',
+    answer: 'Yes, Flonnect allows you to select a specific window, application, or a custom region of your screen to record.'
+  },
+  {
+    question: 'Does screen recording capture system audio and microphone audio simultaneously?',
+    answer: 'Yes, you have the option to record both internal system audio and your microphone audio at the same time, or individually.'
+  },
+  {
+    question: 'Is there a time limit for screen recordings?',
+    answer: 'The duration of your screen recordings is limited by your Flonnect plan\'s storage capacity. Check your plan details for specific limits.'
+  },
+  {
+    question: 'Can I edit screen recordings after capturing them?',
+    answer: 'Flonnect provides basic in-app editing tools to trim, cut, and make simple enhancements to your screen recordings.'
+  }
+];
+
 export default function ScreenRecordingPage() {
   return (
     <FeaturePageTemplate
@@ -55,6 +78,7 @@ export default function ScreenRecordingPage() {
       heroIcon={Video}
       features={features}
       benefits={benefits}
+      faqs={faqs}
       ctaText="Start Recording Now"
       seoKeywords="screen recording, screen recorder, video capture, desktop recording, online screen recorder, tutorial recording, presentation recording"
       metaDescription="Professional screen recording tool for creating tutorials, presentations, and demos. High-quality video capture with audio, editing tools, and instant sharing."

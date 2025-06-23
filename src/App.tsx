@@ -14,6 +14,12 @@ import TeamsMeetingRecordingPage from "./pages/TeamsMeetingRecordingPage";
 import HowToRecordBugsPage from "./pages/HowToRecordBugsPage";
 import GoogleMeetingRecorderPage from "./pages/GoogleMeetingRecorderPage";
 import ZoomMeetingRecordingPage from "./pages/ZoomMeetingRecordingPage";
+import MinutesOfMeetingPage from "./pages/MinutesOfMeetingPage";
+import TranscriptionPage from "./pages/TranscriptionPage";
+import ScreenCameraRecordingPage from "./pages/ScreenCameraRecordingPage";
+import PresentationRecordingPage from "./pages/PresentationRecordingPage";
+import VideoPresentationPage from "./pages/VideoPresentationPage";
+import CameraRecordingPage from "./pages/CameraRecordingPage";
 
 const queryClient = new QueryClient();
 
@@ -30,11 +36,26 @@ const App = () => (
           <Route path="/downloads" element={<ResourcesPage />} />
           <Route path="/tutorials/how-to-record" element={<HowToRecordPage />} />
           <Route path="/tutorials/how-to-share" element={<HowToSharePage />} />
-          <Route path="/features/screen-recording" element={<ScreenRecordingPage />} />
-          <Route path="/features/bug-capture" element={<BugCapturePage />} />
-          <Route path="/features/teams-meeting-recording" element={<TeamsMeetingRecordingPage />} />
+          
+          {/* Meeting Recording & Collaboration */}
           <Route path="/features/google-meeting-recorder" element={<GoogleMeetingRecorderPage />} />
+          <Route path="/features/teams-meeting-recording" element={<TeamsMeetingRecordingPage />} />
           <Route path="/features/zoom-meeting-recording" element={<ZoomMeetingRecordingPage />} />
+          
+          {/* Content Generation & Documentation */}
+          <Route path="/features/minutes-of-meeting" element={<MinutesOfMeetingPage />} />
+          <Route path="/features/transcription" element={<TranscriptionPage />} />
+          
+          {/* Screen & Camera Recording */}
+          <Route path="/features/screen-recording" element={<ScreenRecordingPage />} />
+          <Route path="/features/screen-camera-recording" element={<ScreenCameraRecordingPage />} />
+          <Route path="/features/presentation-recording" element={<PresentationRecordingPage />} />
+          <Route path="/features/video-presentation" element={<VideoPresentationPage />} />
+          <Route path="/features/camera-recording" element={<CameraRecordingPage />} />
+          
+          {/* Bug Reporting & Development Workflow */}
+          <Route path="/features/bug-capture" element={<BugCapturePage />} />
+          
           <Route path="/resources/how-to-record-bugs" element={<HowToRecordBugsPage />} />
           <Route path="*" element={<AIPage />} />
         </Routes>
