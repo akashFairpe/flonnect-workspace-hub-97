@@ -121,7 +121,7 @@ export function ResourceTemplate({
                           Your browser does not support the video tag.
                         </video>
                       </div>
-                    ) : step.image && (
+                    ) : step.image ? (
                       <div className="aspect-video rounded-lg overflow-hidden mb-4">
                         <img 
                           src={step.image} 
@@ -129,7 +129,7 @@ export function ResourceTemplate({
                           className="w-full h-full object-cover"
                         />
                       </div>
-                    )}
+                    ) : null}
                     
                     {step.tips && step.tips.length > 0 && (
                       <div className="bg-blue-50 rounded-lg p-4">
