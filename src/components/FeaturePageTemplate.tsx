@@ -4,6 +4,12 @@ import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface FeaturePageTemplateProps {
   title: string;
@@ -15,6 +21,10 @@ interface FeaturePageTemplateProps {
     icon: React.ElementType;
   }[];
   benefits: string[];
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
   ctaText?: string;
   seoKeywords: string;
   metaDescription: string;
@@ -26,6 +36,7 @@ export function FeaturePageTemplate({
   heroIcon: HeroIcon,
   features,
   benefits,
+  faqs = [],
   ctaText = "Get Started Now",
   seoKeywords,
   metaDescription
@@ -118,6 +129,25 @@ export function FeaturePageTemplate({
             ))}
           </div>
         </div>
+
+        {/* FAQ Section */}
+        {faqs.length > 0 && (
+          <div className="max-w-4xl mx-auto mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
 
         {/* CTA Section */}
         <div className="max-w-2xl mx-auto text-center">
