@@ -5,46 +5,46 @@ import { Users, Video, FileText, Share2, Shield, Clock } from 'lucide-react';
 
 const features = [
   {
-    title: 'Seamless Teams Integration',
-    description: 'Record Microsoft Teams meetings directly with one-click activation',
+    title: 'High-Quality Teams Recording',
+    description: 'Record crystal-clear audio and video of your Microsoft Teams calls and meetings',
+    icon: Video
+  },
+  {
+    title: 'Secure Cloud Storage',
+    description: 'All Teams recordings are safely stored in your Flonnect cloud account, compliant with privacy standards',
+    icon: Shield
+  },
+  {
+    title: 'Speaker Identification',
+    description: 'Easily identify who said what with intelligent speaker recognition in your Teams recordings',
     icon: Users
   },
   {
-    title: 'HD Video Quality',
-    description: 'Capture meetings in high definition with clear audio quality',
-    icon: Video
+    title: 'One-Click Sharing',
+    description: 'Generate shareable links for your Teams recordings, making distribution simple and secure',
+    icon: Share2
+  },
+  {
+    title: 'Cross-Platform Access',
+    description: 'Access your Teams meeting recordings from both Flonnect\'s extension and desktop application',
+    icon: Clock
   },
   {
     title: 'Auto Transcription',
     description: 'Automatically generate meeting transcripts with speaker identification',
     icon: FileText
-  },
-  {
-    title: 'Instant Sharing',
-    description: 'Share recordings immediately after meetings with team members',
-    icon: Share2
-  },
-  {
-    title: 'Secure Storage',
-    description: 'Enterprise-grade security with encrypted storage and access controls',
-    icon: Shield
-  },
-  {
-    title: 'Smart Scheduling',
-    description: 'Automatically start recording based on calendar integration',
-    icon: Clock
   }
 ];
 
 const benefits = [
+  'Ensures comprehensive record-keeping of all your vital Teams communications',
+  'Boosts productivity by allowing asynchronous review of missed or important meetings',
+  'Facilitates compliance and governance by securely archiving meeting content',
+  'Simplifies knowledge transfer for new team members by providing access to past discussions',
+  'Offers flexible recording options via both browser extension and dedicated desktop app',
   'Never miss important meeting details',
   'Comply with corporate recording policies',
-  'Share knowledge with absent team members',
-  'Create searchable meeting archives',
-  'Generate automatic meeting summaries',
-  'Integrate with existing Microsoft 365 workflows',
-  'Support for breakout room recordings',
-  'Advanced analytics and usage reports'
+  'Share knowledge with absent team members'
 ];
 
 const faqs = [
@@ -74,7 +74,7 @@ export default function TeamsMeetingRecordingPage() {
   return (
     <FeaturePageTemplate
       title="Microsoft Teams Meeting Recording"
-      description="Record, transcribe, and share your Microsoft Teams meetings effortlessly. Perfect for compliance, training, and knowledge sharing across your organization."
+      description="Securely record your Microsoft Teams meetings to preserve important discussions, decisions, and action items."
       heroIcon={Users}
       features={features}
       benefits={benefits}

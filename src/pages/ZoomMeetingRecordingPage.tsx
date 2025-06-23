@@ -37,11 +37,11 @@ const features = [
 ];
 
 const benefits = [
-  'Guarantees that all critical information from Zoom calls is captured',
-  'Improves meeting efficiency by allowing focus on discussion rather than note-taking',
-  'Provides valuable resource for onboarding and training',
-  'Ensures accessibility for those who couldn\'t attend live',
-  'Offers robust solution for compliance and documentation',
+  'Guarantees that all critical information from your Zoom calls is captured and retained',
+  'Improves meeting efficiency by allowing attendees to focus on discussion rather than note-taking',
+  'Provides a valuable resource for onboarding and training by archiving past discussions',
+  'Ensures accessibility for those who couldn\'t attend live or need to review specific points',
+  'Offers a robust solution for compliance and documentation of online interactions',
   'High-quality HD video with professional audio capture',
   'Automatic cloud backup prevents data loss',
   'Cross-platform compatibility and access'

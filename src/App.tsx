@@ -20,6 +20,8 @@ import ScreenCameraRecordingPage from "./pages/ScreenCameraRecordingPage";
 import PresentationRecordingPage from "./pages/PresentationRecordingPage";
 import VideoPresentationPage from "./pages/VideoPresentationPage";
 import CameraRecordingPage from "./pages/CameraRecordingPage";
+import AnnotationRecordingPage from "./pages/AnnotationRecordingPage";
+import StepRecorderPage from "./pages/StepRecorderPage";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +54,10 @@ const App = () => (
           <Route path="/features/presentation-recording" element={<PresentationRecordingPage />} />
           <Route path="/features/video-presentation" element={<VideoPresentationPage />} />
           <Route path="/features/camera-recording" element={<CameraRecordingPage />} />
+          
+          {/* Specialized Recording & Enhancement */}
+          <Route path="/features/annotation-recording" element={<AnnotationRecordingPage />} />
+          <Route path="/features/step-recorder" element={<StepRecorderPage />} />
           
           {/* Bug Reporting & Development Workflow */}
           <Route path="/features/bug-capture" element={<BugCapturePage />} />

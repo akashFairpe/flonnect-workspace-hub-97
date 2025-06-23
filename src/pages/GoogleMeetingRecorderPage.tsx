@@ -11,22 +11,22 @@ const features = [
   },
   {
     title: 'Automatic Cloud Save',
-    description: 'Recordings are automatically saved to your secure cloud storage for easy access',
+    description: 'Recordings are automatically saved to your secure cloud storage for easy access from anywhere',
     icon: Upload
   },
   {
     title: 'Integrated Transcription',
-    description: 'Get accurate, searchable transcripts of your Google Meet discussions',
+    description: 'Get accurate, searchable transcripts of your Google Meet discussions, saving time on note-taking',
     icon: FileText
   },
   {
     title: 'Share with Ease',
-    description: 'Instantly share your recorded Google Meet with team members via shareable link',
+    description: 'Instantly share your recorded Google Meet with team members or stakeholders via a shareable link',
     icon: Share2
   },
   {
     title: 'Participant Highlighting',
-    description: 'Focus on key speakers and important moments within your recordings',
+    description: 'Focus on key speakers and important moments within your Google Meet recordings',
     icon: Users
   },
   {
@@ -38,10 +38,10 @@ const features = [
 
 const benefits = [
   'Seamless integration with Google Meet for hassle-free recording',
-  'Ensures no crucial information is missed from virtual meetings',
-  'Enhances team collaboration through easy sharing and review',
+  'Ensures no crucial information is missed from your virtual meetings',
+  'Enhances team collaboration through easy sharing and review of discussions',
   'Saves significant time on manual note-taking with integrated transcription',
-  'Reliable cloud storage guarantees recordings are always accessible',
+  'Reliable cloud storage guarantees your recordings are always safe and accessible',
   'Compliance features with clear recording indicators',
   'High-quality HD video and crystal-clear audio',
   'Searchable transcripts for quick information retrieval'

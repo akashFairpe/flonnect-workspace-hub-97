@@ -5,28 +5,28 @@ import { Video, Monitor, Mic, Edit, Share2, Download } from 'lucide-react';
 
 const features = [
   {
-    title: 'High Quality Recording',
-    description: 'Record your screen in up to 4K resolution with crystal clear audio',
+    title: 'Full HD Screen Capture',
+    description: 'Record your entire screen or selected areas in stunning 1080p resolution',
     icon: Video
   },
   {
-    title: 'Multiple Screen Support',
-    description: 'Record single or multiple monitors simultaneously',
+    title: 'Customizable Recording Area',
+    description: 'Choose to record full screen, a specific window, or a custom region',
     icon: Monitor
   },
   {
-    title: 'Audio Recording',
-    description: 'Capture system audio, microphone, or both at the same time',
+    title: 'System Audio Capture',
+    description: 'Record internal system sounds directly from your computer during screen capture',
     icon: Mic
   },
   {
-    title: 'Real-time Editing',
-    description: 'Edit your recordings on the fly with built-in editing tools',
+    title: 'Cursor Highlighting',
+    description: 'Make your tutorials clearer by highlighting mouse clicks and cursor movements',
     icon: Edit
   },
   {
-    title: 'Instant Sharing',
-    description: 'Share your recordings instantly via link or export to various formats',
+    title: 'Pause and Resume',
+    description: 'Conveniently pause and resume your screen recording sessions as needed',
     icon: Share2
   },
   {
@@ -37,14 +37,14 @@ const features = [
 ];
 
 const benefits = [
+  'Produces professional-grade screen recordings ideal for various applications',
+  'Simplifies the creation of training materials, software demos, and how-to guides',
+  'Ensures clear communication of complex processes with visual and audio cues',
+  'Offers flexibility to capture exactly what you need without unnecessary clutter',
+  'Provides a reliable solution for documenting software bugs or technical issues',
   'Record unlimited videos with no time restrictions',
   'No watermarks on recordings',
-  'Secure cloud storage with encryption',
-  'Browser-based recording - no software installation required',
-  'Compatible with all major operating systems',
-  'Real-time collaboration features',
-  'Advanced privacy controls',
-  'Export to multiple formats (MP4, AVI, MOV, etc.)'
+  'Browser-based recording - no software installation required'
 ];
 
 const faqs = [
@@ -73,13 +73,13 @@ const faqs = [
 export default function ScreenRecordingPage() {
   return (
     <FeaturePageTemplate
-      title="Professional Screen Recording"
-      description="Capture your screen with professional quality. Perfect for tutorials, presentations, demos, and more. Record, edit, and share in minutes."
+      title="Screen Recording"
+      description="Capture your screen activity with professional quality, perfect for tutorials, demonstrations, and educational content."
       heroIcon={Video}
       features={features}
       benefits={benefits}
       faqs={faqs}
-      ctaText="Start Recording Now"
+      ctaText="Start Recording Screen"
       seoKeywords="screen recording, screen recorder, video capture, desktop recording, online screen recorder, tutorial recording, presentation recording"
       metaDescription="Professional screen recording tool for creating tutorials, presentations, and demos. High-quality video capture with audio, editing tools, and instant sharing."
     />
