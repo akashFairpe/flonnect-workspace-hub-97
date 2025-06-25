@@ -62,6 +62,16 @@ export default function AIPage() {
   }, [searchParams]);
 
   const handleToolSelect = (toolId: string) => {
+    // Handle navigation to specific editor pages
+    if (toolId === 'ai-background-remover' || toolId === 'ai-photo-editor') {
+      window.location.href = '/ai/image-editor';
+      return;
+    }
+    if (toolId === 'ai-video-editor') {
+      window.location.href = '/ai/video-editor';
+      return;
+    }
+
     setSelectedTool(toolId);
     setGeneratedImages([]);
     setSelectedImage(null);
