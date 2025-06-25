@@ -192,41 +192,9 @@ export default function AIPage() {
           </p>
         </div>
 
-        {/* AI Tools Grid */}
-        {!selectedTool && (
-          <div className="max-w-6xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Choose Your AI Tool</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {aiTools.map((tool) => {
-                const IconComponent = tool.icon;
-                return (
-                  <Card 
-                    key={tool.id} 
-                    className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
-                    onClick={() => handleToolSelect(tool.id)}
-                  >
-                    <CardHeader className="text-center pb-4">
-                      <div className="flex justify-center mb-3">
-                        <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
-                          <IconComponent className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                      <CardTitle className="text-lg font-semibold">{tool.name}</CardTitle>
-                      <Badge variant="secondary" className="w-fit mx-auto">{tool.category}</Badge>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <p className="text-sm text-gray-600 text-center">{tool.description}</p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
         {/* Selected Tool Interface */}
         {selectedTool && (
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mb-16">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-4">
                 <h2 className="text-2xl font-bold">
@@ -390,6 +358,38 @@ export default function AIPage() {
             </Card>
           </div>
         )}
+
+        {/* AI Tools Grid - Now at the bottom */}
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+            {selectedTool ? 'Explore Other AI Tools' : 'Choose Your AI Tool'}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {aiTools.map((tool) => {
+              const IconComponent = tool.icon;
+              return (
+                <Card 
+                  key={tool.id} 
+                  className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
+                  onClick={() => handleToolSelect(tool.id)}
+                >
+                  <CardHeader className="text-center pb-4">
+                    <div className="flex justify-center mb-3">
+                      <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg font-semibold">{tool.name}</CardTitle>
+                    <Badge variant="secondary" className="w-fit mx-auto">{tool.category}</Badge>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-sm text-gray-600 text-center">{tool.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
       </main>
     </div>
   );
