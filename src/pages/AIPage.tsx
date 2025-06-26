@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
@@ -69,6 +68,10 @@ export default function AIPage() {
     }
     if (toolId === 'ai-video-editor') {
       window.location.href = '/ai/video-editor';
+      return;
+    }
+    if (toolId === 'ai-thumbnail-generator') {
+      window.location.href = '/ai/thumbnail';
       return;
     }
 
