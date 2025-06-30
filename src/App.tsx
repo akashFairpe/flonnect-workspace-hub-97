@@ -52,6 +52,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/screenrecorder" element={<ScreenRecorderLandingPage />} />
+          <Route path="/presentation-recorder" element={<PresentationRecorderLandingPage />} />
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />
           <Route path="/ai/image-editor" element={<AIImageEditorPage />} />
