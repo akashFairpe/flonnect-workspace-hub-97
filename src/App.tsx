@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -36,6 +37,7 @@ import ScreenshotBugReportingPage from "./pages/ScreenshotBugReportingPage";
 import VideoBugRecordingPage from "./pages/VideoBugRecordingPage";
 import PushToJiraPage from "./pages/PushToJiraPage";
 import BitbucketGitHubPRPage from "./pages/BitbucketGitHubPRPage";
+import LandingPage from "./pages/LandingPage";
 
 const queryClient = new QueryClient();
 
@@ -46,7 +48,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AIPage />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/ai" element={<AIPage />} />
           <Route path="/ai/image-editor" element={<AIImageEditorPage />} />
           <Route path="/ai/video-editor" element={<AIVideoEditorPage />} />
@@ -94,7 +96,7 @@ const App = () => (
           <Route path="/features/bitbucket-github-pr" element={<BitbucketGitHubPRPage />} />
           
           <Route path="/resources/how-to-record-bugs" element={<HowToRecordBugsPage />} />
-          <Route path="*" element={<AIPage />} />
+          <Route path="*" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

@@ -1,223 +1,274 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Download, Users, BookOpen, MessageSquare, Trophy, Youtube, Plus, Minus } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Play, Download, Users, Share2, MessageCircle, Heart, Trophy, Youtube, Star, ArrowRight, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 import { Header } from '@/components/Header';
 
 const LandingPage = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [playingVideo, setPlayingVideo] = useState(false);
 
-  const useCases = [
+  const features = [
     {
-      title: "Recording Online Classes & Virtual Lessons",
-      description: "Teachers can record live online classes on platforms like Zoom, Google Meet, and Microsoft Teams. Helps students who miss live sessions to catch up later. Useful for flipped classrooms, where students watch lessons before discussions. Teachers can share recorded sessions with students for easy revision.",
-      example: "A history teacher records a Google Meet session and shares it with students to review important dates and events before exams.",
-      icon: Users,
-      gradient: "from-primary to-primary/80",
-      image: "photo-1581091226825-a6a2a5aee158"
+      icon: Play,
+      title: "One-Click Recording",
+      description: "Start recording your screen instantly with just one click. No complex setup required.",
+      color: "bg-blue-500"
     },
     {
-      title: "Creating Pre-Recorded Lessons & Tutorials",
-      description: "Teachers can pre-record lessons with detailed explanations for students. Ideal for asynchronous learning where students learn at their own pace. Useful for YouTube tutorials or LMS (Learning Management Systems). Can include PowerPoint presentations, annotations, and webcam overlays.",
-      example: "A science teacher records a step-by-step chemistry experiment guide and uploads it to Google Classroom for students to follow along.",
-      icon: BookOpen,
-      gradient: "from-secondary to-secondary/80",
-      image: "photo-1461749280684-dccba630e2f6"
+      icon: Share2,
+      title: "Instant Sharing",
+      description: "Share your videos immediately with friends, family, or colleagues via link or social media.",
+      color: "bg-green-500"
     },
     {
-      title: "Explaining Complex Concepts & Problem-Solving",
-      description: "Teachers can record whiteboard explanations for math, physics, or coding classes. Helps students understand problem-solving techniques through detailed walkthroughs. Can use screen annotations and voiceover to highlight key points. Great for homework help and answering student doubts.",
-      example: "A math teacher records a solution walkthrough for a tough algebra problem and shares it in a student group for better understanding.",
+      icon: MessageCircle,
+      title: "Interactive Comments",
+      description: "Engage with your audience through timestamped comments and emoji reactions.",
+      color: "bg-purple-500"
+    },
+    {
       icon: Trophy,
-      gradient: "from-primary/80 to-secondary/60",
-      image: "photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      title: "Providing Personalized Feedback & Student Assessments",
-      description: "Teachers can record personalized video feedback instead of writing comments. Makes it easier to explain strengths and areas of improvement. Helpful for language teachers to provide pronunciation and speech correction. Enables visual demonstrations of student mistakes in assignments.",
-      example: "An English teacher records a video critique of a student's essay, explaining grammatical mistakes and suggesting improvements with on-screen annotations.",
-      icon: MessageSquare,
-      gradient: "from-secondary/80 to-primary/60",
-      image: "photo-1649972904349-6e44c42644a7"
-    },
-    {
-      title: "Developing Course Content for YouTube & Online Learning Platforms",
-      description: "Teachers can create structured educational videos for platforms like YouTube, Udemy, and Coursera. Helps in monetizing knowledge by selling courses or growing an online audience. Can record interactive lessons, complete with quizzes and visual aids. Supports branding and professional content creation with AI-powered editing.",
-      example: "A business studies teacher records a series of lectures on \"Marketing Strategies\" and uploads them to Udemy as a paid course.",
-      icon: Youtube,
-      gradient: "from-primary to-secondary",
-      image: "photo-1531297484001-80022131f5a1"
+      title: "Professional Quality",
+      description: "Record in HD quality with crystal clear audio for professional-looking videos.",
+      color: "bg-orange-500"
     }
   ];
 
-  const faqs = [
+  const testimonials = [
     {
-      question: "How easy is it to start recording with your software?",
-      answer: "Our screen recorder is designed for educators with no technical background. Simply click 'Start Recording' and begin teaching. The interface is intuitive and requires no setup or training."
+      name: "Sarah Johnson",
+      role: "Content Creator",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      content: "Flonnect made it so easy to create and share my tutorials. My audience loves the interactive features!",
+      rating: 5
     },
     {
-      question: "Can I record both my screen and webcam simultaneously?",
-      answer: "Yes! You can record your screen, webcam, and audio all at the same time. This is perfect for creating engaging lessons where students can see both your presentation and your face."
+      name: "Mike Chen",
+      role: "Small Business Owner",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      content: "Perfect for creating product demos. The quality is amazing and sharing is super simple.",
+      rating: 5
     },
     {
-      question: "What video formats are supported for export?",
-      answer: "We support all major video formats including MP4, AVI, MOV, and WebM. You can also export directly to popular platforms like YouTube, Google Drive, and learning management systems."
-    },
-    {
-      question: "Is there a limit on recording length?",
-      answer: "No, there are no time limits on your recordings. Record entire class sessions, long tutorials, or multi-part lesson series without any restrictions."
-    },
-    {
-      question: "Can I edit my recordings after capturing them?",
-      answer: "Absolutely! Our built-in editor allows you to trim videos, add annotations, insert captions, and enhance audio quality. You can also add intro/outro segments and branding elements."
-    },
-    {
-      question: "How do I share recordings with my students?",
-      answer: "Share recordings instantly via direct links, embed codes, or upload directly to your preferred platform like Google Classroom, Canvas, or Blackboard. Students can access recordings on any device."
+      name: "Emma Davis",
+      role: "Teacher",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      content: "My students love the interactive comments feature. It's made online learning so much more engaging!",
+      rating: 5
     }
   ];
 
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
+  const stats = [
+    { number: "50K+", label: "Happy Users" },
+    { number: "1M+", label: "Videos Created" },
+    { number: "99.9%", label: "Uptime" },
+    { number: "4.9/5", label: "User Rating" }
+  ];
 
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
         {/* Hero Section */}
-        <div className="container mx-auto px-6 py-16">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Professional Screen Recorder for Educators
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Create engaging video lessons, provide personalized feedback, and build your online teaching presence with our educator-focused screen recording software.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
-                <Play className="w-5 h-5 mr-2" />
-                Start Recording Now - Free Trial
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                <Download className="w-5 h-5 mr-2" />
-                Download Free Version
-              </Button>
+        <section className="relative overflow-hidden">
+          <div className="container mx-auto px-6 py-20">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <div className="flex-1 text-center lg:text-left">
+                <Badge className="mb-4 bg-blue-100 text-blue-700 hover:bg-blue-200">
+                  🎉 New: AI-Powered Features Available
+                </Badge>
+                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                  Create & Share
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Amazing Videos</span>
+                  <br />in Seconds
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 max-w-2xl">
+                  Record your screen, add interactive elements, and share with the world. 
+                  Perfect for creators, educators, and businesses who want to make an impact.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                    <Play className="w-5 h-5 mr-2" />
+                    Start Recording for Free
+                  </Button>
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                    <Download className="w-5 h-5 mr-2" />
+                    Watch Demo
+                  </Button>
+                </div>
+                <div className="flex items-center gap-6 text-sm text-gray-500">
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    No credit card required
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Free forever plan
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    HD quality
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex-1 relative">
+                <div className="relative bg-white rounded-2xl shadow-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="flex-1 bg-gray-100 rounded px-3 py-1 text-sm text-gray-600">
+                      flonnect.com/share/demo-video
+                    </div>
+                  </div>
+                  <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center relative overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/63eb8b8f-6c42-4629-b52c-75fbbc737c6a.png" 
+                      alt="Video demo"
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                      <Button 
+                        size="lg" 
+                        className="rounded-full w-16 h-16 bg-white text-blue-600 hover:bg-gray-100"
+                        onClick={() => setPlayingVideo(!playingVideo)}
+                      >
+                        <Play className="w-8 h-8" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="flex -space-x-2">
+                        {[1,2,3].map(i => (
+                          <div key={i} className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full border-2 border-white"></div>
+                        ))}
+                      </div>
+                      <span className="text-sm text-gray-600">234 viewers</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-red-500" />
+                      <span className="text-sm">128</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Use Cases Section */}
-          <div className="max-w-7xl mx-auto mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                5 Powerful Ways Teachers Use Screen Recording
+        {/* Stats Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-4xl font-bold text-gray-900 mb-2">{stat.number}</div>
+                  <div className="text-gray-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Everything You Need to Create Amazing Videos
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Discover how educators worldwide are transforming their teaching with screen recording technology
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Powerful features that make video creation simple, fun, and professional
               </p>
             </div>
-
-            <div className="space-y-8">
-              {useCases.map((useCase, index) => (
-                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0">
-                  <div className={`h-2 bg-gradient-to-r ${useCase.gradient}`}></div>
-                  <CardHeader className="pb-4">
-                    <div className="flex flex-col lg:flex-row items-start gap-6">
-                      <div className="lg:w-1/3">
-                        <img 
-                          src={`https://images.unsplash.com/${useCase.image}?auto=format&fit=crop&w=400&h=250`}
-                          alt={useCase.title}
-                          className="w-full h-48 object-cover rounded-lg"
-                        />
-                      </div>
-                      <div className="lg:w-2/3">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className={`p-3 rounded-lg bg-gradient-to-r ${useCase.gradient} text-white flex-shrink-0`}>
-                            <useCase.icon className="w-6 h-6" />
-                          </div>
-                          <div className="flex-1">
-                            <CardTitle className="text-xl md:text-2xl text-gray-900 mb-2">
-                              {index + 1}. {useCase.title}
-                            </CardTitle>
-                            <CardDescription className="text-base text-gray-600 leading-relaxed">
-                              {useCase.description}
-                            </CardDescription>
-                          </div>
-                        </div>
-                        <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                          <p className="text-sm font-semibold text-gray-700 mb-2">Real-World Example:</p>
-                          <p className="text-gray-600 italic">
-                            {useCase.example}
-                          </p>
-                        </div>
-                      </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                  <CardHeader className="text-center pb-2">
+                    <div className={`w-16 h-16 ${feature.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <feature.icon className="w-8 h-8 text-white" />
                     </div>
+                    <CardTitle className="text-xl">{feature.title}</CardTitle>
                   </CardHeader>
+                  <CardContent className="text-center">
+                    <CardDescription className="text-base leading-relaxed">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
                 </Card>
               ))}
             </div>
           </div>
+        </section>
 
-          {/* FAQ Section */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Frequently Asked Questions
+        {/* Testimonials Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Loved by Creators Worldwide
               </h2>
-              <p className="text-lg text-gray-600">
-                Everything you need to know about our screen recording software for teachers
+              <p className="text-xl text-gray-600">
+                See what our users are saying about Flonnect
               </p>
             </div>
-
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <CardHeader 
-                    className="cursor-pointer hover:bg-gray-50 transition-colors"
-                    onClick={() => toggleFaq(index)}
-                  >
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg text-gray-900 text-left">
-                        {faq.question}
-                      </CardTitle>
-                      {openFaq === index ? (
-                        <Minus className="w-5 h-5 text-gray-500" />
-                      ) : (
-                        <Plus className="w-5 h-5 text-gray-500" />
-                      )}
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <Card key={index} className="border-0 shadow-lg bg-white">
+                  <CardContent className="p-6">
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      ))}
                     </div>
-                  </CardHeader>
-                  {openFaq === index && (
-                    <CardContent className="pt-0">
-                      <p className="text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </CardContent>
-                  )}
+                    <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+                    <div className="flex items-center gap-3">
+                      <img 
+                        src={testimonial.avatar} 
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                        <div className="text-sm text-gray-600">{testimonial.role}</div>
+                      </div>
+                    </div>
+                  </CardContent>
                 </Card>
               ))}
             </div>
           </div>
+        </section>
 
-          {/* CTA Section */}
-          <div className="text-center bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Transform Your Teaching?
-            </h3>
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+          <div className="container mx-auto px-6 text-center">
+            <h2 className="text-4xl font-bold mb-4">
+              Ready to Start Creating?
+            </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join over 50,000 educators who are already creating amazing content with our screen recorder
+              Join thousands of creators who are already making amazing videos with Flonnect. 
+              Start your free account today!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
                 <Play className="w-5 h-5 mr-2" />
-                Start Free 14-Day Trial
+                Start Free Trial
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
-                View Pricing Plans
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
+                Schedule Demo
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
+            <p className="text-sm mt-6 opacity-75">
+              No credit card required • 14-day free trial • Cancel anytime
+            </p>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );
