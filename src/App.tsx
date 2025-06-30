@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -40,6 +39,7 @@ import PushToJiraPage from "./pages/PushToJiraPage";
 import BitbucketGitHubPRPage from "./pages/BitbucketGitHubPRPage";
 import LandingPage from "./pages/LandingPage";
 import ScreenRecorderLandingPage from "./pages/ScreenRecorderLandingPage";
+import PresentationRecorderLandingPage from "./pages/PresentationRecorderLandingPage";
 
 const queryClient = new QueryClient();
 
