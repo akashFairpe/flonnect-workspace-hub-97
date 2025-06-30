@@ -2,9 +2,8 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Play, Download, Users, Share2, MessageCircle, BarChart3, Video, Mic, Edit, Chrome, Monitor, Smartphone, CheckCircle, Presentation, FileText, Eye } from 'lucide-react';
+import { Play, Download, Users, Share2, MessageCircle, BarChart3, Video, Mic, Edit, Chrome, Monitor, Smartphone, CheckCircle, Presentation, FileText, Eye, Star, Zap, Clock, Camera, Maximize, Settings, Upload, Award, TrendingUp, Target, Layers, BookOpen, Headphones, MousePointer, Paintbrush, Globe, Shield, PieChart, Calendar, Bookmark, Filter } from 'lucide-react';
 import { Header } from '@/components/Header';
-import FAQ from '@/components/FAQ';
 
 const PresentationRecorderLandingPage = () => {
   const features = [
@@ -31,6 +30,45 @@ const PresentationRecorderLandingPage = () => {
       title: "Multi-Platform Sharing",
       description: "Export to platforms like YouTube or TikTok, or share recordings via email and social media.",
       color: "bg-orange-500"
+    }
+  ];
+
+  const advancedFeatures = [
+    {
+      icon: Presentation,
+      title: "Interactive Slides",
+      description: "Create engaging slide presentations with clickable elements and transitions",
+      color: "bg-indigo-500"
+    },
+    {
+      icon: MousePointer,
+      title: "Smart Cursor Tracking",
+      description: "Highlight cursor movements and clicks for better viewer engagement",
+      color: "bg-pink-500"
+    },
+    {
+      icon: Paintbrush,
+      title: "Drawing & Markup Tools",
+      description: "Annotate slides in real-time with drawing tools and text overlays",
+      color: "bg-teal-500"
+    },
+    {
+      icon: Calendar,
+      title: "Scheduled Recording",
+      description: "Set up automatic recording for recurring presentations and webinars",
+      color: "bg-red-500"
+    },
+    {
+      icon: Globe,
+      title: "Multi-Language Support",
+      description: "Create presentations in multiple languages with AI translation",
+      color: "bg-yellow-500"
+    },
+    {
+      icon: Filter,
+      title: "Green Screen Effect",
+      description: "Replace backgrounds and create professional studio-quality presentations",
+      color: "bg-cyan-500"
     }
   ];
 
@@ -153,6 +191,93 @@ const PresentationRecorderLandingPage = () => {
     }
   ];
 
+  const presentationTypes = [
+    {
+      icon: Award,
+      title: "Sales Presentations",
+      description: "Close more deals with compelling, interactive sales presentations",
+      benefits: ["Personalized demos", "Real-time engagement", "Performance tracking"]
+    },
+    {
+      icon: BookOpen,
+      title: "Educational Content",
+      description: "Create engaging educational materials for students and professionals",
+      benefits: ["Interactive learning", "Self-paced content", "Progress tracking"]
+    },
+    {
+      icon: TrendingUp,
+      title: "Marketing Webinars",
+      description: "Generate leads and build authority with professional webinars",
+      benefits: ["Lead capture", "Brand building", "Audience growth"]
+    },
+    {
+      icon: Target,
+      title: "Training Sessions",
+      description: "Deliver consistent training experiences across your organization",
+      benefits: ["Standardized content", "Scalable delivery", "Completion tracking"]
+    }
+  ];
+
+  const integrations = [
+    { name: "PowerPoint", logo: "📊", description: "Native PowerPoint integration" },
+    { name: "Google Slides", logo: "📋", description: "Seamless Google Slides support" },
+    { name: "Zoom", logo: "📹", description: "Zoom webinar integration" },
+    { name: "Teams", logo: "👥", description: "Microsoft Teams support" },
+    { name: "YouTube", logo: "📺", description: "Direct YouTube upload" },
+    { name: "Vimeo", logo: "🎬", description: "Professional video hosting" }
+  ];
+
+  const testimonials = [
+    {
+      name: "Dr. Jennifer Martinez",
+      role: "University Professor",
+      content: "Flonnect has transformed how I deliver lectures. My students are more engaged, and I can create reusable content for multiple semesters.",
+      rating: 5,
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=150&h=150"
+    },
+    {
+      name: "Robert Kim",
+      role: "Sales Manager at TechStart",
+      content: "Our sales presentations have never been more effective. The interactive features help us close 60% more deals.",
+      rating: 5,
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150"
+    },
+    {
+      name: "Lisa Chen",
+      role: "Training Director",
+      content: "Creating consistent training materials across our global team is now effortless. The analytics help us improve content continuously.",
+      rating: 5,
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150"
+    }
+  ];
+
+  const pricingPlans = [
+    {
+      name: "Starter",
+      price: "$0",
+      period: "forever",
+      features: ["3 presentations/month", "Basic templates", "720p recording", "Email support"],
+      cta: "Get Started Free",
+      popular: false
+    },
+    {
+      name: "Professional",
+      price: "$29",
+      period: "per month",
+      features: ["Unlimited presentations", "Premium templates", "4K recording", "Advanced annotations", "Analytics dashboard", "Priority support"],
+      cta: "Start Free Trial",
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: "$79",
+      period: "per month",
+      features: ["Everything in Pro", "Team collaboration", "Custom branding", "Advanced analytics", "API access", "Dedicated account manager"],
+      cta: "Contact Sales",
+      popular: false
+    }
+  ];
+
   const presentationFaqs = [
     {
       question: "Can I record PowerPoint presentations with Flonnect?",
@@ -173,6 +298,18 @@ const PresentationRecorderLandingPage = () => {
     {
       question: "Can I collaborate with my team on presentations?",
       answer: "Yes, you can create workspaces, invite team members, and collaborate on presentation content with secure sharing and access controls."
+    },
+    {
+      question: "What presentation formats are supported?",
+      answer: "We support all major presentation formats including PowerPoint (PPTX), Google Slides, Keynote, and PDF presentations for maximum compatibility."
+    },
+    {
+      question: "Can I schedule automatic recordings?",
+      answer: "Yes, you can schedule presentations to be recorded automatically, perfect for recurring webinars and training sessions."
+    },
+    {
+      question: "Is there a mobile app available?",
+      answer: "Currently, we offer browser extension and desktop apps. A mobile companion app for basic controls and viewing is in development."
     }
   ];
 
@@ -279,7 +416,7 @@ const PresentationRecorderLandingPage = () => {
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Core Features Section */}
         <section className="py-12 sm:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
@@ -313,6 +450,80 @@ const PresentationRecorderLandingPage = () => {
                 <Chrome className="w-5 h-5 mr-2" />
                 Get Started Now
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Advanced Features */}
+        <section className="py-12 sm:py-20 bg-gradient-to-br from-purple-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Advanced Presentation Features
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                Professional-grade tools designed specifically for creating exceptional presentations
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {advancedFeatures.map((feature, index) => (
+                <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 bg-white">
+                  <CardHeader className="text-center pb-4">
+                    <div className={`w-12 h-12 ${feature.color} rounded-lg flex items-center justify-center mx-auto mb-3`}>
+                      <feature.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <CardDescription className="text-sm leading-relaxed">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Presentation Types Section */}
+        <section className="py-12 sm:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Perfect for Every Presentation Type
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                From sales pitches to educational content, create presentations that deliver results
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-8 sm:gap-12">
+              {presentationTypes.map((type, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                        <type.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl">{type.title}</CardTitle>
+                      </div>
+                    </div>
+                    <CardDescription className="text-base leading-relaxed mb-4">
+                      {type.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      {type.benefits.map((benefit, benefitIndex) => (
+                        <div key={benefitIndex} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <span className="text-sm text-gray-600">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -368,8 +579,119 @@ const PresentationRecorderLandingPage = () => {
           </div>
         </section>
 
-        {/* Personas Section */}
+        {/* Testimonials Section */}
         <section className="py-12 sm:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Trusted by Educators and Professionals Worldwide
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                See how professionals are using Flonnect to create engaging presentations
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {testimonials.map((testimonial, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <img 
+                        src={testimonial.avatar} 
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <CardTitle className="text-lg">{testimonial.name}</CardTitle>
+                        <CardDescription className="text-sm">{testimonial.role}</CardDescription>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm leading-relaxed">"{testimonial.content}"</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Integrations Section */}
+        <section className="py-12 sm:py-20 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Works with Your Favorite Tools
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                Seamlessly integrate with the presentation and video platforms you already use
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+              {integrations.map((integration, index) => (
+                <Card key={index} className="text-center hover:shadow-md transition-shadow duration-300 bg-white">
+                  <CardContent className="p-6">
+                    <div className="text-3xl mb-2">{integration.logo}</div>
+                    <h3 className="font-semibold text-sm mb-1">{integration.name}</h3>
+                    <p className="text-xs text-gray-500">{integration.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section className="py-12 sm:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Simple, Transparent Pricing
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                Choose the plan that fits your presentation needs. Start free, upgrade anytime.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+              {pricingPlans.map((plan, index) => (
+                <Card key={index} className={`relative border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${plan.popular ? 'ring-2 ring-blue-500' : ''}`}>
+                  {plan.popular && (
+                    <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white">
+                      Most Popular
+                    </Badge>
+                  )}
+                  <CardHeader className="text-center">
+                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                    <div className="text-3xl font-bold text-gray-900 mb-2">
+                      {plan.price}
+                      <span className="text-sm font-normal text-gray-500">/{plan.period}</span>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 mb-6">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`} variant={plan.popular ? 'default' : 'outline'}>
+                      {plan.cta}
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Personas Section */}
+        <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 to-purple-50">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -417,7 +739,7 @@ const PresentationRecorderLandingPage = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
