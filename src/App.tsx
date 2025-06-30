@@ -1,9 +1,9 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import VideoSharingPage from "./pages/VideoSharingPage";
 import AIPage from "./pages/AIPage";
 import AIImageEditorPage from "./pages/AIImageEditorPage";
 import AIVideoEditorPage from "./pages/AIVideoEditorPage";
@@ -49,6 +49,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />
           <Route path="/ai/image-editor" element={<AIImageEditorPage />} />
           <Route path="/ai/video-editor" element={<AIVideoEditorPage />} />
