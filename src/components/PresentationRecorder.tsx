@@ -77,16 +77,19 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
         </div>
       </div>
 
-      {/* AI Speaker Notes - Full Width at Top */}
-      <div className="bg-white border-b px-6 py-4 flex-shrink-0">
-        <AISpeakerNotes 
-          slideContent={`Slide ${currentSlide + 1}`}
-          currentSlide={currentSlide}
-          onNoteSave={handleNoteSave}
-          savedNote={slideNotes[currentSlide]?.note}
-          isAINotes={slideNotes[currentSlide]?.isAI}
-        />
-      </div>
+      {/* AI Speaker Notes - Only show when not recording */}
+      {!isRecording && (
+        <div className="bg-white border-b px-6 py-4 flex-shrink-0">
+          <AISpeakerNotes 
+            slideContent={`Slide ${currentSlide + 1}`}
+            currentSlide={currentSlide}
+            totalSlides={slides.length}
+            onNoteSave={handleNoteSave}
+            savedNote={slideNotes[currentSlide]?.note}
+            isAINotes={slideNotes[currentSlide]?.isAI}
+          />
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden min-h-0">

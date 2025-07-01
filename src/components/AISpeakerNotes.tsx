@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Brain, Edit, RefreshCw, Save } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Brain, Edit, RefreshCw, Save, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface AISpeakerNotesProps {
   slideContent: string;
   currentSlide: number;
+  totalSlides: number;
   onNoteSave: (slideIndex: number, note: string, isAI: boolean) => void;
   savedNote?: string;
   isAINotes?: boolean;
@@ -15,7 +17,8 @@ interface AISpeakerNotesProps {
 
 export function AISpeakerNotes({ 
   slideContent, 
-  currentSlide, 
+  currentSlide,
+  totalSlides,
   onNoteSave,
   savedNote = '',
   isAINotes = false 
@@ -36,7 +39,7 @@ export function AISpeakerNotes({
     
     // Simulate AI generation
     setTimeout(() => {
-      const sampleNotes = `Key talking points for ${slideContent}: Start with a compelling hook • Explain the concept clearly • Use real-world examples • Address potential concerns • End with clear transition. Remember to maintain eye contact and speak confidently!`;
+      const sampleNotes = `Key talking points for Slide ${currentSlide + 1}: Start with a compelling hook • Explain the concept clearly • Use real-world examples • Address potential concerns • End with clear transition. Remember to maintain eye contact and speak confidently!`;
       
       setCurrentNote(sampleNotes);
       setHasUnsavedChanges(true);
@@ -44,7 +47,7 @@ export function AISpeakerNotes({
       
       toast({
         title: "AI Notes Generated",
-        description: "Your speaker notes have been created and are ready to edit!",
+        description: `Speaker notes created for Slide ${currentSlide + 1}`,
       });
     }, 2000);
   };
@@ -72,14 +75,19 @@ export function AISpeakerNotes({
   if (!currentNote && !savedNote) {
     return (
       <div className="flex items-center gap-4 w-full">
-        <div className="flex items-center gap-2 min-w-fit">
-          <Brain className="w-5 h-5" />
-          <span className="font-semibold text-sm">AI Speaker Notes</span>
+        <div className="flex items-center gap-3 min-w-fit">
+          <div className="flex items-center gap-2">
+            <FileText className="w-5 h-5 text-blue-600" />
+            <span className="font-semibold text-sm">Speaker Notes</span>
+          </div>
+          <Badge variant="outline" className="text-xs px-2 py-1">
+            Slide {currentSlide + 1} of {totalSlides}
+          </Badge>
         </div>
         
         <div className="flex-1 flex items-center justify-center gap-4 p-8 border-2 border-dashed border-gray-200 rounded-lg">
           <div className="text-center">
-            <p className="text-sm text-gray-600 mb-4">What would you like to do?</p>
+            <p className="text-sm text-gray-600 mb-4">Add notes for Slide {currentSlide + 1}</p>
             <div className="flex gap-3">
               <Button
                 onClick={generateAINotes}
@@ -116,14 +124,19 @@ export function AISpeakerNotes({
 
   return (
     <div className="flex items-center gap-4 w-full">
-      <div className="flex items-center gap-2 min-w-fit">
-        <Brain className="w-5 h-5" />
-        <span className="font-semibold text-sm">AI Speaker Notes</span>
+      <div className="flex items-center gap-3 min-w-fit">
+        <div className="flex items-center gap-2">
+          <FileText className="w-5 h-5 text-blue-600" />
+          <span className="font-semibold text-sm">Speaker Notes</span>
+        </div>
+        <Badge variant="outline" className="text-xs px-2 py-1">
+          Slide {currentSlide + 1} of {totalSlides}
+        </Badge>
       </div>
       
       <div className="flex-1">
         <Textarea
-          placeholder="Write your speaker notes here..."
+          placeholder={`Write your speaker notes for Slide ${currentSlide + 1}...`}
           value={currentNote}
           onChange={(e) => handleNoteChange(e.target.value)}
           className="h-20 text-sm resize-none w-full"
