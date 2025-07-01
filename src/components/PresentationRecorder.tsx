@@ -67,9 +67,9 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
+    <div className="h-screen w-full flex flex-col bg-gray-50 overflow-hidden">
       {/* Header */}
-      <div className="bg-white border-b px-6 py-4">
+      <div className="bg-white border-b px-6 py-4 flex-shrink-0">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-gray-900">{fileName}</h1>
@@ -84,16 +84,16 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
       </div>
 
       {/* AI Speaker Notes - Full Width at Top */}
-      <div className="bg-white border-b px-6 py-4">
+      <div className="bg-white border-b px-6 py-4 flex-shrink-0">
         <AISpeakerNotes slideContent={`Slide ${currentSlide + 1}`} />
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         {/* Left Sidebar - Slide Navigation */}
-        <div className="w-64 bg-white border-r p-4 overflow-y-auto">
+        <div className="w-64 bg-white border-r p-4 flex-shrink-0">
           <h3 className="font-semibold mb-4 text-sm">Slides</h3>
-          <div className="space-y-2">
+          <div className="space-y-2 overflow-y-auto h-full">
             {slides.map((slide, index) => (
               <div
                 key={index}
@@ -113,10 +113,10 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
         </div>
 
         {/* Main Content Area - Full Width Slide Viewer */}
-        <div className="flex-1 flex flex-col">
-          <div className="flex-1 p-6">
-            <Card className="h-full">
-              <CardContent className="p-0 h-full">
+        <div className="flex-1 flex flex-col min-w-0">
+          <div className="flex-1 p-6 min-h-0">
+            <Card className="h-full w-full">
+              <CardContent className="p-0 h-full w-full">
                 <SlideViewer
                   slideUrl={slides[currentSlide]}
                   annotations={annotations}
@@ -130,7 +130,7 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
           </div>
 
           {/* Controls Bar */}
-          <div className="bg-white border-t p-4">
+          <div className="bg-white border-t p-4 flex-shrink-0">
             <div className="flex items-center justify-between">
               {/* Slide Navigation */}
               <div className="flex items-center gap-4">
@@ -198,8 +198,8 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
         </div>
 
         {/* Right Sidebar - Compact Controls */}
-        <div className="w-80 bg-white border-l p-4 overflow-y-auto">
-          <div className="space-y-4">
+        <div className="w-80 bg-white border-l p-4 flex-shrink-0">
+          <div className="space-y-4 h-full overflow-y-auto">
             <CameraControls />
             <AnnotationToolbar />
             <LayoutSelector 

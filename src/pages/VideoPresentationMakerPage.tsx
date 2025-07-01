@@ -19,15 +19,15 @@ export default function VideoPresentationMakerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="container mx-auto px-4 py-8">
-        {!uploadedFile ? (
+    <div className="min-h-screen bg-gray-50 w-full overflow-hidden">
+      {!uploadedFile && <Header />}
+      {!uploadedFile ? (
+        <div className="container mx-auto px-4 py-8">
           <PresentationUploader onFileUpload={handleFileUpload} />
-        ) : (
-          <PresentationRecorder slides={slides} fileName={uploadedFile.name} />
-        )}
-      </div>
+        </div>
+      ) : (
+        <PresentationRecorder slides={slides} fileName={uploadedFile.name} />
+      )}
     </div>
   );
 }
