@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Play, Download, Users, Share2, MessageCircle, BarChart3, Video, Mic, Eye, Globe, Shield, Chrome, Monitor, Smartphone, CheckCircle, Star, Zap, Clock, Camera, Edit, Maximize, Settings, Upload, FileText, Award, TrendingUp, Target, Layers, BookOpen, Headphones, MousePointer, Paintbrush } from 'lucide-react';
+import { Play, Download, Users, Share2, MessageCircle, BarChart3, Video, Mic, Eye, Globe, Shield, Chrome, Monitor, Smartphone, CheckCircle, Star, Zap, Clock, Camera, Edit, Maximize, Settings, Upload, FileText, Award, TrendingUp, Target, Layers, BookOpen, Headphones, MousePointer, Paintbrush, Move, PenTool, Type, Check } from 'lucide-react';
 import { Header } from '@/components/Header';
 import FAQ from '@/components/FAQ';
 
@@ -48,6 +48,12 @@ const ScreenRecorderLandingPage = () => {
       color: "bg-pink-500"
     },
     {
+      icon: Move,
+      title: "Movable Camera",
+      description: "Drag and reposition your webcam overlay anywhere on screen during recording",
+      color: "bg-cyan-500"
+    },
+    {
       icon: Edit,
       title: "Built-in Editor",
       description: "Trim, cut, and enhance your recordings without external tools",
@@ -69,7 +75,73 @@ const ScreenRecorderLandingPage = () => {
       icon: FileText,
       title: "Auto Transcription",
       description: "Generate automatic transcripts and captions for accessibility",
-      color: "bg-cyan-500"
+      color: "bg-emerald-500"
+    },
+    {
+      icon: Zap,
+      title: "One-Click Recording",
+      description: "Start recording instantly with hotkeys and quick access toolbar",
+      color: "bg-violet-500"
+    }
+  ];
+
+  const annotationFeatures = [
+    {
+      icon: Type,
+      title: "Text Annotations",
+      description: "Add professional text overlays and callouts to highlight important information"
+    },
+    {
+      icon: Check,
+      title: "Tick Marks",
+      description: "Mark completed steps or highlight successful actions with tick annotations"
+    },
+    {
+      icon: PenTool,
+      title: "Pencil Drawing",
+      description: "Draw freehand annotations, arrows, and shapes to guide viewer attention"
+    },
+    {
+      icon: Edit,
+      title: "Pen Tool",
+      description: "Create precise annotations with different pen styles and colors"
+    },
+    {
+      icon: MousePointer,
+      title: "Click Highlights",
+      description: "Automatically highlight mouse clicks and cursor movements"
+    },
+    {
+      icon: Paintbrush,
+      title: "Shape Tools",
+      description: "Add rectangles, circles, and arrows for clear visual emphasis"
+    }
+  ];
+
+  const recordingModes = [
+    {
+      icon: Monitor,
+      title: "Full Desktop Recording",
+      description: "Capture everything on your screen including multiple monitors",
+      features: ["Multi-monitor support", "System audio capture", "HD quality recording"]
+    },
+    {
+      icon: Globe,
+      title: "Browser Tab Recording",
+      description: "Record specific browser tabs with audio for web demos",
+      features: ["Tab-specific capture", "Audio from tab", "No background interference"]
+    },
+    {
+      icon: Layers,
+      title: "Application Window",
+      description: "Focus on specific applications for targeted demonstrations",
+      features: ["Window isolation", "Auto-follow window", "Clean backgrounds"]
+    },
+    {
+      icon: Camera,
+      title: "Screen + Camera",
+      description: "Combine screen recording with webcam for personal touch",
+      features: ["Picture-in-picture", "Movable camera", "Custom positioning"]
     }
   ];
 
@@ -136,16 +208,30 @@ const ScreenRecorderLandingPage = () => {
       title: "Marketing Content",
       description: "Generate engaging content for social media and campaigns",
       benefits: ["Viral potential", "Brand awareness", "Lead generation"]
+    },
+    {
+      icon: Headphones,
+      title: "Customer Support",
+      description: "Create visual guides and troubleshooting videos",
+      benefits: ["Reduce support time", "Visual problem solving", "Self-service resources"]
+    },
+    {
+      icon: Clock,
+      title: "Meeting Records",
+      description: "Record important meetings and presentations for future reference",
+      benefits: ["Never miss details", "Share with absent members", "Create archives"]
     }
   ];
 
   const integrations = [
-    { name: "YouTube", logo: "📺", description: "Direct upload to YouTube" },
-    { name: "Google Drive", logo: "💾", description: "Cloud storage integration" },
-    { name: "Slack", logo: "💬", description: "Share in team channels" },
-    { name: "Notion", logo: "📝", description: "Embed in documentation" },
-    { name: "HubSpot", logo: "🎯", description: "CRM integration" },
-    { name: "Salesforce", logo: "☁️", description: "Sales workflow integration" }
+    { name: "YouTube", logo: "📺", description: "Direct upload to YouTube", status: "available" },
+    { name: "Gmail", logo: "📧", description: "Share via email integration", status: "available" },
+    { name: "GitHub", logo: "🐙", description: "Version control integration", status: "available" },
+    { name: "Bitbucket", logo: "🪣", description: "Code repository integration", status: "available" },
+    { name: "HubSpot", logo: "🎯", description: "CRM and marketing integration", status: "coming-soon" },
+    { name: "Google Drive", logo: "💾", description: "Cloud storage integration", status: "available" },
+    { name: "Slack", logo: "💬", description: "Share in team channels", status: "available" },
+    { name: "Notion", logo: "📝", description: "Embed in documentation", status: "available" }
   ];
 
   const testimonials = [
@@ -169,33 +255,36 @@ const ScreenRecorderLandingPage = () => {
       content: "Analytics integration helps us understand exactly where prospects drop off. Game-changer for optimization.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150"
+    },
+    {
+      name: "David Kim",
+      role: "Training Manager at EduTech",
+      content: "The movable camera feature is perfect for our training videos. We can position it exactly where needed.",
+      rating: 5,
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150"
     }
   ];
 
-  const pricingPlans = [
+  const performanceStats = [
     {
-      name: "Free",
-      price: "$0",
-      period: "forever",
-      features: ["5 recordings/month", "Basic editing", "720p quality", "Community support"],
-      cta: "Get Started",
-      popular: false
+      number: "50M+",
+      label: "Hours Recorded",
+      description: "Trusted by creators worldwide"
     },
     {
-      name: "Pro",
-      price: "$19",
-      period: "per month",
-      features: ["Unlimited recordings", "Advanced editing", "4K quality", "AI voiceover", "Analytics", "Priority support"],
-      cta: "Start Free Trial",
-      popular: true
+      number: "99.9%",
+      label: "Uptime",
+      description: "Reliable recording experience"
     },
     {
-      name: "Team",
-      price: "$49",
-      period: "per month",
-      features: ["Everything in Pro", "Team collaboration", "Brand customization", "Advanced analytics", "API access", "Dedicated support"],
-      cta: "Contact Sales",
-      popular: false
+      number: "4K",
+      label: "Max Resolution",
+      description: "Crystal clear video quality"
+    },
+    {
+      number: "60fps",
+      label: "Frame Rate",
+      description: "Smooth motion capture"
     }
   ];
 
@@ -238,8 +327,23 @@ const ScreenRecorderLandingPage = () => {
           </div>
         </section>
 
+        {/* Performance Stats */}
+        <section className="py-12 sm:py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {performanceStats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">{stat.number}</div>
+                  <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
+                  <div className="text-sm text-gray-600">{stat.description}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Platform Options */}
-        <section className="py-12 sm:py-20 bg-white">
+        <section className="py-12 sm:py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -264,6 +368,49 @@ const ScreenRecorderLandingPage = () => {
                       <Download className="w-4 h-4 mr-2" />
                       {platform.cta}
                     </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recording Modes */}
+        <section className="py-12 sm:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Multiple Recording Modes
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                Choose the perfect recording mode for your needs - from full desktop to specific applications
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-8">
+              {recordingModes.map((mode, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                        <mode.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl">{mode.title}</CardTitle>
+                      </div>
+                    </div>
+                    <CardDescription className="text-base leading-relaxed mb-4">
+                      {mode.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      {mode.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <span className="text-sm text-gray-600">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -299,13 +446,6 @@ const ScreenRecorderLandingPage = () => {
                 </Card>
               ))}
             </div>
-            
-            <div className="text-center mt-12">
-              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                <Chrome className="w-5 h-5 mr-2" />
-                Get Started Now
-              </Button>
-            </div>
           </div>
         </section>
 
@@ -320,7 +460,7 @@ const ScreenRecorderLandingPage = () => {
                 Professional-grade tools for creating exceptional screen recordings and demo videos
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {advancedFeatures.map((feature, index) => (
                 <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300">
                   <CardHeader className="text-center pb-4">
@@ -340,8 +480,39 @@ const ScreenRecorderLandingPage = () => {
           </div>
         </section>
 
-        {/* Use Cases Section */}
+        {/* Annotation Features */}
         <section className="py-12 sm:py-20 bg-gradient-to-br from-purple-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Easy Annotations & Visual Tools
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                Add professional annotations to your recordings with our comprehensive drawing and markup tools
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {annotationFeatures.map((feature, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <CardHeader className="text-center">
+                    <div className="w-14 h-14 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <feature.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <CardDescription className="text-sm leading-relaxed">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Use Cases Section */}
+        <section className="py-12 sm:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -351,7 +522,7 @@ const ScreenRecorderLandingPage = () => {
                 From product demos to training videos, discover how screen recording can transform your business
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-8 sm:gap-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {useCases.map((useCase, index) => (
                 <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
@@ -384,7 +555,7 @@ const ScreenRecorderLandingPage = () => {
         </section>
 
         {/* Analytics Integration Section */}
-        <section className="py-12 sm:py-20 bg-white">
+        <section className="py-12 sm:py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-5xl mx-auto text-center">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
@@ -406,7 +577,7 @@ const ScreenRecorderLandingPage = () => {
                     <p className="text-gray-600 text-sm sm:text-base">Pinpoint exactly where viewers lose interest</p>
                   </div>
                   <div className="text-center sm:col-span-2 lg:col-span-1">
-                    <BarChart3 className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                    <TrendingUp className="w-12 h-12 text-purple-600 mx-auto mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Optimize Performance</h3>
                     <p className="text-gray-600 text-sm sm:text-base">Make data-driven improvements to your demos</p>
                   </div>
@@ -424,7 +595,7 @@ const ScreenRecorderLandingPage = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-12 sm:py-20 bg-gray-50">
+        <section className="py-12 sm:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -434,7 +605,7 @@ const ScreenRecorderLandingPage = () => {
                 See how businesses like yours are using Flonnect to create amazing demo videos
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {testimonials.map((testimonial, index) => (
                 <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardHeader>
@@ -465,7 +636,7 @@ const ScreenRecorderLandingPage = () => {
         </section>
 
         {/* Integrations Section */}
-        <section className="py-12 sm:py-20 bg-white">
+        <section className="py-12 sm:py-20 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -475,58 +646,16 @@ const ScreenRecorderLandingPage = () => {
                 Connect with your favorite tools and streamline your workflow
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
               {integrations.map((integration, index) => (
-                <Card key={index} className="text-center hover:shadow-md transition-shadow duration-300">
+                <Card key={index} className="text-center hover:shadow-md transition-shadow duration-300 relative">
                   <CardContent className="p-6">
                     <div className="text-3xl mb-2">{integration.logo}</div>
                     <h3 className="font-semibold text-sm mb-1">{integration.name}</h3>
-                    <p className="text-xs text-gray-500">{integration.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-          <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Simple, Transparent Pricing
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                Choose the plan that fits your needs. Upgrade or downgrade at any time.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-              {pricingPlans.map((plan, index) => (
-                <Card key={index} className={`relative border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 ${plan.popular ? 'ring-2 ring-blue-500' : ''}`}>
-                  {plan.popular && (
-                    <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white">
-                      Most Popular
-                    </Badge>
-                  )}
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                    <div className="text-3xl font-bold text-gray-900 mb-2">
-                      {plan.price}
-                      <span className="text-sm font-normal text-gray-500">/{plan.period}</span>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 mb-6">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`} variant={plan.popular ? 'default' : 'outline'}>
-                      {plan.cta}
-                    </Button>
+                    <p className="text-xs text-gray-500 mb-2">{integration.description}</p>
+                    {integration.status === 'coming-soon' && (
+                      <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+                    )}
                   </CardContent>
                 </Card>
               ))}
