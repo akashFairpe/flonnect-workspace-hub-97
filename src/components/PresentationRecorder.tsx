@@ -22,6 +22,7 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
   const [selectedLayout, setSelectedLayout] = useState('picture-in-picture');
   const [selectedBackground, setSelectedBackground] = useState('none');
   const [annotations, setAnnotations] = useState<any[]>([]);
+  const [slideNotes, setSlideNotes] = useState<{ [key: number]: { note: string; isAI: boolean } }>({});
   const { toast } = useToast();
 
   const handleStartRecording = () => {
@@ -38,6 +39,13 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
       title: "Recording Stopped",
       description: "Your presentation has been recorded successfully!",
     });
+  };
+
+  const handleNoteSave = (slideIndex: number, note: string, isAI: boolean) => {
+    setSlideNotes(prev => ({
+      ...prev,
+      [slideIndex]: { note, isAI }
+    }));
   };
 
   const nextSlide = () => {
@@ -71,7 +79,13 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
 
       {/* AI Speaker Notes - Full Width at Top */}
       <div className="bg-white border-b px-6 py-4 flex-shrink-0">
-        <AISpeakerNotes slideContent={`Slide ${currentSlide + 1}`} />
+        <AISpeakerNotes 
+          slideContent={`Slide ${currentSlide + 1}`}
+          currentSlide={currentSlide}
+          onNoteSave={handleNoteSave}
+          savedNote={slideNotes[currentSlide]?.note}
+          isAINotes={slideNotes[currentSlide]?.isAI}
+        />
       </div>
 
       {/* Main Content */}
@@ -112,6 +126,8 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
             onCameraToggle={() => setIsCameraOn(!isCameraOn)}
             onLayoutChange={setSelectedLayout}
             onBackgroundChange={setSelectedBackground}
+            currentSlide={currentSlide}
+            slideNotes={slideNotes}
           />
         </div>
       </div>

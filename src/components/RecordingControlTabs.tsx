@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { 
   Video, 
   VideoOff, 
@@ -15,7 +16,9 @@ import {
   Monitor,
   Users,
   User,
-  PictureInPicture
+  PictureInPicture,
+  Brain,
+  Edit
 } from 'lucide-react';
 
 interface RecordingControlTabsProps {
@@ -27,6 +30,8 @@ interface RecordingControlTabsProps {
   onCameraToggle: () => void;
   onLayoutChange: (layout: string) => void;
   onBackgroundChange: (background: string) => void;
+  currentSlide: number;
+  slideNotes: { [key: number]: { note: string; isAI: boolean } };
 }
 
 export function RecordingControlTabs({
@@ -37,7 +42,9 @@ export function RecordingControlTabs({
   onMicToggle,
   onCameraToggle,
   onLayoutChange,
-  onBackgroundChange
+  onBackgroundChange,
+  currentSlide,
+  slideNotes
 }: RecordingControlTabsProps) {
   const layouts = [
     { id: 'picture-in-picture', name: 'Picture in Picture', icon: PictureInPicture },
@@ -52,6 +59,8 @@ export function RecordingControlTabs({
     { id: 'green', name: 'Green', color: '#10b981' },
     { id: 'blue', name: 'Blue', color: '#3b82f6' }
   ];
+
+  const currentNoteData = slideNotes[currentSlide];
 
   return (
     <Card className="h-full">
@@ -156,9 +165,41 @@ export function RecordingControlTabs({
             </div>
           </TabsContent>
 
-          <TabsContent value="notes" className="flex-1">
-            <div className="text-sm text-gray-600">
-              AI Speaker Notes will appear here when generated from the top panel.
+          <TabsContent value="notes" className="flex-1 space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <h4 className="font-medium text-sm">Current Slide Note</h4>
+                <Badge variant="outline" className="text-xs">
+                  Slide {currentSlide + 1}
+                </Badge>
+              </div>
+              
+              {currentNoteData ? (
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    {currentNoteData.isAI ? (
+                      <>
+                        <Brain className="w-4 h-4 text-blue-500" />
+                        <span className="text-xs text-blue-600 font-medium">🧠 AI Note</span>
+                      </>
+                    ) : (
+                      <>
+                        <Edit className="w-4 h-4 text-green-500" />
+                        <span className="text-xs text-green-600 font-medium">✍️ Custom Note</span>
+                      </>
+                    )}
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg text-sm text-gray-700 max-h-40 overflow-y-auto">
+                    {currentNoteData.note}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-sm text-gray-500 text-center py-8">
+                  No notes for this slide yet.
+                  <br />
+                  Use the top section to create notes.
+                </div>
+              )}
             </div>
           </TabsContent>
 
