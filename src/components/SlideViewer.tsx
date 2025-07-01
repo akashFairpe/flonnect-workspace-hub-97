@@ -65,7 +65,7 @@ export function SlideViewer({
 
   return (
     <div 
-      className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden cursor-move"
+      className="relative w-full h-full bg-gray-100 rounded-lg overflow-hidden cursor-move"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}

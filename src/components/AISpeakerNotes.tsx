@@ -20,15 +20,15 @@ export function AISpeakerNotes({ slideContent }: AISpeakerNotesProps) {
     
     // Simulate AI generation
     setTimeout(() => {
-      const sampleNotes = `Here are some suggested talking points for ${slideContent}:
+      const sampleNotes = `Key talking points for ${slideContent}:
 
-• Start with a compelling hook to grab attention
-• Explain the key concept clearly and concisely  
-• Use real-world examples to illustrate your point
-• Address potential questions or concerns
-• End with a clear call-to-action or transition
+• Start with a compelling hook
+• Explain the concept clearly  
+• Use real-world examples
+• Address potential concerns
+• End with clear transition
 
-Remember to maintain eye contact and speak naturally!`;
+Remember to maintain eye contact!`;
       
       setNotes(sampleNotes);
       setIsGenerating(false);
@@ -72,11 +72,11 @@ Remember to maintain eye contact and speak naturally!`;
           placeholder="AI-generated speaker notes will appear here..."
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          className="min-h-32 text-sm"
+          className="h-48 text-sm resize-none"
         />
         
         <div className="text-xs text-gray-500">
-          Edit the generated notes to match your presentation style
+          Edit notes to match your style
         </div>
       </CardContent>
     </Card>
