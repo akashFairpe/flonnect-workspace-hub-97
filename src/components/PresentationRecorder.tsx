@@ -83,6 +83,11 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
         </div>
       </div>
 
+      {/* AI Speaker Notes - Full Width at Top */}
+      <div className="bg-white border-b px-6 py-4">
+        <AISpeakerNotes slideContent={`Slide ${currentSlide + 1}`} />
+      </div>
+
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left Sidebar - Slide Navigation */}
@@ -107,9 +112,8 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
           </div>
         </div>
 
-        {/* Main Content Area */}
+        {/* Main Content Area - Full Width Slide Viewer */}
         <div className="flex-1 flex flex-col">
-          {/* Slide Viewer - Much Larger */}
           <div className="flex-1 p-6">
             <Card className="h-full">
               <CardContent className="p-0 h-full">
@@ -193,7 +197,7 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
           </div>
         </div>
 
-        {/* Right Sidebar - Controls */}
+        {/* Right Sidebar - Compact Controls */}
         <div className="w-80 bg-white border-l p-4 overflow-y-auto">
           <div className="space-y-4">
             <CameraControls />
@@ -206,7 +210,6 @@ export function PresentationRecorder({ slides, fileName }: PresentationRecorderP
               selectedBackground={selectedBackground}
               onBackgroundChange={setSelectedBackground}
             />
-            <AISpeakerNotes slideContent={`Slide ${currentSlide + 1}`} />
           </div>
         </div>
       </div>

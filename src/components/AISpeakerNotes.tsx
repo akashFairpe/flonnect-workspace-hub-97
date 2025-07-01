@@ -20,15 +20,7 @@ export function AISpeakerNotes({ slideContent }: AISpeakerNotesProps) {
     
     // Simulate AI generation
     setTimeout(() => {
-      const sampleNotes = `Key talking points for ${slideContent}:
-
-• Start with a compelling hook
-• Explain the concept clearly  
-• Use real-world examples
-• Address potential concerns
-• End with clear transition
-
-Remember to maintain eye contact!`;
+      const sampleNotes = `Key talking points for ${slideContent}: Start with a compelling hook • Explain the concept clearly • Use real-world examples • Address potential concerns • End with clear transition. Remember to maintain eye contact!`;
       
       setNotes(sampleNotes);
       setIsGenerating(false);
@@ -41,44 +33,39 @@ Remember to maintain eye contact!`;
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-sm flex items-center gap-2">
-          <Brain className="w-4 h-4" />
-          AI Speaker Notes
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <Button
-          onClick={generateNotes}
-          disabled={isGenerating}
-          size="sm"
-          className="w-full"
-        >
-          {isGenerating ? (
-            <>
-              <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-              Generating...
-            </>
-          ) : (
-            <>
-              <Brain className="w-4 h-4 mr-2" />
-              Generate Notes
-            </>
-          )}
-        </Button>
-        
+    <div className="flex items-center gap-4 w-full">
+      <div className="flex items-center gap-2 min-w-fit">
+        <Brain className="w-5 h-5" />
+        <span className="font-semibold text-sm">AI Speaker Notes</span>
+      </div>
+      
+      <div className="flex-1">
         <Textarea
-          placeholder="AI-generated speaker notes will appear here..."
+          placeholder="AI-generated speaker notes will appear here... Click generate to create notes for this slide."
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          className="h-48 text-sm resize-none"
+          className="h-20 text-sm resize-none w-full"
         />
-        
-        <div className="text-xs text-gray-500">
-          Edit notes to match your style
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+      
+      <Button
+        onClick={generateNotes}
+        disabled={isGenerating}
+        size="sm"
+        className="min-w-fit"
+      >
+        {isGenerating ? (
+          <>
+            <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+            Generating...
+          </>
+        ) : (
+          <>
+            <Brain className="w-4 h-4 mr-2" />
+            Generate
+          </>
+        )}
+      </Button>
+    </div>
   );
 }
