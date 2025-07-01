@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Play, ArrowRight, TrendingUp } from 'lucide-react';
+import { Play, ArrowRight, TrendingUp, Download } from 'lucide-react';
 
 export function HeroSection() {
   return (
@@ -39,6 +39,34 @@ export function HeroSection() {
           Watch Demo
           <Play className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
         </Button>
+      </div>
+      
+      {/* Download Links Section */}
+      <div className="mt-8 sm:mt-10 p-6 bg-gray-50 rounded-lg">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Available Platforms</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a 
+            href="#chrome-extension" 
+            className="flex items-center justify-center gap-2 p-3 bg-white rounded-lg border hover:shadow-md transition-shadow"
+          >
+            <Download className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-medium">Chrome Extension</span>
+          </a>
+          <a 
+            href="#desktop-mac" 
+            className="flex items-center justify-center gap-2 p-3 bg-white rounded-lg border hover:shadow-md transition-shadow"
+          >
+            <Download className="w-4 h-4 text-gray-600" />
+            <span className="text-sm font-medium">Desktop (Mac)</span>
+          </a>
+          <a 
+            href="#desktop-windows" 
+            className="flex items-center justify-center gap-2 p-3 bg-white rounded-lg border hover:shadow-md transition-shadow"
+          >
+            <Download className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium">Desktop (Windows)</span>
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { MousePointer } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { MousePointer, Download, Chrome } from 'lucide-react';
 
 export function AnalyticsSection() {
   return (
@@ -24,19 +25,45 @@ export function AnalyticsSection() {
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="text-2xl font-bold text-blue-600 mb-2">Extension</div>
-                <div className="text-sm text-gray-600">Browser-based Capture</div>
+                <div className="text-sm text-gray-600 mb-4">Browser-based Capture</div>
+                <Button variant="outline" size="sm" asChild>
+                  <a href="#chrome-extension-capture">
+                    <Chrome className="w-4 h-4 mr-2" />
+                    Install Extension
+                  </a>
+                </Button>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="text-2xl font-bold text-blue-600 mb-2">Desktop App</div>
-                <div className="text-sm text-gray-600">Full Screen Recording</div>
+                <div className="text-sm text-gray-600 mb-4">Full Screen Recording</div>
+                <div className="flex gap-2 justify-center">
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="#desktop-mac-app">
+                      <Download className="w-4 h-4 mr-1" />
+                      Mac
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="#desktop-windows-app">
+                      <Download className="w-4 h-4 mr-1" />
+                      Windows
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="text-2xl font-bold text-blue-600 mb-2">HTML Demos</div>
-                <div className="text-sm text-gray-600">Interactive Guides</div>
+                <div className="text-sm text-gray-600 mb-4">Interactive Guides</div>
+                <Button variant="outline" size="sm" asChild>
+                  <a href="#html-demo-extension">
+                    <Chrome className="w-4 h-4 mr-2" />
+                    Get Extension
+                  </a>
+                </Button>
               </div>
             </div>
           </div>

@@ -7,7 +7,8 @@ import {
   ArrowRight, 
   CheckCircle, 
   Star, 
-  Download 
+  Download,
+  Chrome
 } from 'lucide-react';
 
 export function ProductTourCTA() {
@@ -48,7 +49,7 @@ export function FinalCTA() {
           <CardDescription className="text-purple-100 text-base sm:text-lg max-w-4xl mx-auto mb-8 leading-relaxed">
             Flonnect simplifies the way you create, manage, and share demo videos for your products. Whether you're showcasing a feature, onboarding new clients, or driving sales, Flonnect empowers you to deliver impactful experiences that convert viewers into loyal customers. Start your journey today with a free trial and explore how Flonnect can elevate your business.
           </CardDescription>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto">
               Start Free Trial
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -58,6 +59,29 @@ export function FinalCTA() {
               Download Now
             </Button>
           </div>
+          
+          {/* Download Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10" asChild>
+              <a href="#chrome-webstore-final">
+                <Chrome className="w-4 h-4 mr-2" />
+                Chrome Extension
+              </a>
+            </Button>
+            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10" asChild>
+              <a href="#desktop-mac-final">
+                <Download className="w-4 h-4 mr-2" />
+                Mac App
+              </a>
+            </Button>
+            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10" asChild>
+              <a href="#desktop-windows-final">
+                <Download className="w-4 h-4 mr-2" />
+                Windows App
+              </a>
+            </Button>
+          </div>
+          
           <div className="mt-8 text-sm text-purple-200">
             No credit card required • Free forever plan available
           </div>
