@@ -60,7 +60,7 @@ const PresentationRecorderLandingPage = () => {
       features: ["Slide synchronization", "Auto-advance options", "Speaker notes support"]
     },
     {
-      icon: Canvas,
+      icon: Layers,
       title: "Canvas Recording",
       description: "Advanced canvas-based recording for interactive presentations",
       features: ["Real-time rendering", "Interactive elements", "Smooth animations"]
