@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -42,6 +43,7 @@ import ScreenRecorderLandingPage from "./pages/ScreenRecorderLandingPage";
 import PresentationRecorderLandingPage from "./pages/PresentationRecorderLandingPage";
 import VideoPresentationMakerPage from "./pages/VideoPresentationMakerPage";
 import InteractiveDemoCapturePage from "./pages/InteractiveDemoCapturePage";
+import BugReportingPage from "./pages/BugReportingPage";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +59,7 @@ const App = () => (
           <Route path="/presentation-recorder" element={<PresentationRecorderLandingPage />} />
           <Route path="/video-presentation-maker" element={<VideoPresentationMakerPage />} />
           <Route path="/interactive-demo-capture" element={<InteractiveDemoCapturePage />} />
+          <Route path="/bug-reporting" element={<BugReportingPage />} />
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />
           <Route path="/ai/image-editor" element={<AIImageEditorPage />} />
