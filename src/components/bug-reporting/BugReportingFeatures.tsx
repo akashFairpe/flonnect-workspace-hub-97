@@ -2,27 +2,37 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Camera, Video, Network, Settings, ArrowRight } from 'lucide-react';
+import { Camera, Video, Network, Settings, ArrowRight, Bug, Pen } from 'lucide-react';
 
 const features = [
   {
     title: "Two Bug Reporting Modes:",
-    description: "Choose from Image Bug or Video Bug to report issues effectively.",
+    description: "Choose from Image Bug or Video Bug to report issues effectively with comprehensive capture options.",
     icon: Camera
   },
   {
     title: "Mark Bugs in Videos",
-    description: "Highlight specific timestamps in recorded videos to pinpoint issues quickly.",
+    description: "Highlight specific timestamps in recorded videos to pinpoint issues quickly and provide precise context.",
     icon: Video
   },
   {
     title: "Automatic Network & API Recording:",
-    description: "Capture all network requests and API calls for seamless debugging.",
+    description: "Capture all network requests, API calls, and failed requests. Identify which APIs fail, view response codes, and debug network issues effortlessly.",
     icon: Network
   },
   {
+    title: "Advanced Annotation Tools:",
+    description: "Add arrows, highlights, text boxes, and drawings to screenshots and videos for crystal-clear bug documentation.",
+    icon: Pen
+  },
+  {
+    title: "Network Tab Monitoring:",
+    description: "Monitor all network activity including XHR requests, fetch calls, and WebSocket connections. See exactly which API endpoints are failing and why.",
+    icon: Bug
+  },
+  {
     title: "Seamless Integrations:",
-    description: "Sync bug reports directly with Jira, ClickUp, and other project management tools.",
+    description: "Sync bug reports directly with Jira, ClickUp, GitHub Issues, and other project management tools with all network data included.",
     icon: Settings
   }
 ];
@@ -34,6 +44,9 @@ export function BugReportingFeatures() {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">
           Identify, Report, and Fix Bugs Faster Than Ever
         </h2>
+        <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          Go beyond simple screenshots. Capture network activity, annotate issues, and provide developers with everything they need to fix bugs quickly.
+        </p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
