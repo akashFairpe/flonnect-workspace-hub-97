@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -39,70 +38,100 @@ export default function WelcomeEmailPage() {
             color: #333; 
             margin: 0; 
             padding: 0; 
-            background-color: #f9fafb; 
+            background-color: #f8fafc; 
         }
-        .container { 
-            max-width: 600px; 
-            margin: 0 auto; 
-            padding: 20px; 
+        .email-wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .email-container { 
             background-color: #ffffff; 
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .email-content {
+            padding: 32px;
         }
         .header { 
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 20px; 
-            margin-bottom: 30px; 
-        }
-        .header-flex { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            margin-bottom: 12px; 
+            text-align: center;
+            border-bottom: 2px solid #e5e7eb; 
+            padding-bottom: 24px; 
+            margin-bottom: 32px; 
         }
         .logo { 
-            width: 48px; 
-            height: 48px; 
+            width: 64px; 
+            height: 64px; 
             background-color: #2563eb; 
-            border-radius: 8px; 
-            display: flex; 
+            border-radius: 12px; 
+            display: inline-flex; 
             align-items: center; 
             justify-content: center; 
-            flex-shrink: 0; 
+            margin-bottom: 16px; 
         }
         .logo span { 
             color: white; 
             font-weight: bold; 
-            font-size: 18px; 
+            font-size: 24px; 
         }
-        .company-info h2 { 
+        .company-title { 
             margin: 0; 
-            font-size: 20px; 
+            font-size: 28px; 
             font-weight: bold; 
-            color: #111; 
+            color: #111827; 
+            margin-bottom: 8px;
         }
-        .company-info p { 
+        .company-subtitle { 
             margin: 0; 
-            color: #666; 
-            font-size: 14px; 
+            color: #6b7280; 
+            font-size: 16px; 
         }
-        .content { 
-            margin-bottom: 16px; 
+        .greeting { 
+            font-size: 18px; 
+            margin-bottom: 24px; 
+            color: #111827;
         }
-        .next-steps { 
-            margin-bottom: 8px; 
+        .main-text { 
+            font-size: 16px; 
+            margin-bottom: 24px; 
+            color: #374151; 
+            line-height: 1.6;
+        }
+        .next-steps-title { 
+            font-size: 18px; 
             font-weight: 600; 
+            margin-bottom: 16px; 
+            color: #111827;
         }
         .steps-list { 
-            margin-bottom: 24px; 
-            padding-left: 20px; 
+            margin-bottom: 32px; 
+            padding-left: 0;
+            list-style: none;
         }
         .steps-list li { 
-            margin-bottom: 8px; 
+            margin-bottom: 12px; 
+            padding-left: 24px;
+            position: relative;
+            font-size: 16px;
+            color: #374151;
+        }
+        .steps-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .cta-container { 
+            text-align: center; 
+            margin: 40px 0; 
         }
         .cta-buttons { 
-            display: flex; 
-            gap: 12px; 
-            margin: 32px 0; 
-            justify-content: center; 
+            display: inline-block; 
         }
         .cta-button { 
             background: #2563eb; 
@@ -113,18 +142,36 @@ export default function WelcomeEmailPage() {
             font-weight: 600; 
             display: inline-block; 
             text-align: center; 
-            min-width: 160px; 
+            margin: 0 8px 12px 8px;
+            min-width: 180px;
+            font-size: 16px;
         }
         .cta-button.green { 
             background: #16a34a; 
         }
-        .footer { 
+        .help-text { 
+            font-size: 16px; 
+            margin-bottom: 24px; 
+            color: #374151; 
+        }
+        .help-text a { 
+            color: #2563eb; 
+            text-decoration: underline; 
+        }
+        .signature { 
             margin-top: 32px; 
-            padding-top: 16px; 
-            border-top: 1px solid #eee; 
+            padding-top: 24px; 
+            border-top: 1px solid #e5e7eb; 
+            font-size: 16px; 
+            color: #374151;
+        }
+        .footer { 
+            background-color: #f8fafc;
+            padding: 24px 32px; 
             font-size: 12px; 
-            color: #999; 
+            color: #6b7280; 
             text-align: center; 
+            line-height: 1.5;
         }
         .footer p { 
             margin-bottom: 8px; 
@@ -134,78 +181,104 @@ export default function WelcomeEmailPage() {
             text-decoration: underline; 
         }
         
-        @media screen and (max-width: 600px) {
-            .container { 
-                width: 100% !important; 
+        @media screen and (max-width: 640px) {
+            .email-wrapper { 
                 padding: 16px !important; 
             }
-            .header-flex { 
-                flex-direction: column !important; 
-                text-align: center !important; 
+            .email-content { 
+                padding: 24px !important; 
             }
             .logo { 
-                margin-bottom: 12px !important; 
+                width: 56px !important; 
+                height: 56px !important; 
+            }
+            .logo span { 
+                font-size: 20px !important; 
+            }
+            .company-title { 
+                font-size: 24px !important; 
+            }
+            .company-subtitle { 
+                font-size: 14px !important; 
+            }
+            .greeting { 
+                font-size: 16px !important; 
+            }
+            .main-text { 
+                font-size: 15px !important; 
+            }
+            .next-steps-title { 
+                font-size: 16px !important; 
+            }
+            .steps-list li { 
+                font-size: 15px !important; 
             }
             .cta-buttons { 
-                flex-direction: column !important; 
-                gap: 8px !important; 
+                display: block !important; 
             }
             .cta-button { 
+                display: block !important; 
                 width: 100% !important; 
-                margin-bottom: 8px !important; 
+                margin: 0 0 12px 0 !important; 
                 min-width: auto !important; 
+                box-sizing: border-box !important;
             }
-            .company-info h2 { 
-                font-size: 18px !important; 
+            .help-text { 
+                font-size: 15px !important; 
             }
-            .content { 
-                font-size: 14px !important; 
+            .signature { 
+                font-size: 15px !important; 
+            }
+            .footer { 
+                padding: 20px 24px !important; 
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-flex">
-                <div class="logo">
-                    <span>F</span>
+    <div class="email-wrapper">
+        <div class="email-container">
+            <div class="email-content">
+                <div class="header">
+                    <div class="logo">
+                        <span>F</span>
+                    </div>
+                    <h1 class="company-title">Flonnect</h1>
+                    <p class="company-subtitle">Screen Recording & Collaboration</p>
                 </div>
-                <div class="company-info">
-                    <h2>Flonnect</h2>
-                    <p>Screen Recording & Collaboration</p>
+                
+                <p class="greeting">Hi {{AdminFirstName}},</p>
+                
+                <p class="main-text">Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
+                
+                <p class="next-steps-title">Next steps:</p>
+                <ul class="steps-list">
+                    <li><strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.</li>
+                    <li><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</li>
+                </ul>
+                
+                <div class="cta-container">
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button">🔗 Connect Calendar</a>
+                        <a href="#" class="cta-button green">🔗 Invite Your Team</a>
+                    </div>
+                </div>
+                
+                <p class="help-text">Need help? Just reply or visit our <a href="#">Getting Started Guide</a>.</p>
+                
+                <div class="signature">
+                    <p>Cheers,<br>The Flonnect Team</p>
                 </div>
             </div>
-        </div>
-        
-        <div class="content">
-            <p>Hi {{AdminFirstName}},</p>
             
-            <p>Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
-            
-            <p class="next-steps">Next steps:</p>
-            <ul class="steps-list">
-                <li><strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.</li>
-                <li><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</li>
-            </ul>
-            
-            <div class="cta-buttons">
-                <a href="#" class="cta-button">🔗 Connect Calendar</a>
-                <a href="#" class="cta-button green">🔗 Invite Your Team</a>
+            <div class="footer">
+                <p>© 2024 Flonnect. All rights reserved.</p>
+                <p>You're receiving this because you signed up for Flonnect.</p>
+                <p>
+                    <a href="#">Unsubscribe</a> | 
+                    <a href="#" style="margin-left: 4px;">Update Preferences</a>
+                </p>
             </div>
-            
-            <p>Need help? Just reply or visit our <a href="#" style="color: #2563eb; text-decoration: underline;">Getting Started Guide</a>.</p>
-            
-            <p>Cheers,<br>The Flonnect Team</p>
-        </div>
-        
-        <div class="footer">
-            <p>© 2024 Flonnect. All rights reserved.</p>
-            <p>You're receiving this because you signed up for Flonnect.</p>
-            <p>
-                <a href="#">Unsubscribe</a> | 
-                <a href="#" style="margin-left: 4px;">Update Preferences</a>
-            </p>
         </div>
     </div>
 </body>
@@ -285,68 +358,66 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-white border rounded-lg p-6 max-w-2xl mx-auto" style={{ fontFamily: 'Arial, sans-serif' }}>
-                  {/* Email Header */}
-                  <div className="border-b pb-4 mb-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">F</span>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <div className="bg-white rounded-xl shadow-lg max-w-2xl mx-auto overflow-hidden" style={{ fontFamily: 'Arial, sans-serif' }}>
+                    {/* Email Content */}
+                    <div className="p-8">
+                      <div className="text-center border-b-2 border-gray-200 pb-6 mb-8">
+                        <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                          <span className="text-white font-bold text-2xl">F</span>
+                        </div>
+                        <h1 className="text-3xl font-bold text-gray-900 mb-2">Flonnect</h1>
+                        <p className="text-gray-600">Screen Recording & Collaboration</p>
                       </div>
-                      <div>
-                        <h2 className="text-xl font-bold text-gray-900">Flonnect</h2>
-                        <p className="text-gray-600 text-sm">Screen Recording & Collaboration</p>
+
+                      <div id="email-body-content" className="space-y-6">
+                        <p className="text-lg text-gray-900">Hi {'{{AdminFirstName}}'},</p>
+                        
+                        <p className="text-gray-700 leading-relaxed">
+                          Welcome aboard! We're excited to have {'{{CompanyName}}'} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
+                        </p>
+
+                        <div>
+                          <p className="text-lg font-semibold text-gray-900 mb-4">Next steps:</p>
+                          <ul className="space-y-3">
+                            <li className="flex items-start gap-3">
+                              <span className="text-green-500 font-bold">✓</span>
+                              <span className="text-gray-700"><strong>Connect Your Calendar</strong>—Auto-record meetings & capture insights.</span>
+                            </li>
+                            <li className="flex items-start gap-3">
+                              <span className="text-green-500 font-bold">✓</span>
+                              <span className="text-gray-700"><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        {/* CTA Buttons */}
+                        <div className="text-center py-8">
+                          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                            <div className="bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-center min-w-[180px]">
+                              🔗 Connect Calendar
+                            </div>
+                            <div className="bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-center min-w-[180px]">
+                              🔗 Invite Your Team
+                            </div>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-700">
+                          Need help? Just reply or visit our <span className="text-blue-600 underline">Getting Started Guide</span>.
+                        </p>
+
+                        <div className="pt-6 border-t border-gray-200">
+                          <p className="text-gray-700">Cheers,<br />The Flonnect Team</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-600">
-                      <p><strong>Subject:</strong> Welcome to Flonnect! Let's get you set up 🚀</p>
-                      <p><strong>To:</strong> {'{{AdminFirstName}}'} &lt;{'{{AdminEmail}}'}&gt;</p>
-                    </div>
-                  </div>
 
-                  {/* Email Content */}
-                  <div id="email-body-content" className="space-y-4">
-                    <p className="text-gray-800">Hi {'{{AdminFirstName}}'},</p>
-                    
-                    <p className="text-gray-800">
-                      Welcome aboard! We're excited to have {'{{CompanyName}}'} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
-                    </p>
-
-                    <div className="my-6">
-                      <p className="text-gray-800 font-semibold mb-3">Next steps:</p>
-                      <ul className="space-y-2 text-gray-800">
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600">•</span>
-                          <span><strong>Connect Your Calendar</strong>—Auto-record meetings & capture insights.</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600">•</span>
-                          <span><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 my-8 justify-center">
-                      <div className="bg-blue-600 text-white text-center py-4 px-6 rounded-lg font-semibold">
-                        🔗 Connect Calendar
-                      </div>
-                      <div className="bg-green-600 text-white text-center py-4 px-6 rounded-lg font-semibold">
-                        🔗 Invite Your Team
-                      </div>
-                    </div>
-
-                    <p className="text-gray-800">
-                      Need help? Just reply or visit our <span className="text-blue-600 underline">Getting Started Guide</span>.
-                    </p>
-
-                    <div className="mt-6 pt-4 border-t">
-                      <p className="text-gray-800">Cheers,<br />The Flonnect Team</p>
-                    </div>
-
-                    <div className="mt-8 pt-4 border-t text-xs text-gray-500 text-center">
-                      <p>© 2024 Flonnect. All rights reserved.</p>
-                      <p>You're receiving this because you signed up for Flonnect.</p>
-                      <p className="mt-2">
+                    {/* Email Footer */}
+                    <div className="bg-gray-50 px-8 py-6 text-xs text-gray-500 text-center leading-relaxed">
+                      <p className="mb-2">© 2024 Flonnect. All rights reserved.</p>
+                      <p className="mb-2">You're receiving this because you signed up for Flonnect.</p>
+                      <p>
                         <span className="text-blue-600 underline cursor-pointer">Unsubscribe</span> | 
                         <span className="text-blue-600 underline cursor-pointer ml-1">Update Preferences</span>
                       </p>
