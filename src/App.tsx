@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -44,6 +45,9 @@ import VideoPresentationMakerPage from "./pages/VideoPresentationMakerPage";
 import VideoGeneratorPage from "./pages/VideoGeneratorPage";
 import InteractiveDemoCapturePage from "./pages/InteractiveDemoCapturePage";
 import BugReportingPage from "./pages/BugReportingPage";
+import EmailSetupPage from "./pages/EmailSetupPage";
+import WelcomeEmailPage from "./pages/WelcomeEmailPage";
+import CalendarReminderEmailPage from "./pages/CalendarReminderEmailPage";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +65,12 @@ const App = () => (
           <Route path="/video-generator" element={<VideoGeneratorPage />} />
           <Route path="/interactive-demo-capture" element={<InteractiveDemoCapturePage />} />
           <Route path="/bug-reporting" element={<BugReportingPage />} />
+          
+          {/* Email Setup Routes */}
+          <Route path="/email-setup" element={<EmailSetupPage />} />
+          <Route path="/email-setup/welcome" element={<WelcomeEmailPage />} />
+          <Route path="/email-setup/calendar-reminder" element={<CalendarReminderEmailPage />} />
+          
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />
           <Route path="/ai/image-editor" element={<AIImageEditorPage />} />
