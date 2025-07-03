@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -19,9 +18,10 @@ import {
   FileText,
   Palette,
   Type,
-  Film
+  Film,
+  Edit3
 } from 'lucide-react';
-import { SlideViewer } from './SlideViewer';
+import { EditableSlideCanvas } from './EditableSlideCanvas';
 import { useToast } from '@/hooks/use-toast';
 
 interface VideoGeneratorEditorProps {
@@ -35,6 +35,8 @@ export function VideoGeneratorEditor({ slides, fileName }: VideoGeneratorEditorP
   const [isMicOn, setIsMicOn] = useState(true);
   const [isSoundOn, setIsSoundOn] = useState(true);
   const [selectedTheme, setSelectedTheme] = useState('modern');
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [slideElements, setSlideElements] = useState<{[key: number]: any[]}>({});
   const { toast } = useToast();
 
   const themes = [
@@ -71,6 +73,13 @@ export function VideoGeneratorEditor({ slides, fileName }: VideoGeneratorEditorP
     }
   };
 
+  const handleElementsChange = (elements: any[]) => {
+    setSlideElements(prev => ({
+      ...prev,
+      [currentSlide]: elements
+    }));
+  };
+
   return (
     <div className="h-screen w-full flex flex-col bg-gray-50 overflow-hidden">
       {/* Header */}
@@ -87,6 +96,14 @@ export function VideoGeneratorEditor({ slides, fileName }: VideoGeneratorEditorP
           </div>
           
           <div className="flex items-center gap-3">
+            <Button
+              variant={isEditMode ? "default" : "outline"}
+              size="sm"
+              onClick={() => setIsEditMode(!isEditMode)}
+            >
+              <Edit3 className="w-4 h-4 mr-2" />
+              {isEditMode ? 'Exit Edit' : 'Edit Mode'}
+            </Button>
             <Button variant="outline" size="sm">
               <Settings className="w-4 h-4 mr-2" />
               Settings
@@ -122,6 +139,9 @@ export function VideoGeneratorEditor({ slides, fileName }: VideoGeneratorEditorP
                     className="w-full aspect-video object-cover rounded mb-2"
                   />
                   <p className="text-sm font-medium text-gray-700">Slide {index + 1}</p>
+                  {slideElements[index] && slideElements[index].length > 0 && (
+                    <p className="text-xs text-blue-600">{slideElements[index].length} elements</p>
+                  )}
                 </div>
               ))}
             </div>
@@ -134,25 +154,31 @@ export function VideoGeneratorEditor({ slides, fileName }: VideoGeneratorEditorP
           <div className="flex-1 p-6 bg-gray-100">
             <Card className="h-full">
               <CardContent className="p-0 h-full relative">
-                <SlideViewer
-                  slideUrl={slides[currentSlide]}
-                  annotations={[]}
-                  onAnnotationAdd={() => {}}
-                  layout="slide-only"
-                  background="none"
-                  isCameraOn={false}
-                />
-                
-                {/* Play/Pause Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-20 transition-all group">
-                  <Button
-                    size="lg"
-                    onClick={handlePlayPause}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-gray-900 hover:bg-gray-100 rounded-full w-16 h-16"
-                  >
-                    {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
-                  </Button>
-                </div>
+                {isEditMode ? (
+                  <EditableSlideCanvas
+                    slideUrl={slides[currentSlide]}
+                    onElementsChange={handleElementsChange}
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={slides[currentSlide]}
+                      alt={`Slide ${currentSlide + 1}`}
+                      className="w-full h-full object-contain"
+                    />
+                    
+                    {/* Play/Pause Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-20 transition-all group">
+                      <Button
+                        size="lg"
+                        onClick={handlePlayPause}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-gray-900 hover:bg-gray-100 rounded-full w-16 h-16"
+                      >
+                        {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+                      </Button>
+                    </div>
+                  </>
+                )}
               </CardContent>
             </Card>
           </div>
