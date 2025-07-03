@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -42,6 +41,7 @@ import LandingPage from "./pages/LandingPage";
 import ScreenRecorderLandingPage from "./pages/ScreenRecorderLandingPage";
 import PresentationRecorderLandingPage from "./pages/PresentationRecorderLandingPage";
 import VideoPresentationMakerPage from "./pages/VideoPresentationMakerPage";
+import VideoGeneratorPage from "./pages/VideoGeneratorPage";
 import InteractiveDemoCapturePage from "./pages/InteractiveDemoCapturePage";
 import BugReportingPage from "./pages/BugReportingPage";
 
@@ -58,6 +58,7 @@ const App = () => (
           <Route path="/screenrecorder" element={<ScreenRecorderLandingPage />} />
           <Route path="/presentation-recorder" element={<PresentationRecorderLandingPage />} />
           <Route path="/video-presentation-maker" element={<VideoPresentationMakerPage />} />
+          <Route path="/video-generator" element={<VideoGeneratorPage />} />
           <Route path="/interactive-demo-capture" element={<InteractiveDemoCapturePage />} />
           <Route path="/bug-reporting" element={<BugReportingPage />} />
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
