@@ -83,16 +83,16 @@ export default function WelcomeEmailPage() {
                     </div>
                     <div className="text-sm text-gray-600">
                       <p><strong>Subject:</strong> Welcome to Flonnect! Let's get you set up 🚀</p>
-                      <p><strong>To:</strong> {{AdminFirstName}} &lt;{{AdminEmail}}&gt;</p>
+                      <p><strong>To:</strong> {'{{AdminFirstName}}'} &lt;{'{{AdminEmail}}'}&gt;</p>
                     </div>
                   </div>
 
                   {/* Email Content */}
                   <div id="email-content" className="space-y-4">
-                    <p className="text-gray-800">Hi {{AdminFirstName}},</p>
+                    <p className="text-gray-800">Hi {'{{AdminFirstName}}'},</p>
                     
                     <p className="text-gray-800">
-                      Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
+                      Welcome aboard! We're excited to have {'{{CompanyName}}'} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
                     </p>
 
                     <div className="my-6">
@@ -164,9 +164,9 @@ export default function WelcomeEmailPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-600">Variables</p>
                   <div className="text-sm text-gray-800 space-y-1">
-                    <p>{{AdminFirstName}}</p>
-                    <p>{{AdminEmail}}</p>
-                    <p>{{CompanyName}}</p>
+                    <p>{'{{AdminFirstName}}'}</p>
+                    <p>{'{{AdminEmail}}'}</p>
+                    <p>{'{{CompanyName}}'}</p>
                   </div>
                 </div>
               </CardContent>

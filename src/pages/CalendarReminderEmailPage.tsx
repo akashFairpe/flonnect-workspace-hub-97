@@ -83,13 +83,13 @@ export default function CalendarReminderEmailPage() {
                     </div>
                     <div className="text-sm text-gray-600">
                       <p><strong>Subject:</strong> Never Miss a Word—Auto-Record Your Meetings</p>
-                      <p><strong>To:</strong> {{AdminFirstName}} &lt;{{AdminEmail}}&gt;</p>
+                      <p><strong>To:</strong> {'{{AdminFirstName}}'} &lt;{'{{AdminEmail}}'}&gt;</p>
                     </div>
                   </div>
 
                   {/* Email Content */}
                   <div id="email-content" className="space-y-4">
-                    <p className="text-gray-800">Hi {{AdminFirstName}},</p>
+                    <p className="text-gray-800">Hi {'{{AdminFirstName}}'},</p>
                     
                     <p className="text-gray-800">
                       We noticed you haven't connected a calendar yet. By syncing your Google or Microsoft calendar, Flonnect will:
@@ -164,8 +164,8 @@ export default function CalendarReminderEmailPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-600">Variables</p>
                   <div className="text-sm text-gray-800 space-y-1">
-                    <p>{{AdminFirstName}}</p>
-                    <p>{{AdminEmail}}</p>
+                    <p>{'{{AdminFirstName}}'}</p>
+                    <p>{'{{AdminEmail}}'}</p>
                   </div>
                 </div>
               </CardContent>
