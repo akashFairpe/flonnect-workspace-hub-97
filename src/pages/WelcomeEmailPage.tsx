@@ -25,262 +25,122 @@ export default function WelcomeEmailPage() {
       TemplateName: "flonnect-welcome-email",
       Subject: "Welcome to Flonnect! Let's get you set up 🚀",
       HtmlPart: `
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Flonnect! Let's get you set up 🚀</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #f8fafc; 
-        }
-        .email-wrapper {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .email-container { 
-            background-color: #ffffff; 
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin: 0 auto;
-        }
-        .email-content {
-            padding: 32px;
-        }
-        .header { 
-            text-align: center;
-            border-bottom: 2px solid #e5e7eb; 
-            padding-bottom: 24px; 
-            margin-bottom: 32px; 
-        }
-        .logo { 
-            width: 64px; 
-            height: 64px; 
-            background-color: #2563eb; 
-            border-radius: 12px; 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin-bottom: 16px; 
-        }
-        .logo span { 
-            color: white; 
-            font-weight: bold; 
-            font-size: 24px; 
-        }
-        .company-title { 
-            margin: 0; 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: #111827; 
-            margin-bottom: 8px;
-        }
-        .company-subtitle { 
-            margin: 0; 
-            color: #6b7280; 
-            font-size: 16px; 
-        }
-        .greeting { 
-            font-size: 18px; 
-            margin-bottom: 24px; 
-            color: #111827;
-        }
-        .main-text { 
-            font-size: 16px; 
-            margin-bottom: 24px; 
-            color: #374151; 
-            line-height: 1.6;
-        }
-        .next-steps-title { 
-            font-size: 18px; 
-            font-weight: 600; 
-            margin-bottom: 16px; 
-            color: #111827;
-        }
-        .steps-list { 
-            margin-bottom: 32px; 
-            padding-left: 0;
-            list-style: none;
-        }
-        .steps-list li { 
-            margin-bottom: 12px; 
-            padding-left: 24px;
-            position: relative;
-            font-size: 16px;
-            color: #374151;
-        }
-        .steps-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
-        }
-        .cta-container { 
-            text-align: center; 
-            margin: 40px 0; 
-        }
-        .cta-buttons { 
-            display: inline-block; 
-        }
-        .cta-button { 
-            background: #2563eb; 
-            color: white; 
-            padding: 16px 24px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            display: inline-block; 
-            text-align: center; 
-            margin: 0 8px 12px 8px;
-            min-width: 180px;
-            font-size: 16px;
-        }
-        .cta-button.green { 
-            background: #16a34a; 
-        }
-        .help-text { 
-            font-size: 16px; 
-            margin-bottom: 24px; 
-            color: #374151; 
-        }
-        .help-text a { 
-            color: #2563eb; 
-            text-decoration: underline; 
-        }
-        .signature { 
-            margin-top: 32px; 
-            padding-top: 24px; 
-            border-top: 1px solid #e5e7eb; 
-            font-size: 16px; 
-            color: #374151;
-        }
-        .footer { 
-            background-color: #f8fafc;
-            padding: 24px 32px; 
-            font-size: 12px; 
-            color: #6b7280; 
-            text-align: center; 
-            line-height: 1.5;
-        }
-        .footer p { 
-            margin-bottom: 8px; 
-        }
-        .footer a { 
-            color: #2563eb; 
-            text-decoration: underline; 
-        }
-        
-        @media screen and (max-width: 640px) {
-            .email-wrapper { 
-                padding: 16px !important; 
-            }
-            .email-content { 
-                padding: 24px !important; 
-            }
-            .logo { 
-                width: 56px !important; 
-                height: 56px !important; 
-            }
-            .logo span { 
-                font-size: 20px !important; 
-            }
-            .company-title { 
-                font-size: 24px !important; 
-            }
-            .company-subtitle { 
-                font-size: 14px !important; 
-            }
-            .greeting { 
-                font-size: 16px !important; 
-            }
-            .main-text { 
-                font-size: 15px !important; 
-            }
-            .next-steps-title { 
-                font-size: 16px !important; 
-            }
-            .steps-list li { 
-                font-size: 15px !important; 
-            }
-            .cta-buttons { 
-                display: block !important; 
-            }
-            .cta-button { 
-                display: block !important; 
-                width: 100% !important; 
-                margin: 0 0 12px 0 !important; 
-                min-width: auto !important; 
-                box-sizing: border-box !important;
-            }
-            .help-text { 
-                font-size: 15px !important; 
-            }
-            .signature { 
-                font-size: 15px !important; 
-            }
-            .footer { 
-                padding: 20px 24px !important; 
-            }
-        }
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Welcome to Flonnect!</title>
 </head>
-<body>
-    <div class="email-wrapper">
-        <div class="email-container">
-            <div class="email-content">
-                <div class="header">
-                    <div class="logo">
-                        <span>F</span>
-                    </div>
-                    <h1 class="company-title">Flonnect</h1>
-                    <p class="company-subtitle">Screen Recording & Collaboration</p>
-                </div>
-                
-                <p class="greeting">Hi {{AdminFirstName}},</p>
-                
-                <p class="main-text">Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
-                
-                <p class="next-steps-title">Next steps:</p>
-                <ul class="steps-list">
-                    <li><strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.</li>
-                    <li><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</li>
-                </ul>
-                
-                <div class="cta-container">
-                    <div class="cta-buttons">
-                        <a href="#" class="cta-button">🔗 Connect Calendar</a>
-                        <a href="#" class="cta-button green">🔗 Invite Your Team</a>
-                    </div>
-                </div>
-                
-                <p class="help-text">Need help? Just reply or visit our <a href="#">Getting Started Guide</a>.</p>
-                
-                <div class="signature">
-                    <p>Cheers,<br>The Flonnect Team</p>
-                </div>
-            </div>
-            
-            <div class="footer">
-                <p>© 2024 Flonnect. All rights reserved.</p>
-                <p>You're receiving this because you signed up for Flonnect.</p>
-                <p>
-                    <a href="#">Unsubscribe</a> | 
-                    <a href="#" style="margin-left: 4px;">Update Preferences</a>
-                </p>
-            </div>
-        </div>
-    </div>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f8fafc;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f8fafc;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td align="center" style="padding: 32px 32px 24px 32px; border-bottom: 2px solid #e5e7eb;">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <div style="width: 64px; height: 64px; background-color: #2563eb; border-radius: 12px; display: inline-block; text-align: center; line-height: 64px; margin-bottom: 16px;">
+                                            <span style="color: white; font-weight: bold; font-size: 24px;">F</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <h1 style="margin: 0; font-size: 28px; font-weight: bold; color: #111827; margin-bottom: 8px;">Flonnect</h1>
+                                        <p style="margin: 0; color: #6b7280; font-size: 16px;">Screen Recording &amp; Collaboration</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 32px;">
+                            <p style="font-size: 18px; margin-bottom: 24px; color: #111827;">Hi {{AdminFirstName}},</p>
+                            
+                            <p style="font-size: 16px; margin-bottom: 24px; color: #374151; line-height: 1.6;">Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
+                            
+                            <p style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827;">Next steps:</p>
+                            
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 32px;">
+                                <tr>
+                                    <td style="padding-bottom: 12px;">
+                                        <table border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td style="vertical-align: top; padding-right: 8px;">
+                                                    <span style="color: #10b981; font-weight: bold;">✓</span>
+                                                </td>
+                                                <td style="font-size: 16px; color: #374151;">
+                                                    <strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 12px;">
+                                        <table border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td style="vertical-align: top; padding-right: 8px;">
+                                                    <span style="color: #10b981; font-weight: bold;">✓</span>
+                                                </td>
+                                                <td style="font-size: 16px; color: #374151;">
+                                                    <strong>Invite Your Team</strong>—So everyone can collaborate in one place.
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- CTA Buttons -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 40px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <table border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td style="padding: 0 8px 12px 8px;">
+                                                    <a href="#" style="display: inline-block; background-color: #2563eb; color: white; padding: 16px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; min-width: 180px; text-align: center;">🔗 Connect Calendar</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 0 8px 12px 8px;">
+                                                    <a href="#" style="display: inline-block; background-color: #16a34a; color: white; padding: 16px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; min-width: 180px; text-align: center;">🔗 Invite Your Team</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="font-size: 16px; margin-bottom: 24px; color: #374151;">Need help? Just reply or visit our <a href="#" style="color: #2563eb; text-decoration: underline;">Getting Started Guide</a>.</p>
+                            
+                            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+                                <p style="font-size: 16px; color: #374151;">Cheers,<br>The Flonnect Team</p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f8fafc; padding: 24px 32px; font-size: 12px; color: #6b7280; text-align: center; line-height: 1.5;">
+                            <p style="margin-bottom: 8px;">© 2024 Flonnect. All rights reserved.</p>
+                            <p style="margin-bottom: 8px;">You're receiving this because you signed up for Flonnect.</p>
+                            <p style="margin: 0;">
+                                <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
+                                <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>`,
       TextPart: `Hi {{AdminFirstName}},
