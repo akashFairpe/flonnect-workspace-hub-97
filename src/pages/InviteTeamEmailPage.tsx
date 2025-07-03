@@ -3,11 +3,11 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Mail, Calendar, Copy, Send } from 'lucide-react';
+import { ArrowLeft, Mail, Users, Copy, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 
-export default function CalendarReminderEmailPage() {
+export default function InviteTeamEmailPage() {
   const { toast } = useToast();
 
   const copyToClipboard = () => {
@@ -23,15 +23,15 @@ export default function CalendarReminderEmailPage() {
 
   const generateAWSSESTemplate = () => {
     const sesTemplate = {
-      TemplateName: "flonnect-calendar-reminder",
-      Subject: "Never Miss a Word—Auto-Record Your Meetings",
+      TemplateName: "flonnect-invite-team",
+      Subject: "Bring Your Team Onboard—Invite Members Today",
       HtmlPart: `
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Never Miss a Word—Auto-Record Your Meetings</title>
+    <title>Bring Your Team Onboard—Invite Members Today</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
     <div style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
@@ -48,23 +48,22 @@ export default function CalendarReminderEmailPage() {
     
     <p>Hi {{AdminFirstName}},</p>
     
-    <p>We noticed you haven't connected a calendar yet. By syncing your Google or Microsoft calendar, Flonnect will:</p>
+    <p>Great job launching "{{ProjectName}}"! Now let's loop in your colleagues so they can start contributing.</p>
     
-    <div style="background: #dbeafe; padding: 16px; border-radius: 8px; margin: 24px 0;">
-        <ul style="margin: 0; padding-left: 16px;">
-            <li style="margin-bottom: 8px;"><strong>Auto-record every meeting</strong> for playback</li>
-            <li style="margin-bottom: 8px;"><strong>Generate actionable insights</strong> &amp; highlights</li>
-            <li><strong>Keep your team aligned</strong> with shared transcripts</li>
-        </ul>
-    </div>
+    <p><strong>Why invite your team?</strong></p>
+    <ul>
+        <li>Assign tasks &amp; share recordings in one click</li>
+        <li>Get faster feedback with real-time comments</li>
+        <li>Track everyone's contributions in one dashboard</li>
+    </ul>
     
     <div style="text-align: center; margin: 32px 0;">
-        <a href="#" style="background: #16a34a; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Connect Your Calendar Now</a>
+        <a href="#" style="background: #16a34a; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Invite Teammates Now</a>
     </div>
     
-    <p>Questions? See our <a href="#" style="color: #2563eb; text-decoration: underline;">Calendar Integration Guide</a> or reply here.</p>
+    <p>Need help? Reply here or see our Team Management Guide.</p>
     
-    <p>Best,<br>The Flonnect Team</p>
+    <p>Cheers,<br>The Flonnect Team</p>
     
     <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
         <p>© 2024 Flonnect. All rights reserved.</p>
@@ -78,17 +77,18 @@ export default function CalendarReminderEmailPage() {
 </html>`,
       TextPart: `Hi {{AdminFirstName}},
 
-We noticed you haven't connected a calendar yet. By syncing your Google or Microsoft calendar, Flonnect will:
+Great job launching "{{ProjectName}}"! Now let's loop in your colleagues so they can start contributing.
 
-• Auto-record every meeting for playback
-• Generate actionable insights & highlights
-• Keep your team aligned with shared transcripts
+Why invite your team?
+• Assign tasks & share recordings in one click
+• Get faster feedback with real-time comments
+• Track everyone's contributions in one dashboard
 
-Connect Your Calendar Now: [Link]
+Invite Teammates Now: [Link]
 
-Questions? See our Calendar Integration Guide or reply here.
+Need help? Reply here or see our Team Management Guide.
 
-Best,
+Cheers,
 The Flonnect Team
 
 © 2024 Flonnect. All rights reserved.
@@ -117,10 +117,10 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
               </Link>
               <div>
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline">Step 2</Badge>
-                  <h1 className="text-2xl font-bold text-gray-900">Calendar Integration Reminder</h1>
+                  <Badge variant="outline">Step 4</Badge>
+                  <h1 className="text-2xl font-bold text-gray-900">Invite Your Team</h1>
                 </div>
-                <p className="text-gray-600 mt-1">Trigger: No calendar connected | Delay: 24h after Step 1</p>
+                <p className="text-gray-600 mt-1">Trigger: No team invites sent | Delay: 24h after Step 3</p>
               </div>
             </div>
             <div className="flex gap-3">
@@ -163,7 +163,7 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                       </div>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p><strong>Subject:</strong> Never Miss a Word—Auto-Record Your Meetings</p>
+                      <p><strong>Subject:</strong> Bring Your Team Onboard—Invite Members Today</p>
                       <p><strong>To:</strong> {'{{AdminFirstName}}'} &lt;{'{{AdminEmail}}'}&gt;</p>
                     </div>
                   </div>
@@ -173,22 +173,23 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                     <p className="text-gray-800">Hi {'{{AdminFirstName}}'},</p>
                     
                     <p className="text-gray-800">
-                      We noticed you haven't connected a calendar yet. By syncing your Google or Microsoft calendar, Flonnect will:
+                      Great job launching "{'{{ProjectName}}'}"! Now let's loop in your colleagues so they can start contributing.
                     </p>
 
-                    <div className="my-6 bg-blue-50 p-4 rounded-lg">
+                    <div className="my-6">
+                      <p className="text-gray-800 font-semibold mb-3">Why invite your team?</p>
                       <ul className="space-y-2 text-gray-800">
                         <li className="flex items-start gap-2">
-                          <Calendar className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                          <span><strong>Auto-record every meeting</strong> for playback</span>
+                          <span className="text-blue-600">•</span>
+                          <span>Assign tasks & share recordings in one click</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <Calendar className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                          <span><strong>Generate actionable insights</strong> & highlights</span>
+                          <span className="text-blue-600">•</span>
+                          <span>Get faster feedback with real-time comments</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <Calendar className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                          <span><strong>Keep your team aligned</strong> with shared transcripts</span>
+                          <span className="text-blue-600">•</span>
+                          <span>Track everyone's contributions in one dashboard</span>
                         </li>
                       </ul>
                     </div>
@@ -196,16 +197,16 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                     {/* CTA Button */}
                     <div className="text-center my-8">
                       <div className="bg-green-600 text-white inline-block py-4 px-8 rounded-lg font-semibold text-lg">
-                        🔗 Connect Your Calendar Now
+                        🔗 Invite Teammates Now
                       </div>
                     </div>
 
                     <p className="text-gray-800">
-                      Questions? See our <span className="text-blue-600 underline">Calendar Integration Guide</span> or reply here.
+                      Need help? Reply here or see our <span className="text-blue-600 underline">Team Management Guide</span>.
                     </p>
 
                     <div className="mt-6 pt-4 border-t">
-                      <p className="text-gray-800">Best,<br />The Flonnect Team</p>
+                      <p className="text-gray-800">Cheers,<br />The Flonnect Team</p>
                     </div>
                   </div>
 
@@ -232,21 +233,22 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
               <CardContent className="space-y-4">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Trigger Event</p>
-                  <p className="text-sm text-gray-800">No calendar connected</p>
+                  <p className="text-sm text-gray-800">No team invites sent</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">Send Delay</p>
-                  <p className="text-sm text-gray-800">24 hours after Step 1</p>
+                  <p className="text-sm text-gray-800">24h after Step 3</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">Primary CTA</p>
-                  <p className="text-sm text-gray-800">Connect Your Calendar</p>
+                  <p className="text-sm text-gray-800">Invite Teammates</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">Variables</p>
                   <div className="text-sm text-gray-800 space-y-1">
                     <p>{'{{AdminFirstName}}'}</p>
                     <p>{'{{AdminEmail}}'}</p>
+                    <p>{'{{ProjectName}}'}</p>
                   </div>
                 </div>
               </CardContent>
@@ -259,7 +261,7 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
               <CardContent className="space-y-4">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Template ID</p>
-                  <p className="text-sm text-gray-800 font-mono">flonnect-calendar-reminder</p>
+                  <p className="text-sm text-gray-800 font-mono">flonnect-invite-team</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">SES Template</p>

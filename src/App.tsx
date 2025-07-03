@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -48,6 +47,8 @@ import BugReportingPage from "./pages/BugReportingPage";
 import EmailSetupPage from "./pages/EmailSetupPage";
 import WelcomeEmailPage from "./pages/WelcomeEmailPage";
 import CalendarReminderEmailPage from "./pages/CalendarReminderEmailPage";
+import FirstProjectEmailPage from "./pages/FirstProjectEmailPage";
+import InviteTeamEmailPage from "./pages/InviteTeamEmailPage";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,8 @@ const App = () => (
           <Route path="/email-setup" element={<EmailSetupPage />} />
           <Route path="/email-setup/welcome" element={<WelcomeEmailPage />} />
           <Route path="/email-setup/calendar-reminder" element={<CalendarReminderEmailPage />} />
+          <Route path="/email-setup/first-project" element={<FirstProjectEmailPage />} />
+          <Route path="/email-setup/invite-team" element={<InviteTeamEmailPage />} />
           
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />

@@ -21,6 +21,87 @@ export default function WelcomeEmailPage() {
     }
   };
 
+  const generateAWSSESTemplate = () => {
+    const sesTemplate = {
+      TemplateName: "flonnect-welcome-email",
+      Subject: "Welcome to Flonnect! Let's get you set up 🚀",
+      HtmlPart: `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Flonnect! Let's get you set up 🚀</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <div style="width: 48px; height: 48px; background-color: #2563eb; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
+            </div>
+            <div>
+                <h2 style="margin: 0; font-size: 20px; font-weight: bold; color: #111;">Flonnect</h2>
+                <p style="margin: 0; color: #666; font-size: 14px;">Screen Recording & Collaboration</p>
+            </div>
+        </div>
+    </div>
+    
+    <p>Hi {{AdminFirstName}},</p>
+    
+    <p>Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
+    
+    <p><strong>Next steps:</strong></p>
+    <ul>
+        <li><strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.</li>
+        <li><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</li>
+    </ul>
+    
+    <div style="display: flex; gap: 12px; margin: 32px 0; flex-wrap: wrap;">
+        <a href="#" style="background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Connect Calendar</a>
+        <a href="#" style="background: #16a34a; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Invite Your Team</a>
+    </div>
+    
+    <p>Need help? Just reply or visit our <a href="#" style="color: #2563eb; text-decoration: underline;">Getting Started Guide</a>.</p>
+    
+    <p>Cheers,<br>The Flonnect Team</p>
+    
+    <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
+        <p>© 2024 Flonnect. All rights reserved.</p>
+        <p>You're receiving this because you signed up for Flonnect.</p>
+        <p style="margin-top: 8px;">
+            <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
+            <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
+        </p>
+    </div>
+</body>
+</html>`,
+      TextPart: `Hi {{AdminFirstName}},
+
+Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
+
+Next steps:
+• Connect Your Calendar—Auto-record meetings & capture insights.
+• Invite Your Team—So everyone can collaborate in one place.
+
+Connect Calendar: [Link]
+Invite Your Team: [Link]
+
+Need help? Just reply or visit our Getting Started Guide.
+
+Cheers,
+The Flonnect Team
+
+© 2024 Flonnect. All rights reserved.
+Unsubscribe: [Link] | Update Preferences: [Link]`
+    };
+
+    navigator.clipboard.writeText(JSON.stringify(sesTemplate, null, 2));
+    toast({
+      title: "AWS SES Template Copied",
+      description: "The AWS SES template JSON has been copied to your clipboard.",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -47,9 +128,9 @@ export default function WelcomeEmailPage() {
                 <Copy className="w-4 h-4 mr-2" />
                 Copy Content
               </Button>
-              <Button>
+              <Button onClick={generateAWSSESTemplate}>
                 <Send className="w-4 h-4 mr-2" />
-                Deploy to AWS
+                Copy AWS SES Template
               </Button>
             </div>
           </div>
@@ -185,8 +266,8 @@ export default function WelcomeEmailPage() {
                   <p className="text-sm font-medium text-gray-600">SES Template</p>
                   <p className="text-sm text-gray-800">Ready for deployment</p>
                 </div>
-                <Button className="w-full" variant="outline">
-                  Generate AWS SES Template
+                <Button className="w-full" variant="outline" onClick={generateAWSSESTemplate}>
+                  Copy AWS SES Template JSON
                 </Button>
               </CardContent>
             </Card>
