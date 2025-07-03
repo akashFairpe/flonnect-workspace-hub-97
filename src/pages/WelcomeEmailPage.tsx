@@ -24,116 +24,110 @@ export default function WelcomeEmailPage() {
     const sesTemplate = {
       TemplateName: "flonnect-welcome-email",
       Subject: "Welcome to Flonnect! Let's get you set up 🚀",
-      HtmlPart: `
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      HtmlPart: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Welcome to Flonnect!</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f8fafc;">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f8fafc;">
+<body style="margin:0;padding:0;font-family:Arial,sans-serif;background-color:#f8fafc;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f8fafc;">
         <tr>
-            <td align="center" style="padding: 20px 0;">
-                <table border="0" cellpadding="0" cellspacing="0" width="600" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <!-- Header -->
+            <td align="center" style="padding:20px 0;">
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.1);">
                     <tr>
-                        <td align="center" style="padding: 32px 32px 24px 32px; border-bottom: 2px solid #e5e7eb;">
-                            <table border="0" cellpadding="0" cellspacing="0">
+                        <td align="center" style="padding:32px 32px 24px 32px;border-bottom:2px solid #e5e7eb;">
+                            <table cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td align="center">
-                                        <div style="width: 64px; height: 64px; background-color: #2563eb; border-radius: 12px; display: inline-block; text-align: center; line-height: 64px; margin-bottom: 16px;">
-                                            <span style="color: white; font-weight: bold; font-size: 24px;">F</span>
-                                        </div>
+                                        <table cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td style="width:64px;height:64px;background-color:#2563eb;border-radius:12px;text-align:center;line-height:64px;">
+                                                    <span style="color:#fff;font-weight:bold;font-size:24px;">F</span>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="center">
-                                        <h1 style="margin: 0; font-size: 28px; font-weight: bold; color: #111827; margin-bottom: 8px;">Flonnect</h1>
-                                        <p style="margin: 0; color: #6b7280; font-size: 16px;">Screen Recording &amp; Collaboration</p>
+                                        <h1 style="margin:16px 0 0 0;font-size:28px;font-weight:bold;color:#111827;">Flonnect</h1>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
-                    
-                    <!-- Content -->
                     <tr>
-                        <td style="padding: 32px;">
-                            <p style="font-size: 18px; margin-bottom: 24px; color: #111827;">Hi {{AdminFirstName}},</p>
-                            
-                            <p style="font-size: 16px; margin-bottom: 24px; color: #374151; line-height: 1.6;">Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
-                            
-                            <p style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827;">Next steps:</p>
-                            
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 32px;">
+                        <td style="padding:32px;">
+                            <p style="font-size:18px;margin-bottom:24px;color:#111827;">Hi {{AdminFirstName}},</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
+                            <p style="font-size:18px;font-weight:600;margin-bottom:16px;color:#111827;">Next steps:</p>
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
                                 <tr>
-                                    <td style="padding-bottom: 12px;">
-                                        <table border="0" cellpadding="0" cellspacing="0">
+                                    <td style="padding-bottom:12px;">
+                                        <table cellpadding="0" cellspacing="0" border="0">
                                             <tr>
-                                                <td style="vertical-align: top; padding-right: 8px;">
-                                                    <span style="color: #10b981; font-weight: bold;">✓</span>
+                                                <td style="vertical-align:top;padding-right:8px;">
+                                                    <span style="color:#10b981;font-weight:bold;">✓</span>
                                                 </td>
-                                                <td style="font-size: 16px; color: #374151;">
-                                                    <strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.
+                                                <td style="font-size:16px;color:#374151;">
+                                                    <b>Connect Your Calendar</b>—Auto-record meetings &amp; capture insights.
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-bottom: 12px;">
-                                        <table border="0" cellpadding="0" cellspacing="0">
+                                    <td style="padding-bottom:12px;">
+                                        <table cellpadding="0" cellspacing="0" border="0">
                                             <tr>
-                                                <td style="vertical-align: top; padding-right: 8px;">
-                                                    <span style="color: #10b981; font-weight: bold;">✓</span>
+                                                <td style="vertical-align:top;padding-right:8px;">
+                                                    <span style="color:#10b981;font-weight:bold;">✓</span>
                                                 </td>
-                                                <td style="font-size: 16px; color: #374151;">
-                                                    <strong>Invite Your Team</strong>—So everyone can collaborate in one place.
+                                                <td style="font-size:16px;color:#374151;">
+                                                    <b>Invite Your Team</b>—So everyone can collaborate in one place.
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                             </table>
-                            
-                            <!-- CTA Buttons -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 40px 0;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:40px 0;">
                                 <tr>
                                     <td align="center">
-                                        <table border="0" cellpadding="0" cellspacing="0">
+                                        <table cellpadding="0" cellspacing="0" border="0">
                                             <tr>
-                                                <td style="padding: 0 8px 12px 8px;">
-                                                    <a href="#" style="display: inline-block; background-color: #2563eb; color: white; padding: 16px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; min-width: 180px; text-align: center;">🔗 Connect Calendar</a>
+                                                <td style="padding:0 8px 12px;">
+                                                    <a href="#" style="display:inline-block;background-color:#2563eb;color:#fff;padding:16px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;min-width:180px;text-align:center;">🔗 Connect Calendar</a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="padding: 0 8px 12px 8px;">
-                                                    <a href="#" style="display: inline-block; background-color: #16a34a; color: white; padding: 16px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; min-width: 180px; text-align: center;">🔗 Invite Your Team</a>
+                                                <td style="padding:0 8px 12px;">
+                                                    <a href="#" style="display:inline-block;background-color:#16a34a;color:#fff;padding:16px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;min-width:180px;text-align:center;">🔗 Invite Your Team</a>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                             </table>
-                            
-                            <p style="font-size: 16px; margin-bottom: 24px; color: #374151;">Need help? Just reply or visit our <a href="#" style="color: #2563eb; text-decoration: underline;">Getting Started Guide</a>.</p>
-                            
-                            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
-                                <p style="font-size: 16px; color: #374151;">Cheers,<br>The Flonnect Team</p>
-                            </div>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;">Need help? Just reply or visit our <a href="#" style="color:#2563eb;text-decoration:underline;">Getting Started Guide</a>.</p>
+                            <table cellpadding="0" cellspacing="0" border="0" style="margin-top:32px;padding-top:24px;border-top:1px solid #e5e7eb;">
+                                <tr>
+                                    <td>
+                                        <p style="font-size:16px;color:#374151;">Cheers,<br>The Flonnect Team</p>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
-                    
-                    <!-- Footer -->
                     <tr>
-                        <td style="background-color: #f8fafc; padding: 24px 32px; font-size: 12px; color: #6b7280; text-align: center; line-height: 1.5;">
-                            <p style="margin-bottom: 8px;">© 2024 Flonnect. All rights reserved.</p>
-                            <p style="margin-bottom: 8px;">You're receiving this because you signed up for Flonnect.</p>
-                            <p style="margin: 0;">
-                                <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
-                                <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
+                        <td style="background-color:#f8fafc;padding:24px 32px;font-size:12px;color:#6b7280;text-align:center;line-height:1.5;">
+                            <p style="margin-bottom:8px;">© 2024 Flonnect. All rights reserved.</p>
+                            <p style="margin-bottom:8px;">You're receiving this because you signed up for Flonnect.</p>
+                            <p style="margin:0;">
+                                <a href="#" style="color:#2563eb;text-decoration:underline;">Unsubscribe</a> | 
+                                <a href="#" style="color:#2563eb;text-decoration:underline;margin-left:4px;">Update Preferences</a>
                             </p>
                         </td>
                     </tr>
@@ -221,55 +215,52 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="bg-white rounded-xl shadow-lg max-w-2xl mx-auto overflow-hidden" style={{ fontFamily: 'Arial, sans-serif' }}>
                     {/* Email Content */}
-                    <div className="p-8">
-                      <div className="text-center border-b-2 border-gray-200 pb-6 mb-8">
-                        <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                          <span className="text-white font-bold text-2xl">F</span>
-                        </div>
-                        <h1 className="text-3xl font-bold text-gray-900 mb-2">Flonnect</h1>
-                        <p className="text-gray-600">Screen Recording & Collaboration</p>
+                    <div className="text-center border-b-2 border-gray-200 p-8">
+                      <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <span className="text-white font-bold text-2xl">F</span>
+                      </div>
+                      <h1 className="text-3xl font-bold text-gray-900">Flonnect</h1>
+                    </div>
+
+                    <div id="email-body-content" className="p-8 space-y-6">
+                      <p className="text-lg text-gray-900">Hi {'{{AdminFirstName}}'},</p>
+                      
+                      <p className="text-gray-700 leading-relaxed">
+                        Welcome aboard! We're excited to have {'{{CompanyName}}'} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
+                      </p>
+
+                      <div>
+                        <p className="text-lg font-semibold text-gray-900 mb-4">Next steps:</p>
+                        <ul className="space-y-3">
+                          <li className="flex items-start gap-3">
+                            <span className="text-green-500 font-bold">✓</span>
+                            <span className="text-gray-700"><strong>Connect Your Calendar</strong>—Auto-record meetings & capture insights.</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="text-green-500 font-bold">✓</span>
+                            <span className="text-gray-700"><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</span>
+                          </li>
+                        </ul>
                       </div>
 
-                      <div id="email-body-content" className="space-y-6">
-                        <p className="text-lg text-gray-900">Hi {'{{AdminFirstName}}'},</p>
-                        
-                        <p className="text-gray-700 leading-relaxed">
-                          Welcome aboard! We're excited to have {'{{CompanyName}}'} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.
-                        </p>
-
-                        <div>
-                          <p className="text-lg font-semibold text-gray-900 mb-4">Next steps:</p>
-                          <ul className="space-y-3">
-                            <li className="flex items-start gap-3">
-                              <span className="text-green-500 font-bold">✓</span>
-                              <span className="text-gray-700"><strong>Connect Your Calendar</strong>—Auto-record meetings & capture insights.</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                              <span className="text-green-500 font-bold">✓</span>
-                              <span className="text-gray-700"><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</span>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* CTA Buttons */}
-                        <div className="text-center py-8">
-                          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                            <div className="bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-center min-w-[180px]">
-                              🔗 Connect Calendar
-                            </div>
-                            <div className="bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-center min-w-[180px]">
-                              🔗 Invite Your Team
-                            </div>
+                      {/* CTA Buttons */}
+                      <div className="text-center py-8">
+                        <div className="flex flex-col gap-3 justify-center">
+                          <div className="bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-center">
+                            🔗 Connect Calendar
+                          </div>
+                          <div className="bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-center">
+                            🔗 Invite Your Team
                           </div>
                         </div>
+                      </div>
 
-                        <p className="text-gray-700">
-                          Need help? Just reply or visit our <span className="text-blue-600 underline">Getting Started Guide</span>.
-                        </p>
+                      <p className="text-gray-700">
+                        Need help? Just reply or visit our <span className="text-blue-600 underline">Getting Started Guide</span>.
+                      </p>
 
-                        <div className="pt-6 border-t border-gray-200">
-                          <p className="text-gray-700">Cheers,<br />The Flonnect Team</p>
-                        </div>
+                      <div className="pt-6 border-t border-gray-200">
+                        <p className="text-gray-700">Cheers,<br />The Flonnect Team</p>
                       </div>
                     </div>
 

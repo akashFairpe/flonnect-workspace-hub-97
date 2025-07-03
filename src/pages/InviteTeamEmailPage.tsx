@@ -25,54 +25,87 @@ export default function InviteTeamEmailPage() {
     const sesTemplate = {
       TemplateName: "flonnect-invite-team",
       Subject: "Bring Your Team Onboard—Invite Members Today",
-      HtmlPart: `
-<!DOCTYPE html>
-<html>
+      HtmlPart: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bring Your Team Onboard—Invite Members Today</title>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-    <div style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-            <div style="width: 48px; height: 48px; background-color: #2563eb; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
-            </div>
-            <div>
-                <h2 style="margin: 0; font-size: 20px; font-weight: bold; color: #111;">Flonnect</h2>
-                <p style="margin: 0; color: #666; font-size: 14px;">Screen Recording & Collaboration</p>
-            </div>
-        </div>
-    </div>
-    
-    <p>Hi {{AdminFirstName}},</p>
-    
-    <p>Great job launching "{{ProjectName}}"! Now let's loop in your colleagues so they can start contributing.</p>
-    
-    <p><strong>Why invite your team?</strong></p>
-    <ul>
-        <li>Assign tasks &amp; share recordings in one click</li>
-        <li>Get faster feedback with real-time comments</li>
-        <li>Track everyone's contributions in one dashboard</li>
-    </ul>
-    
-    <div style="text-align: center; margin: 32px 0;">
-        <a href="#" style="background: #16a34a; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Invite Teammates Now</a>
-    </div>
-    
-    <p>Need help? Reply here or see our Team Management Guide.</p>
-    
-    <p>Cheers,<br>The Flonnect Team</p>
-    
-    <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
-        <p>© 2024 Flonnect. All rights reserved.</p>
-        <p>You're receiving this because you signed up for Flonnect.</p>
-        <p style="margin-top: 8px;">
-            <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
-            <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
-        </p>
-    </div>
+<body style="margin:0;padding:0;font-family:Arial,sans-serif;background-color:#f8fafc;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f8fafc;">
+        <tr>
+            <td align="center" style="padding:20px 0;">
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td align="center" style="padding:32px 32px 24px 32px;border-bottom:2px solid #e5e7eb;">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td align="center">
+                                        <table cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td style="width:64px;height:64px;background-color:#2563eb;border-radius:12px;text-align:center;line-height:64px;">
+                                                    <span style="color:#fff;font-weight:bold;font-size:24px;">F</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <h1 style="margin:16px 0 0 0;font-size:28px;font-weight:bold;color:#111827;">Flonnect</h1>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:32px;">
+                            <p style="font-size:18px;margin-bottom:24px;color:#111827;">Hi {{AdminFirstName}},</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">Great job launching "{{ProjectName}}"! Now let's loop in your colleagues so they can start contributing.</p>
+                            <p style="font-size:18px;font-weight:600;margin-bottom:16px;color:#111827;">Why invite your team?</p>
+                            <table cellpadding="0" cellspacing="0" border="0" style="margin:0;padding-left:20px;margin-bottom:24px;">
+                                <tr>
+                                    <td style="padding-bottom:8px;font-size:16px;color:#374151;">Assign tasks &amp; share recordings in one click</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom:8px;font-size:16px;color:#374151;">Get faster feedback with real-time comments</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:16px;color:#374151;">Track everyone's contributions in one dashboard</td>
+                                </tr>
+                            </table>
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:32px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="#" style="display:inline-block;background-color:#16a34a;color:#fff;padding:16px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:16px;">🔗 Invite Teammates Now</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;">Need help? Reply here or see our <a href="#" style="color:#2563eb;text-decoration:underline;">Team Management Guide</a>.</p>
+                            <table cellpadding="0" cellspacing="0" border="0" style="margin-top:32px;padding-top:24px;border-top:1px solid #e5e7eb;">
+                                <tr>
+                                    <td>
+                                        <p style="font-size:16px;color:#374151;">Cheers,<br>The Flonnect Team</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#f8fafc;padding:24px 32px;font-size:12px;color:#6b7280;text-align:center;line-height:1.5;">
+                            <p style="margin-bottom:8px;">© 2024 Flonnect. All rights reserved.</p>
+                            <p style="margin-bottom:8px;">You're receiving this because you signed up for Flonnect.</p>
+                            <p style="margin:0;">
+                                <a href="#" style="color:#2563eb;text-decoration:underline;">Unsubscribe</a> | 
+                                <a href="#" style="color:#2563eb;text-decoration:underline;margin-left:4px;">Update Preferences</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>`,
       TextPart: `Hi {{AdminFirstName}},
@@ -150,74 +183,58 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-white border rounded-lg p-6 max-w-2xl mx-auto" style={{ fontFamily: 'Arial, sans-serif' }}>
-                  {/* Email Header */}
-                  <div className="border-b pb-4 mb-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">F</span>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <div className="bg-white rounded-xl shadow-lg max-w-2xl mx-auto overflow-hidden" style={{ fontFamily: 'Arial, sans-serif' }}>
+                    {/* Email Header */}
+                    <div className="text-center border-b-2 border-gray-200 p-8">
+                      <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <span className="text-white font-bold text-2xl">F</span>
                       </div>
+                      <h1 className="text-3xl font-bold text-gray-900">Flonnect</h1>
+                    </div>
+
+                    {/* Email Content */}
+                    <div id="email-content" className="p-8 space-y-6">
+                      <p className="text-lg text-gray-900">Hi {'{{AdminFirstName}}'},</p>
+                      
+                      <p className="text-gray-700 leading-relaxed">
+                        Great job launching "{'{{ProjectName}}'}"! Now let's loop in your colleagues so they can start contributing.
+                      </p>
+
                       <div>
-                        <h2 className="text-xl font-bold text-gray-900">Flonnect</h2>
-                        <p className="text-gray-600 text-sm">Screen Recording & Collaboration</p>
+                        <p className="text-lg font-semibold text-gray-900 mb-4">Why invite your team?</p>
+                        <ul className="space-y-2 text-gray-700 pl-4">
+                          <li>• Assign tasks & share recordings in one click</li>
+                          <li>• Get faster feedback with real-time comments</li>
+                          <li>• Track everyone's contributions in one dashboard</li>
+                        </ul>
                       </div>
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      <p><strong>Subject:</strong> Bring Your Team Onboard—Invite Members Today</p>
-                      <p><strong>To:</strong> {'{{AdminFirstName}}'} &lt;{'{{AdminEmail}}'}&gt;</p>
-                    </div>
-                  </div>
 
-                  {/* Email Content */}
-                  <div id="email-content" className="space-y-4">
-                    <p className="text-gray-800">Hi {'{{AdminFirstName}}'},</p>
-                    
-                    <p className="text-gray-800">
-                      Great job launching "{'{{ProjectName}}'}"! Now let's loop in your colleagues so they can start contributing.
-                    </p>
+                      {/* CTA Button */}
+                      <div className="text-center py-6">
+                        <div className="bg-green-600 text-white inline-block py-4 px-8 rounded-lg font-semibold text-lg">
+                          🔗 Invite Teammates Now
+                        </div>
+                      </div>
 
-                    <div className="my-6">
-                      <p className="text-gray-800 font-semibold mb-3">Why invite your team?</p>
-                      <ul className="space-y-2 text-gray-800">
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600">•</span>
-                          <span>Assign tasks & share recordings in one click</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600">•</span>
-                          <span>Get faster feedback with real-time comments</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-blue-600">•</span>
-                          <span>Track everyone's contributions in one dashboard</span>
-                        </li>
-                      </ul>
-                    </div>
+                      <p className="text-gray-700">
+                        Need help? Reply here or see our <span className="text-blue-600 underline">Team Management Guide</span>.
+                      </p>
 
-                    {/* CTA Button */}
-                    <div className="text-center my-8">
-                      <div className="bg-green-600 text-white inline-block py-4 px-8 rounded-lg font-semibold text-lg">
-                        🔗 Invite Teammates Now
+                      <div className="pt-6 border-t border-gray-200">
+                        <p className="text-gray-700">Cheers,<br />The Flonnect Team</p>
                       </div>
                     </div>
 
-                    <p className="text-gray-800">
-                      Need help? Reply here or see our <span className="text-blue-600 underline">Team Management Guide</span>.
-                    </p>
-
-                    <div className="mt-6 pt-4 border-t">
-                      <p className="text-gray-800">Cheers,<br />The Flonnect Team</p>
+                    {/* Email Footer */}
+                    <div className="bg-gray-50 px-8 py-6 text-xs text-gray-500 text-center leading-relaxed">
+                      <p className="mb-2">© 2024 Flonnect. All rights reserved.</p>
+                      <p className="mb-2">You're receiving this because you signed up for Flonnect.</p>
+                      <p>
+                        <span className="text-blue-600 underline cursor-pointer">Unsubscribe</span> | 
+                        <span className="text-blue-600 underline cursor-pointer ml-1">Update Preferences</span>
+                      </p>
                     </div>
-                  </div>
-
-                  {/* Email Footer */}
-                  <div className="mt-8 pt-4 border-t text-xs text-gray-500 text-center">
-                    <p>© 2024 Flonnect. All rights reserved.</p>
-                    <p>You're receiving this because you signed up for Flonnect.</p>
-                    <p className="mt-2">
-                      <span className="text-blue-600 underline cursor-pointer">Unsubscribe</span> | 
-                      <span className="text-blue-600 underline cursor-pointer ml-1">Update Preferences</span>
-                    </p>
                   </div>
                 </div>
               </CardContent>
