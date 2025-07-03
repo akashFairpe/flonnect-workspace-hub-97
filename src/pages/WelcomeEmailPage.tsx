@@ -11,12 +11,12 @@ export default function WelcomeEmailPage() {
   const { toast } = useToast();
 
   const copyToClipboard = () => {
-    const emailContent = document.getElementById('email-content')?.innerText;
+    const emailContent = document.getElementById('email-body-content')?.innerText;
     if (emailContent) {
       navigator.clipboard.writeText(emailContent);
       toast({
         title: "Copied to clipboard",
-        description: "Email content has been copied to your clipboard.",
+        description: "Email body content has been copied to your clipboard.",
       });
     }
   };
@@ -32,46 +32,57 @@ export default function WelcomeEmailPage() {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Flonnect! Let's get you set up 🚀</title>
+    <style>
+        @media screen and (max-width: 600px) {
+            .container { width: 100% !important; padding: 10px !important; }
+            .header-flex { flex-direction: column !important; text-align: center !important; }
+            .logo { margin-bottom: 16px !important; }
+            .cta-buttons { flex-direction: column !important; }
+            .cta-button { width: 100% !important; margin-bottom: 12px !important; }
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-    <div style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-            <div style="width: 48px; height: 48px; background-color: #2563eb; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
-            </div>
-            <div>
-                <h2 style="margin: 0; font-size: 20px; font-weight: bold; color: #111;">Flonnect</h2>
-                <p style="margin: 0; color: #666; font-size: 14px;">Screen Recording & Collaboration</p>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f9fafb;">
+    <div class="container" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
+        <div style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
+            <div class="header-flex" style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                <div class="logo" style="width: 48px; height: 48px; background-color: #2563eb; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
+                </div>
+                <div>
+                    <h2 style="margin: 0; font-size: 20px; font-weight: bold; color: #111;">Flonnect</h2>
+                    <p style="margin: 0; color: #666; font-size: 14px;">Screen Recording & Collaboration</p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <p>Hi {{AdminFirstName}},</p>
-    
-    <p>Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
-    
-    <p><strong>Next steps:</strong></p>
-    <ul>
-        <li><strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.</li>
-        <li><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</li>
-    </ul>
-    
-    <div style="display: flex; gap: 12px; margin: 32px 0; flex-wrap: wrap;">
-        <a href="#" style="background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Connect Calendar</a>
-        <a href="#" style="background: #16a34a; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Invite Your Team</a>
-    </div>
-    
-    <p>Need help? Just reply or visit our <a href="#" style="color: #2563eb; text-decoration: underline;">Getting Started Guide</a>.</p>
-    
-    <p>Cheers,<br>The Flonnect Team</p>
-    
-    <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
-        <p>© 2024 Flonnect. All rights reserved.</p>
-        <p>You're receiving this because you signed up for Flonnect.</p>
-        <p style="margin-top: 8px;">
-            <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
-            <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
-        </p>
+        
+        <p style="margin-bottom: 16px;">Hi {{AdminFirstName}},</p>
+        
+        <p style="margin-bottom: 16px;">Welcome aboard! We're excited to have {{CompanyName}} on Flonnect. You're just a couple clicks away from seamless meeting recordings, team collaboration, and project insights.</p>
+        
+        <p style="margin-bottom: 8px; font-weight: 600;">Next steps:</p>
+        <ul style="margin-bottom: 24px; padding-left: 20px;">
+            <li style="margin-bottom: 8px;"><strong>Connect Your Calendar</strong>—Auto-record meetings &amp; capture insights.</li>
+            <li style="margin-bottom: 8px;"><strong>Invite Your Team</strong>—So everyone can collaborate in one place.</li>
+        </ul>
+        
+        <div class="cta-buttons" style="display: flex; gap: 12px; margin: 32px 0; justify-content: center;">
+            <a href="#" class="cta-button" style="background: #2563eb; color: white; padding: 16px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; text-align: center; min-width: 160px;">🔗 Connect Calendar</a>
+            <a href="#" class="cta-button" style="background: #16a34a; color: white; padding: 16px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; text-align: center; min-width: 160px;">🔗 Invite Your Team</a>
+        </div>
+        
+        <p style="margin-bottom: 16px;">Need help? Just reply or visit our <a href="#" style="color: #2563eb; text-decoration: underline;">Getting Started Guide</a>.</p>
+        
+        <p style="margin-bottom: 32px;">Cheers,<br>The Flonnect Team</p>
+        
+        <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
+            <p style="margin-bottom: 8px;">© 2024 Flonnect. All rights reserved.</p>
+            <p style="margin-bottom: 8px;">You're receiving this because you signed up for Flonnect.</p>
+            <p style="margin: 0;">
+                <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
+                <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
+            </p>
+        </div>
     </div>
 </body>
 </html>`,
@@ -126,7 +137,7 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
             <div className="flex gap-3">
               <Button variant="outline" onClick={copyToClipboard}>
                 <Copy className="w-4 h-4 mr-2" />
-                Copy Content
+                Copy Body Content
               </Button>
               <Button onClick={generateAWSSESTemplate}>
                 <Send className="w-4 h-4 mr-2" />
@@ -169,7 +180,7 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                   </div>
 
                   {/* Email Content */}
-                  <div id="email-content" className="space-y-4">
+                  <div id="email-body-content" className="space-y-4">
                     <p className="text-gray-800">Hi {'{{AdminFirstName}}'},</p>
                     
                     <p className="text-gray-800">
@@ -191,11 +202,11 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3 my-8">
-                      <div className="bg-blue-600 text-white text-center py-3 px-6 rounded-lg font-semibold">
+                    <div className="flex flex-col sm:flex-row gap-3 my-8 justify-center">
+                      <div className="bg-blue-600 text-white text-center py-4 px-6 rounded-lg font-semibold">
                         🔗 Connect Calendar
                       </div>
-                      <div className="bg-green-600 text-white text-center py-3 px-6 rounded-lg font-semibold">
+                      <div className="bg-green-600 text-white text-center py-4 px-6 rounded-lg font-semibold">
                         🔗 Invite Your Team
                       </div>
                     </div>
@@ -207,16 +218,15 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                     <div className="mt-6 pt-4 border-t">
                       <p className="text-gray-800">Cheers,<br />The Flonnect Team</p>
                     </div>
-                  </div>
 
-                  {/* Email Footer */}
-                  <div className="mt-8 pt-4 border-t text-xs text-gray-500 text-center">
-                    <p>© 2024 Flonnect. All rights reserved.</p>
-                    <p>You're receiving this because you signed up for Flonnect.</p>
-                    <p className="mt-2">
-                      <span className="text-blue-600 underline cursor-pointer">Unsubscribe</span> | 
-                      <span className="text-blue-600 underline cursor-pointer ml-1">Update Preferences</span>
-                    </p>
+                    <div className="mt-8 pt-4 border-t text-xs text-gray-500 text-center">
+                      <p>© 2024 Flonnect. All rights reserved.</p>
+                      <p>You're receiving this because you signed up for Flonnect.</p>
+                      <p className="mt-2">
+                        <span className="text-blue-600 underline cursor-pointer">Unsubscribe</span> | 
+                        <span className="text-blue-600 underline cursor-pointer ml-1">Update Preferences</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
