@@ -32,46 +32,171 @@ export default function FirstProjectEmailPage() {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome—Your First Project Is Live! 🎉</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f9fafb; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #ffffff; 
+        }
+        .header { 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        .header-flex { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            margin-bottom: 12px; 
+        }
+        .logo { 
+            width: 48px; 
+            height: 48px; 
+            background-color: #2563eb; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-shrink: 0; 
+        }
+        .logo span { 
+            color: white; 
+            font-weight: bold; 
+            font-size: 18px; 
+        }
+        .company-info h2 { 
+            margin: 0; 
+            font-size: 20px; 
+            font-weight: bold; 
+            color: #111; 
+        }
+        .company-info p { 
+            margin: 0; 
+            color: #666; 
+            font-size: 14px; 
+        }
+        .content { 
+            margin-bottom: 16px; 
+        }
+        .next-steps { 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+        }
+        .steps-list { 
+            margin-bottom: 24px; 
+            padding-left: 20px; 
+        }
+        .steps-list li { 
+            margin-bottom: 8px; 
+        }
+        .cta-button { 
+            background: #16a34a; 
+            color: white; 
+            padding: 16px 32px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            display: inline-block; 
+            text-align: center; 
+            margin: 32px auto; 
+            width: fit-content; 
+        }
+        .cta-center { 
+            text-align: center; 
+        }
+        .footer { 
+            margin-top: 32px; 
+            padding-top: 16px; 
+            border-top: 1px solid #eee; 
+            font-size: 12px; 
+            color: #999; 
+            text-align: center; 
+        }
+        .footer p { 
+            margin-bottom: 8px; 
+        }
+        .footer a { 
+            color: #2563eb; 
+            text-decoration: underline; 
+        }
+        
+        @media screen and (max-width: 600px) {
+            .container { 
+                width: 100% !important; 
+                padding: 16px !important; 
+            }
+            .header-flex { 
+                flex-direction: column !important; 
+                text-align: center !important; 
+            }
+            .logo { 
+                margin-bottom: 12px !important; 
+            }
+            .cta-button { 
+                width: 90% !important; 
+                padding: 14px 20px !important; 
+            }
+            .company-info h2 { 
+                font-size: 18px !important; 
+            }
+            .content { 
+                font-size: 14px !important; 
+            }
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-    <div style="border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-            <div style="width: 48px; height: 48px; background-color: #2563eb; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: white; font-weight: bold; font-size: 18px;">F</span>
-            </div>
-            <div>
-                <h2 style="margin: 0; font-size: 20px; font-weight: bold; color: #111;">Flonnect</h2>
-                <p style="margin: 0; color: #666; font-size: 14px;">Screen Recording & Collaboration</p>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-flex">
+                <div class="logo">
+                    <span>F</span>
+                </div>
+                <div class="company-info">
+                    <h2>Flonnect</h2>
+                    <p>Screen Recording & Collaboration</p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <p>Hi {{AdminFirstName}},</p>
-    
-    <p>Congratulations on creating your first project, "{{ProjectName}}"! You're officially up and running.</p>
-    
-    <p><strong>What's next?</strong></p>
-    <ul>
-        <li>Upload recordings &amp; screenshots</li>
-        <li>Assign tasks &amp; track bugs</li>
-        <li>Collaborate with your team</li>
-    </ul>
-    
-    <div style="text-align: center; margin: 32px 0;">
-        <a href="#" style="background: #16a34a; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">🔗 Go to Project Dashboard</a>
-    </div>
-    
-    <p>Let us know if you hit any snags—just reply to this email.</p>
-    
-    <p>Onward!<br>The Flonnect Team</p>
-    
-    <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
-        <p>© 2024 Flonnect. All rights reserved.</p>
-        <p>You're receiving this because you signed up for Flonnect.</p>
-        <p style="margin-top: 8px;">
-            <a href="#" style="color: #2563eb; text-decoration: underline;">Unsubscribe</a> | 
-            <a href="#" style="color: #2563eb; text-decoration: underline; margin-left: 4px;">Update Preferences</a>
-        </p>
+        
+        <div class="content">
+            <p>Hi {{AdminFirstName}},</p>
+            
+            <p>Congratulations on creating your first project, "{{ProjectName}}"! You're officially up and running.</p>
+            
+            <p class="next-steps">What's next?</p>
+            <ul class="steps-list">
+                <li>Upload recordings &amp; screenshots</li>
+                <li>Assign tasks &amp; track bugs</li>
+                <li>Collaborate with your team</li>
+            </ul>
+            
+            <div class="cta-center">
+                <a href="#" class="cta-button">🔗 Go to Project Dashboard</a>
+            </div>
+            
+            <p>Let us know if you hit any snags—just reply to this email.</p>
+            
+            <p>Onward!<br>The Flonnect Team</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Flonnect. All rights reserved.</p>
+            <p>You're receiving this because you signed up for Flonnect.</p>
+            <p>
+                <a href="#">Unsubscribe</a> | 
+                <a href="#" style="margin-left: 4px;">Update Preferences</a>
+            </p>
+        </div>
     </div>
 </body>
 </html>`,
