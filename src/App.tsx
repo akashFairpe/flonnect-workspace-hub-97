@@ -49,6 +49,11 @@ import WelcomeEmailPage from "./pages/WelcomeEmailPage";
 import CalendarReminderEmailPage from "./pages/CalendarReminderEmailPage";
 import FirstProjectEmailPage from "./pages/FirstProjectEmailPage";
 import InviteTeamEmailPage from "./pages/InviteTeamEmailPage";
+import WorkspaceSetupEmailPage from "./pages/WorkspaceSetupEmailPage";
+import SkipReengagementEmailPage from "./pages/SkipReengagementEmailPage";
+import ExtensionSpotlightEmailPage from "./pages/ExtensionSpotlightEmailPage";
+import BestPracticesEmailPage from "./pages/BestPracticesEmailPage";
+import FeedbackCheckinEmailPage from "./pages/FeedbackCheckinEmailPage";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +78,11 @@ const App = () => (
           <Route path="/email-setup/calendar-reminder" element={<CalendarReminderEmailPage />} />
           <Route path="/email-setup/first-project" element={<FirstProjectEmailPage />} />
           <Route path="/email-setup/invite-team" element={<InviteTeamEmailPage />} />
+          <Route path="/email-setup/workspace-setup" element={<WorkspaceSetupEmailPage />} />
+          <Route path="/email-setup/skip-reengagement" element={<SkipReengagementEmailPage />} />
+          <Route path="/email-setup/extension-spotlight" element={<ExtensionSpotlightEmailPage />} />
+          <Route path="/email-setup/best-practices" element={<BestPracticesEmailPage />} />
+          <Route path="/email-setup/feedback-checkin" element={<FeedbackCheckinEmailPage />} />
           
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />
