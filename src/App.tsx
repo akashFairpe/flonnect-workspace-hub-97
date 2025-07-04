@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -44,6 +45,7 @@ import VideoPresentationMakerPage from "./pages/VideoPresentationMakerPage";
 import VideoGeneratorPage from "./pages/VideoGeneratorPage";
 import InteractiveDemoCapturePage from "./pages/InteractiveDemoCapturePage";
 import BugReportingPage from "./pages/BugReportingPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
 import EmailSetupPage from "./pages/EmailSetupPage";
 import WelcomeEmailPage from "./pages/WelcomeEmailPage";
 import CalendarReminderEmailPage from "./pages/CalendarReminderEmailPage";
@@ -71,6 +73,7 @@ const App = () => (
           <Route path="/video-generator" element={<VideoGeneratorPage />} />
           <Route path="/interactive-demo-capture" element={<InteractiveDemoCapturePage />} />
           <Route path="/bug-reporting" element={<BugReportingPage />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
           
           {/* Email Setup Routes */}
           <Route path="/email-setup" element={<EmailSetupPage />} />
