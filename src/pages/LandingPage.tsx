@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -28,7 +27,9 @@ import {
   Clock,
   Globe,
   Chrome,
-  Sparkles
+  Sparkles,
+  MousePointer,
+  Camera
 } from 'lucide-react';
 import { useState } from 'react';
 import { Header } from '@/components/Header';
@@ -42,6 +43,27 @@ const LandingPage = () => {
     { number: "200K+", label: "Active Users Worldwide" },
     { number: "170+", label: "Countries Served" },
     { number: "4.9/5", label: "User Rating" }
+  ];
+
+  const mainExtensions = [
+    {
+      icon: Camera,
+      title: "Video Recording Extension", 
+      description: "Record high-quality videos from your screen, webcam, or both with professional editing features.",
+      features: ["Screen & Camera Recording", "AI-Powered Editing", "Professional Voiceovers", "Instant Sharing"],
+      link: "/screenrecorder",
+      color: "from-blue-500 to-indigo-600",
+      ctaText: "Get Video Recorder"
+    },
+    {
+      icon: MousePointer,
+      title: "Step Recording Guide Maker",
+      description: "Create interactive step-by-step guides and demos with automatic screenshot capture and annotations.",
+      features: ["Interactive Guides", "Auto Screenshots", "Step-by-Step Flows", "Demo Mode"],
+      link: "/interactive-demo-capture", 
+      color: "from-purple-500 to-pink-600",
+      ctaText: "Get Guide Maker"
+    }
   ];
 
   const solutions = [
@@ -175,23 +197,46 @@ const LandingPage = () => {
                 Join 200K+ Users Worldwide
               </Badge>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-gray-900">
-                Flonnect - Your Ultimate 
+                Two Powerful Extensions for 
                 <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  Video Solution
+                  Every Video Need
                 </span>
               </h1>
               <p className="text-xl sm:text-2xl mb-8 text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Easily Record, Manage, Edit, and Share Videos for Teams and Enterprises.
+                Professional Video Recording & Interactive Step-by-Step Guide Creation
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Button size="lg" className="text-lg px-8 py-6 bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                  <Chrome className="w-5 h-5 mr-2" />
-                  Get Started - Free Extension
-                </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-indigo-200 text-indigo-600 hover:bg-indigo-50">
-                  <Download className="w-5 h-5 mr-2" />
-                  Download Desktop App
-                </Button>
+              
+              {/* Main Extensions Showcase */}
+              <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+                {mainExtensions.map((extension, index) => (
+                  <Card key={index} className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 group bg-white/90 backdrop-blur-sm">
+                    <CardHeader className="text-center pb-4">
+                      <div className={`w-20 h-20 bg-gradient-to-r ${extension.color} rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
+                        <extension.icon className="w-10 h-10 text-white" />
+                      </div>
+                      <CardTitle className="text-2xl mb-3">{extension.title}</CardTitle>
+                      <CardDescription className="text-base leading-relaxed mb-6">
+                        {extension.description}
+                      </CardDescription>
+                      <ul className="text-sm space-y-2 mb-6">
+                        {extension.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center justify-center gap-2">
+                            <CheckCircle className="w-4 h-4 text-emerald-500" />
+                            <span className="text-gray-600">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardHeader>
+                    <CardContent className="text-center pt-0">
+                      <Link to={extension.link}>
+                        <Button size="lg" className={`bg-gradient-to-r ${extension.color} hover:scale-105 transition-all duration-300 text-white px-6 py-3 w-full`}>
+                          <Chrome className="w-5 h-5 mr-2" />
+                          {extension.ctaText}
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
               
               {/* Video Demo */}
@@ -236,10 +281,10 @@ const LandingPage = () => {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4">
-                Solutions for Every Video Need
+                Complete Video Solution Suite
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Comprehensive video tools designed for modern teams and businesses
+                From recording to sharing - everything you need for professional video content
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
