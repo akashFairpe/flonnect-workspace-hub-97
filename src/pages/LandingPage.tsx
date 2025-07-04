@@ -238,26 +238,6 @@ const LandingPage = () => {
                   </Card>
                 ))}
               </div>
-              
-              {/* Video Demo */}
-              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 max-w-3xl mx-auto shadow-xl">
-                <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/63eb8b8f-6c42-4629-b52c-75fbbc737c6a.png" 
-                    alt="Flonnect Demo Video"
-                    className="w-full h-full object-cover rounded-2xl"
-                  />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center backdrop-blur-sm">
-                    <Button 
-                      size="lg" 
-                      className="rounded-full w-20 h-20 bg-white text-indigo-600 hover:bg-gray-100 shadow-xl hover:scale-110 transition-all duration-300"
-                      onClick={() => setPlayingVideo(!playingVideo)}
-                    >
-                      <Play className="w-10 h-10" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
