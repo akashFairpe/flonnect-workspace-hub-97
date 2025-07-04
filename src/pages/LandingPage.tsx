@@ -8,6 +8,7 @@ import WorkflowSection from '@/components/landing/WorkflowSection';
 import UseCasesSection from '@/components/landing/UseCasesSection';
 import TestimonialsSection from '@/components/landing/TestimonialsSection';
 import IntegrationsSection from '@/components/landing/IntegrationsSection';
+import EnterpriseExtensionSection from '@/components/landing/EnterpriseExtensionSection';
 import FinalCTASection from '@/components/landing/FinalCTASection';
 
 const LandingPage = () => {
@@ -23,6 +24,7 @@ const LandingPage = () => {
         <UseCasesSection />
         <TestimonialsSection />
         <IntegrationsSection />
+        <EnterpriseExtensionSection />
         <FinalCTASection />
       </div>
     </>
