@@ -50,28 +50,28 @@ const LandingPage = () => {
       title: "Screen Recorder",
       description: "Record high-quality videos directly from your screen and webcam.",
       link: "/screenrecorder",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-400 to-blue-500"
     },
     {
       icon: VideoIcon,
       title: "Interactive Demos",
       description: "Create interactive demos to boost engagement and conversion.",
       link: "/interactive-demo-capture",
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-400 to-purple-500"
     },
     {
       icon: MessageCircle,
       title: "Customer Testimonials",
       description: "Capture genuine customer testimonials effortlessly.",
       link: "/testimonials",
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-400 to-emerald-500"
     },
     {
       icon: Bug,
       title: "Bug Reporting",
       description: "Efficiently report and track bugs with visual evidence.",
       link: "/bug-reporting",
-      color: "from-orange-500 to-red-500"
+      color: "from-orange-400 to-orange-500"
     }
   ];
 
@@ -87,25 +87,25 @@ const LandingPage = () => {
       step: "1",
       title: "Install Easily",
       description: "Quickly install our extension or desktop application.",
-      color: "from-blue-500 to-indigo-500"
+      color: "from-blue-400 to-blue-500"
     },
     {
       step: "2", 
       title: "Record Seamlessly",
       description: "Capture videos from your screen, camera, or both.",
-      color: "from-purple-500 to-violet-500"
+      color: "from-purple-400 to-purple-500"
     },
     {
       step: "3",
       title: "Edit with AI", 
       description: "Automatically transcribe, summarize, and edit your videos.",
-      color: "from-pink-500 to-rose-500"
+      color: "from-pink-400 to-pink-500"
     },
     {
       step: "4",
       title: "Share Effortlessly",
       description: "Manage and share content securely with your team.",
-      color: "from-emerald-500 to-green-500"
+      color: "from-emerald-400 to-emerald-500"
     }
   ];
 
@@ -114,25 +114,25 @@ const LandingPage = () => {
       icon: Target,
       title: "SaaS Product Onboarding",
       description: "Guide users through your software with interactive videos.",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-400 to-blue-500"
     },
     {
       icon: BarChart3,
       title: "Marketing Teams", 
       description: "Create compelling demo and testimonial videos.",
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-400 to-purple-500"
     },
     {
       icon: Headphones,
       title: "Customer Support",
       description: "Resolve issues quickly through visual communication.",
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-400 to-emerald-500"
     },
     {
       icon: GraduationCap,
       title: "Education & Training",
       description: "Develop engaging tutorials and training modules.",
-      color: "from-orange-500 to-amber-500"
+      color: "from-orange-400 to-orange-500"
     }
   ];
 
@@ -166,36 +166,36 @@ const LandingPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600"></div>
-          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-100 to-purple-100"></div>
+          <div className="absolute inset-0 bg-white/40"></div>
           <div className="relative container mx-auto px-6 py-24">
             <div className="text-center max-w-4xl mx-auto">
-              <Badge className="mb-6 bg-white/20 text-white hover:bg-white/30 border-white/30 backdrop-blur-sm">
+              <Badge className="mb-6 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Join 200K+ Users Worldwide
               </Badge>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-gray-900">
                 Flonnect - Your Ultimate 
-                <span className="block bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                   Video Solution
                 </span>
               </h1>
-              <p className="text-xl sm:text-2xl mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl sm:text-2xl mb-8 text-gray-700 max-w-3xl mx-auto leading-relaxed">
                 Easily Record, Manage, Edit, and Share Videos for Teams and Enterprises.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Button size="lg" className="text-lg px-8 py-6 bg-white text-indigo-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button size="lg" className="text-lg px-8 py-6 bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
                   <Chrome className="w-5 h-5 mr-2" />
                   Get Started - Free Extension
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-indigo-200 text-indigo-600 hover:bg-indigo-50">
                   <Download className="w-5 h-5 mr-2" />
                   Download Desktop App
                 </Button>
               </div>
               
               {/* Video Demo */}
-              <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 max-w-3xl mx-auto shadow-2xl">
+              <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 max-w-3xl mx-auto shadow-xl">
                 <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center relative overflow-hidden">
                   <img 
                     src="/lovable-uploads/63eb8b8f-6c42-4629-b52c-75fbbc737c6a.png" 
@@ -429,26 +429,26 @@ const LandingPage = () => {
 
         {/* Final CTA */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600"></div>
-          <div className="absolute inset-0 bg-black/10"></div>
-          <div className="relative container mx-auto px-6 text-center text-white">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-100 to-purple-100"></div>
+          <div className="absolute inset-0 bg-white/40"></div>
+          <div className="relative container mx-auto px-6 text-center text-gray-900">
             <h2 className="text-3xl sm:text-5xl font-bold mb-6">
               Transform How Your Team Collaborates
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl mb-8 text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Join thousands of users making video creation and management simpler and smarter.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6 bg-white text-indigo-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <Button size="lg" className="text-lg px-8 py-6 bg-indigo-600 hover:bg-indigo-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300">
                 <Users className="w-5 h-5 mr-2" />
                 Sign Up for Free
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-indigo-300 text-indigo-600 hover:bg-indigo-50">
                 View Pricing
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
-            <p className="text-sm mt-6 opacity-75">
+            <p className="text-sm mt-6 text-gray-600">
               No credit card required • 14-day free trial • Cancel anytime
             </p>
           </div>
