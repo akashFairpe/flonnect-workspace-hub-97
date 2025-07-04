@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -56,6 +55,11 @@ import SkipReengagementEmailPage from "./pages/SkipReengagementEmailPage";
 import ExtensionSpotlightEmailPage from "./pages/ExtensionSpotlightEmailPage";
 import BestPracticesEmailPage from "./pages/BestPracticesEmailPage";
 import FeedbackCheckinEmailPage from "./pages/FeedbackCheckinEmailPage";
+import TeamInvitationEmailPage from "./pages/TeamInvitationEmailPage";
+import AddedToProjectEmailPage from "./pages/AddedToProjectEmailPage";
+import TaskAssignmentEmailPage from "./pages/TaskAssignmentEmailPage";
+import TaskActivityUpdateEmailPage from "./pages/TaskActivityUpdateEmailPage";
+import TaskCompletedEmailPage from "./pages/TaskCompletedEmailPage";
 
 const queryClient = new QueryClient();
 
@@ -86,6 +90,13 @@ const App = () => (
           <Route path="/email-setup/extension-spotlight" element={<ExtensionSpotlightEmailPage />} />
           <Route path="/email-setup/best-practices" element={<BestPracticesEmailPage />} />
           <Route path="/email-setup/feedback-checkin" element={<FeedbackCheckinEmailPage />} />
+          
+          {/* New Email Template Routes */}
+          <Route path="/email-setup/team-invitation" element={<TeamInvitationEmailPage />} />
+          <Route path="/email-setup/added-to-project" element={<AddedToProjectEmailPage />} />
+          <Route path="/email-setup/task-assignment" element={<TaskAssignmentEmailPage />} />
+          <Route path="/email-setup/task-activity-update" element={<TaskActivityUpdateEmailPage />} />
+          <Route path="/email-setup/task-completed" element={<TaskCompletedEmailPage />} />
           
           <Route path="/video/share/:id?" element={<VideoSharingPage />} />
           <Route path="/ai" element={<AIPage />} />

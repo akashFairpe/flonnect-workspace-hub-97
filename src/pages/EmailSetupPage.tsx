@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Mail, Clock, Users, Calendar, Settings, MessageSquare, Zap, BarChart, MessageCircle } from 'lucide-react';
+import { Mail, Clock, Users, Calendar, Settings, MessageSquare, Zap, BarChart, MessageCircle, CheckSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const emailTemplates = [
@@ -105,6 +104,61 @@ const emailTemplates = [
     cta: 'Share Feedback',
     icon: MessageCircle,
     color: 'bg-pink-500'
+  },
+  {
+    id: 'team-invitation',
+    step: 'Team',
+    title: 'Team Invitation',
+    trigger: 'Admin invites team member',
+    delay: 'Immediately',
+    subject: 'You\'ve Been Invited to Join {{CompanyName}} on Flonnect!',
+    cta: 'Login to Flonnect',
+    icon: Users,
+    color: 'bg-cyan-500'
+  },
+  {
+    id: 'added-to-project',
+    step: 'Project',
+    title: 'Added to Project',
+    trigger: 'User added to project',
+    delay: 'Immediately',
+    subject: 'You\'ve Been Added to Project "{{ProjectName}}"',
+    cta: 'Go to Project',
+    icon: Settings,
+    color: 'bg-lime-500'
+  },
+  {
+    id: 'task-assignment',
+    step: 'Task',
+    title: 'Task Assignment',
+    trigger: 'Task assigned to user',
+    delay: 'Immediately',
+    subject: 'New Task Assigned to You: "{{TaskTitle}}"',
+    cta: 'View Task in Flonnect',
+    icon: CheckSquare,
+    color: 'bg-amber-500'
+  },
+  {
+    id: 'task-activity-update',
+    step: 'Update',
+    title: 'Task Activity Update',
+    trigger: 'Task activity occurs',
+    delay: 'Immediately',
+    subject: 'Update on Task "[{{TaskTitle}}]" in {{ProjectName}}',
+    cta: 'View the Task & Comments',
+    icon: MessageSquare,
+    color: 'bg-rose-500'
+  },
+  {
+    id: 'task-completed',
+    step: 'Done',
+    title: 'Task Completed',
+    trigger: 'Task marked as completed',
+    delay: 'Immediately',
+    subject: 'Task Completed: "{{TaskTitle}}"',
+    cta: 'View Task',
+    icon: CheckSquare,
+    color: 'bg-emerald-500'
   }
 ];
 
