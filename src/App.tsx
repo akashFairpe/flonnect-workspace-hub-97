@@ -60,6 +60,7 @@ import AddedToProjectEmailPage from "./pages/AddedToProjectEmailPage";
 import TaskAssignmentEmailPage from "./pages/TaskAssignmentEmailPage";
 import TaskActivityUpdateEmailPage from "./pages/TaskActivityUpdateEmailPage";
 import TaskCompletedEmailPage from "./pages/TaskCompletedEmailPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/screenrecorder" element={<ScreenRecorderLandingPage />} />
           <Route path="/presentation-recorder" element={<PresentationRecorderLandingPage />} />
           <Route path="/video-presentation-maker" element={<VideoPresentationMakerPage />} />
