@@ -34,7 +34,7 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://flonnect.com/" />
 
-    <!-- Structured Data for SEO -->
+    <!-- Enhanced Structured Data for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -44,12 +44,14 @@
       "description": "Ultimate video solution for teams and enterprises. Record, manage, edit, and share videos with AI-powered features and seamless integrations.",
       "url": "https://flonnect.com/",
       "applicationCategory": "MultimediaApplication",
-      "operatingSystem": ["Web Browser", "Windows", "macOS"],
+      "operatingSystem": ["Web Browser", "Windows", "macOS", "Chrome Extension"],
+      "browserRequirements": "Chrome 90+, Firefox 88+, Safari 14+, Edge 90+",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "description": "Free extension with premium enterprise features available"
+        "description": "Free extension with premium enterprise features available",
+        "priceValidUntil": "2025-12-31"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -76,24 +78,31 @@
         "Team Collaboration Tools",
         "Enterprise Security & Compliance",
         "Calendar Integrations",
-        "Advanced Analytics"
+        "Advanced Analytics",
+        "Step-by-Step Guide Creation",
+        "Chrome Extension",
+        "Professional Video Editing"
       ],
       "screenshot": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&h=630",
       "downloadUrl": "https://flonnect.com/download",
       "installUrl": "https://chrome.google.com/webstore/detail/flonnect",
       "softwareVersion": "2.0",
-      "releaseNotes": "Enhanced AI features, improved team collaboration tools, and enterprise-grade security updates."
+      "releaseNotes": "Enhanced AI features, improved team collaboration tools, and enterprise-grade security updates.",
+      "usageInfo": "Perfect for SaaS onboarding, marketing teams, customer support, education and training",
+      "applicationSubCategory": "Video Recording Software"
     }
     </script>
 
-    <!-- Favicon -->
+    <!-- Favicon and PWA -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
     
-    <!-- Additional meta tags for better SEO -->
+    <!-- Additional meta tags for better SEO and mobile -->
     <meta name="theme-color" content="#6366f1" />
     <meta name="application-name" content="Flonnect" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -101,11 +110,20 @@
     <meta name="apple-mobile-web-app-title" content="Flonnect" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#6366f1" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
     
     <!-- Security headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- Performance hints -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//images.unsplash.com">
+    
+    <!-- Accessibility -->
+    <meta name="color-scheme" content="light">
   </head>
 
   <body>
