@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Header } from '@/components/Header';
 
@@ -252,9 +251,14 @@ const PrivacyPolicyPage = () => {
                 If you have questions or concerns about this policy or wish to exercise your privacy rights, please contact us at:
               </p>
               <div className="text-center">
-                <a href="mailto:support@flonnect.com" className="inline-flex items-center bg-gradient-to-r from-[#6056a4] to-[#f0648b] text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
-                  📧 support@flonnect.com
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <a href="mailto:support@flonnect.com" className="inline-flex items-center bg-gradient-to-r from-[#6056a4] to-[#f0648b] text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    📧 support@flonnect.com
+                  </a>
+                  <a href="#" className="inline-flex items-center bg-gradient-to-r from-[#f0648b] to-[#6056a4] text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    💬 Contact Us
+                  </a>
+                </div>
               </div>
             </div>
           </div>
