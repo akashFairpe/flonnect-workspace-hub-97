@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/toaster';
@@ -18,12 +19,6 @@ import ScreenshotBugReportingPage from '@/pages/ScreenshotBugReportingPage';
 
 // Enterprise Extension
 import EnterpriseExtensionPopupPage from '@/pages/EnterpriseExtensionPopupPage';
-
-// Auth pages
-import LoginPage from '@/pages/LoginPage';
-import RegisterPage from '@/pages/RegisterPage';
-import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
-import ResetPasswordPage from '@/pages/ResetPasswordPage';
 
 const queryClient = new QueryClient();
 
@@ -49,12 +44,6 @@ function App() {
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />
-
-            {/* Auth Routes */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="/reset-password" element={<ResetPasswordPage />} />
 
             {/* Catch all route */}
             <Route path="*" element={<Navigate to="/" replace />} />
