@@ -48,34 +48,31 @@ const HeroSection = () => {
     <section className="relative overflow-hidden" role="banner">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-100 to-purple-100"></div>
       <div className="absolute inset-0 bg-white/40"></div>
-      <div className="relative container mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-24">
-        <div className="text-center max-w-7xl mx-auto">
-          <Badge className="mb-4 sm:mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-xs sm:text-sm animate-pulse">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl">
+        <div className="text-center">
+          <Badge className="mb-4 sm:mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-xs sm:text-sm">
             <Brain className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Meet Flonnect AI: Automate minutes of meetings, generate videos & images, and do more in seconds.
+            ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos, images & summaries.
           </Badge>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
-            One Powerful Toolkit for 
-            <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">
-              Effortless Video & Guides
-            </span>
-            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              — Now Supercharged with AI
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
+            Create Videos & Guides Effortlessly
+            <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1 sm:mt-2">
+              — Supercharged with Flonnect AI
             </span>
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
-            Everything you need for professional video recording & step-by-step guides — faster, clearer, and smarter with AI.
+          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed px-2">
+            Everything you need for pro videos & guides — faster, clearer & 10x smarter with Flonnect AI.
           </p>
           
           {/* Main Extensions Showcase */}
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 mb-8 sm:mb-12 max-w-6xl mx-auto px-4">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 mb-8 sm:mb-12 max-w-6xl mx-auto">
             {mainExtensions.map((extension, index) => (
               <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 group bg-white/90 backdrop-blur-sm">
                 <CardHeader className="text-center pb-4 px-4 sm:px-6">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r ${extension.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
-                    <extension.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-r ${extension.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
+                    <extension.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                   </div>
-                  <CardTitle className="text-xl sm:text-2xl mb-2 sm:mb-3 leading-tight">{extension.title}</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl lg:text-2xl mb-2 sm:mb-3 leading-tight">{extension.title}</CardTitle>
                   <CardDescription className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 px-2">
                     {extension.description}
                   </CardDescription>
@@ -86,7 +83,7 @@ const HeroSection = () => {
                         <span className="text-gray-600 flex items-center gap-1">
                           {typeof feature === 'object' ? feature.text : feature}
                           {typeof feature === 'object' && feature.hasAI && (
-                            <Sparkles className="w-3 h-3 text-purple-500 animate-pulse" />
+                            <Sparkles className="w-3 h-3 text-purple-500" />
                           )}
                         </span>
                       </li>
