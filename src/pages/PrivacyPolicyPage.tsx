@@ -164,6 +164,39 @@ const PrivacyPolicyPage = () => {
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
                 <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">9</span>
+                Use of Google User Data
+              </h2>
+              <p className="mb-4">
+                Flonnect uses Google user data solely to interact with Google services such as YouTube and Google Calendar to provide core features like video publishing, managing upcoming meetings, generating AI notes, and updating events.
+              </p>
+              <p className="mb-4">
+                We do not store any Google Workspace or Google Photos API data on our servers. All interactions happen directly through secure API connections.
+              </p>
+              
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-[#6056a4] mb-4">Data Retention and Deletion</h3>
+                <p className="mb-4">
+                  Flonnect does not retain Google user data beyond what is needed to deliver these services in real-time. Users can disconnect their Google account at any time using the built-in disconnect option in the app.
+                </p>
+                <p className="mb-4">
+                  Additionally, users may request removal of any related data by contacting us at{' '}
+                  <a href="mailto:support@flonnect.com" className="text-[#6056a4] hover:text-[#f0648b] font-medium">
+                    support@flonnect.com
+                  </a>.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-r from-[#6056a4]/5 to-[#f0648b]/5 rounded-xl p-6 border border-[#6056a4]/20">
+                <h3 className="text-2xl font-semibold text-[#6056a4] mb-4">Limited Use Disclosure</h3>
+                <p>
+                  Flonnect complies with Google's Limited Use requirements for user data, as defined in the Workspace API User Data and Developer Policy and the Photos API User Data and Developer Policy. We never use Google user data for advertising or any unrelated purposes.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
+              <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">10</span>
                 Permissions Used
               </h2>
               
@@ -214,7 +247,7 @@ const PrivacyPolicyPage = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
-                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">10</span>
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">11</span>
                 How We Share Your Information
               </h2>
               <p className="mb-4">
@@ -234,7 +267,7 @@ const PrivacyPolicyPage = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
-                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">11</span>
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">12</span>
                 Changes to This Policy
               </h2>
               <p className="mb-4">
@@ -244,7 +277,7 @@ const PrivacyPolicyPage = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
-                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">12</span>
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">13</span>
                 Contact Us
               </h2>
               <p className="mb-6">
