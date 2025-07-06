@@ -2,6 +2,7 @@
 import { Header } from '@/components/Header';
 import HeroSection from '@/components/landing/HeroSection';
 import StatsSection from '@/components/landing/StatsSection';
+import FlonnectAISection from '@/components/landing/FlonnectAISection';
 import SolutionsSection from '@/components/landing/SolutionsSection';
 import EnterpriseSection from '@/components/landing/EnterpriseSection';
 import WorkflowSection from '@/components/landing/WorkflowSection';
@@ -18,6 +19,7 @@ const LandingPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         <HeroSection />
         <StatsSection />
+        <FlonnectAISection />
         <SolutionsSection />
         <EnterpriseSection />
         <WorkflowSection />

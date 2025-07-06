@@ -49,8 +49,11 @@ const HeroSection = () => {
               Every Video Need
             </span>
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
+          <p className="text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
             Professional Video Recording & Interactive Step-by-Step Guide Creation
+          </p>
+          <p className="text-base sm:text-lg mb-6 sm:mb-8 text-indigo-600 font-medium max-w-4xl mx-auto leading-relaxed px-4">
+            Now supercharged with Flonnect AI — automate minutes of meetings, generate videos & images with AI, and more.
           </p>
           
           {/* Main Extensions Showcase */}
