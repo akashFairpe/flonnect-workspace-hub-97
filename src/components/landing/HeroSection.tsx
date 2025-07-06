@@ -52,16 +52,16 @@ const HeroSection = () => {
         <div className="text-center">
           <Badge className="mb-4 sm:mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-xs sm:text-sm">
             <Brain className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos, images & summaries.
+            ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos & images.
           </Badge>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
             Create Videos & Guides Effortlessly
             <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1 sm:mt-2">
-              — Supercharged with Flonnect AI
+              with Flonnect AI
             </span>
           </h1>
           <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed px-2">
-            Everything you need for pro videos & guides — faster, clearer & 10x smarter with Flonnect AI.
+            Record, edit & share — smarter & 10x faster with AI-powered tools.
           </p>
           
           {/* Main Extensions Showcase */}
