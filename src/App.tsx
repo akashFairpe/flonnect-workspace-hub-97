@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 // Landing and Main Pages
 import LandingPage from '@/pages/LandingPage';
+import ForEnterprisePage from '@/pages/ForEnterprisePage';
 import InteractiveDemoCapturePage from '@/pages/InteractiveDemoCapturePage';
 import BugCapturePage from '@/pages/BugCapturePage';
 import VideoWorkspace from '@/components/VideoWorkspace';
@@ -31,6 +32,7 @@ function App() {
           <Routes>
             {/* Main Routes */}
             <Route path="/" element={<LandingPage />} />
+            <Route path="/for-enterprise" element={<ForEnterprisePage />} />
             <Route path="/interactive-demo-capture" element={<InteractiveDemoCapturePage />} />
             <Route path="/bug-capture" element={<BugCapturePage />} />
             <Route path="/workspace" element={<VideoWorkspace />} />
