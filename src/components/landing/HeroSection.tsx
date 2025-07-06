@@ -7,7 +7,8 @@ import {
   Chrome,
   Sparkles,
   Camera,
-  MousePointer
+  MousePointer,
+  Brain
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,13 @@ const HeroSection = () => {
       icon: Camera,
       title: "Video Recording Extension", 
       description: "Record high-quality videos from your screen, webcam, or both with professional editing features.",
-      features: ["Screen & Camera Recording", "AI-Powered Editing", "Professional Voiceovers", "Instant Sharing"],
+      features: [
+        "Screen & Camera Recording", 
+        { text: "AI-Powered Editing", hasAI: true }, 
+        "Professional Voiceovers", 
+        "Instant Sharing"
+      ],
+      aiFeature: "✨ New: AI tools turn hours of editing into minutes.",
       link: "/screenrecorder",
       color: "from-blue-500 to-indigo-600",
       ctaText: "Get Video Recorder"
@@ -27,6 +34,10 @@ const HeroSection = () => {
       title: "Step Recording Guide Maker",
       description: "Create interactive step-by-step guides and demos with automatic screenshot capture and annotations.",
       features: ["Interactive Guides", "Auto Screenshots", "Step-by-Step Flows", "Demo Mode"],
+      aiFeatures: [
+        "✨ New: Smart AI summaries for your guides.",
+        "✨ New: Generate visuals with AI instantly."
+      ],
       link: "/interactive-demo-capture", 
       color: "from-purple-500 to-pink-600",
       ctaText: "Get Guide Maker"
@@ -39,21 +50,21 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-white/40"></div>
       <div className="relative container mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-24">
         <div className="text-center max-w-7xl mx-auto">
-          <Badge className="mb-4 sm:mb-6 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-xs sm:text-sm">
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Join 200K+ Users Worldwide
+          <Badge className="mb-4 sm:mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-xs sm:text-sm animate-pulse">
+            <Brain className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+            Meet Flonnect AI: Automate minutes of meetings, generate videos & images, and do more in seconds.
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
-            Two Powerful Extensions for 
+            One Powerful Toolkit for 
             <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">
-              Every Video Need
+              Effortless Video & Guides
+            </span>
+            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              — Now Supercharged with AI
             </span>
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
-            Professional Video Recording & Interactive Step-by-Step Guide Creation
-          </p>
-          <p className="text-base sm:text-lg mb-6 sm:mb-8 text-indigo-600 font-medium max-w-4xl mx-auto leading-relaxed px-4">
-            Now supercharged with Flonnect AI — automate minutes of meetings, generate videos & images with AI, and more.
+          <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
+            Everything you need for professional video recording & step-by-step guides — faster, clearer, and smarter with AI.
           </p>
           
           {/* Main Extensions Showcase */}
@@ -72,10 +83,29 @@ const HeroSection = () => {
                     {extension.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center justify-center gap-2">
                         <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-500 flex-shrink-0" />
-                        <span className="text-gray-600">{feature}</span>
+                        <span className="text-gray-600 flex items-center gap-1">
+                          {typeof feature === 'object' ? feature.text : feature}
+                          {typeof feature === 'object' && feature.hasAI && (
+                            <Sparkles className="w-3 h-3 text-purple-500 animate-pulse" />
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
+                  {extension.aiFeature && (
+                    <p className="text-xs sm:text-sm text-purple-600 font-medium mb-4 bg-purple-50 rounded-lg py-2 px-3 border border-purple-100">
+                      {extension.aiFeature}
+                    </p>
+                  )}
+                  {extension.aiFeatures && (
+                    <div className="space-y-2 mb-4">
+                      {extension.aiFeatures.map((aiFeature, idx) => (
+                        <p key={idx} className="text-xs sm:text-sm text-purple-600 font-medium bg-purple-50 rounded-lg py-2 px-3 border border-purple-100">
+                          {aiFeature}
+                        </p>
+                      ))}
+                    </div>
+                  )}
                 </CardHeader>
                 <CardContent className="text-center pt-0 px-4 sm:px-6 pb-6">
                   <Link to={extension.link}>

@@ -9,7 +9,8 @@ import {
   Image as ImageIcon,
   Mic,
   BarChart3,
-  Sparkles
+  Sparkles,
+  Zap
 } from 'lucide-react';
 
 const FlonnectAISection = () => {
@@ -50,9 +51,9 @@ const FlonnectAISection = () => {
     <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center max-w-6xl mx-auto">
-          <Badge className="mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-sm">
-            <Brain className="w-4 h-4 mr-2" />
-            Powered by AI
+          <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 hover:bg-purple-200 border-purple-200 text-sm animate-pulse">
+            <Zap className="w-4 h-4 mr-2" />
+            🔮 Powered by the latest AI models
           </Badge>
           
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
@@ -63,13 +64,11 @@ const FlonnectAISection = () => {
           </h2>
           
           <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Work smarter, not harder — harness the power of AI across your Flonnect workflows.
+            Work smarter with Flonnect AI — automate, generate, and create like never before.
           </p>
           
           <p className="text-base sm:text-lg mb-12 text-gray-600 max-w-5xl mx-auto leading-relaxed">
-            From automated Meeting Minutes to AI-powered Text to Video, Text to Image, and Speech to Text, 
-            Flonnect AI brings the future of content creation and productivity to your fingertips. 
-            Save hours, boost productivity, and turn ideas into visuals in seconds.
+            Flonnect AI brings you powerful tools like automated Meeting Minutes, Text to Video, Text to Image, and Speech to Text. Save hours, boost output, and turn text into stunning visuals and videos in seconds.
           </p>
 
           {/* AI Features Grid */}
@@ -78,7 +77,7 @@ const FlonnectAISection = () => {
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group bg-white/80 backdrop-blur-sm hover:bg-white/90">
                 <CardHeader className="text-center pb-4">
                   <div className="flex items-center justify-center gap-3 mb-4">
-                    <span className="text-2xl">{feature.emoji}</span>
+                    <span className="text-2xl animate-bounce">{feature.emoji}</span>
                     <div className="p-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg group-hover:from-indigo-200 group-hover:to-purple-200 transition-colors">
                       <feature.icon className="w-5 h-5 text-indigo-600" />
                     </div>
@@ -98,7 +97,7 @@ const FlonnectAISection = () => {
               size="lg" 
               className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
-              <Sparkles className="w-5 h-5 mr-2" />
+              <Sparkles className="w-5 h-5 mr-2 animate-pulse" />
               Try Flonnect AI
             </Button>
             <Button 
@@ -106,7 +105,7 @@ const FlonnectAISection = () => {
               size="lg" 
               className="px-8 py-4 text-lg border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50 hover:border-indigo-300"
             >
-              Learn More
+              See Flonnect AI in Action
             </Button>
           </div>
         </div>
