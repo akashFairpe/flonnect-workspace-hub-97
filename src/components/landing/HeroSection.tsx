@@ -61,9 +61,9 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
           {/* Left Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
-            <Badge className="mb-6 bg-gradient-to-r from-purple-500/5 to-blue-500/5 text-purple-200 hover:from-purple-500/10 hover:to-blue-500/10 border-purple-400/20 text-xs px-3 py-1.5 backdrop-blur-sm font-normal">
-              <Brain className="w-3 h-3 mr-2" />
-              ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos & images.
+            <Badge className="mb-6 bg-gradient-to-r from-purple-500/10 to-blue-500/10 text-purple-200 hover:from-purple-500/15 hover:to-blue-500/15 border-purple-400/30 text-sm px-4 py-2 backdrop-blur-sm font-normal">
+              <Brain className="w-4 h-4 mr-2" />
+              ✨ Flonnect AI: Turn meetings, text & ideas into videos & images instantly
             </Badge>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
@@ -97,7 +97,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-purple-400/20 text-purple-200 hover:bg-purple-500/5 hover:border-purple-400/30 px-8 py-4 text-lg backdrop-blur-sm bg-white/5 font-medium"
+                className="border-2 border-purple-400/30 text-purple-200 hover:bg-purple-500/10 hover:border-purple-400/40 px-8 py-4 text-lg backdrop-blur-sm bg-white/5 font-medium"
               >
                 <Sparkles className="w-5 h-5 mr-2" />
                 See AI in Action

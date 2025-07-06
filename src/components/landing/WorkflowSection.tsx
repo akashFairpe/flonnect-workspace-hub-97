@@ -18,8 +18,8 @@ const WorkflowSection = () => {
     },
     {
       step: "3",
-      title: "Edit with AI", 
-      description: "Automatically transcribe, summarize, and edit your videos.",
+      title: "Edit & Automate with AI", 
+      description: "Automatically transcribe, summarize, and edit your videos with AI.",
       color: "from-pink-400 to-pink-500"
     },
     {
@@ -35,7 +35,7 @@ const WorkflowSection = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
-            Simplify Your Video Workflow
+            How It Works
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             From recording to sharing - streamline every step of your video creation process
