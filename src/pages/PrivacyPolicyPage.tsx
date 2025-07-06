@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Header } from '@/components/Header';
 
@@ -206,15 +207,37 @@ const PrivacyPolicyPage = () => {
               <div className="space-y-6">
                 <div className="bg-gradient-to-r from-[#6056a4]/5 to-[#f0648b]/5 rounded-xl p-6 border border-[#6056a4]/20">
                   <h3 className="text-2xl font-semibold text-[#6056a4] mb-4">Workspace APIs</h3>
-                  <p>
+                  <p className="mb-3">
                     Flonnect complies with the Limited Use requirements for Workspace APIs. We use Workspace API data (such as Google Calendar) only to provide core services like scheduling, meeting updates, and AI-powered notes.
+                  </p>
+                  <p>
+                    For more information, see{' '}
+                    <a 
+                      href="https://developers.google.com/workspace/workspace-api-user-data-developer-policy#limited-use" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-[#6056a4] hover:text-[#f0648b] font-medium underline"
+                    >
+                      Google's Workspace API User Data Developer Policy
+                    </a>.
                   </p>
                 </div>
                 
                 <div className="bg-gradient-to-r from-[#f0648b]/5 to-[#6056a4]/5 rounded-xl p-6 border border-[#f0648b]/20">
                   <h3 className="text-2xl font-semibold text-[#f0648b] mb-4">Photos APIs</h3>
-                  <p>
+                  <p className="mb-3">
                     Flonnect does not currently use the Google Photos API. If we ever choose to use the Photos API in the future, we will fully comply with the Limited Use requirements for Photos APIs.
+                  </p>
+                  <p>
+                    For more information, see{' '}
+                    <a 
+                      href="https://developers.google.com/photos/support/api-policy#limited_use_of_user_data" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-[#f0648b] hover:text-[#6056a4] font-medium underline"
+                    >
+                      Google's Photos API Limited Use Policy
+                    </a>.
                   </p>
                 </div>
               </div>
