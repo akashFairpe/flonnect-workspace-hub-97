@@ -197,6 +197,32 @@ const PrivacyPolicyPage = () => {
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
                 <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">10</span>
+                Compliance with Google API Services User Data Policy – Limited Use
+              </h2>
+              <p className="mb-6">
+                To ensure easy accessibility for all users, Flonnect makes the following disclosure about Limited Use requirements:
+              </p>
+              
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-[#6056a4]/5 to-[#f0648b]/5 rounded-xl p-6 border border-[#6056a4]/20">
+                  <h3 className="text-2xl font-semibold text-[#6056a4] mb-4">Workspace APIs</h3>
+                  <p>
+                    Flonnect complies with the Limited Use requirements for Workspace APIs. We use Workspace API data (such as Google Calendar) only to provide core services like scheduling, meeting updates, and AI-powered notes.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-r from-[#f0648b]/5 to-[#6056a4]/5 rounded-xl p-6 border border-[#f0648b]/20">
+                  <h3 className="text-2xl font-semibold text-[#f0648b] mb-4">Photos APIs</h3>
+                  <p>
+                    Flonnect does not currently use the Google Photos API. If we ever choose to use the Photos API in the future, we will fully comply with the Limited Use requirements for Photos APIs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
+              <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">11</span>
                 Permissions Used
               </h2>
               
@@ -247,7 +273,7 @@ const PrivacyPolicyPage = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
-                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">11</span>
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">12</span>
                 How We Share Your Information
               </h2>
               <p className="mb-4">
@@ -267,7 +293,7 @@ const PrivacyPolicyPage = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
-                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">12</span>
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">13</span>
                 Changes to This Policy
               </h2>
               <p className="mb-4">
@@ -277,7 +303,7 @@ const PrivacyPolicyPage = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#6056a4]/10 mb-8">
               <h2 className="text-3xl font-bold text-[#6056a4] mb-6 flex items-center">
-                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">13</span>
+                <span className="w-8 h-8 bg-gradient-to-r from-[#6056a4] to-[#f0648b] rounded-lg flex items-center justify-center text-white text-sm mr-3">14</span>
                 Contact Us
               </h2>
               <p className="mb-6">
