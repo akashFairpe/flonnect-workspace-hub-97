@@ -1,4 +1,5 @@
 
+
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Play, ArrowRight, Sparkles, Video, Users, BarChart3, Chrome, Download } from 'lucide-react';
@@ -64,33 +65,47 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Available Platforms Section */}
-          <div className="mb-8 sm:mb-12 text-center">
-            <p className="text-sm text-gray-600 mb-4">Available Platforms</p>
-            <div className="flex flex-wrap justify-center items-center gap-4">
-              <a 
-                href="https://chrome.google.com/webstore" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow text-sm font-medium"
-              >
-                <Chrome className="w-4 h-4 text-blue-600" />
-                Chrome Extension
-              </a>
-              <a 
-                href="#desktop-mac" 
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow text-sm font-medium"
-              >
-                <Download className="w-4 h-4 text-gray-600" />
-                Desktop (Mac)
-              </a>
-              <a 
-                href="#desktop-windows" 
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow text-sm font-medium"
-              >
-                <Download className="w-4 h-4 text-blue-500" />
-                Desktop (Windows)
-              </a>
+          {/* Two Extensions for All Your Needs Section */}
+          <div className="mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Two Extensions for All Your Needs</h3>
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Chrome className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Chrome Extension</h4>
+                <p className="text-gray-600 text-sm mb-4">Record directly from your browser with one-click access to all features</p>
+                <Button 
+                  onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full"
+                >
+                  <Chrome className="w-4 h-4 mr-2" />
+                  Get Extension
+                </Button>
+              </div>
+              
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Download className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Desktop App</h4>
+                <p className="text-gray-600 text-sm mb-4">Full-featured desktop application for Mac and Windows users</p>
+                <Button 
+                  onClick={() => window.open('#desktop-download', '_blank')}
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download App
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -127,3 +142,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
