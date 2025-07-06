@@ -9,7 +9,9 @@ import {
   Camera,
   MousePointer,
   Brain,
-  Play
+  Play,
+  ArrowRight,
+  Zap
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -27,7 +29,7 @@ const HeroSection = () => {
       ],
       aiFeature: "✨ New: AI tools turn hours of editing into minutes.",
       link: "/screenrecorder",
-      color: "from-blue-600 to-cyan-500",
+      gradient: "from-violet-500 to-purple-600",
       ctaText: "Get Video Recorder"
     },
     {
@@ -40,103 +42,134 @@ const HeroSection = () => {
         "✨ New: Generate visuals with AI instantly."
       ],
       link: "/interactive-demo-capture", 
-      color: "from-purple-600 to-pink-500",
+      gradient: "from-blue-500 to-cyan-500",
       ctaText: "Get Guide Maker"
     }
   ];
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center" role="banner">
-      {/* Modern gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-purple-100/20"></div>
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" role="banner">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-400/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-400/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+      </div>
       
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 max-w-7xl">
-        <div className="text-center">
-          {/* Updated badge with better styling */}
-          <Badge className="mb-6 sm:mb-8 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 hover:from-blue-100 hover:to-purple-100 border-blue-200 text-sm px-4 py-2 shadow-sm">
-            <Brain className="w-4 h-4 mr-2" />
-            ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos & images.
-          </Badge>
-          
-          {/* Improved typography hierarchy */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-gray-900 tracking-tight">
-            Create Videos & Guides Effortlessly
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mt-2 sm:mt-3">
-              with Flonnect AI
-            </span>
-          </h1>
-          
-          <p className="text-lg sm:text-xl lg:text-2xl mb-8 sm:mb-12 text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
-            Record, edit & share — smarter & 10x faster with AI-powered tools.
-          </p>
-          
-          {/* Redesigned cards with better visual hierarchy */}
-          <div className="grid gap-8 lg:grid-cols-2 mb-12 sm:mb-16 max-w-5xl mx-auto">
-            {mainExtensions.map((extension, index) => (
-              <Card key={index} className="group relative border-0 bg-white/70 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden">
-                {/* Subtle gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${extension.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
-                <CardHeader className="relative text-center pb-4 px-6 pt-8">
-                  {/* Enhanced icon design */}
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${extension.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl`}>
-                    <extension.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                  </div>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
+          {/* Left Content */}
+          <div className="text-center lg:text-left order-2 lg:order-1">
+            <Badge className="mb-6 bg-gradient-to-r from-purple-500/10 to-blue-500/10 text-purple-200 hover:from-purple-500/20 hover:to-blue-500/20 border-purple-400/30 text-sm px-4 py-2 backdrop-blur-sm">
+              <Brain className="w-4 h-4 mr-2" />
+              ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos & images.
+            </Badge>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
+              <span className="text-white">Create Videos & Guides</span>
+              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mt-2">
+                Effortlessly
+              </span>
+              <span className="block text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mt-2">
+                with Flonnect AI
+              </span>
+            </h1>
+            
+            <p className="text-xl sm:text-2xl mb-8 text-gray-300 leading-relaxed font-light">
+              Record, edit & share — smarter & 10x faster with AI-powered tools.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 lg:mb-0">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all duration-300 border-0"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Start Creating Now
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-2 border-purple-400/30 text-purple-200 hover:bg-purple-500/10 hover:border-purple-400/50 px-8 py-4 text-lg backdrop-blur-sm bg-white/5"
+              >
+                <Sparkles className="w-5 h-5 mr-2" />
+                See AI in Action
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Cards */}
+          <div className="order-1 lg:order-2">
+            <div className="space-y-6">
+              {mainExtensions.map((extension, index) => (
+                <Card key={index} className="group relative border-0 bg-white/5 backdrop-blur-xl shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 rounded-3xl overflow-hidden hover:bg-white/10">
+                  {/* Gradient Border Effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${extension.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-3xl`}></div>
+                  <div className="absolute inset-[1px] bg-slate-900/90 rounded-3xl"></div>
                   
-                  <CardTitle className="text-xl sm:text-2xl mb-3 text-gray-900 font-bold leading-tight">
-                    {extension.title}
-                  </CardTitle>
-                  
-                  <CardDescription className="text-base sm:text-lg leading-relaxed mb-6 text-gray-600 px-2">
-                    {extension.description}
-                  </CardDescription>
-                  
-                  {/* Enhanced feature list */}
-                  <ul className="text-sm sm:text-base space-y-3 mb-6">
-                    {extension.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-3">
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 flex-shrink-0" />
-                        <span className="text-gray-700 flex items-center gap-2 font-medium">
-                          {typeof feature === 'object' ? feature.text : feature}
-                          {typeof feature === 'object' && feature.hasAI && (
-                            <Sparkles className="w-4 h-4 text-purple-500" />
-                          )}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  {/* AI feature highlights */}
-                  {extension.aiFeature && (
-                    <div className="text-sm text-purple-700 font-semibold mb-6 bg-purple-50 rounded-xl py-3 px-4 border border-purple-100">
-                      {extension.aiFeature}
-                    </div>
-                  )}
-                  {extension.aiFeatures && (
-                    <div className="space-y-3 mb-6">
-                      {extension.aiFeatures.map((aiFeature, idx) => (
-                        <div key={idx} className="text-sm text-purple-700 font-semibold bg-purple-50 rounded-xl py-3 px-4 border border-purple-100">
-                          {aiFeature}
+                  <div className="relative p-6">
+                    <CardHeader className="pb-4 px-0">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`w-14 h-14 bg-gradient-to-r ${extension.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg`}>
+                          <extension.icon className="w-7 h-7 text-white" />
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </CardHeader>
-                
-                <CardContent className="relative text-center px-6 pb-8">
-                  <Link to={extension.link}>
-                    <Button 
-                      size="lg" 
-                      className={`bg-gradient-to-r ${extension.color} hover:shadow-lg hover:scale-105 transition-all duration-300 text-white px-6 sm:px-8 py-3 sm:py-4 w-full text-base sm:text-lg font-semibold rounded-xl border-0`}
-                    >
-                      <Play className="w-5 h-5 mr-2" />
-                      {extension.ctaText}
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+                        <div>
+                          <CardTitle className="text-xl text-white font-bold leading-tight mb-1">
+                            {extension.title}
+                          </CardTitle>
+                          <CardDescription className="text-gray-400 text-sm">
+                            {extension.description}
+                          </CardDescription>
+                        </div>
+                      </div>
+                      
+                      {/* Feature Pills */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {extension.features.slice(0, 2).map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-2 bg-white/5 rounded-full px-3 py-1 border border-white/10">
+                            <CheckCircle className="w-3 h-3 text-emerald-400" />
+                            <span className="text-xs text-gray-300 font-medium">
+                              {typeof feature === 'object' ? feature.text : feature}
+                            </span>
+                            {typeof feature === 'object' && feature.hasAI && (
+                              <Sparkles className="w-3 h-3 text-purple-400" />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* AI Feature Highlight */}
+                      {extension.aiFeature && (
+                        <div className="text-xs text-purple-300 font-semibold mb-4 bg-purple-900/30 rounded-xl py-2 px-3 border border-purple-500/20">
+                          {extension.aiFeature}
+                        </div>
+                      )}
+                      {extension.aiFeatures && (
+                        <div className="space-y-2 mb-4">
+                          {extension.aiFeatures.slice(0, 1).map((aiFeature, idx) => (
+                            <div key={idx} className="text-xs text-purple-300 font-semibold bg-purple-900/30 rounded-xl py-2 px-3 border border-purple-500/20">
+                              {aiFeature}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </CardHeader>
+                    
+                    <CardContent className="px-0 pb-0">
+                      <Link to={extension.link}>
+                        <Button 
+                          size="sm" 
+                          className={`bg-gradient-to-r ${extension.gradient} hover:shadow-lg hover:scale-105 transition-all duration-300 text-white px-4 py-2 w-full text-sm font-semibold rounded-xl border-0 group`}
+                        >
+                          {extension.ctaText}
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>
