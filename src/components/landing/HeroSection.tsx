@@ -8,7 +8,8 @@ import {
   Sparkles,
   Camera,
   MousePointer,
-  Brain
+  Brain,
+  Play
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +27,7 @@ const HeroSection = () => {
       ],
       aiFeature: "✨ New: AI tools turn hours of editing into minutes.",
       link: "/screenrecorder",
-      color: "from-blue-500 to-indigo-600",
+      color: "from-blue-600 to-cyan-500",
       ctaText: "Get Video Recorder"
     },
     {
@@ -39,75 +40,97 @@ const HeroSection = () => {
         "✨ New: Generate visuals with AI instantly."
       ],
       link: "/interactive-demo-capture", 
-      color: "from-purple-500 to-pink-600",
+      color: "from-purple-600 to-pink-500",
       ctaText: "Get Guide Maker"
     }
   ];
 
   return (
-    <section className="relative overflow-hidden" role="banner">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-100 to-purple-100"></div>
-      <div className="absolute inset-0 bg-white/40"></div>
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl">
+    <section className="relative overflow-hidden min-h-screen flex items-center" role="banner">
+      {/* Modern gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-purple-100/20"></div>
+      
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 max-w-7xl">
         <div className="text-center">
-          <Badge className="mb-4 sm:mb-6 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 hover:bg-indigo-200 border-indigo-200 text-xs sm:text-sm">
-            <Brain className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+          {/* Updated badge with better styling */}
+          <Badge className="mb-6 sm:mb-8 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 hover:from-blue-100 hover:to-purple-100 border-blue-200 text-sm px-4 py-2 shadow-sm">
+            <Brain className="w-4 h-4 mr-2" />
             ✨ Flonnect AI: Instantly turn meetings, text & ideas into videos & images.
           </Badge>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
+          
+          {/* Improved typography hierarchy */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-gray-900 tracking-tight">
             Create Videos & Guides Effortlessly
-            <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1 sm:mt-2">
+            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mt-2 sm:mt-3">
               with Flonnect AI
             </span>
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-gray-700 max-w-4xl mx-auto leading-relaxed px-2">
+          
+          <p className="text-lg sm:text-xl lg:text-2xl mb-8 sm:mb-12 text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
             Record, edit & share — smarter & 10x faster with AI-powered tools.
           </p>
           
-          {/* Main Extensions Showcase */}
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 mb-8 sm:mb-12 max-w-6xl mx-auto">
+          {/* Redesigned cards with better visual hierarchy */}
+          <div className="grid gap-8 lg:grid-cols-2 mb-12 sm:mb-16 max-w-5xl mx-auto">
             {mainExtensions.map((extension, index) => (
-              <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 group bg-white/90 backdrop-blur-sm">
-                <CardHeader className="text-center pb-4 px-4 sm:px-6">
-                  <div className={`w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-r ${extension.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
-                    <extension.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
+              <Card key={index} className="group relative border-0 bg-white/70 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden">
+                {/* Subtle gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${extension.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                
+                <CardHeader className="relative text-center pb-4 px-6 pt-8">
+                  {/* Enhanced icon design */}
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${extension.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl`}>
+                    <extension.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <CardTitle className="text-lg sm:text-xl lg:text-2xl mb-2 sm:mb-3 leading-tight">{extension.title}</CardTitle>
-                  <CardDescription className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 px-2">
+                  
+                  <CardTitle className="text-xl sm:text-2xl mb-3 text-gray-900 font-bold leading-tight">
+                    {extension.title}
+                  </CardTitle>
+                  
+                  <CardDescription className="text-base sm:text-lg leading-relaxed mb-6 text-gray-600 px-2">
                     {extension.description}
                   </CardDescription>
-                  <ul className="text-xs sm:text-sm space-y-1 sm:space-y-2 mb-4 sm:mb-6">
+                  
+                  {/* Enhanced feature list */}
+                  <ul className="text-sm sm:text-base space-y-3 mb-6">
                     {extension.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-2">
-                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-500 flex-shrink-0" />
-                        <span className="text-gray-600 flex items-center gap-1">
+                      <li key={idx} className="flex items-center justify-center gap-3">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 flex-shrink-0" />
+                        <span className="text-gray-700 flex items-center gap-2 font-medium">
                           {typeof feature === 'object' ? feature.text : feature}
                           {typeof feature === 'object' && feature.hasAI && (
-                            <Sparkles className="w-3 h-3 text-purple-500" />
+                            <Sparkles className="w-4 h-4 text-purple-500" />
                           )}
                         </span>
                       </li>
                     ))}
                   </ul>
+                  
+                  {/* AI feature highlights */}
                   {extension.aiFeature && (
-                    <p className="text-xs sm:text-sm text-purple-600 font-medium mb-4 bg-purple-50 rounded-lg py-2 px-3 border border-purple-100">
+                    <div className="text-sm text-purple-700 font-semibold mb-6 bg-purple-50 rounded-xl py-3 px-4 border border-purple-100">
                       {extension.aiFeature}
-                    </p>
+                    </div>
                   )}
                   {extension.aiFeatures && (
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-3 mb-6">
                       {extension.aiFeatures.map((aiFeature, idx) => (
-                        <p key={idx} className="text-xs sm:text-sm text-purple-600 font-medium bg-purple-50 rounded-lg py-2 px-3 border border-purple-100">
+                        <div key={idx} className="text-sm text-purple-700 font-semibold bg-purple-50 rounded-xl py-3 px-4 border border-purple-100">
                           {aiFeature}
-                        </p>
+                        </div>
                       ))}
                     </div>
                   )}
                 </CardHeader>
-                <CardContent className="text-center pt-0 px-4 sm:px-6 pb-6">
+                
+                <CardContent className="relative text-center px-6 pb-8">
                   <Link to={extension.link}>
-                    <Button size="lg" className={`bg-gradient-to-r ${extension.color} hover:scale-105 transition-all duration-300 text-white px-4 sm:px-6 py-2 sm:py-3 w-full text-sm sm:text-base`}>
-                      <Chrome className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                    <Button 
+                      size="lg" 
+                      className={`bg-gradient-to-r ${extension.color} hover:shadow-lg hover:scale-105 transition-all duration-300 text-white px-6 sm:px-8 py-3 sm:py-4 w-full text-base sm:text-lg font-semibold rounded-xl border-0`}
+                    >
+                      <Play className="w-5 h-5 mr-2" />
                       {extension.ctaText}
                     </Button>
                   </Link>
