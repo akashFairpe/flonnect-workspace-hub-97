@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Play, ArrowRight, Sparkles, Video, Users, BarChart3 } from 'lucide-react';
+import { Play, ArrowRight, Sparkles, Video, Users, BarChart3, Chrome, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
@@ -43,7 +43,7 @@ const HeroSection = () => {
             Transform your product demonstrations into engaging experiences that drive results.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
             <Button 
               onClick={handleGetStarted}
               size="lg" 
@@ -62,6 +62,36 @@ const HeroSection = () => {
               <Play className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
               Watch Demo
             </Button>
+          </div>
+
+          {/* Available Platforms Section */}
+          <div className="mb-8 sm:mb-12 text-center">
+            <p className="text-sm text-gray-600 mb-4">Available Platforms</p>
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              <a 
+                href="https://chrome.google.com/webstore" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow text-sm font-medium"
+              >
+                <Chrome className="w-4 h-4 text-blue-600" />
+                Chrome Extension
+              </a>
+              <a 
+                href="#desktop-mac" 
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow text-sm font-medium"
+              >
+                <Download className="w-4 h-4 text-gray-600" />
+                Desktop (Mac)
+              </a>
+              <a 
+                href="#desktop-windows" 
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow text-sm font-medium"
+              >
+                <Download className="w-4 h-4 text-blue-500" />
+                Desktop (Windows)
+              </a>
+            </div>
           </div>
 
           {/* Trust Indicators */}
