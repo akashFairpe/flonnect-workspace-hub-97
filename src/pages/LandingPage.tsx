@@ -10,7 +10,6 @@ import TestimonialsSection from '@/components/landing/TestimonialsSection';
 import IntegrationsSection from '@/components/landing/IntegrationsSection';
 import EnterpriseExtensionSection from '@/components/landing/EnterpriseExtensionSection';
 import FinalCTASection from '@/components/landing/FinalCTASection';
-import FlonnectAISection from '@/components/landing/FlonnectAISection';
 
 const LandingPage = () => {
   return (
@@ -21,7 +20,6 @@ const LandingPage = () => {
         <StatsSection />
         <SolutionsSection />
         <EnterpriseSection />
-        <FlonnectAISection />
         <WorkflowSection />
         <UseCasesSection />
         <TestimonialsSection />

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Sparkles, Image as ImageIcon, Video, Chrome, Download } from 'lucide-react';
+import { Sparkles, Image as ImageIcon, Video } from 'lucide-react';
 import { FeaturesNavigation } from './FeaturesNavigation';
 import { ResourcesNavigation } from './ResourcesNavigation';
 
@@ -31,31 +31,6 @@ export function Header() {
             <div className="flex items-center gap-2 sm:gap-4">
               <FeaturesNavigation />
               <ResourcesNavigation />
-              
-              {/* Chrome Extension Link */}
-              <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
-                className="text-xs sm:text-sm"
-              >
-                <Chrome className="w-4 h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Chrome Extension</span>
-                <span className="sm:hidden">Extension</span>
-              </Button>
-              
-              {/* Desktop App Link */}
-              <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={() => window.open('#', '_blank')}
-                className="text-xs sm:text-sm"
-              >
-                <Download className="w-4 h-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Desktop App</span>
-                <span className="sm:hidden">Desktop</span>
-              </Button>
-              
               <Button 
                 variant="ghost" 
                 size="sm"
