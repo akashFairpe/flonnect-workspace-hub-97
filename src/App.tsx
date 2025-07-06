@@ -8,6 +8,7 @@ import LandingPage from '@/pages/LandingPage';
 import InteractiveDemoCapturePage from '@/pages/InteractiveDemoCapturePage';
 import BugCapturePage from '@/pages/BugCapturePage';
 import VideoWorkspace from '@/components/VideoWorkspace';
+import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
 
 // Feature Pages
 import ScreenRecordingPage from '@/pages/ScreenRecordingPage';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/interactive-demo-capture" element={<InteractiveDemoCapturePage />} />
             <Route path="/bug-capture" element={<BugCapturePage />} />
             <Route path="/workspace" element={<VideoWorkspace />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
             {/* Feature Routes */}
             <Route path="/screenrecorder" element={<ScreenRecordingPage />} />
