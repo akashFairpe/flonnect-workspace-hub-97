@@ -7,6 +7,10 @@ import { TestimonialsFeatures } from '@/components/testimonials/TestimonialsFeat
 import { TestimonialsWorkspace } from '@/components/testimonials/TestimonialsWorkspace';
 import { TestimonialsSharing } from '@/components/testimonials/TestimonialsSharing';
 import { TestimonialsCTA } from '@/components/testimonials/TestimonialsCTA';
+import { TestimonialsUseCases } from '@/components/testimonials/TestimonialsUseCases';
+import { TestimonialsStats } from '@/components/testimonials/TestimonialsStats';
+import { TestimonialsBenefits } from '@/components/testimonials/TestimonialsBenefits';
+import { TestimonialsFAQ } from '@/components/testimonials/TestimonialsFAQ';
 
 export default function TestimonialsPage() {
   React.useEffect(() => {
@@ -39,10 +43,14 @@ export default function TestimonialsPage() {
       
       <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <TestimonialsHero />
-        <TestimonialsTestimonials />
+        <TestimonialsStats />
         <TestimonialsFeatures />
+        <TestimonialsUseCases />
+        <TestimonialsBenefits />
+        <TestimonialsTestimonials />
         <TestimonialsWorkspace />
         <TestimonialsSharing />
+        <TestimonialsFAQ />
         <TestimonialsCTA />
       </main>
     </div>
