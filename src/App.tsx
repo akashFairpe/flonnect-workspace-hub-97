@@ -24,6 +24,12 @@ import ScreenshotBugReportingPage from '@/pages/ScreenshotBugReportingPage';
 // Enterprise Extension
 import EnterpriseExtensionPopupPage from '@/pages/EnterpriseExtensionPopupPage';
 
+// Email Setup Pages
+import EmailSetupPage from '@/pages/EmailSetupPage';
+import InviteTeamEmailPage from '@/pages/InviteTeamEmailPage';
+import WorkspaceSetupEmailPage from '@/pages/WorkspaceSetupEmailPage';
+import ExtensionSpotlightEmailPage from '@/pages/ExtensionSpotlightEmailPage';
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -49,6 +55,12 @@ function App() {
             <Route path="/movable-camera" element={<MovableCameraPage />} />
             <Route path="/step-recorder" element={<StepRecorderPage />} />
             <Route path="/screenshot-bug-reporting" element={<ScreenshotBugReportingPage />} />
+
+            {/* Email Setup Routes */}
+            <Route path="/email-setup" element={<EmailSetupPage />} />
+            <Route path="/email-setup/invite-team" element={<InviteTeamEmailPage />} />
+            <Route path="/email-setup/workspace-setup" element={<WorkspaceSetupEmailPage />} />
+            <Route path="/email-setup/extension-spotlight" element={<ExtensionSpotlightEmailPage />} />
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />
