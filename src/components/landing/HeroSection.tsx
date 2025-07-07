@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -70,9 +69,6 @@ const HeroSection = () => {
               <span className="text-white">Create Videos & Guides</span>
               <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mt-2">
                 Effortlessly
-              </span>
-              <span className="block text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mt-2">
-                with Flonnect AI
               </span>
             </h1>
             
