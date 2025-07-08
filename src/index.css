@@ -99,6 +99,40 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    /* Core Web Vitals optimizations */
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent layout shifts */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* Improve loading performance */
+  .lazy-load {
+    loading: lazy;
+  }
+
+  /* Reduce cumulative layout shift */
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* Optimize animations for performance */
+  * {
+    will-change: auto;
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
   }
 }
