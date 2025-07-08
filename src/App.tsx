@@ -20,6 +20,7 @@ import MicRecordingPage from '@/pages/MicRecordingPage';
 import MovableCameraPage from '@/pages/MovableCameraPage';
 import StepRecorderPage from '@/pages/StepRecorderPage';
 import ScreenshotBugReportingPage from '@/pages/ScreenshotBugReportingPage';
+import FeaturePage from '@/pages/FeaturePage';
 
 // Enterprise Extension
 import EnterpriseExtensionPopupPage from '@/pages/EnterpriseExtensionPopupPage';
@@ -47,6 +48,7 @@ function App() {
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/workspace" element={<VideoWorkspace />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/feature" element={<FeaturePage />} />
 
             {/* Feature Routes */}
             <Route path="/screenrecorder" element={<ScreenRecordingPage />} />
