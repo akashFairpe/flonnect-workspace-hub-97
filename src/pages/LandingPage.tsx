@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Header } from '@/components/Header';
 import HeroSection from '@/components/landing/HeroSection';
 import StatsSection from '@/components/landing/StatsSection';
@@ -13,6 +14,30 @@ import EnterpriseExtensionSection from '@/components/landing/EnterpriseExtension
 import FinalCTASection from '@/components/landing/FinalCTASection';
 
 const LandingPage = () => {
+  React.useEffect(() => {
+    document.title = 'Flonnect AI | Professional Video Recording & Collaboration Platform';
+    
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Flonnect AI is the leading video recording and collaboration platform for teams. Record meetings, create presentations, capture bugs, and share videos with ease. Start your free trial today.');
+    } else {
+      const newMetaDesc = document.createElement('meta');
+      newMetaDesc.name = 'description';
+      newMetaDesc.content = 'Flonnect AI is the leading video recording and collaboration platform for teams. Record meetings, create presentations, capture bugs, and share videos with ease. Start your free trial today.';
+      document.head.appendChild(newMetaDesc);
+    }
+
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', 'video recording, screen recording, meeting recording, video collaboration, presentation recording, bug reporting, video sharing, AI video tools');
+    } else {
+      const newMetaKeywords = document.createElement('meta');
+      newMetaKeywords.name = 'keywords';
+      newMetaKeywords.content = 'video recording, screen recording, meeting recording, video collaboration, presentation recording, bug reporting, video sharing, AI video tools';
+      document.head.appendChild(newMetaKeywords);
+    }
+  }, []);
+
   return (
     <>
       <Header />
