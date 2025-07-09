@@ -15,63 +15,100 @@ export default function PaymentSuccessfulEmailPage() {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Successful</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #4CAF50; padding-bottom: 20px; margin-bottom: 20px; }
-        .logo { font-size: 24px; font-weight: bold; color: #4CAF50; }
-        .content { margin-bottom: 30px; }
-        .cta-button { display: inline-block; background-color: #4CAF50; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
-        .footer { font-size: 12px; color: #666; text-align: center; border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333333; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .header-table { width: 100%; border-bottom: 2px solid #4CAF50; }
+        .logo { font-size: 24px; font-weight: bold; color: #4CAF50; text-align: center; padding: 20px 0 10px 0; }
+        .header-title { color: #4CAF50; margin: 10px 0 20px 0; text-align: center; font-size: 24px; }
+        .content-table { width: 100%; padding: 0 20px; }
+        .cta-button { background-color: #4CAF50; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; }
+        .footer-table { width: 100%; font-size: 12px; color: #666666; text-align: center; border-top: 1px solid #eeeeee; padding-top: 20px; margin-top: 30px; }
         .payment-details { background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">Flonnect</div>
-            <h1 style="color: #4CAF50; margin: 10px 0;">Payment Received!</h1>
-        </div>
-        
-        <div class="content">
-            <p>Hi {{CompanyName}},</p>
-            
-            <p>Great news! We've successfully received your payment. Your account is now fully active and all services have been restored.</p>
-            
-            <div class="payment-details">
-                <h3 style="color: #4CAF50; margin-top: 0;">Payment Details:</h3>
-                <p><strong>Amount:</strong> {{InvoiceAmount}}</p>
-                <p><strong>Invoice ID:</strong> {{InvoiceId}}</p>
-                <p><strong>Payment Date:</strong> {{PaymentDate}}</p>
-                <p><strong>Payment Method:</strong> {{PaymentMethod}}</p>
-            </div>
-            
-            <p>You can now continue using all Flonnect features without any interruptions. Access your dashboard to:</p>
-            
-            <ul>
-                <li>View your updated account status</li>
-                <li>Download your receipt</li>
-                <li>Manage your projects and recordings</li>
-                <li>Access all premium features</li>
-            </ul>
-            
-            <div style="text-align: center;">
-                <a href="{{DashboardUrl}}" class="cta-button">Login to Dashboard</a>
-            </div>
-            
-            <p>Thank you for being a valued Flonnect customer. If you have any questions about your payment or need assistance, please don't hesitate to contact our support team.</p>
-            
-            <p>Best regards,<br>
-            The Flonnect Team</p>
-        </div>
-        
-        <div class="footer">
-            <p>© 2024 Flonnect. All rights reserved.</p>
-            <p>If you have any questions, contact us at <a href="mailto:support@flonnect.com">support@flonnect.com</a></p>
-        </div>
-    </div>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f4f4f4; padding: 20px 0;">
+        <tr>
+            <td align="center">
+                <table cellpadding="0" cellspacing="0" border="0" class="container" style="max-width: 600px; background-color: #ffffff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" class="header-table">
+                                <tr>
+                                    <td class="logo">Flonnect</td>
+                                </tr>
+                                <tr>
+                                    <td class="header-title">Payment Received!</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" class="content-table" style="padding: 20px;">
+                                <tr>
+                                    <td style="padding-bottom: 15px;">
+                                        <p>Hi {{CompanyName}},</p>
+                                        <p>Great news! We've successfully received your payment. Your account is now fully active and all services have been restored.</p>
+                                        
+                                        <table cellpadding="0" cellspacing="0" border="0" class="payment-details" style="width: 100%; background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                                            <tr>
+                                                <td>
+                                                    <h3 style="color: #4CAF50; margin-top: 0;">Payment Details:</h3>
+                                                    <p><b>Amount:</b> {{InvoiceAmount}}</p>
+                                                    <p><b>Invoice ID:</b> {{InvoiceId}}</p>
+                                                    <p><b>Payment Date:</b> {{PaymentDate}}</p>
+                                                    <p><b>Payment Method:</b> {{PaymentMethod}}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p>You can now continue using all Flonnect features without any interruptions. Access your dashboard to:</p>
+                                        
+                                        <p>
+                                            &bull; View your updated account status<br>
+                                            &bull; Download your receipt<br>
+                                            &bull; Manage your projects and recordings<br>
+                                            &bull; Access all premium features
+                                        </p>
+                                        
+                                        <table cellpadding="0" cellspacing="0" border="0" style="margin: 20px 0;">
+                                            <tr>
+                                                <td align="center">
+                                                    <a href="{{DashboardUrl}}" class="cta-button" style="background-color: #4CAF50; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Login to Dashboard</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p>Thank you for being a valued Flonnect customer. If you have any questions about your payment or need assistance, please don't hesitate to contact our support team.</p>
+                                        
+                                        <p>Best regards,<br>
+                                        The Flonnect Team</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" class="footer-table" style="width: 100%; padding: 20px;">
+                                <tr>
+                                    <td align="center">
+                                        <p>&copy; 2024 Flonnect. All rights reserved.</p>
+                                        <p>If you have any questions, contact us at <a href="mailto:support@flonnect.com">support@flonnect.com</a></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>`,
     TextPart: `Payment Received - Thank You!
@@ -87,6 +124,11 @@ Payment Details:
 - Payment Method: {{PaymentMethod}}
 
 You can now continue using all Flonnect features without any interruptions. Access your dashboard to view your updated account status, download your receipt, manage your projects and recordings, and access all premium features.
+
+&bull; View your updated account status
+&bull; Download your receipt  
+&bull; Manage your projects and recordings
+&bull; Access all premium features
 
 Login to Dashboard: {{DashboardUrl}}
 
