@@ -240,42 +240,6 @@ export default function HowToUseFlonnectVideoRecorderPage() {
           </div>
         </div>
 
-        {/* Recording Modes - Optional section after steps */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-fade-in">
-            Recording Mode Options 🎬
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {recordingModes.map((mode, index) => {
-              const ModeIcon = mode.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="hover:shadow-lg transition-all duration-300 hover-scale group cursor-pointer animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardHeader className="text-center">
-                    <div className="mx-auto w-14 sm:w-16 h-14 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
-                      <ModeIcon className="w-6 sm:w-8 h-6 sm:h-8 text-blue-600" />
-                    </div>
-                    <CardTitle className="text-lg sm:text-xl">{mode.title}</CardTitle>
-                    <CardDescription className="text-sm sm:text-base">{mode.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {mode.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
-                          <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-green-600 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Embedded Video */}
         <div className="max-w-4xl mx-auto mb-16 text-center">
