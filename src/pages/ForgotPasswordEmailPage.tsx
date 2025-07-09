@@ -15,69 +15,112 @@ export default function ForgotPasswordEmailPage() {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Your Password</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #2563eb; padding-bottom: 20px; margin-bottom: 20px; }
-        .logo { font-size: 24px; font-weight: bold; color: #2563eb; }
-        .content { margin-bottom: 30px; }
-        .cta-button { display: inline-block; background-color: #2563eb; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; }
-        .footer { font-size: 12px; color: #666; text-align: center; border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333333; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+        .header-table { width: 100%; border-bottom: 2px solid #2563eb; }
+        .logo { font-size: 24px; font-weight: bold; color: #2563eb; text-align: center; padding: 20px 0 10px 0; }
+        .header-title { color: #2563eb; margin: 10px 0 20px 0; text-align: center; font-size: 24px; }
+        .content-table { width: 100%; padding: 0 20px; }
+        .cta-button { background-color: #2563eb; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; }
+        .footer-table { width: 100%; font-size: 12px; color: #666666; text-align: center; border-top: 1px solid #eeeeee; padding-top: 20px; margin-top: 30px; }
         .security-info { background-color: #f0f9ff; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #2563eb; }
         .expiry-notice { background-color: #fef3c7; padding: 10px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #f59e0b; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">Flonnect</div>
-            <h1 style="color: #2563eb; margin: 10px 0;">Reset Your Password</h1>
-        </div>
-        
-        <div class="content">
-            <p>Hi {{UserName}},</p>
-            
-            <p>We received a request to reset the password for your Flonnect account associated with {{UserEmail}}.</p>
-            
-            <p>If you made this request, click the button below to reset your password:</p>
-            
-            <div style="text-align: center;">
-                <a href="{{ResetPasswordUrl}}" class="cta-button">Reset Password</a>
-            </div>
-            
-            <div class="expiry-notice">
-                <p style="margin: 0;"><strong>⏰ Important:</strong> This reset link will expire in <strong>1 hour</strong> for security reasons.</p>
-            </div>
-            
-            <div class="security-info">
-                <h3 style="color: #2563eb; margin-top: 0;">Security Notice</h3>
-                <p style="margin-bottom: 0;">If you didn't request this password reset, please ignore this email. Your password will remain unchanged, and no action is required on your part.</p>
-            </div>
-            
-            <p>For your security, we recommend:</p>
-            <ul>
-                <li>Using a strong, unique password</li>
-                <li>Enabling two-factor authentication if available</li>
-                <li>Not sharing your login credentials with anyone</li>
-            </ul>
-            
-            <p>If you're having trouble clicking the button above, copy and paste the following link into your browser:</p>
-            <p style="word-break: break-all; color: #2563eb;">{{ResetPasswordUrl}}</p>
-            
-            <p>If you continue to have issues or didn't request this reset, please contact our support team immediately.</p>
-            
-            <p>Best regards,<br>
-            The Flonnect Security Team</p>
-        </div>
-        
-        <div class="footer">
-            <p>© 2024 Flonnect. All rights reserved.</p>
-            <p>If you have any questions, contact us at <a href="mailto:security@flonnect.com">security@flonnect.com</a></p>
-            <p>This is an automated security email. Please do not reply to this message.</p>
-        </div>
-    </div>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f4f4f4; padding: 20px 0;">
+        <tr>
+            <td align="center">
+                <table cellpadding="0" cellspacing="0" border="0" class="container" style="max-width: 600px; background-color: #ffffff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" class="header-table">
+                                <tr>
+                                    <td class="logo">Flonnect</td>
+                                </tr>
+                                <tr>
+                                    <td class="header-title">Reset Your Password</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" class="content-table" style="padding: 20px;">
+                                <tr>
+                                    <td style="padding-bottom: 15px;">
+                                        <p>Hi {{UserName}},</p>
+                                        
+                                        <p>We received a request to reset the password for your Flonnect account associated with {{UserEmail}}.</p>
+                                        
+                                        <p>If you made this request, click the button below to reset your password:</p>
+                                        
+                                        <table cellpadding="0" cellspacing="0" border="0" style="margin: 20px 0;">
+                                            <tr>
+                                                <td align="center">
+                                                    <a href="{{ResetPasswordUrl}}" class="cta-button" style="background-color: #2563eb; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Reset Password</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" border="0" class="expiry-notice" style="width: 100%; background-color: #fef3c7; padding: 10px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #f59e0b;">
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0;"><b>⏰ Important:</b> This reset link will expire in <b>1 hour</b> for security reasons.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <table cellpadding="0" cellspacing="0" border="0" class="security-info" style="width: 100%; background-color: #f0f9ff; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #2563eb;">
+                                            <tr>
+                                                <td>
+                                                    <h3 style="color: #2563eb; margin-top: 0;">Security Notice</h3>
+                                                    <p style="margin-bottom: 0;">If you didn't request this password reset, please ignore this email. Your password will remain unchanged, and no action is required on your part.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p>For your security, we recommend:</p>
+                                        
+                                        <p>
+                                            &bull; Using a strong, unique password<br>
+                                            &bull; Enabling two-factor authentication if available<br>
+                                            &bull; Not sharing your login credentials with anyone
+                                        </p>
+                                        
+                                        <p>If you're having trouble clicking the button above, copy and paste the following link into your browser:</p>
+                                        <p style="word-break: break-all; color: #2563eb;">{{ResetPasswordUrl}}</p>
+                                        
+                                        <p>If you continue to have issues or didn't request this reset, please contact our support team immediately.</p>
+                                        
+                                        <p>Best regards,<br>
+                                        The Flonnect Security Team</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" class="footer-table" style="width: 100%; padding: 20px;">
+                                <tr>
+                                    <td align="center">
+                                        <p>&copy; 2024 Flonnect. All rights reserved.</p>
+                                        <p>If you have any questions, contact us at <a href="mailto:security@flonnect.com">security@flonnect.com</a></p>
+                                        <p>This is an automated security email. Please do not reply to this message.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>`,
     TextPart: `Reset Your Password - Flonnect
@@ -95,9 +138,9 @@ Security Notice:
 If you didn't request this password reset, please ignore this email. Your password will remain unchanged, and no action is required on your part.
 
 For your security, we recommend:
-- Using a strong, unique password
-- Enabling two-factor authentication if available
-- Not sharing your login credentials with anyone
+&bull; Using a strong, unique password
+&bull; Enabling two-factor authentication if available  
+&bull; Not sharing your login credentials with anyone
 
 If you continue to have issues or didn't request this reset, please contact our support team immediately at security@flonnect.com.
 
