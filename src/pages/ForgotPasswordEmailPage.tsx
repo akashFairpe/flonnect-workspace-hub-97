@@ -37,14 +37,14 @@ export default function ForgotPasswordEmailPage() {
         </div>
         
         <div class="content">
-            <p>Hi {{\`UserName\`}},</p>
+            <p>Hi {{UserName}},</p>
             
-            <p>We received a request to reset the password for your Flonnect account associated with {{\`UserEmail\`}}.</p>
+            <p>We received a request to reset the password for your Flonnect account associated with {{UserEmail}}.</p>
             
             <p>If you made this request, click the button below to reset your password:</p>
             
             <div style="text-align: center;">
-                <a href="{{\`ResetPasswordUrl\`}}" class="cta-button">Reset Password</a>
+                <a href="{{ResetPasswordUrl}}" class="cta-button">Reset Password</a>
             </div>
             
             <div class="expiry-notice">
@@ -64,7 +64,7 @@ export default function ForgotPasswordEmailPage() {
             </ul>
             
             <p>If you're having trouble clicking the button above, copy and paste the following link into your browser:</p>
-            <p style="word-break: break-all; color: #2563eb;">{{\`ResetPasswordUrl\`}}</p>
+            <p style="word-break: break-all; color: #2563eb;">{{ResetPasswordUrl}}</p>
             
             <p>If you continue to have issues or didn't request this reset, please contact our support team immediately.</p>
             
@@ -82,12 +82,12 @@ export default function ForgotPasswordEmailPage() {
 </html>`,
     TextPart: `Reset Your Password - Flonnect
 
-Hi {{\`UserName\`}},
+Hi {{UserName}},
 
-We received a request to reset the password for your Flonnect account associated with {{\`UserEmail\`}}.
+We received a request to reset the password for your Flonnect account associated with {{UserEmail}}.
 
 If you made this request, click the link below to reset your password:
-{{\`ResetPasswordUrl\`}}
+{{ResetPasswordUrl}}
 
 ⏰ Important: This reset link will expire in 1 hour for security reasons.
 

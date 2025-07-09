@@ -36,16 +36,16 @@ export default function PaymentSuccessfulEmailPage() {
         </div>
         
         <div class="content">
-            <p>Hi {{\`CompanyName\`}},</p>
+            <p>Hi {{CompanyName}},</p>
             
             <p>Great news! We've successfully received your payment. Your account is now fully active and all services have been restored.</p>
             
             <div class="payment-details">
                 <h3 style="color: #4CAF50; margin-top: 0;">Payment Details:</h3>
-                <p><strong>Amount:</strong> {{\`InvoiceAmount\`}}</p>
-                <p><strong>Invoice ID:</strong> {{\`InvoiceId\`}}</p>
-                <p><strong>Payment Date:</strong> {{\`PaymentDate\`}}</p>
-                <p><strong>Payment Method:</strong> {{\`PaymentMethod\`}}</p>
+                <p><strong>Amount:</strong> {{InvoiceAmount}}</p>
+                <p><strong>Invoice ID:</strong> {{InvoiceId}}</p>
+                <p><strong>Payment Date:</strong> {{PaymentDate}}</p>
+                <p><strong>Payment Method:</strong> {{PaymentMethod}}</p>
             </div>
             
             <p>You can now continue using all Flonnect features without any interruptions. Access your dashboard to:</p>
@@ -58,7 +58,7 @@ export default function PaymentSuccessfulEmailPage() {
             </ul>
             
             <div style="text-align: center;">
-                <a href="{{\`DashboardUrl\`}}" class="cta-button">Login to Dashboard</a>
+                <a href="{{DashboardUrl}}" class="cta-button">Login to Dashboard</a>
             </div>
             
             <p>Thank you for being a valued Flonnect customer. If you have any questions about your payment or need assistance, please don't hesitate to contact our support team.</p>
@@ -76,19 +76,19 @@ export default function PaymentSuccessfulEmailPage() {
 </html>`,
     TextPart: `Payment Received - Thank You!
 
-Hi {{\`CompanyName\`}},
+Hi {{CompanyName}},
 
 Great news! We've successfully received your payment. Your account is now fully active and all services have been restored.
 
 Payment Details:
-- Amount: {{\`InvoiceAmount\`}}
-- Invoice ID: {{\`InvoiceId\`}}
-- Payment Date: {{\`PaymentDate\`}}
-- Payment Method: {{\`PaymentMethod\`}}
+- Amount: {{InvoiceAmount}}
+- Invoice ID: {{InvoiceId}}
+- Payment Date: {{PaymentDate}}
+- Payment Method: {{PaymentMethod}}
 
 You can now continue using all Flonnect features without any interruptions. Access your dashboard to view your updated account status, download your receipt, manage your projects and recordings, and access all premium features.
 
-Login to Dashboard: {{\`DashboardUrl\`}}
+Login to Dashboard: {{DashboardUrl}}
 
 Thank you for being a valued Flonnect customer. If you have any questions about your payment or need assistance, please don't hesitate to contact our support team.
 
