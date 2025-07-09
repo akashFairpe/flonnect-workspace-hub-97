@@ -159,6 +159,61 @@ const emailTemplates = [
     cta: 'View Task',
     icon: CheckSquare,
     color: 'bg-emerald-500'
+  },
+  {
+    id: 'invoice-generated',
+    step: 'Payment',
+    title: 'Invoice Generated',
+    trigger: 'Invoice is generated',
+    delay: 'Immediately',
+    subject: 'Your Invoice is Ready - Payment Due in 2 Days',
+    cta: 'Manage Payment / Login to Dashboard',
+    icon: MessageSquare,
+    color: 'bg-blue-600'
+  },
+  {
+    id: 'invoice-past-due',
+    step: 'Payment',
+    title: 'Invoice Past Due',
+    trigger: 'Invoice past due after 2 days',
+    delay: '2 days after invoice generated',
+    subject: 'Payment Overdue - Please Pay Now',
+    cta: 'Manage Payment / Login to Dashboard',
+    icon: MessageSquare,
+    color: 'bg-orange-600'
+  },
+  {
+    id: 'invoice-reminder',
+    step: 'Payment',
+    title: 'Invoice Reminder',
+    trigger: 'Invoice reminder after 5 days',
+    delay: '5 days after invoice generated',
+    subject: 'Final Reminder - Payment Required',
+    cta: 'Manage Payment / Login to Dashboard',
+    icon: MessageSquare,
+    color: 'bg-red-600'
+  },
+  {
+    id: 'pay-to-continue',
+    step: 'Payment',
+    title: 'Pay to Continue',
+    trigger: 'Pay to continue after 7 days',
+    delay: '7 days after invoice generated',
+    subject: 'Service Interruption Notice - Pay to Continue',
+    cta: 'Manage Payment / Login to Dashboard',
+    icon: MessageSquare,
+    color: 'bg-red-700'
+  },
+  {
+    id: 'account-suspended',
+    step: 'Payment',
+    title: 'Account Suspended',
+    trigger: 'Account suspended for non-payment',
+    delay: 'After payment deadline',
+    subject: 'Account Suspended - Immediate Payment Required',
+    cta: 'Manage Payment / Login to Dashboard',
+    icon: MessageSquare,
+    color: 'bg-red-900'
   }
 ];
 

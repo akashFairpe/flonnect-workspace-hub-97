@@ -41,6 +41,11 @@ import AddedToProjectEmailPage from '@/pages/AddedToProjectEmailPage';
 import TaskAssignmentEmailPage from '@/pages/TaskAssignmentEmailPage';
 import TaskActivityUpdateEmailPage from '@/pages/TaskActivityUpdateEmailPage';
 import TaskCompletedEmailPage from '@/pages/TaskCompletedEmailPage';
+import InvoiceGeneratedEmailPage from '@/pages/InvoiceGeneratedEmailPage';
+import InvoicePastDueEmailPage from '@/pages/InvoicePastDueEmailPage';
+import InvoiceReminderEmailPage from '@/pages/InvoiceReminderEmailPage';
+import PayToContinueEmailPage from '@/pages/PayToContinueEmailPage';
+import AccountSuspendedEmailPage from '@/pages/AccountSuspendedEmailPage';
 
 const queryClient = new QueryClient();
 
@@ -85,6 +90,11 @@ function App() {
             <Route path="/email-setup/task-assignment" element={<TaskAssignmentEmailPage />} />
             <Route path="/email-setup/task-activity-update" element={<TaskActivityUpdateEmailPage />} />
             <Route path="/email-setup/task-completed" element={<TaskCompletedEmailPage />} />
+            <Route path="/email-setup/invoice-generated" element={<InvoiceGeneratedEmailPage />} />
+            <Route path="/email-setup/invoice-past-due" element={<InvoicePastDueEmailPage />} />
+            <Route path="/email-setup/invoice-reminder" element={<InvoiceReminderEmailPage />} />
+            <Route path="/email-setup/pay-to-continue" element={<PayToContinueEmailPage />} />
+            <Route path="/email-setup/account-suspended" element={<AccountSuspendedEmailPage />} />
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />
