@@ -30,6 +30,17 @@ import EmailSetupPage from '@/pages/EmailSetupPage';
 import InviteTeamEmailPage from '@/pages/InviteTeamEmailPage';
 import WorkspaceSetupEmailPage from '@/pages/WorkspaceSetupEmailPage';
 import ExtensionSpotlightEmailPage from '@/pages/ExtensionSpotlightEmailPage';
+import WelcomeEmailPage from '@/pages/WelcomeEmailPage';
+import CalendarReminderEmailPage from '@/pages/CalendarReminderEmailPage';
+import FirstProjectEmailPage from '@/pages/FirstProjectEmailPage';
+import SkipReengagementEmailPage from '@/pages/SkipReengagementEmailPage';
+import BestPracticesEmailPage from '@/pages/BestPracticesEmailPage';
+import FeedbackCheckinEmailPage from '@/pages/FeedbackCheckinEmailPage';
+import TeamInvitationEmailPage from '@/pages/TeamInvitationEmailPage';
+import AddedToProjectEmailPage from '@/pages/AddedToProjectEmailPage';
+import TaskAssignmentEmailPage from '@/pages/TaskAssignmentEmailPage';
+import TaskActivityUpdateEmailPage from '@/pages/TaskActivityUpdateEmailPage';
+import TaskCompletedEmailPage from '@/pages/TaskCompletedEmailPage';
 
 const queryClient = new QueryClient();
 
@@ -60,9 +71,20 @@ function App() {
 
             {/* Email Setup Routes */}
             <Route path="/email-setup" element={<EmailSetupPage />} />
+            <Route path="/email-setup/welcome" element={<WelcomeEmailPage />} />
+            <Route path="/email-setup/calendar-reminder" element={<CalendarReminderEmailPage />} />
+            <Route path="/email-setup/first-project" element={<FirstProjectEmailPage />} />
             <Route path="/email-setup/invite-team" element={<InviteTeamEmailPage />} />
             <Route path="/email-setup/workspace-setup" element={<WorkspaceSetupEmailPage />} />
+            <Route path="/email-setup/skip-reengagement" element={<SkipReengagementEmailPage />} />
             <Route path="/email-setup/extension-spotlight" element={<ExtensionSpotlightEmailPage />} />
+            <Route path="/email-setup/best-practices" element={<BestPracticesEmailPage />} />
+            <Route path="/email-setup/feedback-checkin" element={<FeedbackCheckinEmailPage />} />
+            <Route path="/email-setup/team-invitation" element={<TeamInvitationEmailPage />} />
+            <Route path="/email-setup/added-to-project" element={<AddedToProjectEmailPage />} />
+            <Route path="/email-setup/task-assignment" element={<TaskAssignmentEmailPage />} />
+            <Route path="/email-setup/task-activity-update" element={<TaskActivityUpdateEmailPage />} />
+            <Route path="/email-setup/task-completed" element={<TaskCompletedEmailPage />} />
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />
