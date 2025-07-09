@@ -21,6 +21,8 @@ import MovableCameraPage from '@/pages/MovableCameraPage';
 import StepRecorderPage from '@/pages/StepRecorderPage';
 import ScreenshotBugReportingPage from '@/pages/ScreenshotBugReportingPage';
 import FeaturePage from '@/pages/FeaturePage';
+import HowToUseStepRecorderPage from '@/pages/HowToUseStepRecorderPage';
+import HowToUseFlonnectVideoRecorderPage from '@/pages/HowToUseFlonnectVideoRecorderPage';
 
 // Enterprise Extension
 import EnterpriseExtensionPopupPage from '@/pages/EnterpriseExtensionPopupPage';
@@ -75,6 +77,10 @@ function App() {
             <Route path="/movable-camera" element={<MovableCameraPage />} />
             <Route path="/step-recorder" element={<StepRecorderPage />} />
             <Route path="/screenshot-bug-reporting" element={<ScreenshotBugReportingPage />} />
+            
+            {/* How-to Guide Routes */}
+            <Route path="/how-to-use-step-recorder" element={<HowToUseStepRecorderPage />} />
+            <Route path="/how-to-use-flonnect-video-recorder" element={<HowToUseFlonnectVideoRecorderPage />} />
 
             {/* Email Setup Routes */}
             <Route path="/email-setup" element={<EmailSetupPage />} />
