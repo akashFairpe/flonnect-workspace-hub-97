@@ -172,16 +172,14 @@ export default function HowToUseFlonnectVideoRecorderPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-x-hidden relative">
-      {/* Floating Celebration Elements */}
+      {/* Modern floating particles */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-10 left-10 text-4xl animate-[float_6s_ease-in-out_infinite] opacity-70">🎉</div>
-        <div className="absolute top-20 right-20 text-3xl animate-[float_8s_ease-in-out_infinite_1s] opacity-60">🚀</div>
-        <div className="absolute bottom-20 left-20 text-2xl animate-[float_7s_ease-in-out_infinite_2s] opacity-80">⭐</div>
-        <div className="absolute bottom-10 right-10 text-3xl animate-[float_5s_ease-in-out_infinite_1.5s] opacity-70">🎊</div>
-        <div className="absolute top-1/2 left-10 text-2xl animate-[float_9s_ease-in-out_infinite_3s] opacity-50">🎁</div>
-        <div className="absolute top-1/3 right-1/4 text-2xl animate-[float_6s_ease-in-out_infinite_0.5s] opacity-60">🎯</div>
-        <div className="absolute bottom-1/3 left-1/3 text-3xl animate-[float_8s_ease-in-out_infinite_2.5s] opacity-70">📹</div>
-        <div className="absolute top-2/3 right-10 text-2xl animate-[float_7s_ease-in-out_infinite_1s] opacity-80">✨</div>
+        <div className="absolute top-20 left-1/4 w-2 h-2 bg-blue-400/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-purple-400/20 rounded-full animate-bounce"></div>
+        <div className="absolute bottom-1/4 left-1/5 w-1 h-1 bg-blue-500/40 rounded-full animate-ping"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-purple-500/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-blue-400/50 rounded-full animate-bounce"></div>
+        <div className="absolute top-2/3 right-1/6 w-3 h-3 bg-purple-300/20 rounded-full animate-ping"></div>
       </div>
       
       <Header />
@@ -214,10 +212,38 @@ export default function HowToUseFlonnectVideoRecorderPage() {
           </div>
         </div>
 
-        {/* Recording Modes */}
+        {/* Quick Start Steps - Moved before recording modes */}
         <div className="max-w-6xl mx-auto mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-fade-in">
-            Choose Your Recording Mode 🎬
+            Thanks for Installing! Here's How to Start 🚀
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {quickStartSteps.map((step, index) => {
+              const StepIcon = step.icon;
+              return (
+                <Card 
+                  key={index} 
+                  className="text-center hover:shadow-lg transition-all duration-300 hover-scale animate-fade-in group"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CardHeader>
+                    <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
+                      <StepIcon className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div className="text-xs sm:text-sm font-medium text-blue-600 mb-2">Step {index + 1}</div>
+                    <CardTitle className="text-base sm:text-lg">{step.title}</CardTitle>
+                    <CardDescription className="text-sm sm:text-base">{step.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Recording Modes - Optional section after steps */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-fade-in">
+            Recording Mode Options 🎬
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {recordingModes.map((mode, index) => {
@@ -261,34 +287,6 @@ export default function HowToUseFlonnectVideoRecorderPage() {
                 <p className="text-sm sm:text-base text-gray-600">Video placeholder: {`{{video_video_recorder_intro}}`}</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Step-by-Step Checklist */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-fade-in">
-            Step-by-Step Checklist ✅
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {quickStartSteps.map((step, index) => {
-              const StepIcon = step.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="text-center hover:shadow-lg transition-all duration-300 hover-scale animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardHeader>
-                    <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                      <StepIcon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div className="text-xs sm:text-sm font-medium text-blue-600 mb-2">Step {index + 1}</div>
-                    <CardTitle className="text-base sm:text-lg">{step.title}</CardTitle>
-                    <CardDescription className="text-sm sm:text-base">{step.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              );
-            })}
           </div>
         </div>
 

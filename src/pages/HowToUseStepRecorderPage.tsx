@@ -104,16 +104,14 @@ export default function HowToUseStepRecorderPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 overflow-x-hidden relative">
-      {/* Floating Celebration Elements */}
+      {/* Modern floating particles */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-10 left-10 text-4xl animate-[float_6s_ease-in-out_infinite] opacity-70">🎉</div>
-        <div className="absolute top-20 right-20 text-3xl animate-[float_8s_ease-in-out_infinite_1s] opacity-60">📝</div>
-        <div className="absolute bottom-20 left-20 text-2xl animate-[float_7s_ease-in-out_infinite_2s] opacity-80">⭐</div>
-        <div className="absolute bottom-10 right-10 text-3xl animate-[float_5s_ease-in-out_infinite_1.5s] opacity-70">🎊</div>
-        <div className="absolute top-1/2 left-10 text-2xl animate-[float_9s_ease-in-out_infinite_3s] opacity-50">🎁</div>
-        <div className="absolute top-1/3 right-1/4 text-2xl animate-[float_6s_ease-in-out_infinite_0.5s] opacity-60">🎯</div>
-        <div className="absolute bottom-1/3 left-1/3 text-3xl animate-[float_8s_ease-in-out_infinite_2.5s] opacity-70">🧩</div>
-        <div className="absolute top-2/3 right-10 text-2xl animate-[float_7s_ease-in-out_infinite_1s] opacity-80">✨</div>
+        <div className="absolute top-20 left-1/4 w-2 h-2 bg-purple-400/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-blue-400/20 rounded-full animate-bounce"></div>
+        <div className="absolute bottom-1/4 left-1/5 w-1 h-1 bg-purple-500/40 rounded-full animate-ping"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-blue-500/30 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-purple-400/50 rounded-full animate-bounce"></div>
+        <div className="absolute top-2/3 right-1/6 w-3 h-3 bg-blue-300/20 rounded-full animate-ping"></div>
       </div>
       
       <Header />
