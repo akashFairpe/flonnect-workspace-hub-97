@@ -23,24 +23,34 @@ export default function HowToUseStepRecorderPage() {
 
   const quickStartSteps = [
     {
+      icon: CheckCircle,
+      title: "Extension Installed ✅",
+      description: "Already done! Now pin the extension by clicking the extension icon and then pin"
+    },
+    {
       icon: Play,
-      title: "Click Record",
-      description: "Open the extension and hit the record button"
+      title: "Click Extension Icon",
+      description: "Login to app.flonnect.com, then click extension again"
     },
     {
       icon: Eye,
-      title: "Perform Actions",
-      description: "Navigate through your process normally"
+      title: "Choose Mode & Record",
+      description: "Select step mode, screenshot or interactive HTML guide. 3-2-1 timer starts recording"
     },
     {
       icon: FileText,
-      title: "Add Annotations",
-      description: "Highlight key elements and add descriptions"
+      title: "Perform Your Steps",
+      description: "Do whatever steps you want to document - the extension captures everything"
+    },
+    {
+      icon: Download,
+      title: "Stop & Edit",
+      description: "Click extension icon to stop. You'll be directed to Flonnect edit website"
     },
     {
       icon: Share2,
-      title: "Share Guide",
-      description: "Export and share with your team instantly"
+      title: "Generate Title & Share",
+      description: "Use AI or manually create title, then save and share with teams via easy embed"
     }
   ];
 
@@ -123,8 +133,8 @@ export default function HowToUseStepRecorderPage() {
 
         {/* Quick Start Steps */}
         <div className="max-w-5xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Quick Start in 4 Steps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="text-3xl font-bold text-center mb-12">Thanks for Installing! Here's How to Start</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {quickStartSteps.map((step, index) => {
               const StepIcon = step.icon;
               return (
