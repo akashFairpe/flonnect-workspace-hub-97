@@ -91,24 +91,34 @@ export default function HowToUseFlonnectVideoRecorderPage() {
 
   const quickStartSteps = [
     {
-      icon: Settings,
-      title: "Choose Recording Mode",
-      description: "Select screen, webcam, or both based on your needs"
+      icon: CheckCircle,
+      title: "Install & Pin Extension ✅",
+      description: "Already done! Pin the extension for easy access"
     },
     {
-      icon: CheckCircle,
-      title: "Grant Permissions",
-      description: "Allow camera and microphone access when prompted"
+      icon: Settings,
+      title: "Open & Choose Recording",
+      description: "Open extension, select screen recording option"
+    },
+    {
+      icon: Monitor,
+      title: "Select Mode & Format",
+      description: "Choose screen, screen+camera, or camera only. Pick audio (system/mic) and format"
     },
     {
       icon: Video,
-      title: "Start Recording",
-      description: "Click record and begin capturing your content"
+      title: "Click Start & Select Area",
+      description: "Hit start, then choose desktop, fullscreen, or Chrome tab"
+    },
+    {
+      icon: Camera,
+      title: "Record & Annotate",
+      description: "Start recording! Add annotations during recording if needed"
     },
     {
       icon: Square,
-      title: "Stop & Save",
-      description: "End recording and automatically save to your library"
+      title: "Stop & Share",
+      description: "Click stop recording. Login to app.flonnect.com for easy sharing or continue offline"
     }
   ];
 
@@ -161,10 +171,22 @@ export default function HowToUseFlonnectVideoRecorderPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-x-hidden relative">
+      {/* Floating Celebration Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-10 left-10 text-4xl animate-[float_6s_ease-in-out_infinite] opacity-70">🎉</div>
+        <div className="absolute top-20 right-20 text-3xl animate-[float_8s_ease-in-out_infinite_1s] opacity-60">🚀</div>
+        <div className="absolute bottom-20 left-20 text-2xl animate-[float_7s_ease-in-out_infinite_2s] opacity-80">⭐</div>
+        <div className="absolute bottom-10 right-10 text-3xl animate-[float_5s_ease-in-out_infinite_1.5s] opacity-70">🎊</div>
+        <div className="absolute top-1/2 left-10 text-2xl animate-[float_9s_ease-in-out_infinite_3s] opacity-50">🎁</div>
+        <div className="absolute top-1/3 right-1/4 text-2xl animate-[float_6s_ease-in-out_infinite_0.5s] opacity-60">🎯</div>
+        <div className="absolute bottom-1/3 left-1/3 text-3xl animate-[float_8s_ease-in-out_infinite_2.5s] opacity-70">📹</div>
+        <div className="absolute top-2/3 right-10 text-2xl animate-[float_7s_ease-in-out_infinite_1s] opacity-80">✨</div>
+      </div>
+      
       <Header />
       
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-7xl">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-7xl relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
           <div className="animate-fade-in">
@@ -247,7 +269,7 @@ export default function HowToUseFlonnectVideoRecorderPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-fade-in">
             Step-by-Step Checklist ✅
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {quickStartSteps.map((step, index) => {
               const StepIcon = step.icon;
               return (

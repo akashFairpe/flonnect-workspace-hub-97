@@ -103,10 +103,22 @@ export default function HowToUseStepRecorderPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 overflow-x-hidden relative">
+      {/* Floating Celebration Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-10 left-10 text-4xl animate-[float_6s_ease-in-out_infinite] opacity-70">🎉</div>
+        <div className="absolute top-20 right-20 text-3xl animate-[float_8s_ease-in-out_infinite_1s] opacity-60">📝</div>
+        <div className="absolute bottom-20 left-20 text-2xl animate-[float_7s_ease-in-out_infinite_2s] opacity-80">⭐</div>
+        <div className="absolute bottom-10 right-10 text-3xl animate-[float_5s_ease-in-out_infinite_1.5s] opacity-70">🎊</div>
+        <div className="absolute top-1/2 left-10 text-2xl animate-[float_9s_ease-in-out_infinite_3s] opacity-50">🎁</div>
+        <div className="absolute top-1/3 right-1/4 text-2xl animate-[float_6s_ease-in-out_infinite_0.5s] opacity-60">🎯</div>
+        <div className="absolute bottom-1/3 left-1/3 text-3xl animate-[float_8s_ease-in-out_infinite_2.5s] opacity-70">🧩</div>
+        <div className="absolute top-2/3 right-10 text-2xl animate-[float_7s_ease-in-out_infinite_1s] opacity-80">✨</div>
+      </div>
+      
       <Header />
       
-      <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-7xl relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
           <Badge className="mb-6 bg-green-100 text-green-700 border-green-200">
