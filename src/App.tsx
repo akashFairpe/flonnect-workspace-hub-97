@@ -46,6 +46,8 @@ import InvoicePastDueEmailPage from '@/pages/InvoicePastDueEmailPage';
 import InvoiceReminderEmailPage from '@/pages/InvoiceReminderEmailPage';
 import PayToContinueEmailPage from '@/pages/PayToContinueEmailPage';
 import AccountSuspendedEmailPage from '@/pages/AccountSuspendedEmailPage';
+import PaymentSuccessfulEmailPage from '@/pages/PaymentSuccessfulEmailPage';
+import ForgotPasswordEmailPage from '@/pages/ForgotPasswordEmailPage';
 
 const queryClient = new QueryClient();
 
@@ -95,6 +97,8 @@ function App() {
             <Route path="/email-setup/invoice-reminder" element={<InvoiceReminderEmailPage />} />
             <Route path="/email-setup/pay-to-continue" element={<PayToContinueEmailPage />} />
             <Route path="/email-setup/account-suspended" element={<AccountSuspendedEmailPage />} />
+            <Route path="/email-setup/payment-successful" element={<PaymentSuccessfulEmailPage />} />
+            <Route path="/email-setup/forgot-password" element={<ForgotPasswordEmailPage />} />
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />

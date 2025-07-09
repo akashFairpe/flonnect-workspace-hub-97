@@ -214,6 +214,28 @@ const emailTemplates = [
     cta: 'Manage Payment / Login to Dashboard',
     icon: MessageSquare,
     color: 'bg-red-900'
+  },
+  {
+    id: 'payment-successful',
+    step: 'Payment',
+    title: 'Payment Successful',
+    trigger: 'Payment completed successfully',
+    delay: 'Immediately',
+    subject: 'Payment Received - Thank You!',
+    cta: 'Login to Dashboard',
+    icon: CheckSquare,
+    color: 'bg-green-600'
+  },
+  {
+    id: 'forgot-password',
+    step: 'Security',
+    title: 'Forgot Password',
+    trigger: 'Password reset requested',
+    delay: 'Immediately',
+    subject: 'Reset Your Password - Flonnect',
+    cta: 'Reset Password',
+    icon: MessageSquare,
+    color: 'bg-blue-500'
   }
 ];
 
