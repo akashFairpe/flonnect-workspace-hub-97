@@ -70,7 +70,7 @@ export default function PayToContinueEmailPage() {
                                     </td>
                                 </tr>
                             </table>
-                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">Your payment of <b>${{InvoiceAmount}}</b> for {{ServiceName}} is now 7 days overdue. As a result, your service has been temporarily interrupted.</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">Your payment of <b>$\{\{InvoiceAmount\}\}</b> for \{\{ServiceName\}\} is now 7 days overdue. As a result, your service has been temporarily interrupted.</p>
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fee2e2;border:1px solid #fecaca;border-radius:8px;padding:16px;margin:24px 0;">
                                 <tr>
                                     <td>
@@ -133,7 +133,7 @@ export default function PayToContinueEmailPage() {
 Service Interruption
 Your service has been interrupted due to non-payment of invoice #{{InvoiceNumber}}.
 
-Your payment of ${{InvoiceAmount}} for {{ServiceName}} is now 7 days overdue. As a result, your service has been temporarily interrupted.
+Your payment of $\{\{InvoiceAmount\}\} for \{\{ServiceName\}\} is now 7 days overdue. As a result, your service has been temporarily interrupted.
 
 What happens now:
 • Your service is currently suspended

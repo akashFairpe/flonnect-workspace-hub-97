@@ -70,7 +70,7 @@ export default function InvoiceReminderEmailPage() {
                                     </td>
                                 </tr>
                             </table>
-                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">Your payment of <b>${{InvoiceAmount}}</b> for {{ServiceName}} remains unpaid and is now 5 days overdue.</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">Your payment of <b>$\{\{InvoiceAmount\}\}</b> for \{\{ServiceName\}\} remains unpaid and is now 5 days overdue.</p>
                             <p style="font-size:16px;margin-bottom:24px;color:#374151;"><b>Action Required:</b> Please pay immediately to avoid service suspension. Failure to pay within 2 days may result in account suspension.</p>
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:12px;margin:24px 0;">
                                 <tr>
@@ -128,7 +128,7 @@ export default function InvoiceReminderEmailPage() {
 Final Notice
 This is your final reminder for invoice #{{InvoiceNumber}}.
 
-Your payment of ${{InvoiceAmount}} for {{ServiceName}} remains unpaid and is now 5 days overdue.
+Your payment of $\{\{InvoiceAmount\}\} for \{\{ServiceName\}\} remains unpaid and is now 5 days overdue.
 
 Action Required: Please pay immediately to avoid service suspension. Failure to pay within 2 days may result in account suspension.
 

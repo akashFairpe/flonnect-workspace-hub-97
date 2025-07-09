@@ -70,7 +70,7 @@ export default function AccountSuspendedEmailPage() {
                                     </td>
                                 </tr>
                             </table>
-                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">We've suspended your account because payment of <b>${{InvoiceAmount}}</b> for {{ServiceName}} remains outstanding despite multiple reminders.</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">We've suspended your account because payment of <b>$\{\{InvoiceAmount\}\}</b> for \{\{ServiceName\}\} remains outstanding despite multiple reminders.</p>
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:16px;margin:24px 0;">
                                 <tr>
                                     <td>
@@ -141,7 +141,7 @@ export default function AccountSuspendedEmailPage() {
 Account Suspended
 Your account has been suspended due to non-payment of invoice #{{InvoiceNumber}}.
 
-We've suspended your account because payment of ${{InvoiceAmount}} for {{ServiceName}} remains outstanding despite multiple reminders.
+We've suspended your account because payment of $\{\{InvoiceAmount\}\} for \{\{ServiceName\}\} remains outstanding despite multiple reminders.
 
 Account Status:
 • All services are currently suspended

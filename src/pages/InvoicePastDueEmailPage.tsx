@@ -70,7 +70,7 @@ export default function InvoicePastDueEmailPage() {
                                     </td>
                                 </tr>
                             </table>
-                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">We haven't received your payment of <b>${{InvoiceAmount}}</b> for {{ServiceName}} which was due on {{DueDate}}.</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">We haven't received your payment of <b>$\{\{InvoiceAmount\}\}</b> for \{\{ServiceName\}\} which was due on \{\{DueDate\}\}.</p>
                             <p style="font-size:16px;margin-bottom:24px;color:#374151;">Please complete your payment immediately to avoid service interruption. If you've already paid, please allow time for processing.</p>
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:40px 0;">
                                 <tr>
@@ -121,7 +121,7 @@ export default function InvoicePastDueEmailPage() {
 Payment Past Due
 Your payment for invoice #{{InvoiceNumber}} is now overdue.
 
-We haven't received your payment of ${{InvoiceAmount}} for {{ServiceName}} which was due on {{DueDate}}.
+We haven't received your payment of $\{\{InvoiceAmount\}\} for \{\{ServiceName\}\} which was due on \{\{DueDate\}\}.
 
 Please complete your payment immediately to avoid service interruption. If you've already paid, please allow time for processing.
 
