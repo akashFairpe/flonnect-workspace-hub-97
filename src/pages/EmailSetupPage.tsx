@@ -236,6 +236,17 @@ const emailTemplates = [
     cta: 'Reset Password',
     icon: MessageSquare,
     color: 'bg-blue-500'
+  },
+  {
+    id: 'otp-verification',
+    step: 'Security',
+    title: 'OTP Verification Code',
+    trigger: 'Email verification requested',
+    delay: 'Immediately',
+    subject: 'Your Verification Code - Flonnect',
+    cta: 'Verify Email',
+    icon: CheckSquare,
+    color: 'bg-green-500'
   }
 ];
 

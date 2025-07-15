@@ -50,6 +50,7 @@ import PayToContinueEmailPage from '@/pages/PayToContinueEmailPage';
 import AccountSuspendedEmailPage from '@/pages/AccountSuspendedEmailPage';
 import PaymentSuccessfulEmailPage from '@/pages/PaymentSuccessfulEmailPage';
 import ForgotPasswordEmailPage from '@/pages/ForgotPasswordEmailPage';
+import OTPVerificationEmailPage from '@/pages/OTPVerificationEmailPage';
 
 const queryClient = new QueryClient();
 
@@ -105,6 +106,7 @@ function App() {
             <Route path="/email-setup/account-suspended" element={<AccountSuspendedEmailPage />} />
             <Route path="/email-setup/payment-successful" element={<PaymentSuccessfulEmailPage />} />
             <Route path="/email-setup/forgot-password" element={<ForgotPasswordEmailPage />} />
+            <Route path="/email-setup/otp-verification" element={<OTPVerificationEmailPage />} />
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />

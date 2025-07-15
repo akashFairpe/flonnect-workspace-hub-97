@@ -1,36 +1,35 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Mail, Zap, Copy, Send } from 'lucide-react';
+import { ArrowLeft, Mail, Shield, Copy, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 
-export default function ExtensionSpotlightEmailPage() {
+export default function OTPVerificationEmailPage() {
   const { toast } = useToast();
 
   const copyToClipboard = () => {
-    const emailContent = document.getElementById('email-content')?.innerText;
+    const emailContent = document.getElementById('email-body-content')?.innerText;
     if (emailContent) {
       navigator.clipboard.writeText(emailContent);
       toast({
         title: "Copied to clipboard",
-        description: "Email content has been copied to your clipboard.",
+        description: "Email body content has been copied to your clipboard.",
       });
     }
   };
 
   const generateAWSSESTemplate = () => {
     const sesTemplate = {
-      TemplateName: "flonnect-extension-spotlight",
-      Subject: "Ready to supercharge your QA and demos? Flonnect Enterprise gives you:",
+      TemplateName: "flonnect-otp-verification",
+      Subject: "Your Verification Code - Flonnect",
       HtmlPart: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ready to supercharge your QA and demos? Flonnect Enterprise gives you:</title>
+    <title>Your Verification Code - Flonnect</title>
 </head>
 <body style="margin:0;padding:0;font-family:Arial,sans-serif;background-color:#f8fafc;">
     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f8fafc;">
@@ -61,63 +60,35 @@ export default function ExtensionSpotlightEmailPage() {
                     </tr>
                     <tr>
                         <td style="padding:32px;">
-                            <p style="font-size:18px;margin-bottom:24px;color:#111827;">Ready to supercharge your QA and demos? Flonnect Enterprise gives you:</p>
-                            <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
-                                <tr>
-                                    <td style="padding-bottom:12px;">
-                                        <table cellpadding="0" cellspacing="0" border="0">
-                                            <tr>
-                                                <td style="vertical-align:top;padding-right:8px;">
-                                                    <span style="color:#10b981;font-weight:bold;">✓</span>
-                                                </td>
-                                                <td style="font-size:16px;color:#374151;">
-                                                    <b>Instant Bug Capture:</b> Full-page screenshots with logs &amp; annotations
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-bottom:12px;">
-                                        <table cellpadding="0" cellspacing="0" border="0">
-                                            <tr>
-                                                <td style="vertical-align:top;padding-right:8px;">
-                                                    <span style="color:#10b981;font-weight:bold;">✓</span>
-                                                </td>
-                                                <td style="font-size:16px;color:#374151;">
-                                                    <b>Screen &amp; Video Recording:</b> Create demos and repros on the fly
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-bottom:12px;">
-                                        <table cellpadding="0" cellspacing="0" border="0">
-                                            <tr>
-                                                <td style="vertical-align:top;padding-right:8px;">
-                                                    <span style="color:#10b981;font-weight:bold;">✓</span>
-                                                </td>
-                                                <td style="font-size:16px;color:#374151;">
-                                                    <b>Auto Step Recorder &amp; Sharing:</b> Generate step-by-step guides and share with one click
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
+                            <p style="font-size:18px;margin-bottom:24px;color:#111827;">Hi {{UserFirstName}},</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;line-height:1.6;">We received a request to verify your email address for your Flonnect account. Please use the verification code below to complete the process.</p>
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:32px 0;">
                                 <tr>
                                     <td align="center">
-                                        <a href="https://flonnect.com/enterprise-extension/install" style="display:inline-block;background-color:#007BFF;color:#ffffff;padding:12px 24px;text-decoration:none;border-radius:4px;font-weight:bold;">Install Flonnect Enterprise</a>
+                                        <table cellpadding="0" cellspacing="0" border="0" style="background-color:#f8fafc;border:2px dashed #e5e7eb;border-radius:8px;padding:24px;">
+                                            <tr>
+                                                <td align="center">
+                                                    <p style="font-size:14px;color:#6b7280;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:1px;">Verification Code</p>
+                                                    <p style="font-size:32px;font-weight:bold;color:#111827;margin:0;letter-spacing:8px;font-family:monospace;">{{OTPCode}}</p>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>
-                            <p style="font-size:16px;margin-bottom:24px;color:#374151;">Questions? Just reply or reach us at support@flonnect.com.</p>
+                            <p style="font-size:16px;margin-bottom:16px;color:#374151;">This code will expire in <b>10 minutes</b> for security purposes.</p>
+                            <p style="font-size:16px;margin-bottom:24px;color:#374151;">If you didn't request this verification, please ignore this email or contact our support team if you have concerns.</p>
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fef3c7;padding:16px;border-radius:8px;margin:24px 0;">
+                                <tr>
+                                    <td>
+                                        <p style="font-size:14px;color:#92400e;margin:0;text-align:center;"><b>🔒 Security tip:</b> Never share this code with anyone. Flonnect will never ask for your verification code.</p>
+                                    </td>
+                                </tr>
+                            </table>
                             <table cellpadding="0" cellspacing="0" border="0" style="margin-top:32px;padding-top:24px;border-top:1px solid #e5e7eb;">
                                 <tr>
                                     <td>
-                                        <p style="font-size:16px;color:#374151;">Happy capturing!<br>The Flonnect Team</p>
+                                        <p style="font-size:16px;color:#374151;">Best regards,<br>The Flonnect Team</p>
                                     </td>
                                 </tr>
                             </table>
@@ -126,10 +97,10 @@ export default function ExtensionSpotlightEmailPage() {
                     <tr>
                         <td style="background-color:#f8fafc;padding:24px 32px;font-size:12px;color:#6b7280;text-align:center;line-height:1.5;">
                             <p style="margin-bottom:8px;">© 2024 Flonnect. All rights reserved.</p>
-                            <p style="margin-bottom:8px;">You're receiving this because you signed up for Flonnect.</p>
+                            <p style="margin-bottom:8px;">This is an automated security email.</p>
                             <p style="margin:0;">
-                                <a href="#" style="color:#2563eb;text-decoration:underline;">Unsubscribe</a> | 
-                                <a href="#" style="color:#2563eb;text-decoration:underline;margin-left:4px;">Update Preferences</a>
+                                <a href="#" style="color:#2563eb;text-decoration:underline;">Contact Support</a> | 
+                                <a href="#" style="color:#2563eb;text-decoration:underline;margin-left:4px;">Privacy Policy</a>
                             </p>
                         </td>
                     </tr>
@@ -139,21 +110,23 @@ export default function ExtensionSpotlightEmailPage() {
     </table>
 </body>
 </html>`,
-      TextPart: `Ready to supercharge your QA and demos? Flonnect Enterprise gives you:
+      TextPart: `Hi {{UserFirstName}},
 
-✓ Instant Bug Capture: Full-page screenshots with logs & annotations
-✓ Screen & Video Recording: Create demos and repros on the fly
-✓ Auto Step Recorder & Sharing: Generate step-by-step guides and share with one click
+We received a request to verify your email address for your Flonnect account. Please use the verification code below to complete the process.
 
-Install Flonnect Enterprise: https://flonnect.com/enterprise-extension/install
+Verification Code: {{OTPCode}}
 
-Questions? Just reply or reach us at support@flonnect.com.
+This code will expire in 10 minutes for security purposes.
 
-Happy capturing!
+If you didn't request this verification, please ignore this email or contact our support team if you have concerns.
+
+🔒 Security tip: Never share this code with anyone. Flonnect will never ask for your verification code.
+
+Best regards,
 The Flonnect Team
 
 © 2024 Flonnect. All rights reserved.
-Unsubscribe: [Link] | Update Preferences: [Link]`
+Contact Support: [Link] | Privacy Policy: [Link]`
     };
 
     navigator.clipboard.writeText(JSON.stringify(sesTemplate, null, 2));
@@ -178,16 +151,16 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
               </Link>
               <div>
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline">Step 7</Badge>
-                  <h1 className="text-2xl font-bold text-gray-900">Extension & Integrations Spotlight</h1>
+                  <Badge variant="outline">Security</Badge>
+                  <h1 className="text-2xl font-bold text-gray-900">OTP Verification Code</h1>
                 </div>
-                <p className="text-gray-600 mt-1">Trigger: 7 days after Step 1 | Delay: 7 days after Step 1</p>
+                <p className="text-gray-600 mt-1">Trigger: Email verification requested | Delay: Immediately</p>
               </div>
             </div>
             <div className="flex gap-3">
               <Button variant="outline" onClick={copyToClipboard}>
                 <Copy className="w-4 h-4 mr-2" />
-                Copy Content
+                Copy Body Content
               </Button>
               <Button onClick={generateAWSSESTemplate}>
                 <Send className="w-4 h-4 mr-2" />
@@ -221,52 +194,47 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                       <h1 className="text-3xl font-bold text-gray-900">Flonnect</h1>
                     </div>
 
-                    <div id="email-content" className="p-8 space-y-6">
-                      <p className="text-lg text-gray-900">Hi {'{{AdminFirstName}}'},</p>
+                    <div id="email-body-content" className="p-8 space-y-6">
+                      <p className="text-lg text-gray-900">Hi {'{{UserFirstName}}'},</p>
                       
-                      <p className="text-lg text-gray-900 mb-6">Ready to supercharge your QA and demos? Flonnect Enterprise gives you:</p>
+                      <p className="text-gray-700 leading-relaxed">
+                        We received a request to verify your email address for your Flonnect account. Please use the verification code below to complete the process.
+                      </p>
 
-                      <div className="space-y-3 mb-8">
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-500 font-bold">✓</span>
-                          <span className="text-gray-700"><strong>Instant Bug Capture:</strong> Full-page screenshots with logs & annotations</span>
+                      {/* OTP Code Display */}
+                      <div className="text-center py-8">
+                        <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-6 max-w-sm mx-auto">
+                          <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">Verification Code</p>
+                          <p className="text-3xl font-bold text-gray-900 tracking-widest font-mono">{'{{OTPCode}}'}</p>
                         </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-500 font-bold">✓</span>
-                          <span className="text-gray-700"><strong>Screen & Video Recording:</strong> Create demos and repros on the fly</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-500 font-bold">✓</span>
-                          <span className="text-gray-700"><strong>Auto Step Recorder & Sharing:</strong> Generate step-by-step guides and share with one click</span>
-                        </div>
-                      </div>
-
-                      {/* CTA Button */}
-                      <div className="text-center py-6">
-                        <a 
-                          href="https://flonnect.com/enterprise-extension/install"
-                          className="bg-blue-600 text-white inline-block py-3 px-6 rounded font-bold"
-                        >
-                          Install Flonnect Enterprise
-                        </a>
                       </div>
 
                       <p className="text-gray-700">
-                        Questions? Just reply or reach us at support@flonnect.com.
+                        This code will expire in <strong>10 minutes</strong> for security purposes.
                       </p>
 
+                      <p className="text-gray-700">
+                        If you didn't request this verification, please ignore this email or contact our support team if you have concerns.
+                      </p>
+
+                      <div className="bg-yellow-50 p-4 rounded-lg text-center">
+                        <p className="text-yellow-800 text-sm">
+                          <strong>🔒 Security tip:</strong> Never share this code with anyone. Flonnect will never ask for your verification code.
+                        </p>
+                      </div>
+
                       <div className="pt-6 border-t border-gray-200">
-                        <p className="text-gray-700">Happy capturing!<br />The Flonnect Team</p>
+                        <p className="text-gray-700">Best regards,<br />The Flonnect Team</p>
                       </div>
                     </div>
 
                     {/* Email Footer */}
                     <div className="bg-gray-50 px-8 py-6 text-xs text-gray-500 text-center leading-relaxed">
                       <p className="mb-2">© 2024 Flonnect. All rights reserved.</p>
-                      <p className="mb-2">You're receiving this because you signed up for Flonnect.</p>
+                      <p className="mb-2">This is an automated security email.</p>
                       <p>
-                        <span className="text-blue-600 underline cursor-pointer">Unsubscribe</span> | 
-                        <span className="text-blue-600 underline cursor-pointer ml-1">Update Preferences</span>
+                        <span className="text-blue-600 underline cursor-pointer">Contact Support</span> | 
+                        <span className="text-blue-600 underline cursor-pointer ml-1">Privacy Policy</span>
                       </p>
                     </div>
                   </div>
@@ -284,21 +252,22 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
               <CardContent className="space-y-4">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Trigger Event</p>
-                  <p className="text-sm text-gray-800">7 days after Step 1</p>
+                  <p className="text-sm text-gray-800">Email verification requested</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">Send Delay</p>
-                  <p className="text-sm text-gray-800">7 days after Step 1</p>
+                  <p className="text-sm text-gray-800">Immediately</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Primary CTA</p>
-                  <p className="text-sm text-gray-800">Install Extension</p>
+                  <p className="text-sm font-medium text-gray-600">Expiration</p>
+                  <p className="text-sm text-gray-800">10 minutes</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">Variables</p>
                   <div className="text-sm text-gray-800 space-y-1">
-                    <p>{'{{AdminFirstName}}'}</p>
-                    <p>{'{{AdminEmail}}'}</p>
+                    <p>{'{{UserFirstName}}'}</p>
+                    <p>{'{{UserEmail}}'}</p>
+                    <p>{'{{OTPCode}}'}</p>
                   </div>
                 </div>
               </CardContent>
@@ -311,7 +280,7 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
               <CardContent className="space-y-4">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Template ID</p>
-                  <p className="text-sm text-gray-800 font-mono">flonnect-extension-spotlight</p>
+                  <p className="text-sm text-gray-800 font-mono">flonnect-otp-verification</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-600">SES Template</p>
@@ -320,6 +289,21 @@ Unsubscribe: [Link] | Update Preferences: [Link]`
                 <Button className="w-full" variant="outline" onClick={generateAWSSESTemplate}>
                   Copy AWS SES Template JSON
                 </Button>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  Security Features
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-gray-600">
+                <p>✓ 10-minute expiration</p>
+                <p>✓ Single-use verification</p>
+                <p>✓ Rate limiting protection</p>
+                <p>✓ Secure code generation</p>
               </CardContent>
             </Card>
           </div>
