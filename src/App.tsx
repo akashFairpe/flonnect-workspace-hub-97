@@ -73,7 +73,7 @@ function App() {
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/workspace" element={<VideoWorkspace />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="/feature" element={<FeaturePage />} />
+            <Route path="/features" element={<FeaturePage />} />
 
             {/* Feature Routes */}
             <Route path="/screenrecorder" element={<ScreenRecordingPage />} />
