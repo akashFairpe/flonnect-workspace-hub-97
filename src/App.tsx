@@ -52,6 +52,10 @@ import PaymentSuccessfulEmailPage from '@/pages/PaymentSuccessfulEmailPage';
 import ForgotPasswordEmailPage from '@/pages/ForgotPasswordEmailPage';
 import OTPVerificationEmailPage from '@/pages/OTPVerificationEmailPage';
 
+// Resources Pages
+import ResourcesPage from '@/pages/ResourcesPage';
+import ResourcesUseCasesPage from '@/pages/ResourcesUseCasesPage';
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -110,6 +114,10 @@ function App() {
 
             {/* Enterprise Extension Flow */}
             <Route path="/flow/enterprise-extension" element={<EnterpriseExtensionPopupPage />} />
+
+            {/* Resources Routes */}
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/resources/usecases" element={<ResourcesUseCasesPage />} />
 
             {/* Catch all route */}
             <Route path="*" element={<Navigate to="/" replace />} />
