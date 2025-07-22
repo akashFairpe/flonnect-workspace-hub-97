@@ -56,6 +56,11 @@ import OTPVerificationEmailPage from '@/pages/OTPVerificationEmailPage';
 import ResourcesPage from '@/pages/ResourcesPage';
 import ResourcesUseCasesPage from '@/pages/ResourcesUseCasesPage';
 
+// Agents Pages
+import AgentsPage from '@/pages/AgentsPage';
+import MeetingAgentPage from '@/pages/MeetingAgentPage';
+import DemoAgentPage from '@/pages/DemoAgentPage';
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -118,6 +123,11 @@ function App() {
             {/* Resources Routes */}
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/resources/usecases" element={<ResourcesUseCasesPage />} />
+
+            {/* Agents Routes */}
+            <Route path="/agents" element={<AgentsPage />} />
+            <Route path="/agents/meeting-agent" element={<MeetingAgentPage />} />
+            <Route path="/agents/demo-agent" element={<DemoAgentPage />} />
 
             {/* Catch all route */}
             <Route path="*" element={<Navigate to="/" replace />} />
