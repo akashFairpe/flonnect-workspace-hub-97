@@ -12,18 +12,24 @@ import SharedControls from '@/components/enterprise-extension/SharedControls';
 import UserSection from '@/components/enterprise-extension/UserSection';
 import StatusNotifications from '@/components/enterprise-extension/StatusNotifications';
 import FloatingActionIcons from '@/components/enterprise-extension/FloatingActionIcons';
+import CreateSubTaskDialog from '@/components/enterprise-extension/CreateSubTaskDialog';
 import { useToast } from '@/hooks/use-toast';
 
 export default function EnterpriseExtensionPopupPage() {
   const [activeModule, setActiveModule] = useState('record');
   const [isRecording, setIsRecording] = useState(false);
   const [recordingStatus, setRecordingStatus] = useState('');
+  const [isSubTaskDialogOpen, setIsSubTaskDialogOpen] = useState(false);
   const { toast } = useToast();
 
   const handleCreateSubTask = () => {
+    setIsSubTaskDialogOpen(true);
+  };
+
+  const handleTaskCreated = (taskData: any) => {
     toast({
       title: "Sub-task Created",
-      description: "A new sub-task has been created for the current recording session.",
+      description: `Task "${taskData.title}" has been created and linked to the recording session.`,
     });
   };
 
@@ -150,6 +156,13 @@ export default function EnterpriseExtensionPopupPage() {
         isRecording={isRecording}
         activeModule={activeModule}
         onCreateSubTask={handleCreateSubTask}
+      />
+
+      {/* Sub-Task Creation Dialog */}
+      <CreateSubTaskDialog
+        open={isSubTaskDialogOpen}
+        onOpenChange={setIsSubTaskDialogOpen}
+        onCreateTask={handleTaskCreated}
       />
     </div>
   );
