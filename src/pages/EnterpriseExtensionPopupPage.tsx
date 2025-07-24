@@ -13,6 +13,7 @@ import UserSection from '@/components/enterprise-extension/UserSection';
 import StatusNotifications from '@/components/enterprise-extension/StatusNotifications';
 import FloatingActionIcons from '@/components/enterprise-extension/FloatingActionIcons';
 import CreateSubTaskDialog from '@/components/enterprise-extension/CreateSubTaskDialog';
+import { AnnotationToolbar } from '@/components/AnnotationToolbar';
 import { useToast } from '@/hooks/use-toast';
 
 export default function EnterpriseExtensionPopupPage() {
@@ -163,6 +164,12 @@ export default function EnterpriseExtensionPopupPage() {
         open={isSubTaskDialogOpen}
         onOpenChange={setIsSubTaskDialogOpen}
         onCreateTask={handleTaskCreated}
+      />
+
+      {/* Annotation Toolbar */}
+      <AnnotationToolbar 
+        isRecording={isRecording}
+        onToolSelect={(tool) => console.log('Selected tool:', tool)}
       />
     </div>
   );
