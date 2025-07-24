@@ -11,11 +11,21 @@ import BugReporterModule from '@/components/enterprise-extension/BugReporterModu
 import SharedControls from '@/components/enterprise-extension/SharedControls';
 import UserSection from '@/components/enterprise-extension/UserSection';
 import StatusNotifications from '@/components/enterprise-extension/StatusNotifications';
+import FloatingActionIcons from '@/components/enterprise-extension/FloatingActionIcons';
+import { useToast } from '@/hooks/use-toast';
 
 export default function EnterpriseExtensionPopupPage() {
   const [activeModule, setActiveModule] = useState('record');
   const [isRecording, setIsRecording] = useState(false);
   const [recordingStatus, setRecordingStatus] = useState('');
+  const { toast } = useToast();
+
+  const handleCreateSubTask = () => {
+    toast({
+      title: "Sub-task Created",
+      description: "A new sub-task has been created for the current recording session.",
+    });
+  };
 
   React.useEffect(() => {
     document.title = 'Flonnect Enterprise Extension - All-in-One Recording Suite';
@@ -134,6 +144,13 @@ export default function EnterpriseExtensionPopupPage() {
           </div>
         </div>
       </main>
+
+      {/* Floating Action Icons */}
+      <FloatingActionIcons
+        isRecording={isRecording}
+        activeModule={activeModule}
+        onCreateSubTask={handleCreateSubTask}
+      />
     </div>
   );
 }
