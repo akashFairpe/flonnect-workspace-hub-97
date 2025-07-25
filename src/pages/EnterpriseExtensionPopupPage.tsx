@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Video, MousePointer, Bug, Sparkles } from 'lucide-react';
 import RecordModule from '@/components/enterprise-extension/RecordModule';
 import StepsRecorderModule from '@/components/enterprise-extension/StepsRecorderModule';
@@ -15,12 +16,14 @@ import FloatingActionIcons from '@/components/enterprise-extension/FloatingActio
 import CreateSubTaskDialog from '@/components/enterprise-extension/CreateSubTaskDialog';
 import { AnnotationToolbar } from '@/components/AnnotationToolbar';
 import { useToast } from '@/hooks/use-toast';
+import { Copy, Check } from 'lucide-react';
 
 export default function EnterpriseExtensionPopupPage() {
   const [activeModule, setActiveModule] = useState('record');
   const [isRecording, setIsRecording] = useState(false);
   const [recordingStatus, setRecordingStatus] = useState('');
   const [isSubTaskDialogOpen, setIsSubTaskDialogOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
   const handleCreateSubTask = () => {
@@ -32,6 +35,188 @@ export default function EnterpriseExtensionPopupPage() {
       title: "Sub-task Created",
       description: `Task "${taskData.title}" has been created and linked to the recording session.`,
     });
+  };
+
+  const annotationToolbarCode = `import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { 
+  Mic, 
+  MicOff, 
+  Video, 
+  VideoOff, 
+  MousePointer, 
+  Pen, 
+  Type, 
+  Square, 
+  Circle, 
+  ArrowRight, 
+  Highlighter, 
+  Eraser, 
+  Pause,
+  X,
+  Square as Stop,
+  Palette
+} from 'lucide-react';
+
+interface AnnotationToolbarProps {
+  onToolSelect?: (tool: string) => void;
+  isRecording?: boolean;
+}
+
+export function AnnotationToolbar({ onToolSelect, isRecording = false }: AnnotationToolbarProps) {
+  const [selectedTool, setSelectedTool] = useState('pointer');
+  const [selectedColor, setSelectedColor] = useState('#000000');
+  const [micEnabled, setMicEnabled] = useState(true);
+  const [videoEnabled, setVideoEnabled] = useState(false);
+
+  const handleToolSelect = (tool: string) => {
+    setSelectedTool(tool);
+    onToolSelect?.(tool);
+  };
+
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+    onToolSelect?.(\`color-\${color}\`);
+  };
+
+  const tools = [
+    { id: 'pointer', icon: MousePointer, label: 'Pointer' },
+    { id: 'pen', icon: Pen, label: 'Draw' },
+    { id: 'highlighter', icon: Highlighter, label: 'Highlight' },
+    { id: 'text', icon: Type, label: 'Text' },
+    { id: 'arrow', icon: ArrowRight, label: 'Arrow' },
+    { id: 'rectangle', icon: Square, label: 'Rectangle' },
+    { id: 'circle', icon: Circle, label: 'Circle' },
+    { id: 'eraser', icon: Eraser, label: 'Eraser' },
+  ];
+
+  const colorPalette = [
+    '#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
+    '#ff00ff', '#00ffff', '#ffa500', '#800080', '#ffc0cb', '#a52a2a'
+  ];
+
+  return (
+    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-xl border border-gray-200 px-4 py-2">
+        <div className="flex items-center gap-1">
+          {/* Recording Controls */}
+          <div className="flex items-center gap-1 pr-2">
+            <Button
+              variant={micEnabled ? "default" : "outline"}
+              size="sm"
+              className="h-8 w-8 rounded-full p-0"
+              onClick={() => setMicEnabled(!micEnabled)}
+            >
+              {micEnabled ? <Mic className="w-4 h-4" /> : <MicOff className="w-4 h-4" />}
+            </Button>
+            <Button
+              variant={videoEnabled ? "default" : "outline"}
+              size="sm"
+              className="h-8 w-8 rounded-full p-0"
+              onClick={() => setVideoEnabled(!videoEnabled)}
+            >
+              {videoEnabled ? <Video className="w-4 h-4" /> : <VideoOff className="w-4 h-4" />}
+            </Button>
+          </div>
+
+          <Separator orientation="vertical" className="h-6" />
+
+          {/* Annotation Tools */}
+          <div className="flex items-center gap-1 px-2">
+            {tools.map((tool) => (
+              <Button
+                key={tool.id}
+                variant={selectedTool === tool.id ? "default" : "ghost"}
+                size="sm"
+                className="h-8 w-8 rounded-full p-0"
+                onClick={() => handleToolSelect(tool.id)}
+                title={tool.label}
+              >
+                <tool.icon className="w-4 h-4" />
+              </Button>
+            ))}
+          </div>
+
+          <Separator orientation="vertical" className="h-6" />
+
+          {/* Colors */}
+          <div className="flex items-center gap-1 px-2">
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                  style={{ backgroundColor: selectedColor }}
+                  title="Select Color"
+                />
+              </PopoverTrigger>
+              <PopoverContent className="w-48 p-3">
+                <div className="grid grid-cols-6 gap-2">
+                  {colorPalette.map((color) => (
+                    <button
+                      key={color}
+                      className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                      style={{ backgroundColor: color }}
+                      onClick={() => handleColorSelect(color)}
+                    />
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          <Separator orientation="vertical" className="h-6" />
+
+          {/* Actions */}
+          <div className="flex items-center gap-1 pl-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-8 w-8 rounded-full p-0"
+              title="Pause"
+            >
+              <Pause className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-8 w-8 rounded-full p-0"
+              title="Cancel"
+            >
+              <X className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-8 w-8 rounded-full p-0"
+              title="Stop"
+            >
+              <Stop className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`;
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(annotationToolbarCode);
+      setCopied(true);
+      toast({
+        title: "Code Copied!",
+        description: "Annotation toolbar component code has been copied to clipboard.",
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        title: "Copy Failed",
+        description: "Failed to copy code to clipboard.",
+        variant: "destructive",
+      });
+    }
   };
 
   React.useEffect(() => {
@@ -149,6 +334,41 @@ export default function EnterpriseExtensionPopupPage() {
               </p>
             </Card>
           </div>
+        </div>
+
+        {/* Copy Annotation Toolbar Code Section */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <Card className="p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold">Copy Annotation Toolbar Component</h2>
+              <Button 
+                onClick={copyToClipboard}
+                className="flex items-center gap-2"
+                variant={copied ? "secondary" : "default"}
+              >
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copied ? "Copied!" : "Copy Code"}
+              </Button>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Ready-to-use React component with recording controls, annotation tools, color picker, and playback controls.
+            </p>
+            <div className="bg-gray-50 rounded-lg p-4 max-h-96 overflow-y-auto">
+              <pre className="text-sm text-gray-800 whitespace-pre-wrap">
+                {annotationToolbarCode}
+              </pre>
+            </div>
+            <div className="mt-4 text-sm text-gray-500">
+              <p><strong>Features included:</strong></p>
+              <ul className="list-disc list-inside mt-2 space-y-1">
+                <li>Mic and video recording controls</li>
+                <li>8 annotation tools (pointer, pen, highlighter, text, shapes, eraser)</li>
+                <li>Color picker with 12 color palette</li>
+                <li>Pause, cancel, and stop recording controls</li>
+                <li>Responsive design with glassmorphism effect</li>
+              </ul>
+            </div>
+          </Card>
         </div>
       </main>
 

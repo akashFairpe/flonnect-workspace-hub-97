@@ -15,11 +15,12 @@ import {
   ArrowRight, 
   Highlighter, 
   Eraser, 
-  Undo, 
-  Redo,
-  Palette,
-  Settings
+  Pause,
+  X,
+  Square as Stop,
+  Palette
 } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 interface AnnotationToolbarProps {
   onToolSelect?: (tool: string) => void;
@@ -28,12 +29,18 @@ interface AnnotationToolbarProps {
 
 export function AnnotationToolbar({ onToolSelect, isRecording = false }: AnnotationToolbarProps) {
   const [selectedTool, setSelectedTool] = useState('pointer');
+  const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
 
   const handleToolSelect = (tool: string) => {
     setSelectedTool(tool);
     onToolSelect?.(tool);
+  };
+
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+    onToolSelect?.(`color-${color}`);
   };
 
   const tools = [
@@ -47,8 +54,9 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
     { id: 'eraser', icon: Eraser, label: 'Eraser' },
   ];
 
-  const colors = [
-    '#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'
+  const colorPalette = [
+    '#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
+    '#ff00ff', '#00ffff', '#ffa500', '#800080', '#ffc0cb', '#a52a2a'
   ];
 
   return (
@@ -97,22 +105,27 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
 
           {/* Colors */}
           <div className="flex items-center gap-1 px-2">
-            {colors.slice(0, 4).map((color) => (
-              <button
-                key={color}
-                className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
-                style={{ backgroundColor: color }}
-                onClick={() => onToolSelect?.(`color-${color}`)}
-              />
-            ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-8 w-8 rounded-full p-0"
-              title="More Colors"
-            >
-              <Palette className="w-4 h-4" />
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                  style={{ backgroundColor: selectedColor }}
+                  title="Select Color"
+                />
+              </PopoverTrigger>
+              <PopoverContent className="w-48 p-3">
+                <div className="grid grid-cols-6 gap-2">
+                  {colorPalette.map((color) => (
+                    <button
+                      key={color}
+                      className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                      style={{ backgroundColor: color }}
+                      onClick={() => handleColorSelect(color)}
+                    />
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
 
           <Separator orientation="vertical" className="h-6" />
@@ -123,25 +136,25 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
               variant="ghost"
               size="sm"
               className="h-8 w-8 rounded-full p-0"
-              title="Undo"
+              title="Pause"
             >
-              <Undo className="w-4 h-4" />
+              <Pause className="w-4 h-4" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
               className="h-8 w-8 rounded-full p-0"
-              title="Redo"
+              title="Cancel"
             >
-              <Redo className="w-4 h-4" />
+              <X className="w-4 h-4" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
               className="h-8 w-8 rounded-full p-0"
-              title="Settings"
+              title="Stop"
             >
-              <Settings className="w-4 h-4" />
+              <Stop className="w-4 h-4" />
             </Button>
           </div>
         </div>
