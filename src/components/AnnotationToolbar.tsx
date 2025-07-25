@@ -47,7 +47,7 @@ const ToolbarSection = styled.div`
   gap: 4px;
 `;
 
-const ToolButton = styled.button<{ $active?: boolean; $variant?: 'default' | 'outline' | 'ghost' | 'destructive' }>`
+const ToolButton = styled.button<{ $active?: boolean; $variant?: 'default' | 'outline' | 'ghost' | 'destructive' | 'purple' }>`
   height: 32px;
   width: 32px;
   border-radius: 9999px;
@@ -59,31 +59,48 @@ const ToolButton = styled.button<{ $active?: boolean; $variant?: 'default' | 'ou
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
+  font-weight: 500;
   
   ${props => {
     if (props.$variant === 'destructive') {
       return `
         background: #ef4444;
         color: white;
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
         &:hover {
           background: #dc2626;
+          box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+      `;
+    }
+    if (props.$variant === 'purple') {
+      return `
+        background: linear-gradient(135deg, #8b5cf6, #a855f7);
+        color: white;
+        box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+        &:hover {
+          background: linear-gradient(135deg, #7c3aed, #9333ea);
+          box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
         }
       `;
     }
     if (props.$active || props.$variant === 'default') {
       return `
-        background: #000000;
+        background: linear-gradient(135deg, #1f2937, #374151);
         color: white;
+        box-shadow: 0 2px 8px rgba(31, 41, 55, 0.3);
         &:hover {
-          background: #374151;
+          background: linear-gradient(135deg, #111827, #1f2937);
+          box-shadow: 0 4px 12px rgba(31, 41, 55, 0.4);
         }
       `;
     }
     return `
       background: transparent;
-      color: #374151;
+      color: #4b5563;
       &:hover {
-        background: #f3f4f6;
+        background: rgba(243, 244, 246, 0.8);
+        color: #1f2937;
       }
     `;
   }}
@@ -256,16 +273,50 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
 
           {/* Annotation Tools */}
           <ToolbarSection style={{ padding: '0 8px' }}>
-            {tools.map((tool) => (
-              <ToolButton
-                key={tool.id}
-                $active={selectedTool === tool.id}
-                onClick={() => handleToolSelect(tool.id)}
-                title={tool.label}
-              >
-                <tool.icon size={16} />
-              </ToolButton>
-            ))}
+            {/* Pointer Tool */}
+            <ToolButton
+              $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
+              onClick={() => handleToolSelect('pointer')}
+              title="Pointer"
+            >
+              <MousePointer size={16} />
+            </ToolButton>
+            
+            {/* Other Selection Tools */}
+            <ToolButton
+              $active={selectedTool === 'highlight-hover'}
+              onClick={() => handleToolSelect('highlight-hover')}
+              title="Highlight on Hover"
+            >
+              <Scan size={16} />
+            </ToolButton>
+            <ToolButton
+              $active={selectedTool === 'cursor-blink'}
+              onClick={() => handleToolSelect('cursor-blink')}
+              title="Cursor Blink"
+            >
+              <MousePointer2 size={16} />
+            </ToolButton>
+          </ToolbarSection>
+
+          <Separator />
+
+          {/* Drawing Tools */}
+          <ToolbarSection style={{ padding: '0 8px' }}>
+            <ToolButton
+              $active={selectedTool === 'pen'}
+              onClick={() => handleToolSelect('pen')}
+              title="Draw"
+            >
+              <Pen size={16} />
+            </ToolButton>
+            <ToolButton
+              $active={selectedTool === 'text'}
+              onClick={() => handleToolSelect('text')}
+              title="Text"
+            >
+              <Type size={16} />
+            </ToolButton>
 
             {/* Shapes Popover */}
             <PopoverContainer>

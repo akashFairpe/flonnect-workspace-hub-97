@@ -146,8 +146,16 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
     border: 'none',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-    background: variant === 'destructive' ? '#ef4444' : (active || variant === 'default') ? '#000000' : 'transparent',
-    color: variant === 'destructive' || active || variant === 'default' ? 'white' : '#374151'
+    fontWeight: '500',
+    background: variant === 'destructive' ? '#ef4444' 
+      : variant === 'purple' ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' 
+      : (active || variant === 'default') ? 'linear-gradient(135deg, #1f2937, #374151)' 
+      : 'transparent',
+    color: variant === 'destructive' || variant === 'purple' || active || variant === 'default' ? 'white' : '#4b5563',
+    boxShadow: variant === 'destructive' ? '0 2px 8px rgba(239, 68, 68, 0.3)'
+      : variant === 'purple' ? '0 2px 8px rgba(139, 92, 246, 0.3)'
+      : (active || variant === 'default') ? '0 2px 8px rgba(31, 41, 55, 0.3)'
+      : 'none'
   });
 
   const popoverStyle = (open: boolean) => ({
@@ -202,18 +210,49 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
 
           <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
 
-          {/* Annotation Tools */}
+          {/* Selection Tools */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px' }}>
-            {tools.map((tool) => (
-              <button
-                key={tool.id}
-                style={buttonStyle(selectedTool === tool.id)}
-                onClick={() => handleToolSelect(tool.id)}
-                title={tool.label}
-              >
-                <tool.icon size={16} />
-              </button>
-            ))}
+            <button
+              style={buttonStyle(false, selectedTool === 'pointer' ? 'purple' : 'default')}
+              onClick={() => handleToolSelect('pointer')}
+              title="Pointer"
+            >
+              <MousePointer size={16} />
+            </button>
+            <button
+              style={buttonStyle(selectedTool === 'highlight-hover')}
+              onClick={() => handleToolSelect('highlight-hover')}
+              title="Highlight on Hover"
+            >
+              <Scan size={16} />
+            </button>
+            <button
+              style={buttonStyle(selectedTool === 'cursor-blink')}
+              onClick={() => handleToolSelect('cursor-blink')}
+              title="Cursor Blink"
+            >
+              <MousePointer2 size={16} />
+            </button>
+          </div>
+
+          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
+
+          {/* Drawing Tools */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px' }}>
+            <button
+              style={buttonStyle(selectedTool === 'pen')}
+              onClick={() => handleToolSelect('pen')}
+              title="Draw"
+            >
+              <Pen size={16} />
+            </button>
+            <button
+              style={buttonStyle(selectedTool === 'text')}
+              onClick={() => handleToolSelect('text')}
+              title="Text"
+            >
+              <Type size={16} />
+            </button>
 
             {/* Shapes Popover */}
             <div style={{ position: 'relative', display: 'inline-block' }}>
