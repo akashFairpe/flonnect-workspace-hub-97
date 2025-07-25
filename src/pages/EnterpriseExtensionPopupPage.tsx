@@ -68,7 +68,7 @@ interface AnnotationToolbarProps {
 }
 
 export function AnnotationToolbar({ onToolSelect, isRecording = false }: AnnotationToolbarProps) {
-  const [selectedTool, setSelectedTool] = useState('pointer');
+  const [selectedTool, setSelectedTool] = useState('');
   const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
@@ -213,7 +213,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
           {/* Selection Tools */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px' }}>
             <button
-              style={buttonStyle(false, selectedTool === 'pointer' ? 'purple' : 'default')}
+              style={selectedTool === 'pointer' ? buttonStyle(false, 'purple') : buttonStyle(false)}
               onClick={() => handleToolSelect('pointer')}
               title="Pointer"
             >

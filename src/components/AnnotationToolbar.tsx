@@ -180,7 +180,7 @@ interface AnnotationToolbarProps {
 }
 
 export function AnnotationToolbar({ onToolSelect, isRecording = false }: AnnotationToolbarProps) {
-  const [selectedTool, setSelectedTool] = useState('pointer');
+  const [selectedTool, setSelectedTool] = useState('');
   const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
