@@ -143,19 +143,18 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'none',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     fontWeight: '500',
+    border: variant === 'destructive' || variant === 'purple' || active ? 'none' : '1px solid #e5e7eb',
     background: variant === 'destructive' ? '#ef4444' 
       : variant === 'purple' ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' 
-      : (active || variant === 'default') ? 'linear-gradient(135deg, #1f2937, #374151)' 
-      : 'transparent',
-    color: variant === 'destructive' || variant === 'purple' || active || variant === 'default' ? 'white' : '#4b5563',
+      : active ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' 
+      : 'white',
+    color: variant === 'destructive' || variant === 'purple' || active ? 'white' : '#6b7280',
     boxShadow: variant === 'destructive' ? '0 2px 8px rgba(239, 68, 68, 0.3)'
-      : variant === 'purple' ? '0 2px 8px rgba(139, 92, 246, 0.3)'
-      : (active || variant === 'default') ? '0 2px 8px rgba(31, 41, 55, 0.3)'
-      : 'none'
+      : variant === 'purple' || active ? '0 2px 8px rgba(139, 92, 246, 0.3)'
+      : '0 1px 3px rgba(0, 0, 0, 0.1)'
   });
 
   const popoverStyle = (open: boolean) => ({
