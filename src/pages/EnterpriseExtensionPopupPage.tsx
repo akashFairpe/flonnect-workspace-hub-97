@@ -49,11 +49,17 @@ import {
   Square, 
   Circle, 
   ArrowRight, 
-  Highlighter, 
   Eraser, 
   Pause,
+  Play,
   X,
-  Square as Stop
+  Square as Stop,
+  Scan,
+  MousePointer2,
+  ArrowLeftRight,
+  Minus,
+  Trash2,
+  Hexagon
 } from 'lucide-react';
 
 interface AnnotationToolbarProps {
@@ -66,7 +72,11 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
-  const [isColorPaletteOpen, setIsColorPaletteOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [colorPopoverOpen, setColorPopoverOpen] = useState(false);
+  const [shapePopoverOpen, setShapePopoverOpen] = useState(false);
+  const [arrowPopoverOpen, setArrowPopoverOpen] = useState(false);
+  const [clearPopoverOpen, setClearPopoverOpen] = useState(false);
 
   const handleToolSelect = (tool: string) => {
     setSelectedTool(tool);
@@ -76,18 +86,32 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const handleColorSelect = (color: string) => {
     setSelectedColor(color);
     onToolSelect?.(\`color-\${color}\`);
-    setIsColorPaletteOpen(false);
+    setColorPopoverOpen(false);
+  };
+
+  const handleShapeSelect = (shape: string) => {
+    setSelectedTool(shape);
+    onToolSelect?.(shape);
+    setShapePopoverOpen(false);
+  };
+
+  const handleArrowSelect = (arrow: string) => {
+    setSelectedTool(arrow);
+    onToolSelect?.(arrow);
+    setArrowPopoverOpen(false);
+  };
+
+  const handleClearSelect = (clear: string) => {
+    onToolSelect?.(clear);
+    setClearPopoverOpen(false);
   };
 
   const tools = [
     { id: 'pointer', icon: MousePointer, label: 'Pointer' },
+    { id: 'highlight-hover', icon: Scan, label: 'Highlight on Hover' },
+    { id: 'cursor-blink', icon: MousePointer2, label: 'Cursor Blink' },
     { id: 'pen', icon: Pen, label: 'Draw' },
-    { id: 'highlighter', icon: Highlighter, label: 'Highlight' },
     { id: 'text', icon: Type, label: 'Text' },
-    { id: 'arrow', icon: ArrowRight, label: 'Arrow' },
-    { id: 'rectangle', icon: Square, label: 'Rectangle' },
-    { id: 'circle', icon: Circle, label: 'Circle' },
-    { id: 'eraser', icon: Eraser, label: 'Eraser' },
   ];
 
   const colorPalette = [
@@ -95,103 +119,241 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
     '#ff00ff', '#00ffff', '#ffa500', '#800080', '#ffc0cb', '#a52a2a'
   ];
 
+  const shapes = [
+    { id: 'rectangle', icon: Square, label: 'Rectangle' },
+    { id: 'circle', icon: Circle, label: 'Circle' },
+    { id: 'hexagon', icon: Hexagon, label: 'Hexagon' },
+  ];
+
+  const arrows = [
+    { id: 'arrow-single', icon: ArrowRight, label: 'Single Arrow' },
+    { id: 'arrow-double', icon: ArrowLeftRight, label: 'Double Arrow' },
+    { id: 'line', icon: Minus, label: 'Straight Line' },
+  ];
+
+  const clearOptions = [
+    { id: 'clear-all', icon: Trash2, label: 'Clear All' },
+  ];
+
+  const buttonStyle = (active = false, variant = 'default') => ({
+    height: '32px',
+    width: '32px',
+    borderRadius: '9999px',
+    padding: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    background: variant === 'destructive' ? '#ef4444' : (active || variant === 'default') ? '#000000' : 'transparent',
+    color: variant === 'destructive' || active || variant === 'default' ? 'white' : '#374151'
+  });
+
+  const popoverStyle = (open: boolean) => ({
+    position: 'absolute' as const,
+    bottom: '100%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    marginBottom: '8px',
+    background: 'white',
+    borderRadius: '8px',
+    padding: '12px',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    border: '1px solid #e5e7eb',
+    display: open ? 'block' : 'none',
+    zIndex: 50
+  });
+
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-xl border border-gray-200 px-4 py-2">
-        <div className="flex items-center gap-1">
+    <div style={{
+      position: 'fixed',
+      bottom: '16px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      zIndex: 50
+    }}>
+      <div style={{
+        background: 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(8px)',
+        borderRadius: '9999px',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        border: '1px solid rgba(229, 231, 235, 1)',
+        padding: '8px 16px'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
           {/* Recording Controls */}
-          <div className="flex items-center gap-1 pr-2">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', paddingRight: '8px' }}>
             <button
-              className={\`h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 \${
-                micEnabled 
-                  ? 'bg-slate-900 text-white hover:bg-slate-900/90' 
-                  : 'border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900'
-              }\`}
+              style={buttonStyle(micEnabled)}
               onClick={() => setMicEnabled(!micEnabled)}
+              title={micEnabled ? "Mute" : "Unmute"}
             >
-              {micEnabled ? <Mic className="w-4 h-4" /> : <MicOff className="w-4 h-4" />}
+              {micEnabled ? <Mic size={16} /> : <MicOff size={16} />}
             </button>
             <button
-              className={\`h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 \${
-                videoEnabled 
-                  ? 'bg-slate-900 text-white hover:bg-slate-900/90' 
-                  : 'border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900'
-              }\`}
+              style={buttonStyle(videoEnabled)}
               onClick={() => setVideoEnabled(!videoEnabled)}
+              title={videoEnabled ? "Stop Video" : "Start Video"}
             >
-              {videoEnabled ? <Video className="w-4 h-4" /> : <VideoOff className="w-4 h-4" />}
+              {videoEnabled ? <Video size={16} /> : <VideoOff size={16} />}
             </button>
           </div>
 
-          <div className="shrink-0 bg-slate-200 h-6 w-[1px]" />
+          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
 
           {/* Annotation Tools */}
-          <div className="flex items-center gap-1 px-2">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px' }}>
             {tools.map((tool) => (
               <button
                 key={tool.id}
-                className={\`h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 \${
-                  selectedTool === tool.id 
-                    ? 'bg-slate-900 text-white hover:bg-slate-900/90' 
-                    : 'hover:bg-slate-100 hover:text-slate-900'
-                }\`}
+                style={buttonStyle(selectedTool === tool.id)}
                 onClick={() => handleToolSelect(tool.id)}
                 title={tool.label}
               >
-                <tool.icon className="w-4 h-4" />
+                <tool.icon size={16} />
               </button>
             ))}
-          </div>
 
-          <div className="shrink-0 bg-slate-200 h-6 w-[1px]" />
-
-          {/* Colors */}
-          <div className="flex items-center gap-1 px-2">
-            <div className="relative">
+            {/* Shapes Popover */}
+            <div style={{ position: 'relative', display: 'inline-block' }}>
               <button
-                className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
-                style={{ backgroundColor: selectedColor }}
-                onClick={() => setIsColorPaletteOpen(!isColorPaletteOpen)}
-                title="Select Color"
-              />
-              {isColorPaletteOpen && (
-                <div className="absolute bottom-8 left-0 z-50 w-48 rounded-md border bg-white p-3 shadow-md outline-none">
-                  <div className="grid grid-cols-6 gap-2">
-                    {colorPalette.map((color) => (
-                      <button
-                        key={color}
-                        className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
-                        style={{ backgroundColor: color }}
-                        onClick={() => handleColorSelect(color)}
-                      />
-                    ))}
-                  </div>
+                style={buttonStyle(['rectangle', 'circle', 'hexagon'].includes(selectedTool))}
+                onClick={() => setShapePopoverOpen(!shapePopoverOpen)}
+                title="Shapes"
+              >
+                <Square size={16} />
+              </button>
+              <div style={popoverStyle(shapePopoverOpen)}>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {shapes.map((shape) => (
+                    <button
+                      key={shape.id}
+                      style={buttonStyle(selectedTool === shape.id)}
+                      onClick={() => handleShapeSelect(shape.id)}
+                      title={shape.label}
+                    >
+                      <shape.icon size={16} />
+                    </button>
+                  ))}
                 </div>
-              )}
+              </div>
+            </div>
+
+            {/* Arrows Popover */}
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              <button
+                style={buttonStyle(['arrow-single', 'arrow-double', 'line'].includes(selectedTool))}
+                onClick={() => setArrowPopoverOpen(!arrowPopoverOpen)}
+                title="Arrows & Lines"
+              >
+                <ArrowRight size={16} />
+              </button>
+              <div style={popoverStyle(arrowPopoverOpen)}>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {arrows.map((arrow) => (
+                    <button
+                      key={arrow.id}
+                      style={buttonStyle(selectedTool === arrow.id)}
+                      onClick={() => handleArrowSelect(arrow.id)}
+                      title={arrow.label}
+                    >
+                      <arrow.icon size={16} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Clear Popover */}
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              <button
+                style={buttonStyle()}
+                onClick={() => setClearPopoverOpen(!clearPopoverOpen)}
+                title="Clear Options"
+              >
+                <Eraser size={16} />
+              </button>
+              <div style={popoverStyle(clearPopoverOpen)}>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {clearOptions.map((clear) => (
+                    <button
+                      key={clear.id}
+                      style={buttonStyle()}
+                      onClick={() => handleClearSelect(clear.id)}
+                      title={clear.label}
+                    >
+                      <clear.icon size={16} />
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="shrink-0 bg-slate-200 h-6 w-[1px]" />
+          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
+
+          {/* Colors */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px', position: 'relative' }}>
+            <button
+              style={{
+                width: '24px',
+                height: '24px',
+                borderRadius: '9999px',
+                border: '2px solid #d1d5db',
+                cursor: 'pointer',
+                backgroundColor: selectedColor
+              }}
+              onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
+              title="Select Color"
+            />
+            <div style={popoverStyle(colorPopoverOpen)}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(6, 1fr)',
+                gap: '8px',
+                width: '192px'
+              }}>
+                {colorPalette.map((color) => (
+                  <button
+                    key={color}
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '9999px',
+                      border: '2px solid #d1d5db',
+                      cursor: 'pointer',
+                      backgroundColor: color
+                    }}
+                    onClick={() => handleColorSelect(color)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
 
           {/* Actions */}
-          <div className="flex items-center gap-1 pl-2">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2px', paddingLeft: '8px' }}>
             <button
-              className="h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900"
-              title="Pause"
+              style={buttonStyle()}
+              onClick={() => setIsPaused(!isPaused)}
+              title={isPaused ? "Resume" : "Pause"}
             >
-              <Pause className="w-4 h-4" />
+              {isPaused ? <Play size={16} /> : <Pause size={16} />}
             </button>
             <button
-              className="h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900"
+              style={buttonStyle()}
               title="Cancel"
             >
-              <X className="w-4 h-4" />
+              <X size={16} />
             </button>
             <button
-              className="h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900"
+              style={buttonStyle(false, 'destructive')}
               title="Stop"
             >
-              <Stop className="w-4 h-4" />
+              <Stop size={16} />
             </button>
           </div>
         </div>
