@@ -37,7 +37,7 @@ const ToolbarContent = styled.div`
   backdrop-filter: blur(8px);
   border-radius: 9999px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(229, 231, 235, 1);
+  border: 2px solid rgba(139, 92, 246, 0.3);
   padding: 8px 16px;
 `;
 
