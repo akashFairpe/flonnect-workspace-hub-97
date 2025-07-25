@@ -38,9 +38,6 @@ export default function EnterpriseExtensionPopupPage() {
   };
 
   const annotationToolbarCode = `import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { 
   Mic, 
   MicOff, 
@@ -56,8 +53,7 @@ import {
   Eraser, 
   Pause,
   X,
-  Square as Stop,
-  Palette
+  Square as Stop
 } from 'lucide-react';
 
 interface AnnotationToolbarProps {
@@ -70,6 +66,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
+  const [isColorPaletteOpen, setIsColorPaletteOpen] = useState(false);
 
   const handleToolSelect = (tool: string) => {
     setSelectedTool(tool);
@@ -79,6 +76,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const handleColorSelect = (color: string) => {
     setSelectedColor(color);
     onToolSelect?.(\`color-\${color}\`);
+    setIsColorPaletteOpen(false);
   };
 
   const tools = [
@@ -103,97 +101,98 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
         <div className="flex items-center gap-1">
           {/* Recording Controls */}
           <div className="flex items-center gap-1 pr-2">
-            <Button
-              variant={micEnabled ? "default" : "outline"}
-              size="sm"
-              className="h-8 w-8 rounded-full p-0"
+            <button
+              className={\`h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 \${
+                micEnabled 
+                  ? 'bg-slate-900 text-white hover:bg-slate-900/90' 
+                  : 'border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900'
+              }\`}
               onClick={() => setMicEnabled(!micEnabled)}
             >
               {micEnabled ? <Mic className="w-4 h-4" /> : <MicOff className="w-4 h-4" />}
-            </Button>
-            <Button
-              variant={videoEnabled ? "default" : "outline"}
-              size="sm"
-              className="h-8 w-8 rounded-full p-0"
+            </button>
+            <button
+              className={\`h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 \${
+                videoEnabled 
+                  ? 'bg-slate-900 text-white hover:bg-slate-900/90' 
+                  : 'border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900'
+              }\`}
               onClick={() => setVideoEnabled(!videoEnabled)}
             >
               {videoEnabled ? <Video className="w-4 h-4" /> : <VideoOff className="w-4 h-4" />}
-            </Button>
+            </button>
           </div>
 
-          <Separator orientation="vertical" className="h-6" />
+          <div className="shrink-0 bg-slate-200 h-6 w-[1px]" />
 
           {/* Annotation Tools */}
           <div className="flex items-center gap-1 px-2">
             {tools.map((tool) => (
-              <Button
+              <button
                 key={tool.id}
-                variant={selectedTool === tool.id ? "default" : "ghost"}
-                size="sm"
-                className="h-8 w-8 rounded-full p-0"
+                className={\`h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 \${
+                  selectedTool === tool.id 
+                    ? 'bg-slate-900 text-white hover:bg-slate-900/90' 
+                    : 'hover:bg-slate-100 hover:text-slate-900'
+                }\`}
                 onClick={() => handleToolSelect(tool.id)}
                 title={tool.label}
               >
                 <tool.icon className="w-4 h-4" />
-              </Button>
+              </button>
             ))}
           </div>
 
-          <Separator orientation="vertical" className="h-6" />
+          <div className="shrink-0 bg-slate-200 h-6 w-[1px]" />
 
           {/* Colors */}
           <div className="flex items-center gap-1 px-2">
-            <Popover>
-              <PopoverTrigger asChild>
-                <button
-                  className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
-                  style={{ backgroundColor: selectedColor }}
-                  title="Select Color"
-                />
-              </PopoverTrigger>
-              <PopoverContent className="w-48 p-3">
-                <div className="grid grid-cols-6 gap-2">
-                  {colorPalette.map((color) => (
-                    <button
-                      key={color}
-                      className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
-                      style={{ backgroundColor: color }}
-                      onClick={() => handleColorSelect(color)}
-                    />
-                  ))}
+            <div className="relative">
+              <button
+                className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                style={{ backgroundColor: selectedColor }}
+                onClick={() => setIsColorPaletteOpen(!isColorPaletteOpen)}
+                title="Select Color"
+              />
+              {isColorPaletteOpen && (
+                <div className="absolute bottom-8 left-0 z-50 w-48 rounded-md border bg-white p-3 shadow-md outline-none">
+                  <div className="grid grid-cols-6 gap-2">
+                    {colorPalette.map((color) => (
+                      <button
+                        key={color}
+                        className="w-6 h-6 rounded-full border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                        style={{ backgroundColor: color }}
+                        onClick={() => handleColorSelect(color)}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </PopoverContent>
-            </Popover>
+              )}
+            </div>
           </div>
 
-          <Separator orientation="vertical" className="h-6" />
+          <div className="shrink-0 bg-slate-200 h-6 w-[1px]" />
 
           {/* Actions */}
           <div className="flex items-center gap-1 pl-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-8 w-8 rounded-full p-0"
+            <button
+              className="h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900"
               title="Pause"
             >
               <Pause className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-8 w-8 rounded-full p-0"
+            </button>
+            <button
+              className="h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900"
               title="Cancel"
             >
               <X className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-8 w-8 rounded-full p-0"
+            </button>
+            <button
+              className="h-8 w-8 rounded-full p-0 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900"
               title="Stop"
             >
               <Stop className="w-4 h-4" />
-            </Button>
+            </button>
           </div>
         </div>
       </div>
