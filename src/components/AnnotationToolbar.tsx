@@ -56,13 +56,19 @@ const ToolbarContainer = styled.div<{ $position: 'center' | 'left' | 'right' }>`
 `;
 
 const ToolbarContent = styled.div<{ $position: 'center' | 'left' | 'right' }>`
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(30, 41, 59, 0.95);
   backdrop-filter: blur(8px);
   border-radius: ${props => props.$position === 'center' ? '9999px' : '16px'};
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border: 2px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(139, 92, 246, 0.4);
   padding: 8px 16px;
   ${props => props.$position !== 'center' ? 'max-width: 80px;' : ''}
+  
+  @media (prefers-color-scheme: light) {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+  }
 `;
 
 const ToolbarSection = styled.div<{ $position?: 'center' | 'left' | 'right' }>`
@@ -239,6 +245,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const [shapePopoverOpen, setShapePopoverOpen] = useState(false);
   const [arrowPopoverOpen, setArrowPopoverOpen] = useState(false);
   const [clearPopoverOpen, setClearPopoverOpen] = useState(false);
+  const [positionPopoverOpen, setPositionPopoverOpen] = useState(false);
   const [position, setPosition] = useState<'center' | 'left' | 'right'>('center');
   const [recordingTime, setRecordingTime] = useState(0);
 
@@ -333,29 +340,48 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
           )}
 
           {/* Position Controls */}
-          <PositionControls $position={position}>
+          <PopoverContainer>
             <ToolButton
-              $variant={position === 'left' ? "purple" : "ghost"}
-              onClick={() => setPosition('left')}
-              title="Move to Left"
+              onClick={() => setPositionPopoverOpen(!positionPopoverOpen)}
+              title="Change Position"
             >
-              <AlignLeft size={16} />
+              <Move size={16} />
             </ToolButton>
-            <ToolButton
-              $variant={position === 'center' ? "purple" : "ghost"}
-              onClick={() => setPosition('center')}
-              title="Move to Center"
-            >
-              <AlignCenter size={16} />
-            </ToolButton>
-            <ToolButton
-              $variant={position === 'right' ? "purple" : "ghost"}
-              onClick={() => setPosition('right')}
-              title="Move to Right"
-            >
-              <AlignRight size={16} />
-            </ToolButton>
-          </PositionControls>
+            <PopoverContent $open={positionPopoverOpen}>
+              <PositionControls $position="center">
+                <ToolButton
+                  $variant={position === 'left' ? "purple" : "ghost"}
+                  onClick={() => {
+                    setPosition('left');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Left"
+                >
+                  <AlignLeft size={16} />
+                </ToolButton>
+                <ToolButton
+                  $variant={position === 'center' ? "purple" : "ghost"}
+                  onClick={() => {
+                    setPosition('center');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Center"
+                >
+                  <AlignCenter size={16} />
+                </ToolButton>
+                <ToolButton
+                  $variant={position === 'right' ? "purple" : "ghost"}
+                  onClick={() => {
+                    setPosition('right');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Right"
+                >
+                  <AlignRight size={16} />
+                </ToolButton>
+              </PositionControls>
+            </PopoverContent>
+          </PopoverContainer>
 
           <Separator $position={position} />
 
