@@ -37,7 +37,7 @@ export default function EnterpriseExtensionPopupPage() {
     });
   };
 
-  const annotationToolbarCode = `import React, { useState } from 'react';
+  const annotationToolbarCode = `import React, { useState, useEffect } from 'react';
 import { 
   Mic, 
   MicOff, 
@@ -59,7 +59,12 @@ import {
   ArrowLeftRight,
   Minus,
   Trash2,
-  Hexagon
+  Hexagon,
+  Clock,
+  Move,
+  AlignCenter,
+  AlignLeft,
+  AlignRight
 } from 'lucide-react';
 
 interface AnnotationToolbarProps {
@@ -77,42 +82,55 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const [shapePopoverOpen, setShapePopoverOpen] = useState(false);
   const [arrowPopoverOpen, setArrowPopoverOpen] = useState(false);
   const [clearPopoverOpen, setClearPopoverOpen] = useState(false);
+  const [positionPopoverOpen, setPositionPopoverOpen] = useState(false);
+  const [position, setPosition] = useState('center');
+  const [recordingTime, setRecordingTime] = useState(0);
 
-  const handleToolSelect = (tool: string) => {
+  useEffect(() => {
+    let interval;
+    if (isRecording && !isPaused) {
+      interval = setInterval(() => {
+        setRecordingTime(prev => prev + 1);
+      }, 1000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isRecording, isPaused]);
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return \`\${mins.toString().padStart(2, '0')}:\${secs.toString().padStart(2, '0')}\`;
+  };
+
+  const handleToolSelect = (tool) => {
     setSelectedTool(tool);
     onToolSelect?.(tool);
   };
 
-  const handleColorSelect = (color: string) => {
+  const handleColorSelect = (color) => {
     setSelectedColor(color);
     onToolSelect?.(\`color-\${color}\`);
     setColorPopoverOpen(false);
   };
 
-  const handleShapeSelect = (shape: string) => {
+  const handleShapeSelect = (shape) => {
     setSelectedTool(shape);
     onToolSelect?.(shape);
     setShapePopoverOpen(false);
   };
 
-  const handleArrowSelect = (arrow: string) => {
+  const handleArrowSelect = (arrow) => {
     setSelectedTool(arrow);
     onToolSelect?.(arrow);
     setArrowPopoverOpen(false);
   };
 
-  const handleClearSelect = (clear: string) => {
+  const handleClearSelect = (clear) => {
     onToolSelect?.(clear);
     setClearPopoverOpen(false);
   };
-
-  const tools = [
-    { id: 'pointer', icon: MousePointer, label: 'Pointer' },
-    { id: 'highlight-hover', icon: Scan, label: 'Highlight on Hover' },
-    { id: 'cursor-blink', icon: MousePointer2, label: 'Cursor Blink' },
-    { id: 'pen', icon: Pen, label: 'Draw' },
-    { id: 'text', icon: Type, label: 'Text' },
-  ];
 
   const colorPalette = [
     '#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
@@ -146,19 +164,19 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     fontWeight: '500',
-    border: variant === 'destructive' || variant === 'purple' || active ? 'none' : '1px solid #e5e7eb',
+    border: 'none',
     background: variant === 'destructive' ? '#ef4444' 
       : variant === 'purple' ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' 
-      : active ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' 
-      : 'white',
-    color: variant === 'destructive' || variant === 'purple' || active ? 'white' : '#6b7280',
+      : active ? 'linear-gradient(135deg, #1f2937, #374151)' 
+      : 'transparent',
+    color: variant === 'destructive' || variant === 'purple' || active ? 'white' : '#4b5563',
     boxShadow: variant === 'destructive' ? '0 2px 8px rgba(239, 68, 68, 0.3)'
       : variant === 'purple' || active ? '0 2px 8px rgba(139, 92, 246, 0.3)'
-      : '0 1px 3px rgba(0, 0, 0, 0.1)'
+      : 'none'
   });
 
-  const popoverStyle = (open: boolean) => ({
-    position: 'absolute' as const,
+  const popoverStyle = (open) => ({
+    position: 'absolute',
     bottom: '100%',
     left: '50%',
     transform: 'translateX(-50%)',
@@ -172,25 +190,144 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
     zIndex: 50
   });
 
-  return (
-    <div style={{
+  const getContainerStyle = () => {
+    if (position === 'left') {
+      return {
+        position: 'fixed',
+        left: '16px',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 50
+      };
+    }
+    if (position === 'right') {
+      return {
+        position: 'fixed',
+        right: '16px',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 50
+      };
+    }
+    return {
       position: 'fixed',
       bottom: '16px',
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 50
-    }}>
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(8px)',
-        borderRadius: '9999px',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-        border: '1px solid rgba(229, 231, 235, 1)',
-        padding: '8px 16px'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+    };
+  };
+
+  const getContentStyle = () => ({
+    background: 'rgba(30, 41, 59, 0.95)',
+    backdropFilter: 'blur(8px)',
+    borderRadius: position === 'center' ? '9999px' : '16px',
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+    border: '2px solid rgba(139, 92, 246, 0.4)',
+    padding: '8px 16px',
+    maxWidth: position !== 'center' ? '80px' : 'none',
+    // Light theme support
+    '@media (prefers-color-scheme: light)': {
+      background: 'rgba(255, 255, 255, 0.95)',
+      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      border: '2px solid rgba(139, 92, 246, 0.3)'
+    }
+  });
+
+  const getSectionStyle = () => ({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+    flexDirection: position !== 'center' ? 'column' : 'row'
+  });
+
+  const getSeparatorStyle = () => position !== 'center' ? {
+    height: '1px',
+    width: '24px',
+    margin: '8px 0',
+    background: '#e5e7eb'
+  } : {
+    height: '24px',
+    width: '1px',
+    margin: '0 8px',
+    background: '#e5e7eb'
+  };
+
+  return (
+    <div style={getContainerStyle()}>
+      <div style={getContentStyle()}>
+        <div style={getSectionStyle()}>
+          {/* Recording Timer */}
+          {isRecording && (
+            <>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                fontSize: '12px',
+                fontWeight: '500',
+                color: '#ef4444',
+                background: 'rgba(239, 68, 68, 0.1)',
+                padding: '4px 8px',
+                borderRadius: '12px',
+                border: '1px solid rgba(239, 68, 68, 0.2)'
+              }}>
+                <Clock size={12} />
+                {formatTime(recordingTime)}
+              </div>
+              <div style={getSeparatorStyle()} />
+            </>
+          )}
+
+          {/* Position Controls */}
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <button
+              style={buttonStyle()}
+              onClick={() => setPositionPopoverOpen(!positionPopoverOpen)}
+              title="Change Position"
+            >
+              <Move size={16} />
+            </button>
+            <div style={popoverStyle(positionPopoverOpen)}>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button
+                  style={position === 'left' ? buttonStyle(false, 'purple') : buttonStyle(false)}
+                  onClick={() => {
+                    setPosition('left');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Left"
+                >
+                  <AlignLeft size={16} />
+                </button>
+                <button
+                  style={position === 'center' ? buttonStyle(false, 'purple') : buttonStyle(false)}
+                  onClick={() => {
+                    setPosition('center');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Center"
+                >
+                  <AlignCenter size={16} />
+                </button>
+                <button
+                  style={position === 'right' ? buttonStyle(false, 'purple') : buttonStyle(false)}
+                  onClick={() => {
+                    setPosition('right');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Right"
+                >
+                  <AlignRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style={getSeparatorStyle()} />
+
           {/* Recording Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', paddingRight: '8px' }}>
+          <div style={{ ...getSectionStyle(), paddingRight: position === 'center' ? '8px' : '0' }}>
             <button
               style={buttonStyle(micEnabled)}
               onClick={() => setMicEnabled(!micEnabled)}
@@ -207,10 +344,10 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </button>
           </div>
 
-          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
+          <div style={getSeparatorStyle()} />
 
-          {/* Selection Tools */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px' }}>
+          {/* Annotation Tools */}
+          <div style={{ ...getSectionStyle(), padding: position === 'center' ? '0 8px' : '0' }}>
             <button
               style={selectedTool === 'pointer' ? buttonStyle(false, 'purple') : buttonStyle(false)}
               onClick={() => handleToolSelect('pointer')}
@@ -234,10 +371,10 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </button>
           </div>
 
-          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
+          <div style={getSeparatorStyle()} />
 
           {/* Drawing Tools */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px' }}>
+          <div style={{ ...getSectionStyle(), padding: position === 'center' ? '0 8px' : '0' }}>
             <button
               style={buttonStyle(selectedTool === 'pen')}
               onClick={() => handleToolSelect('pen')}
@@ -329,48 +466,50 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </div>
           </div>
 
-          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
+          <div style={getSeparatorStyle()} />
 
           {/* Colors */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '0 8px', position: 'relative' }}>
-            <button
-              style={{
-                width: '24px',
-                height: '24px',
-                borderRadius: '9999px',
-                border: '2px solid #d1d5db',
-                cursor: 'pointer',
-                backgroundColor: selectedColor
-              }}
-              onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
-              title="Select Color"
-            />
-            <div style={popoverStyle(colorPopoverOpen)}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(6, 1fr)',
-                gap: '8px',
-                width: '192px'
-              }}>
-                {colorPalette.map((color) => (
-                  <button
-                    key={color}
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '9999px',
-                      border: '2px solid #d1d5db',
-                      cursor: 'pointer',
-                      backgroundColor: color
-                    }}
-                    onClick={() => handleColorSelect(color)}
-                  />
-                ))}
+          <div style={{ ...getSectionStyle(), padding: position === 'center' ? '0 8px' : '0' }}>
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              <button
+                style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '9999px',
+                  border: '2px solid #d1d5db',
+                  cursor: 'pointer',
+                  backgroundColor: selectedColor
+                }}
+                onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
+                title="Select Color"
+              />
+              <div style={popoverStyle(colorPopoverOpen)}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(6, 1fr)',
+                  gap: '8px',
+                  width: '192px'
+                }}>
+                  {colorPalette.map((color) => (
+                    <button
+                      key={color}
+                      style={{
+                        width: '24px',
+                        height: '24px',
+                        borderRadius: '9999px',
+                        border: '2px solid #d1d5db',
+                        cursor: 'pointer',
+                        backgroundColor: color
+                      }}
+                      onClick={() => handleColorSelect(color)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />
+          <div style={getSeparatorStyle()} />
 
           {/* Actions */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '2px', paddingLeft: '8px' }}>
@@ -398,7 +537,52 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
       </div>
     </div>
   );
-}`;
+}
+
+// How to access dark and light theme:
+
+// Method 1: Using CSS media queries (automatically switches based on system preference)
+// Add this to your component styles:
+/*
+@media (prefers-color-scheme: dark) {
+  .your-component {
+    background: rgba(30, 41, 59, 0.95);
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .your-component {
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+  }
+}
+*/
+
+// Method 2: Using JavaScript to detect system theme
+/*
+const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Listen for theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  const newTheme = e.matches ? 'dark' : 'light';
+  // Update your component theme
+});
+*/
+
+// Method 3: Manual theme toggle with localStorage
+/*
+const [theme, setTheme] = useState(() => {
+  return localStorage.getItem('theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+});
+
+const toggleTheme = () => {
+  const newTheme = theme === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+  localStorage.setItem('theme', newTheme);
+};
+*/`;
 
   const copyToClipboard = async () => {
     try {
