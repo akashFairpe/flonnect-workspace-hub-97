@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { 
   Mic, 
@@ -21,30 +21,63 @@ import {
   ArrowLeftRight,
   Minus,
   Trash2,
-  Hexagon
+  Hexagon,
+  ChevronLeft,
+  ChevronRight,
+  Clock
 } from 'lucide-react';
 
-const ToolbarContainer = styled.div`
+const ToolbarContainer = styled.div<{ $position: 'center' | 'left' | 'right' }>`
   position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  ${props => props.$position === 'center' ? 'bottom: 16px; left: 50%; transform: translateX(-50%);' :
+    props.$position === 'left' ? 'top: 50%; left: 16px; transform: translateY(-50%);' :
+    'top: 50%; right: 16px; transform: translateY(-50%);'}
   z-index: 50;
 `;
 
-const ToolbarContent = styled.div`
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-radius: 9999px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+const ToolbarContent = styled.div<{ $position: 'center' | 'left' | 'right' }>`
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-radius: ${props => props.$position === 'center' ? '9999px' : '12px'};
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 
+              0 0 0 1px rgba(0, 0, 0, 0.05),
+              0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border: 2px solid rgba(139, 92, 246, 0.3);
   padding: 8px 16px;
+  ${props => props.$position !== 'center' ? 'writing-mode: vertical-lr; text-orientation: mixed;' : ''}
 `;
 
-const ToolbarSection = styled.div`
+const ToolbarSection = styled.div<{ $position?: 'center' | 'left' | 'right' }>`
   display: flex;
   align-items: center;
   gap: 4px;
+  ${props => props.$position !== 'center' ? 'flex-direction: column;' : ''}
+`;
+
+const RecordingTime = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+`;
+
+const PositionControls = styled.div`
+  position: absolute;
+  top: -40px;
+  right: 0;
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 `;
 
 const ToolButton = styled.button<{ $active?: boolean; $variant?: 'default' | 'outline' | 'ghost' | 'destructive' | 'purple' }>`
@@ -177,9 +210,10 @@ const ActionSection = styled.div`
 interface AnnotationToolbarProps {
   onToolSelect?: (tool: string) => void;
   isRecording?: boolean;
+  recordingTime?: number;
 }
 
-export function AnnotationToolbar({ onToolSelect, isRecording = false }: AnnotationToolbarProps) {
+export function AnnotationToolbar({ onToolSelect, isRecording = false, recordingTime = 0 }: AnnotationToolbarProps) {
   const [selectedTool, setSelectedTool] = useState('');
   const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
@@ -189,6 +223,23 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const [shapePopoverOpen, setShapePopoverOpen] = useState(false);
   const [arrowPopoverOpen, setArrowPopoverOpen] = useState(false);
   const [clearPopoverOpen, setClearPopoverOpen] = useState(false);
+  const [position, setPosition] = useState<'center' | 'left' | 'right'>('center');
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    if (isRecording && !isPaused) {
+      const interval = setInterval(() => {
+        setCurrentTime(prev => prev + 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isRecording, isPaused]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   const handleToolSelect = (tool: string) => {
     setSelectedTool(tool);
@@ -248,11 +299,46 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   ];
 
   return (
-    <ToolbarContainer>
-      <ToolbarContent>
-        <ToolbarSection>
+    <ToolbarContainer $position={position}>
+      <ToolbarContent $position={position}>
+        <PositionControls>
+          <ToolButton
+            onClick={() => setPosition('left')}
+            title="Move to Left"
+            $active={position === 'left'}
+          >
+            <ChevronLeft size={14} />
+          </ToolButton>
+          <ToolButton
+            onClick={() => setPosition('center')}
+            title="Center"
+            $active={position === 'center'}
+          >
+            ●
+          </ToolButton>
+          <ToolButton
+            onClick={() => setPosition('right')}
+            title="Move to Right"
+            $active={position === 'right'}
+          >
+            <ChevronRight size={14} />
+          </ToolButton>
+        </PositionControls>
+        
+        <ToolbarSection $position={position}>
+          {/* Recording Time */}
+          {isRecording && (
+            <>
+              <RecordingTime>
+                <Clock size={12} />
+                {formatTime(currentTime)}
+              </RecordingTime>
+              {position === 'center' && <Separator />}
+            </>
+          )}
+          
           {/* Recording Controls */}
-          <ToolbarSection style={{ paddingRight: '8px' }}>
+          <ToolbarSection style={{ paddingRight: position === 'center' ? '8px' : '0' }}>
             <ToolButton
               $variant={micEnabled ? "default" : "outline"}
               onClick={() => setMicEnabled(!micEnabled)}
@@ -269,10 +355,10 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </ToolButton>
           </ToolbarSection>
 
-          <Separator />
+          {position === 'center' && <Separator />}
 
           {/* Annotation Tools */}
-          <ToolbarSection style={{ padding: '0 8px' }}>
+          <ToolbarSection style={{ padding: position === 'center' ? '0 8px' : '8px 0' }}>
             {/* Pointer Tool */}
             <ToolButton
               $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
@@ -299,10 +385,10 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </ToolButton>
           </ToolbarSection>
 
-          <Separator />
+          {position === 'center' && <Separator />}
 
           {/* Drawing Tools */}
-          <ToolbarSection style={{ padding: '0 8px' }}>
+          <ToolbarSection style={{ padding: position === 'center' ? '0 8px' : '8px 0' }}>
             <ToolButton
               $active={selectedTool === 'pen'}
               onClick={() => handleToolSelect('pen')}
@@ -392,10 +478,10 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </PopoverContainer>
           </ToolbarSection>
 
-          <Separator />
+          {position === 'center' && <Separator />}
 
           {/* Colors */}
-          <ToolbarSection style={{ padding: '0 8px' }}>
+          <ToolbarSection style={{ padding: position === 'center' ? '0 8px' : '8px 0' }}>
             <PopoverContainer>
               <ColorButton
                 style={{ backgroundColor: selectedColor }}
@@ -416,7 +502,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </PopoverContainer>
           </ToolbarSection>
 
-          <Separator />
+          {position === 'center' && <Separator />}
 
           {/* Actions */}
           <ActionSection>
