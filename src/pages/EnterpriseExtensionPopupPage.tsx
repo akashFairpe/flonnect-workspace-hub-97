@@ -37,7 +37,7 @@ export default function EnterpriseExtensionPopupPage() {
     });
   };
 
-  const annotationToolbarCode = `import React, { useState, useEffect } from 'react';
+  const annotationToolbarCode = `import React, { useState } from 'react';
 import { 
   Mic, 
   MicOff, 
@@ -59,19 +59,15 @@ import {
   ArrowLeftRight,
   Minus,
   Trash2,
-  Hexagon,
-  ChevronLeft,
-  ChevronRight,
-  Clock
+  Hexagon
 } from 'lucide-react';
 
 interface AnnotationToolbarProps {
   onToolSelect?: (tool: string) => void;
   isRecording?: boolean;
-  recordingTime?: number;
 }
 
-export function AnnotationToolbar({ onToolSelect, isRecording = false, recordingTime = 0 }: AnnotationToolbarProps) {
+export function AnnotationToolbar({ onToolSelect, isRecording = false }: AnnotationToolbarProps) {
   const [selectedTool, setSelectedTool] = useState('');
   const [selectedColor, setSelectedColor] = useState('#000000');
   const [micEnabled, setMicEnabled] = useState(true);
@@ -81,23 +77,6 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false, recording
   const [shapePopoverOpen, setShapePopoverOpen] = useState(false);
   const [arrowPopoverOpen, setArrowPopoverOpen] = useState(false);
   const [clearPopoverOpen, setClearPopoverOpen] = useState(false);
-  const [position, setPosition] = useState('center');
-  const [currentTime, setCurrentTime] = useState(0);
-
-  useEffect(() => {
-    if (isRecording && !isPaused) {
-      const interval = setInterval(() => {
-        setCurrentTime(prev => prev + 1);
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [isRecording, isPaused]);
-
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return \`\${mins.toString().padStart(2, '0')}:\${secs.toString().padStart(2, '0')}\`;
-  };
 
   const handleToolSelect = (tool: string) => {
     setSelectedTool(tool);
@@ -193,88 +172,23 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false, recording
     zIndex: 50
   });
 
-    return (
+  return (
     <div style={{
       position: 'fixed',
-      ...(position === 'center' ? { bottom: '16px', left: '50%', transform: 'translateX(-50%)' } :
-          position === 'left' ? { top: '50%', left: '16px', transform: 'translateY(-50%)' } :
-          { top: '50%', right: '16px', transform: 'translateY(-50%)' }),
+      bottom: '16px',
+      left: '50%',
+      transform: 'translateX(-50%)',
       zIndex: 50
     }}>
       <div style={{
-        position: 'relative',
-        background: 'rgba(255, 255, 255, 0.98)',
-        backdropFilter: 'blur(12px)',
-        borderRadius: position === 'center' ? '9999px' : '12px',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-        border: '2px solid rgba(139, 92, 246, 0.3)',
+        background: 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(8px)',
+        borderRadius: '9999px',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        border: '1px solid rgba(229, 231, 235, 1)',
         padding: '8px 16px'
       }}>
-        {/* Position Controls */}
-        <div style={{
-          position: 'absolute',
-          top: '-40px',
-          right: '0',
-          display: 'flex',
-          gap: '4px',
-          background: 'rgba(255, 255, 255, 0.9)',
-          borderRadius: '8px',
-          padding: '4px',
-          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-          border: '1px solid rgba(0, 0, 0, 0.05)'
-        }}>
-          <button
-            style={{...buttonStyle(position === 'left'), width: '24px', height: '24px'}}
-            onClick={() => setPosition('left')}
-            title="Move to Left"
-          >
-            <ChevronLeft size={12} />
-          </button>
-          <button
-            style={{...buttonStyle(position === 'center'), width: '24px', height: '24px'}}
-            onClick={() => setPosition('center')}
-            title="Center"
-          >
-            ●
-          </button>
-          <button
-            style={{...buttonStyle(position === 'right'), width: '24px', height: '24px'}}
-            onClick={() => setPosition('right')}
-            title="Move to Right"
-          >
-            <ChevronRight size={12} />
-          </button>
-        </div>
-        
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '4px',
-          ...(position !== 'center' ? { flexDirection: 'column' } : {})
-        }}>
-          {/* Recording Time */}
-          {isRecording && (
-            <>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '4px 8px',
-                background: 'rgba(239, 68, 68, 0.1)',
-                borderRadius: '16px',
-                fontSize: '12px',
-                fontWeight: '500',
-                color: '#dc2626',
-                border: '1px solid rgba(239, 68, 68, 0.2)'
-              }}>
-                <Clock size={12} />
-                {formatTime(currentTime)}
-              </div>
-              {position === 'center' && <div style={{ height: '24px', width: '1px', background: '#e5e7eb', margin: '0 8px' }} />}
-            </>
-          )}
-          
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', ...(position !== 'center' ? { flexDirection: 'column' } : {}) }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
           {/* Recording Controls */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px', paddingRight: '8px' }}>
             <button
