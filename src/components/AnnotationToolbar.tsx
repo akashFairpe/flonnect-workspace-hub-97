@@ -344,11 +344,16 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
 
           {/* Collapse/Expand Toggle */}
           <ToolButton
-            $variant="ghost"
+            $variant={isCollapsed ? "purple" : "ghost"}
             onClick={() => setIsCollapsed(!isCollapsed)}
-            title={isCollapsed ? "Expand Toolbar" : "Collapse Toolbar"}
+            title={isCollapsed ? "Show More Tools" : "Show Less Tools"}
+            style={{ 
+              background: isCollapsed ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' : 'transparent',
+              borderRadius: '6px',
+              border: isCollapsed ? 'none' : '1px solid rgba(139, 92, 246, 0.3)'
+            }}
           >
-            {isCollapsed ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
+            {isCollapsed ? '••••' : '••'}
           </ToolButton>
 
           <Separator $position={position} />
