@@ -416,87 +416,10 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
               {videoEnabled ? <Video size={16} /> : <VideoOff size={16} />}
             </ToolButton>
             
-            {/* Collapse/Expand Toggle - Positioned between camera and pause */}
-            <ToolButton
-              onClick={(e) => {
-                setIsCollapsed(!isCollapsed);
-                // Ripple effect
-                const ripple = document.createElement('span');
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.left = '50%';
-                ripple.style.top = '50%';
-                ripple.style.width = '20px';
-                ripple.style.height = '20px';
-                ripple.style.marginLeft = '-10px';
-                ripple.style.marginTop = '-10px';
-                
-                e.currentTarget.appendChild(ripple);
-                setTimeout(() => {
-                  ripple.remove();
-                }, 600);
-              }}
-              title="Expand Toolbar"
-              style={{ 
-                background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%)',
-                borderRadius: '50%',
-                border: 'none',
-                boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25), 0 2px 4px rgba(139, 92, 246, 0.1)',
-                color: 'white',
-                transform: isCollapsed ? 'rotate(0deg)' : 'rotate(180deg)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #9333ea 0%, #a855f7 50%, #8b5cf6 100%)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.4), 0 4px 12px rgba(139, 92, 246, 0.2), 0 0 20px rgba(139, 92, 246, 0.3)';
-                e.currentTarget.style.transform = isCollapsed ? 'rotate(0deg) scale(1.05)' : 'rotate(180deg) scale(1.05)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.25), 0 2px 4px rgba(139, 92, 246, 0.1)';
-                e.currentTarget.style.transform = isCollapsed ? 'rotate(0deg) scale(1)' : 'rotate(180deg) scale(1)';
-              }}
-            >
-              {isCollapsed ? '•••' : '▲'}
-            </ToolButton>
-          </ToolbarSection>
-
-          <Separator $position={position} />
-
-          {/* Action Controls - Always visible */}
-          <ActionSection>
-            <ToolButton
-              onClick={() => setIsPaused(!isPaused)}
-              title={isPaused ? "Resume" : "Pause"}
-            >
-              {isPaused ? <Play size={16} /> : <Pause size={16} />}
-            </ToolButton>
-            <ToolButton
-              title="Cancel"
-            >
-              <X size={16} />
-            </ToolButton>
-            <ToolButton
-              $variant="destructive"
-              title="Stop"
-            >
-              <Stop size={16} />
-            </ToolButton>
-          </ActionSection>
-
-          {/* Expanded Content - Only show when not collapsed */}
-          {!isCollapsed && (
-            <>
-              <Separator $position={position} />
-
-              {/* Annotation Tools */}
-              <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-                {/* Pointer Tool */}
+            {/* Annotation Tools Section - Expands in place */}
+            {!isCollapsed ? (
+              <>
+                {/* Expanded Annotation Tools */}
                 <ToolButton
                   $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
                   onClick={() => handleToolSelect('pointer')}
@@ -504,8 +427,6 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
                 >
                   <MousePointer size={16} />
                 </ToolButton>
-                
-                {/* Other Selection Tools */}
                 <ToolButton
                   $active={selectedTool === 'highlight-hover'}
                   onClick={() => handleToolSelect('highlight-hover')}
@@ -520,12 +441,6 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
                 >
                   <MousePointer2 size={16} />
                 </ToolButton>
-              </ToolbarSection>
-
-              <Separator $position={position} />
-
-              {/* Drawing Tools */}
-              <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
                 <ToolButton
                   $active={selectedTool === 'pen'}
                   onClick={() => handleToolSelect('pen')}
@@ -613,12 +528,8 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
                     </ClearGrid>
                   </PopoverContent>
                 </PopoverContainer>
-              </ToolbarSection>
 
-              <Separator $position={position} />
-
-              {/* Colors */}
-              <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+                {/* Colors */}
                 <PopoverContainer>
                   <ColorButton
                     style={{ backgroundColor: selectedColor }}
@@ -637,9 +548,120 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
                     </ColorGrid>
                   </PopoverContent>
                 </PopoverContainer>
-              </ToolbarSection>
-            </>
-          )}
+              </>
+            ) : (
+              /* Collapsed - Show expand button */
+              <ToolButton
+                onClick={(e) => {
+                  setIsCollapsed(!isCollapsed);
+                  // Ripple effect
+                  const ripple = document.createElement('span');
+                  ripple.style.position = 'absolute';
+                  ripple.style.borderRadius = '50%';
+                  ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                  ripple.style.transform = 'scale(0)';
+                  ripple.style.animation = 'ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                  ripple.style.left = '50%';
+                  ripple.style.top = '50%';
+                  ripple.style.width = '20px';
+                  ripple.style.height = '20px';
+                  ripple.style.marginLeft = '-10px';
+                  ripple.style.marginTop = '-10px';
+                  
+                  e.currentTarget.appendChild(ripple);
+                  setTimeout(() => {
+                    ripple.remove();
+                  }, 800);
+                }}
+                title="Expand Toolbar"
+                style={{ 
+                  transform: 'scale(1)',
+                  transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1) translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1) translateY(0px)';
+                }}
+              >
+                <Maximize2 size={16} style={{ 
+                  transform: 'scale(0.8)',
+                  transition: 'transform 0.3s ease'
+                }} />
+              </ToolButton>
+            )}
+          </ToolbarSection>
+
+          <Separator $position={position} />
+
+          {/* Action Controls - Always visible */}
+          <ActionSection>
+            <ToolButton
+              onClick={() => setIsPaused(!isPaused)}
+              title={isPaused ? "Resume" : "Pause"}
+            >
+              {isPaused ? <Play size={16} /> : <Pause size={16} />}
+            </ToolButton>
+            <ToolButton
+              title="Cancel"
+            >
+              <X size={16} />
+            </ToolButton>
+            <ToolButton
+              $variant="destructive"
+              title="Stop"
+            >
+              <Stop size={16} />
+            </ToolButton>
+            
+            {/* Collapse button when expanded */}
+            {!isCollapsed && (
+              <ToolButton
+                onClick={(e) => {
+                  setIsCollapsed(true);
+                  // Ripple effect
+                  const ripple = document.createElement('span');
+                  ripple.style.position = 'absolute';
+                  ripple.style.borderRadius = '50%';
+                  ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                  ripple.style.transform = 'scale(0)';
+                  ripple.style.animation = 'ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                  ripple.style.left = '50%';
+                  ripple.style.top = '50%';
+                  ripple.style.width = '20px';
+                  ripple.style.height = '20px';
+                  ripple.style.marginLeft = '-10px';
+                  ripple.style.marginTop = '-10px';
+                  
+                  e.currentTarget.appendChild(ripple);
+                  setTimeout(() => {
+                    ripple.remove();
+                  }, 800);
+                }}
+                title="Collapse Toolbar"
+                style={{ 
+                  transform: 'scale(1)',
+                  transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1) translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1) translateY(0px)';
+                }}
+              >
+                <Minimize2 size={16} style={{ 
+                  transform: 'scale(0.8)',
+                  transition: 'transform 0.3s ease'
+                }} />
+              </ToolButton>
+            )}
+          </ActionSection>
         </ToolbarSection>
       </ToolbarContent>
     </ToolbarContainer>
