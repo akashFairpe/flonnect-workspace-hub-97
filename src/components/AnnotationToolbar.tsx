@@ -26,7 +26,9 @@ import {
   Move,
   AlignCenter,
   AlignLeft,
-  AlignRight
+  AlignRight,
+  Minimize2,
+  Maximize2
 } from 'lucide-react';
 
 const ToolbarContainer = styled.div<{ $position: 'center' | 'left' | 'right' }>`
@@ -248,6 +250,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   const [positionPopoverOpen, setPositionPopoverOpen] = useState(false);
   const [position, setPosition] = useState<'center' | 'left' | 'right'>('center');
   const [recordingTime, setRecordingTime] = useState(0);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -339,6 +342,17 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
             </>
           )}
 
+          {/* Collapse/Expand Toggle */}
+          <ToolButton
+            $variant="ghost"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            title={isCollapsed ? "Expand Toolbar" : "Collapse Toolbar"}
+          >
+            {isCollapsed ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
+          </ToolButton>
+
+          <Separator $position={position} />
+
           {/* Position Controls */}
           <PopoverContainer>
             <ToolButton
@@ -405,154 +419,7 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
 
           <Separator $position={position} />
 
-          {/* Annotation Tools */}
-          <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-            {/* Pointer Tool */}
-            <ToolButton
-              $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
-              onClick={() => handleToolSelect('pointer')}
-              title="Pointer"
-            >
-              <MousePointer size={16} />
-            </ToolButton>
-            
-            {/* Other Selection Tools */}
-            <ToolButton
-              $active={selectedTool === 'highlight-hover'}
-              onClick={() => handleToolSelect('highlight-hover')}
-              title="Highlight on Hover"
-            >
-              <Scan size={16} />
-            </ToolButton>
-            <ToolButton
-              $active={selectedTool === 'cursor-blink'}
-              onClick={() => handleToolSelect('cursor-blink')}
-              title="Cursor Blink"
-            >
-              <MousePointer2 size={16} />
-            </ToolButton>
-          </ToolbarSection>
-
-          <Separator $position={position} />
-
-          {/* Drawing Tools */}
-          <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-            <ToolButton
-              $active={selectedTool === 'pen'}
-              onClick={() => handleToolSelect('pen')}
-              title="Draw"
-            >
-              <Pen size={16} />
-            </ToolButton>
-            <ToolButton
-              $active={selectedTool === 'text'}
-              onClick={() => handleToolSelect('text')}
-              title="Text"
-            >
-              <Type size={16} />
-            </ToolButton>
-
-            {/* Shapes Popover */}
-            <PopoverContainer>
-              <ToolButton
-                $active={['rectangle', 'circle', 'hexagon'].includes(selectedTool)}
-                onClick={() => setShapePopoverOpen(!shapePopoverOpen)}
-                title="Shapes"
-              >
-                <Square size={16} />
-              </ToolButton>
-              <PopoverContent $open={shapePopoverOpen}>
-                <ShapeGrid>
-                  {shapes.map((shape) => (
-                    <ToolButton
-                      key={shape.id}
-                      $active={selectedTool === shape.id}
-                      onClick={() => handleShapeSelect(shape.id)}
-                      title={shape.label}
-                    >
-                      <shape.icon size={16} />
-                    </ToolButton>
-                  ))}
-                </ShapeGrid>
-              </PopoverContent>
-            </PopoverContainer>
-
-            {/* Arrows Popover */}
-            <PopoverContainer>
-              <ToolButton
-                $active={['arrow-single', 'arrow-double', 'line'].includes(selectedTool)}
-                onClick={() => setArrowPopoverOpen(!arrowPopoverOpen)}
-                title="Arrows & Lines"
-              >
-                <ArrowRight size={16} />
-              </ToolButton>
-              <PopoverContent $open={arrowPopoverOpen}>
-                <ArrowGrid>
-                  {arrows.map((arrow) => (
-                    <ToolButton
-                      key={arrow.id}
-                      $active={selectedTool === arrow.id}
-                      onClick={() => handleArrowSelect(arrow.id)}
-                      title={arrow.label}
-                    >
-                      <arrow.icon size={16} />
-                    </ToolButton>
-                  ))}
-                </ArrowGrid>
-              </PopoverContent>
-            </PopoverContainer>
-
-            {/* Clear Popover */}
-            <PopoverContainer>
-              <ToolButton
-                onClick={() => setClearPopoverOpen(!clearPopoverOpen)}
-                title="Clear Options"
-              >
-                <Eraser size={16} />
-              </ToolButton>
-              <PopoverContent $open={clearPopoverOpen}>
-                <ClearGrid>
-                  {clearOptions.map((clear) => (
-                    <ToolButton
-                      key={clear.id}
-                      onClick={() => handleClearSelect(clear.id)}
-                      title={clear.label}
-                    >
-                      <clear.icon size={16} />
-                    </ToolButton>
-                  ))}
-                </ClearGrid>
-              </PopoverContent>
-            </PopoverContainer>
-          </ToolbarSection>
-
-          <Separator $position={position} />
-
-          {/* Colors */}
-          <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-            <PopoverContainer>
-              <ColorButton
-                style={{ backgroundColor: selectedColor }}
-                onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
-                title="Select Color"
-              />
-              <PopoverContent $open={colorPopoverOpen}>
-                <ColorGrid>
-                  {colorPalette.map((color) => (
-                    <ColorButton
-                      key={color}
-                      style={{ backgroundColor: color }}
-                      onClick={() => handleColorSelect(color)}
-                    />
-                  ))}
-                </ColorGrid>
-              </PopoverContent>
-            </PopoverContainer>
-          </ToolbarSection>
-
-          <Separator $position={position} />
-
-          {/* Actions */}
+          {/* Action Controls - Always visible */}
           <ActionSection>
             <ToolButton
               onClick={() => setIsPaused(!isPaused)}
@@ -572,6 +439,158 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
               <Stop size={16} />
             </ToolButton>
           </ActionSection>
+
+          {/* Expanded Content - Only show when not collapsed */}
+          {!isCollapsed && (
+            <>
+              <Separator $position={position} />
+
+              {/* Annotation Tools */}
+              <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+                {/* Pointer Tool */}
+                <ToolButton
+                  $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
+                  onClick={() => handleToolSelect('pointer')}
+                  title="Pointer"
+                >
+                  <MousePointer size={16} />
+                </ToolButton>
+                
+                {/* Other Selection Tools */}
+                <ToolButton
+                  $active={selectedTool === 'highlight-hover'}
+                  onClick={() => handleToolSelect('highlight-hover')}
+                  title="Highlight on Hover"
+                >
+                  <Scan size={16} />
+                </ToolButton>
+                <ToolButton
+                  $active={selectedTool === 'cursor-blink'}
+                  onClick={() => handleToolSelect('cursor-blink')}
+                  title="Cursor Blink"
+                >
+                  <MousePointer2 size={16} />
+                </ToolButton>
+              </ToolbarSection>
+
+              <Separator $position={position} />
+
+              {/* Drawing Tools */}
+              <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+                <ToolButton
+                  $active={selectedTool === 'pen'}
+                  onClick={() => handleToolSelect('pen')}
+                  title="Draw"
+                >
+                  <Pen size={16} />
+                </ToolButton>
+                <ToolButton
+                  $active={selectedTool === 'text'}
+                  onClick={() => handleToolSelect('text')}
+                  title="Text"
+                >
+                  <Type size={16} />
+                </ToolButton>
+
+                {/* Shapes Popover */}
+                <PopoverContainer>
+                  <ToolButton
+                    $active={['rectangle', 'circle', 'hexagon'].includes(selectedTool)}
+                    onClick={() => setShapePopoverOpen(!shapePopoverOpen)}
+                    title="Shapes"
+                  >
+                    <Square size={16} />
+                  </ToolButton>
+                  <PopoverContent $open={shapePopoverOpen}>
+                    <ShapeGrid>
+                      {shapes.map((shape) => (
+                        <ToolButton
+                          key={shape.id}
+                          $active={selectedTool === shape.id}
+                          onClick={() => handleShapeSelect(shape.id)}
+                          title={shape.label}
+                        >
+                          <shape.icon size={16} />
+                        </ToolButton>
+                      ))}
+                    </ShapeGrid>
+                  </PopoverContent>
+                </PopoverContainer>
+
+                {/* Arrows Popover */}
+                <PopoverContainer>
+                  <ToolButton
+                    $active={['arrow-single', 'arrow-double', 'line'].includes(selectedTool)}
+                    onClick={() => setArrowPopoverOpen(!arrowPopoverOpen)}
+                    title="Arrows & Lines"
+                  >
+                    <ArrowRight size={16} />
+                  </ToolButton>
+                  <PopoverContent $open={arrowPopoverOpen}>
+                    <ArrowGrid>
+                      {arrows.map((arrow) => (
+                        <ToolButton
+                          key={arrow.id}
+                          $active={selectedTool === arrow.id}
+                          onClick={() => handleArrowSelect(arrow.id)}
+                          title={arrow.label}
+                        >
+                          <arrow.icon size={16} />
+                        </ToolButton>
+                      ))}
+                    </ArrowGrid>
+                  </PopoverContent>
+                </PopoverContainer>
+
+                {/* Clear Popover */}
+                <PopoverContainer>
+                  <ToolButton
+                    onClick={() => setClearPopoverOpen(!clearPopoverOpen)}
+                    title="Clear Options"
+                  >
+                    <Eraser size={16} />
+                  </ToolButton>
+                  <PopoverContent $open={clearPopoverOpen}>
+                    <ClearGrid>
+                      {clearOptions.map((clear) => (
+                        <ToolButton
+                          key={clear.id}
+                          onClick={() => handleClearSelect(clear.id)}
+                          title={clear.label}
+                        >
+                          <clear.icon size={16} />
+                        </ToolButton>
+                      ))}
+                    </ClearGrid>
+                  </PopoverContent>
+                </PopoverContainer>
+              </ToolbarSection>
+
+              <Separator $position={position} />
+
+              {/* Colors */}
+              <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+                <PopoverContainer>
+                  <ColorButton
+                    style={{ backgroundColor: selectedColor }}
+                    onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
+                    title="Select Color"
+                  />
+                  <PopoverContent $open={colorPopoverOpen}>
+                    <ColorGrid>
+                      {colorPalette.map((color) => (
+                        <ColorButton
+                          key={color}
+                          style={{ backgroundColor: color }}
+                          onClick={() => handleColorSelect(color)}
+                        />
+                      ))}
+                    </ColorGrid>
+                  </PopoverContent>
+                </PopoverContainer>
+              </ToolbarSection>
+            </>
+          )}
         </ToolbarSection>
       </ToolbarContent>
     </ToolbarContainer>
