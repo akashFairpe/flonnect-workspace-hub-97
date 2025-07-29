@@ -230,7 +230,6 @@ const ActionSection = styled.div`
   padding-left: 8px;
 `;
 
-
 interface AnnotationToolbarProps {
   onToolSelect?: (tool: string) => void;
   isRecording?: boolean;
@@ -326,257 +325,255 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   ];
 
   return (
-    <>
-      <ToolbarContainer $position={position}>
-        <ToolbarContent $position={position}>
-          <ToolbarSection $position={position}>
-            {/* Recording Timer */}
-            {isRecording && (
-              <>
-                <RecordingTimer>
-                  <Clock size={12} />
-                  {formatTime(recordingTime)}
-                </RecordingTimer>
-                <Separator $position={position} />
-              </>
-            )}
+    <ToolbarContainer $position={position}>
+      <ToolbarContent $position={position}>
+        <ToolbarSection $position={position}>
+          {/* Recording Timer */}
+          {isRecording && (
+            <>
+              <RecordingTimer>
+                <Clock size={12} />
+                {formatTime(recordingTime)}
+              </RecordingTimer>
+              <Separator $position={position} />
+            </>
+          )}
 
-            {/* Position Controls */}
+          {/* Position Controls */}
+          <PopoverContainer>
+            <ToolButton
+              onClick={() => setPositionPopoverOpen(!positionPopoverOpen)}
+              title="Change Position"
+            >
+              <Move size={16} />
+            </ToolButton>
+            <PopoverContent $open={positionPopoverOpen}>
+              <PositionControls $position="center">
+                <ToolButton
+                  $variant={position === 'left' ? "purple" : "ghost"}
+                  onClick={() => {
+                    setPosition('left');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Left"
+                >
+                  <AlignLeft size={16} />
+                </ToolButton>
+                <ToolButton
+                  $variant={position === 'center' ? "purple" : "ghost"}
+                  onClick={() => {
+                    setPosition('center');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Center"
+                >
+                  <AlignCenter size={16} />
+                </ToolButton>
+                <ToolButton
+                  $variant={position === 'right' ? "purple" : "ghost"}
+                  onClick={() => {
+                    setPosition('right');
+                    setPositionPopoverOpen(false);
+                  }}
+                  title="Move to Right"
+                >
+                  <AlignRight size={16} />
+                </ToolButton>
+              </PositionControls>
+            </PopoverContent>
+          </PopoverContainer>
+
+          <Separator $position={position} />
+
+          {/* Recording Controls */}
+          <ToolbarSection $position={position} style={{ paddingRight: position === 'center' ? '8px' : '0' }}>
+            <ToolButton
+              $variant={micEnabled ? "default" : "outline"}
+              onClick={() => setMicEnabled(!micEnabled)}
+              title={micEnabled ? "Mute" : "Unmute"}
+            >
+              {micEnabled ? <Mic size={16} /> : <MicOff size={16} />}
+            </ToolButton>
+            <ToolButton
+              $variant={videoEnabled ? "default" : "outline"}
+              onClick={() => setVideoEnabled(!videoEnabled)}
+              title={videoEnabled ? "Stop Video" : "Start Video"}
+            >
+              {videoEnabled ? <Video size={16} /> : <VideoOff size={16} />}
+            </ToolButton>
+          </ToolbarSection>
+
+          <Separator $position={position} />
+
+          {/* Annotation Tools */}
+          <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+            {/* Pointer Tool */}
+            <ToolButton
+              $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
+              onClick={() => handleToolSelect('pointer')}
+              title="Pointer"
+            >
+              <MousePointer size={16} />
+            </ToolButton>
+            
+            {/* Other Selection Tools */}
+            <ToolButton
+              $active={selectedTool === 'highlight-hover'}
+              onClick={() => handleToolSelect('highlight-hover')}
+              title="Highlight on Hover"
+            >
+              <Scan size={16} />
+            </ToolButton>
+            <ToolButton
+              $active={selectedTool === 'cursor-blink'}
+              onClick={() => handleToolSelect('cursor-blink')}
+              title="Cursor Blink"
+            >
+              <MousePointer2 size={16} />
+            </ToolButton>
+          </ToolbarSection>
+
+          <Separator $position={position} />
+
+          {/* Drawing Tools */}
+          <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+            <ToolButton
+              $active={selectedTool === 'pen'}
+              onClick={() => handleToolSelect('pen')}
+              title="Draw"
+            >
+              <Pen size={16} />
+            </ToolButton>
+            <ToolButton
+              $active={selectedTool === 'text'}
+              onClick={() => handleToolSelect('text')}
+              title="Text"
+            >
+              <Type size={16} />
+            </ToolButton>
+
+            {/* Shapes Popover */}
             <PopoverContainer>
               <ToolButton
-                onClick={() => setPositionPopoverOpen(!positionPopoverOpen)}
-                title="Change Position"
+                $active={['rectangle', 'circle', 'hexagon'].includes(selectedTool)}
+                onClick={() => setShapePopoverOpen(!shapePopoverOpen)}
+                title="Shapes"
               >
-                <Move size={16} />
+                <Square size={16} />
               </ToolButton>
-              <PopoverContent $open={positionPopoverOpen}>
-                <PositionControls $position="center">
-                  <ToolButton
-                    $variant={position === 'left' ? "purple" : "ghost"}
-                    onClick={() => {
-                      setPosition('left');
-                      setPositionPopoverOpen(false);
-                    }}
-                    title="Move to Left"
-                  >
-                    <AlignLeft size={16} />
-                  </ToolButton>
-                  <ToolButton
-                    $variant={position === 'center' ? "purple" : "ghost"}
-                    onClick={() => {
-                      setPosition('center');
-                      setPositionPopoverOpen(false);
-                    }}
-                    title="Move to Center"
-                  >
-                    <AlignCenter size={16} />
-                  </ToolButton>
-                  <ToolButton
-                    $variant={position === 'right' ? "purple" : "ghost"}
-                    onClick={() => {
-                      setPosition('right');
-                      setPositionPopoverOpen(false);
-                    }}
-                    title="Move to Right"
-                  >
-                    <AlignRight size={16} />
-                  </ToolButton>
-                </PositionControls>
+              <PopoverContent $open={shapePopoverOpen}>
+                <ShapeGrid>
+                  {shapes.map((shape) => (
+                    <ToolButton
+                      key={shape.id}
+                      $active={selectedTool === shape.id}
+                      onClick={() => handleShapeSelect(shape.id)}
+                      title={shape.label}
+                    >
+                      <shape.icon size={16} />
+                    </ToolButton>
+                  ))}
+                </ShapeGrid>
               </PopoverContent>
             </PopoverContainer>
 
-            <Separator $position={position} />
-
-            {/* Recording Controls */}
-            <ToolbarSection $position={position} style={{ paddingRight: position === 'center' ? '8px' : '0' }}>
+            {/* Arrows Popover */}
+            <PopoverContainer>
               <ToolButton
-                $variant={micEnabled ? "default" : "outline"}
-                onClick={() => setMicEnabled(!micEnabled)}
-                title={micEnabled ? "Mute" : "Unmute"}
+                $active={['arrow-single', 'arrow-double', 'line'].includes(selectedTool)}
+                onClick={() => setArrowPopoverOpen(!arrowPopoverOpen)}
+                title="Arrows & Lines"
               >
-                {micEnabled ? <Mic size={16} /> : <MicOff size={16} />}
+                <ArrowRight size={16} />
               </ToolButton>
+              <PopoverContent $open={arrowPopoverOpen}>
+                <ArrowGrid>
+                  {arrows.map((arrow) => (
+                    <ToolButton
+                      key={arrow.id}
+                      $active={selectedTool === arrow.id}
+                      onClick={() => handleArrowSelect(arrow.id)}
+                      title={arrow.label}
+                    >
+                      <arrow.icon size={16} />
+                    </ToolButton>
+                  ))}
+                </ArrowGrid>
+              </PopoverContent>
+            </PopoverContainer>
+
+            {/* Clear Popover */}
+            <PopoverContainer>
               <ToolButton
-                $variant={videoEnabled ? "default" : "outline"}
-                onClick={() => setVideoEnabled(!videoEnabled)}
-                title={videoEnabled ? "Stop Video" : "Start Video"}
+                onClick={() => setClearPopoverOpen(!clearPopoverOpen)}
+                title="Clear Options"
               >
-                {videoEnabled ? <Video size={16} /> : <VideoOff size={16} />}
+                <Eraser size={16} />
               </ToolButton>
-            </ToolbarSection>
-
-            <Separator $position={position} />
-
-            {/* Annotation Tools */}
-            <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-              {/* Pointer Tool */}
-              <ToolButton
-                $variant={selectedTool === 'pointer' ? "purple" : "ghost"}
-                onClick={() => handleToolSelect('pointer')}
-                title="Pointer"
-              >
-                <MousePointer size={16} />
-              </ToolButton>
-              
-              {/* Other Selection Tools */}
-              <ToolButton
-                $active={selectedTool === 'highlight-hover'}
-                onClick={() => handleToolSelect('highlight-hover')}
-                title="Highlight on Hover"
-              >
-                <Scan size={16} />
-              </ToolButton>
-              <ToolButton
-                $active={selectedTool === 'cursor-blink'}
-                onClick={() => handleToolSelect('cursor-blink')}
-                title="Cursor Blink"
-              >
-                <MousePointer2 size={16} />
-              </ToolButton>
-            </ToolbarSection>
-
-            <Separator $position={position} />
-
-            {/* Drawing Tools */}
-            <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-              <ToolButton
-                $active={selectedTool === 'pen'}
-                onClick={() => handleToolSelect('pen')}
-                title="Draw"
-              >
-                <Pen size={16} />
-              </ToolButton>
-              <ToolButton
-                $active={selectedTool === 'text'}
-                onClick={() => handleToolSelect('text')}
-                title="Text"
-              >
-                <Type size={16} />
-              </ToolButton>
-
-              {/* Shapes Popover */}
-              <PopoverContainer>
-                <ToolButton
-                  $active={['rectangle', 'circle', 'hexagon'].includes(selectedTool)}
-                  onClick={() => setShapePopoverOpen(!shapePopoverOpen)}
-                  title="Shapes"
-                >
-                  <Square size={16} />
-                </ToolButton>
-                <PopoverContent $open={shapePopoverOpen}>
-                  <ShapeGrid>
-                    {shapes.map((shape) => (
-                      <ToolButton
-                        key={shape.id}
-                        $active={selectedTool === shape.id}
-                        onClick={() => handleShapeSelect(shape.id)}
-                        title={shape.label}
-                      >
-                        <shape.icon size={16} />
-                      </ToolButton>
-                    ))}
-                  </ShapeGrid>
-                </PopoverContent>
-              </PopoverContainer>
-
-              {/* Arrows Popover */}
-              <PopoverContainer>
-                <ToolButton
-                  $active={['arrow-single', 'arrow-double', 'line'].includes(selectedTool)}
-                  onClick={() => setArrowPopoverOpen(!arrowPopoverOpen)}
-                  title="Arrows & Lines"
-                >
-                  <ArrowRight size={16} />
-                </ToolButton>
-                <PopoverContent $open={arrowPopoverOpen}>
-                  <ArrowGrid>
-                    {arrows.map((arrow) => (
-                      <ToolButton
-                        key={arrow.id}
-                        $active={selectedTool === arrow.id}
-                        onClick={() => handleArrowSelect(arrow.id)}
-                        title={arrow.label}
-                      >
-                        <arrow.icon size={16} />
-                      </ToolButton>
-                    ))}
-                  </ArrowGrid>
-                </PopoverContent>
-              </PopoverContainer>
-
-              {/* Clear Popover */}
-              <PopoverContainer>
-                <ToolButton
-                  onClick={() => setClearPopoverOpen(!clearPopoverOpen)}
-                  title="Clear Options"
-                >
-                  <Eraser size={16} />
-                </ToolButton>
-                <PopoverContent $open={clearPopoverOpen}>
-                  <ClearGrid>
-                    {clearOptions.map((clear) => (
-                      <ToolButton
-                        key={clear.id}
-                        onClick={() => handleClearSelect(clear.id)}
-                        title={clear.label}
-                      >
-                        <clear.icon size={16} />
-                      </ToolButton>
-                    ))}
-                  </ClearGrid>
-                </PopoverContent>
-              </PopoverContainer>
-            </ToolbarSection>
-
-            <Separator $position={position} />
-
-            {/* Colors */}
-            <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
-              <PopoverContainer>
-                <ColorButton
-                  style={{ backgroundColor: selectedColor }}
-                  onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
-                  title="Select Color"
-                />
-                <PopoverContent $open={colorPopoverOpen}>
-                  <ColorGrid>
-                    {colorPalette.map((color) => (
-                      <ColorButton
-                        key={color}
-                        style={{ backgroundColor: color }}
-                        onClick={() => handleColorSelect(color)}
-                      />
-                    ))}
-                  </ColorGrid>
-                </PopoverContent>
-              </PopoverContainer>
-            </ToolbarSection>
-
-            <Separator $position={position} />
-
-            {/* Actions */}
-            <ActionSection>
-              <ToolButton
-                onClick={() => setIsPaused(!isPaused)}
-                title={isPaused ? "Resume" : "Pause"}
-              >
-                {isPaused ? <Play size={16} /> : <Pause size={16} />}
-              </ToolButton>
-              <ToolButton
-                title="Cancel"
-              >
-                <X size={16} />
-              </ToolButton>
-              <ToolButton
-                $variant="destructive"
-                title="Stop"
-              >
-                <Stop size={16} />
-              </ToolButton>
-            </ActionSection>
+              <PopoverContent $open={clearPopoverOpen}>
+                <ClearGrid>
+                  {clearOptions.map((clear) => (
+                    <ToolButton
+                      key={clear.id}
+                      onClick={() => handleClearSelect(clear.id)}
+                      title={clear.label}
+                    >
+                      <clear.icon size={16} />
+                    </ToolButton>
+                  ))}
+                </ClearGrid>
+              </PopoverContent>
+            </PopoverContainer>
           </ToolbarSection>
-        </ToolbarContent>
-      </ToolbarContainer>
-    </>
+
+          <Separator $position={position} />
+
+          {/* Colors */}
+          <ToolbarSection $position={position} style={{ padding: position === 'center' ? '0 8px' : '0' }}>
+            <PopoverContainer>
+              <ColorButton
+                style={{ backgroundColor: selectedColor }}
+                onClick={() => setColorPopoverOpen(!colorPopoverOpen)}
+                title="Select Color"
+              />
+              <PopoverContent $open={colorPopoverOpen}>
+                <ColorGrid>
+                  {colorPalette.map((color) => (
+                    <ColorButton
+                      key={color}
+                      style={{ backgroundColor: color }}
+                      onClick={() => handleColorSelect(color)}
+                    />
+                  ))}
+                </ColorGrid>
+              </PopoverContent>
+            </PopoverContainer>
+          </ToolbarSection>
+
+          <Separator $position={position} />
+
+          {/* Actions */}
+          <ActionSection>
+            <ToolButton
+              onClick={() => setIsPaused(!isPaused)}
+              title={isPaused ? "Resume" : "Pause"}
+            >
+              {isPaused ? <Play size={16} /> : <Pause size={16} />}
+            </ToolButton>
+            <ToolButton
+              title="Cancel"
+            >
+              <X size={16} />
+            </ToolButton>
+            <ToolButton
+              $variant="destructive"
+              title="Stop"
+            >
+              <Stop size={16} />
+            </ToolButton>
+          </ActionSection>
+        </ToolbarSection>
+      </ToolbarContent>
+    </ToolbarContainer>
   );
 }
