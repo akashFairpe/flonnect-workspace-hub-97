@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { 
   Mic, 
   MicOff, 
@@ -30,6 +30,15 @@ import {
   Minimize2,
   Maximize2
 } from 'lucide-react';
+
+const GlobalStyle = createGlobalStyle`
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+`;
 
 const ToolbarContainer = styled.div<{ $position: 'center' | 'left' | 'right' }>`
   position: fixed;
@@ -328,7 +337,9 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
   ];
 
   return (
-    <ToolbarContainer $position={position}>
+    <>
+      <GlobalStyle />
+      <ToolbarContainer $position={position}>
       <ToolbarContent $position={position}>
         <ToolbarSection $position={position}>
           {/* Recording Timer */}
@@ -341,22 +352,6 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
               <Separator $position={position} />
             </>
           )}
-
-          {/* Collapse/Expand Toggle */}
-          <ToolButton
-            $variant={isCollapsed ? "purple" : "ghost"}
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            title={isCollapsed ? "Show More Tools" : "Show Less Tools"}
-            style={{ 
-              background: isCollapsed ? 'linear-gradient(135deg, #8b5cf6, #a855f7)' : 'transparent',
-              borderRadius: '6px',
-              border: isCollapsed ? 'none' : '1px solid rgba(139, 92, 246, 0.3)'
-            }}
-          >
-            {isCollapsed ? '••••' : '••'}
-          </ToolButton>
-
-          <Separator $position={position} />
 
           {/* Position Controls */}
           <PopoverContainer>
@@ -419,6 +414,55 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
               title={videoEnabled ? "Stop Video" : "Start Video"}
             >
               {videoEnabled ? <Video size={16} /> : <VideoOff size={16} />}
+            </ToolButton>
+            
+            {/* Collapse/Expand Toggle - Positioned between camera and pause */}
+            <ToolButton
+              onClick={(e) => {
+                setIsCollapsed(!isCollapsed);
+                // Ripple effect
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = '50%';
+                ripple.style.top = '50%';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.marginLeft = '-10px';
+                ripple.style.marginTop = '-10px';
+                
+                e.currentTarget.appendChild(ripple);
+                setTimeout(() => {
+                  ripple.remove();
+                }, 600);
+              }}
+              title="Expand Toolbar"
+              style={{ 
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%)',
+                borderRadius: '50%',
+                border: 'none',
+                boxShadow: '0 4px 12px rgba(139, 92, 246, 0.25), 0 2px 4px rgba(139, 92, 246, 0.1)',
+                color: 'white',
+                transform: isCollapsed ? 'rotate(0deg)' : 'rotate(180deg)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #9333ea 0%, #a855f7 50%, #8b5cf6 100%)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.4), 0 4px 12px rgba(139, 92, 246, 0.2), 0 0 20px rgba(139, 92, 246, 0.3)';
+                e.currentTarget.style.transform = isCollapsed ? 'rotate(0deg) scale(1.05)' : 'rotate(180deg) scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.25), 0 2px 4px rgba(139, 92, 246, 0.1)';
+                e.currentTarget.style.transform = isCollapsed ? 'rotate(0deg) scale(1)' : 'rotate(180deg) scale(1)';
+              }}
+            >
+              {isCollapsed ? '•••' : '▲'}
             </ToolButton>
           </ToolbarSection>
 
@@ -599,5 +643,6 @@ export function AnnotationToolbar({ onToolSelect, isRecording = false }: Annotat
         </ToolbarSection>
       </ToolbarContent>
     </ToolbarContainer>
+    </>
   );
 }
